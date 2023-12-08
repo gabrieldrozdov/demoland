@@ -1,0 +1,38 @@
+{
+	"test-collection": {
+		"title": "Collection title goes here",
+		"desc": "Collection description goes here",
+		"chapters": {
+			"test-chapter-1": {
+				"title": "Chapter Title",
+				"files": [
+					"index.html",
+					"style.css",
+					"script.js",
+					{
+						"name": "subfolder",
+						"files": [
+							"index.html"
+						]
+					},
+					"screenshot.png"
+				]
+			},
+			"test-chapter-2": {
+				"title": "Chapter Title",
+				"files": [
+					"index.html",
+					"style.css",
+					"script.js",
+					{
+						"name": "subfolder",
+						"files": [
+							"index.html"
+						]
+					},
+					"screenshot.png"
+				]
+			}
+		}
+	}
+}
