@@ -1,37 +1,12 @@
 {
-	"test-collection": {
-		"title": "Collection title goes here",
-		"desc": "Collection description goes here",
+	"WPW23 JavaScript Tutorial": {
+		"title": "WPW23 JavaScript Tutorial",
+		"desc": "lessons in JavaScript",
 		"chapters": {
-			"test-chapter-1": {
-				"title": "Chapter Title",
-				"files": [
-					"index.html",
-					"style.css",
-					"script.js",
-					{
-						"name": "subfolder",
-						"files": [
-							"index.html"
-						]
-					},
-					"screenshot.png"
-				]
-			},
-			"test-chapter-2": {
-				"title": "Chapter Title",
-				"files": [
-					"index.html",
-					"style.css",
-					"script.js",
-					{
-						"name": "subfolder",
-						"files": [
-							"index.html"
-						]
-					},
-					"screenshot.png"
-				]
+			"lesson-1": {
+				"title": "Lesson 1",
+				"info": "lesson1.html",
+				"code": "lesson1.code"
 			}
 		}
 	}
