@@ -1,12 +1,48 @@
 {
-	"WPW23 JavaScript Tutorial": {
-		"title": "WPW23 JavaScript Tutorial",
+	"demoland": {
+		"title": "Demoland",
+		"desc": "Start here!",
+		"demos": {
+			"welcome": {
+				"name": "Welcome to Demoland!",
+				"color": "red"
+			},
+			"tutorial-html": {
+				"name": "Tutorial: HTML",
+				"color": "blue"
+			},
+			"tutorial-css": {
+				"name": "Tutorial: CSS",
+				"color": "purple"
+			},
+			"tutorial-js": {
+				"name": "Tutorial: JavaScript",
+				"color": "yellow"
+			},
+			"tutorial-js-libraries": {
+				"name": "Tutorial: JavaScript Libraries",
+				"color": "pink"
+			},
+			"template": {
+				"name": "Starter Template",
+				"color": "green"
+			}
+		}
+	},
+	"vfw-spring24": {
+		"title": "Variable Fonts Workshop [Spring 2024]",
 		"desc": "lessons in JavaScript",
-		"chapters": {
-			"lesson-1": {
-				"title": "Lesson 1",
-				"info": "lesson1.html",
-				"code": "lesson1.code"
+		"color": "red",
+		"demos": {
+			"lesson1": {
+				"title": "Lesson 1: How this all works",
+				"alias": "lesson1",
+				"color": "red"
+			},
+			"lesson2": {
+				"title": "Lesson 2: Something else and something else",
+				"alias": "lesson1",
+				"color": "pink"
 			}
 		}
 	}

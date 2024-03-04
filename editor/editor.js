@@ -1,9 +1,9 @@
 const colors = ['red', 'blue', 'purple', 'yellow', 'green', 'pink'];
 const container = document.querySelector('.container');
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // TOOLTIPS
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 // Add event listeners for all tooltip-related items
 window.addEventListener('mousemove', (e) => {positionTooltip(e)});
@@ -14,6 +14,16 @@ function refreshTooltips() {
 	}
 }
 refreshTooltips();
+
+// Wait until mouse moved before showing tooltip
+setTimeout(() => {
+	window.addEventListener('mousemove', showTooltip);
+}, 100)
+function showTooltip() {
+	const tooltipContainer = document.querySelector('.tooltip-container');
+	tooltipContainer.style.opacity = 1;
+	window.removeEventListener('mousemove', showTooltip);
+}
 
 // Move tooltip
 function positionTooltip(e) {
@@ -56,9 +66,9 @@ function hideTooltip() {
 	tooltip.dataset.hide = 1;
 }
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // PANELS
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 
 // Resize panels
 let resizers = document.querySelectorAll('.resizer');
@@ -104,8 +114,6 @@ function startResize(e1, resizer) {
 		let deltaPercent = (delta/window.innerWidth)*100;
 		offset1 += deltaPercent;
 		offset2 -= deltaPercent;
-		// let offset1Percent = ((offset1/window.innerWidth)*100).toFixed(2);
-		// let offset2Percent = ((offset2/window.innerWidth)*100).toFixed(2);
 		col1.dataset.offset = offset1;
 		col2.dataset.offset = offset2;
 		col1.style.width = `calc(${100/openPanelsLength}% + ${offset1}%)`;
@@ -213,14 +221,24 @@ function enableIframes() {
 	}
 }
 
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————
 // CONTENT
-// ————————————————————————————————————————————————————————————
+// ———————————————————————————————————
+
+// Info navbar
+function openCollection() {
+	const infoNav = document.querySelector('.info-nav');
+	if (parseInt(infoNav.dataset.active) == 1) {
+		infoNav.dataset.active = 0;
+	} else {
+		infoNav.dataset.active = 1;
+	}
+}
 
 // Generate editor
 let cm;
-let activeChapter = 'demoland';
-let activeDemo = 'hello';
+let activeCollection = 'demoland';
+let activeDemo = 'welcome';
 function generateEditor() {
 	const editor = document.querySelector('.editor-content');
 	cm = CodeMirror(editor, {
@@ -248,43 +266,115 @@ function generateEditor() {
 	// Initialize page with demo (load requested demo if applicable)
 	const pageHref = window.location.search;
 	const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?')));
-	if (searchParams.has('chapter') && searchParams.has('demo')) {
-		urlChapter = searchParams.get('chapter');
+	if (searchParams.has('collection') && searchParams.has('demo')) {
+		urlCollection = searchParams.get('collection');
 		urlDemo = searchParams.get('demo');
-		fetchDemo(urlChapter, urlDemo);
+		fetchDemo(urlCollection, urlDemo);
 	} else {
-		fetchDemo("demoland", "hello");
+		fetchDemo("demoland", "welcome");
 	}
 }
-generateEditor();
 
-// Fetch demo and populate editor
+// Fetch catalog and find demo information
+let catalog;
+async function fetchCatalog() {
+	try {
+		let response = await fetch(`/catalog.json`);
+		response.json().then((json) => {
+			catalog = json;
+			generateEditor();
+		});
+	}
+	catch(e) {
+		alert("Something went wrong while trying to load the file! Try checking your Internet connection and refreshing the page.");
+	}
+}
+fetchCatalog();
+
+// Fetch demo and populate info and editor panels
 let infoContent = "";
 let codeContent = "";
-async function fetchDemo(chapter, demo) {
-	activeChapter = chapter;
+async function fetchDemo(collection, demo) {
+	activeCollection = collection;
 	activeDemo = demo;
-	const newtab = document.querySelector('#newtab');
-	newtab.href = `demos/${activeChapter}/${activeDemo}.html`;
+	populateInfo();
 	fetchInfo();
+}
+function populateInfo() {
+	let collection = catalog[activeCollection];
+
+	// Set newtab URL
+	const newtab = document.querySelector('#newtab');
+	newtab.href = `demos/${activeCollection}/${activeDemo}.html`;
+
+	// Populate collection nav
+	const infoNavCollection = document.querySelector('#info-nav-collection');
+	infoNavCollection.innerText = collection['title'];
+	let demos = collection['demos'];
+	let infoNavTemp = '';
+	let demoIndex = 0;
+	let index = 0;
+	for (let key of Object.keys(demos)) {
+		let demo = demos[key];
+		if (key == activeDemo) {
+			demoIndex = index;
+		}
+		infoNavTemp += `
+			<div class="info-nav-demo" style="--primary: var(--${demo['color']});">
+				<a href="./?collection=${activeCollection}&demo=${key}" class="info-nav-demo-link">
+					<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
+					<span>${demo['name']}</span>
+				</a>
+				<a href="./?collection=${activeCollection}&demo=${key}" target="_blank" class="info-nav-demo-newtab">
+					<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
+				</a>
+			</div>
+		`;
+		index++;
+	}
+	const infoNavDemos = document.querySelector('.info-nav-demos');
+	infoNavDemos.innerHTML = infoNavTemp;
+
+	// Navigate between demos
+	const infoNavPrev = document.querySelector('#info-nav-prev');
+	const infoNavNext = document.querySelector('#info-nav-next');
+	const infoNext = document.querySelector('.info-next');
+	if (demoIndex == 0) {
+		infoNavPrev.style.display = 'none';
+	} else {
+		let key = Object.keys(demos)[demoIndex-1];
+		infoNavPrev.href = `./?collection=${activeCollection}&demo=${key}`;
+	}
+	if (demoIndex == index-1) {
+		infoNavNext.style.display = 'none';
+		infoNext.style.display = 'none';
+	} else {
+		let key = Object.keys(demos)[demoIndex+1];
+		infoNavNext.href = `./?collection=${activeCollection}&demo=${key}`;
+		infoNext.href = `./?collection=${activeCollection}&demo=${key}`;
+	}
+	
+	// Set color
+	const container = document.querySelector('.container');
+	container.style.setProperty('--primary', `var(--${demos[activeDemo]['color']})`);
 }
 async function fetchInfo() {
 	try {
-		let responseInfo = await fetch(`demos/${activeChapter}/${activeDemo}-info.html`);
+		let responseInfo = await fetch(`demos/${activeCollection}/${activeDemo}-info.html`);
 		responseInfo.text().then((text) => {
 			infoContent = text;
 			const info = document.querySelector('.info-content');
-			info.innerHTML = infoContent;
+			info.innerHTML += infoContent;
 			fetchCode();
 		});
 	}
 	catch(e) {
-		fetchDemo("demoland", "hello");
+		fetchDemo("demoland", "welcome");
 	}
 }
 async function fetchCode() {
 	try {
-		let responseCode = await fetch(`demos/${activeChapter}/${activeDemo}.html`);
+		let responseCode = await fetch(`demos/${activeCollection}/${activeDemo}.html`);
 		if (responseCode.status != 200) {
 			throw new Error('File not found');
 		}
@@ -308,14 +398,48 @@ function resetDemo() {
 	cm.refresh();
 }
 
+// Pause preview from updating
+let paused = false;
+function editorPause() {
+	const togglePause = document.querySelector("#pause");
+	if (paused) {
+		paused = false;
+		togglePause.dataset.active = 0;
+	} else {
+		paused = true;
+		togglePause.dataset.active = 1;
+	}
+	updatePreview();
+}
+
 // Update preview when changes made in editor
 let update;
+let updateCount = 0;
 function updatePreview() {
+	// Add warning before closing the tab if editor changed by user
+	if (updateCount > 1) {
+		window.addEventListener('beforeunload', function (e) {
+			e.preventDefault();
+			e.returnValue = '';
+		});
+	}
+	updateCount++;
+
 	clearTimeout(update);
 	const preview = document.querySelector('.preview-content');
-	const previewDelay = document.querySelector(".preview-delay");
+	const previewDelay = document.querySelector("#preview-delay");
 	const previewDelayTimerInside = document.querySelector(".preview-delay-timer-inside");
 	previewDelayTimerInside.style.animationName = "unset";
+
+	// Stop update if preview paused
+	const previewPaused = document.querySelector("#preview-paused");
+	if (paused) {
+		previewPaused.dataset.active = 1;
+		previewDelay.dataset.active = 0;
+		return
+	} else {
+		previewPaused.dataset.active = 0;
+	}
 
 	// Custom console function
 	let consoleCode = `
@@ -478,19 +602,27 @@ consoleInput.addEventListener('keydown', (e) => {
     }
 })
 
+// Cap console at 100 enttires
+function checkConsoleLength() {
+	const consoleLog = document.querySelector('.editor-console-log');
+	if (consoleLog.children.length > 100) {
+		consoleLog.children[0].remove();
+		checkConsoleLength();
+	}
+}
+let consoleObserver = new MutationObserver(checkConsoleLength);
+consoleObserver.observe(document.querySelector('.editor-console-log'), {characterData: false, childList: true, attributes: false});
+
 // Fix CodeMirror text not aligning with cursor
 window.addEventListener('focus', () => {cm.refresh()});
 
-// Warning before closing the tab
-window.addEventListener('beforeunload', function (e) {
-	e.preventDefault();
-	e.returnValue = '';
-});
-
-// TODO
-// help popup
-// new homepage
-// new catalog json?
-// styles for info panel
-	// something to track the unit you're in?
-// how to determine what color the editor should use?
+// Track preview size
+function previewDimensions() {
+	const previewContent = document.querySelector(".preview-content");
+	const previewWidth = document.querySelector("#preview-width");
+	const previewHeight = document.querySelector("#preview-height");
+	previewWidth.innerText = previewContent.offsetWidth
+	previewHeight.innerText = previewContent.offsetHeight
+}
+previewDimensions();
+new ResizeObserver(previewDimensions).observe(document.querySelector(".preview-content"));

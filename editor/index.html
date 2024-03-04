@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>DEMOLAND</title>
+	<title>DEMOLAND | Editor</title>
 
 	<link rel="stylesheet" href="editor.css">
 
@@ -49,9 +49,9 @@
 			<a id="catalog-btn" class="controls-btn" data-tooltip-text="Open Catalog" data-tooltip-direction="left" href="/" target="_blank">
 				<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
 			</a>
-			<div class="controls-btn" data-tooltip-text="Help" data-tooltip-direction="left">
+			<a class="controls-btn" data-tooltip-text="Tutorial" data-tooltip-direction="left" href="./" target="_blank">
 				<svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>
-			</div>
+			</a>
 
 			<div class="controls-spacer"></div>
 
@@ -69,13 +69,13 @@
 			<div class="controls-spacer"></div>
 
 			<!-- CODE FUNCTIONS -->
-			<div class="controls-btn" data-tooltip-text="Reset" data-tooltip-direction="left" onclick="editorReset();">
+			<div class="controls-btn" data-tooltip-text="Reset Demo" data-tooltip-direction="left" onclick="editorReset();">
 				<svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg>
 			</div>
-			<div class="controls-btn" data-tooltip-text="Download" data-tooltip-direction="left" onclick="editorDownload();">
+			<div class="controls-btn" data-tooltip-text="Download Code" data-tooltip-direction="left" onclick="editorDownload();">
 				<svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg>
 			</div>
-			<a class="controls-btn" data-tooltip-text="Open in New Tab" data-tooltip-direction="left" href="#" target="_blank" id="newtab">
+			<a class="controls-btn" data-tooltip-text="Open Demo in New Tab" data-tooltip-direction="left" href="#" target="_blank" id="newtab">
 				<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
 			</a>
 		</nav>
@@ -85,8 +85,8 @@
 
 			<!-- LOADING -->
 			<div class="loading">
-				<div class="preview-delay-msg">
-					<p class="preview-delay-msg-text">I’m loading your demo, sit tight!</p>
+				<div class="preview-msg">
+					<p class="preview-msg-text">I’m loading your demo, sit tight!</p>
 					<svg viewBox="0 0 100 100"><polygon points="100 0 0 50 100 100 100 0"/></svg>
 				</div>
 				<svg class="loading-icon" viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg>
@@ -95,7 +95,25 @@
 			<!-- INFO -->
 			<section class="panel" id="info" data-offset="0"  data-hide="0">
 				<div class="info-container">
-					<div class="info-content"></div>
+					<div class="info-body">
+						<div class="info-nav" data-active="0">
+							<div class="info-nav-bar">
+								<div onclick="openCollection();" class="info-nav-collection" data-tooltip-text="View All Demos in Collection" data-tooltip-direction="top">
+									<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
+									<span id="info-nav-collection"></span>
+								</div>
+								<a href="" class="info-nav-prevnext" data-tooltip-text="Previous Demo" data-tooltip-direction="top" id="info-nav-prev">
+									<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
+								</a>
+								<a href="" class="info-nav-prevnext" data-tooltip-text="Next Demo" data-tooltip-direction="top" id="info-nav-next">
+									<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
+								</a>
+							</div>
+							<div class="info-nav-demos"></div>
+						</div>
+						<div class="info-content"></div>
+						<a href="" class="info-next">When you’re ready, click here to move on to the next demo!</a>
+					</div>
 				</div>
 
 				<div class="panel-label" data-tooltip-text="Read about the current demo and learn how its code works!" data-tooltip-direction="bottom">
@@ -114,12 +132,6 @@
 						<button data-tooltip-text="Toggle Console" data-tooltip-direction="bottom" data-active="0" onclick="editorToggleConsole();" id="toggle-console">
 							<svg viewBox="0 0 100 100"><polygon points="10 28.749 31.251 50 10 71.251 17.071 78.322 45.393 50 17.071 21.678 10 28.749"/><rect x="40" y="80" width="50" height="10"/></svg>
 						</button>
-						<button data-tooltip-text="Toggle Preview Delay" data-tooltip-direction="bottom" data-active="0" onclick="editorToggleDelay();" id="toggle-delay">
-							<svg viewBox="0 0 100 100"><path d="M69,49v10h-25v-29h10v19h15ZM90,50c0,22.09-17.91,40-40,40S10,72.09,10,50,27.91,10,50,10s40,17.91,40,40ZM80,50c0-16.57-13.43-30-30-30s-30,13.43-30,30,13.43,30,30,30,30-13.43,30-30Z"/></svg>
-						</button>
-						<button data-tooltip-text="Run Code Again" data-tooltip-direction="bottom" data-active="0" onclick="editorRerun();" id="rerun">
-							<svg viewBox="0 0 100 100"><polygon points="29.5 82.5 29.5 17.5 74.5 50 29.5 82.5"/></svg>
-						</button>
 						<button data-tooltip-text="Toggle Text Wrapping" data-active="0" data-tooltip-direction="bottom" onclick="editorToggleWrapping();" id="toggle-wrap">
 							<svg viewBox="0 0 100 100"><path d="M58.75,15H24.14v10h34.61c11.73,0,21.24,9.51,21.24,21.24s-9.51,21.26-21.24,21.26l-29.61-.03,10.43-10.4-7.07-7.07-22.5,22.5,22.5,22.5,7.07-7.07-10.43-10.43h29.61c17.26,0,31.25-13.99,31.25-31.25s-13.99-31.25-31.25-31.25Z"/></svg>
 						</button>
@@ -128,6 +140,15 @@
 						</button>
 						<button data-tooltip-text="Increase Font Size" data-tooltip-direction="bottom" onclick="editorFontsizeUp();" data-disabled="0" id="toggle-fontsize-up">
 							<svg viewBox="0 0 100 100"><path d="M40.5,20h-10L5.5,80h10l7.5-18h25l7.5,18h10l-25-60ZM27.167,52l8.333-20,8.333,20h-16.667ZM94.5,52h-10v10h-10v-10h-10v-10h10v-10h10v10h10v10Z"/></svg>
+						</button>
+						<button data-tooltip-text="Toggle Preview Delay" data-tooltip-direction="bottom" data-active="0" onclick="editorToggleDelay();" id="toggle-delay">
+							<svg viewBox="0 0 100 100"><path d="M69,49v10h-25v-29h10v19h15ZM90,50c0,22.09-17.91,40-40,40S10,72.09,10,50,27.91,10,50,10s40,17.91,40,40ZM80,50c0-16.57-13.43-30-30-30s-30,13.43-30,30,13.43,30,30,30,30-13.43,30-30Z"/></svg>
+						</button>
+						<button data-tooltip-text="Pause Preview" data-tooltip-direction="bottom" data-active="0" onclick="editorPause();" id="pause">
+							<svg viewBox="0 0 100 100"><path d="M40,85.23h-10V14.77h10v70.46ZM70,14.77h-10v70.46h10V14.77Z"/></svg>
+						</button>
+						<button data-tooltip-text="Run Code Again" data-tooltip-direction="bottom" data-active="0" onclick="editorRerun();" id="rerun">
+							<svg viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg>
 						</button>
 					</div>
 					<div class="editor-console">
@@ -150,16 +171,26 @@
 			<!-- PREVIEW -->
 			<section class="panel" id="preview" data-offset="0" data-hide="0">
 				<div class="preview-container">
-					<div class="preview-delay" data-active="0">
-						<div class="preview-delay-msg">
-							<p class="preview-delay-msg-text">You can turn off this delay from the Editor panel!</p>
+					<div id="preview-delay" class="preview-msg-container" data-active="0">
+						<div class="preview-msg">
+							<p class="preview-msg-text">You can turn off this delay from the Editor panel!</p>
 							<svg viewBox="0 0 100 100"><polygon points="100 0 0 50 100 100 100 0"/></svg>
 						</div>
 						<div class="preview-delay-timer">
 							<div class="preview-delay-timer-inside"></div>
 						</div>
 					</div>
+					<div id="preview-paused" class="preview-msg-container" data-active="0">
+						<div class="preview-msg">
+							<p class="preview-msg-text">PREVIEW PAUSED<br>Turn the preview back on from the Editor panel!</p>
+						</div>
+					</div>
 					<iframe class="preview-content"></iframe>
+					<div class="preview-dimensions" data-tooltip-text="Preview Width and Height" data-tooltip-direction="bottom">
+						<span id="preview-width">500</span>
+						<svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg>
+						<span id="preview-height">500</span>
+					</div>
 				</div>
 
 				<div class="panel-label" data-tooltip-text="See a live preview of your code!" data-tooltip-direction="bottom">
