@@ -1,19 +1,19 @@
 {
-	"demoland": {
-		"title": "Demoland",
-		"desc": "Start here!",
+	"tutorial": {
+		"title": "Tutorial",
+		"desc": "<p>Coming soon!</p>",
 		"demos": {
 			"welcome": {
 				"name": "Welcome to Demoland!",
-				"color": "red"
+				"color": "pink"
 			},
 			"tutorial-html": {
 				"name": "Tutorial: HTML",
-				"color": "blue"
+				"color": "green"
 			},
 			"tutorial-css": {
 				"name": "Tutorial: CSS",
-				"color": "purple"
+				"color": "blue"
 			},
 			"tutorial-js": {
 				"name": "Tutorial: JavaScript",
@@ -21,28 +21,43 @@
 			},
 			"tutorial-js-libraries": {
 				"name": "Tutorial: JavaScript Libraries",
-				"color": "pink"
+				"color": "purple"
 			},
 			"template": {
 				"name": "Starter Template",
-				"color": "green"
+				"color": "red"
 			}
 		}
 	},
-	"vfw-spring24": {
-		"title": "Variable Fonts Workshop [Spring 2024]",
-		"desc": "lessons in JavaScript",
-		"color": "red",
+	"designers-guide-to-web-programming": {
+		"title": "The Designer’s Guide to Web Programming",
+		"desc": "<p>Coming soon!</p>",
 		"demos": {
-			"lesson1": {
-				"title": "Lesson 1: How this all works",
-				"alias": "lesson1",
-				"color": "red"
-			},
-			"lesson2": {
-				"title": "Lesson 2: Something else and something else",
-				"alias": "lesson1",
+			"typography": {
+				"name": "Typography",
 				"color": "pink"
+			},
+			"box-model": {
+				"name": "The Box Model",
+				"color": "green"
+			},
+			"layout": {
+				"name": "Layout",
+				"color": "blue"
+			},
+			"interaction": {
+				"name": "Interaction",
+				"color": "yellow"
+			},
+			"loops": {
+				"name": "Loops",
+				"alias": "loops",
+				"color": "purple"
+			},
+			"data": {
+				"name": "Data",
+				"alias": "data",
+				"color": "red"
 			}
 		}
 	}

@@ -271,7 +271,7 @@ function generateEditor() {
 		urlDemo = searchParams.get('demo');
 		fetchDemo(urlCollection, urlDemo);
 	} else {
-		fetchDemo("demoland", "welcome");
+		fetchDemo("tutorial", "welcome");
 	}
 }
 
@@ -322,8 +322,8 @@ function populateInfo() {
 		infoNavTemp += `
 			<div class="info-nav-demo" style="--primary: var(--${demo['color']});">
 				<a href="./?collection=${activeCollection}&demo=${key}" class="info-nav-demo-link">
-					<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
-					<span>${demo['name']}</span>
+					<div class="info-nav-demo-link-number">${index+1}</div>
+					<div class="info-nav-demo-link-name">${demo['name']}</div>
 				</a>
 				<a href="./?collection=${activeCollection}&demo=${key}" target="_blank" class="info-nav-demo-newtab">
 					<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
@@ -357,6 +357,14 @@ function populateInfo() {
 	// Set color
 	const container = document.querySelector('.container');
 	container.style.setProperty('--primary', `var(--${demos[activeDemo]['color']})`);
+
+	// Update favicon to match demo color
+	const head = document.querySelector('head');
+	const headFaviconColor = document.createElement('link');
+	headFaviconColor.rel = "icon";
+	headFaviconColor.type = "png";
+	headFaviconColor.href = `/assets/meta/favicon-${demos[activeDemo]['color']}.png`;
+	head.appendChild(headFaviconColor);
 }
 async function fetchInfo() {
 	try {
