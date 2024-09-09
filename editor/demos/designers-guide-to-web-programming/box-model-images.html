@@ -4,8 +4,35 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Responsive Images</title>
+
+	<style>
+		.responsive {
+			display: block;
+			width: 100%;
+		}
+	</style>
 </head>
 <body>
+
+	<p>
+		Here’s an image!
+	</p>
+
+	<img src="https://cdn.shopify.com/s/files/1/0491/1821/6344/files/nova-scotia-duck-tolling-retriever.jpg?v=1628638284">
 	
+	<p>
+		By default, images are NOT responsive. That means they won’t work well on different screen sizes (especially on mobile devices). Why? Here’s a few reasons:
+		<ul>
+			<li>Images by default are inline, not block, elements</li>
+			<li>Images by default don’t have maximum widths (or set widths at all)</li>
+		</ul>
+	</p>
+
+	<p>
+		To fix this, we can set images to have a width of 100% and a display value of block. The image’s height will figure itself out.
+	</p>
+
+	<img class="responsive" src="https://cdn.shopify.com/s/files/1/0491/1821/6344/files/nova-scotia-duck-tolling-retriever.jpg?v=1628638284">
+
 </body>
 </html>

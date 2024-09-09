@@ -4,8 +4,39 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Variable Fonts</title>
+
+	<style>
+		body {
+			font-size: 24px;
+		}
+
+		/* Import custom variable font */
+		@font-face {
+			font-family: "Limkin";
+			src: url("/assets/fonts/limkin.ttf");
+			font-weight: 100 900;
+		}
+
+		/* Define variable font axes using the font-variation-settings property */
+		.limkin-thin {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" 100, "SRFF" 0;
+		}
+		.limkin-heavy {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" 900, "SRFF" 0;
+		}
+	</style>
 </head>
 <body>
 	
+	<p>
+		I’m <span class="limkin-thin">small!</span>
+	</p>
+	
+	<p>
+		I’m <span class="limkin-heavy">huge!</span>
+	</p>
+
 </body>
 </html>

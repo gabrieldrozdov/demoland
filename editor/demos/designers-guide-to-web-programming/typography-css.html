@@ -4,8 +4,42 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CSS Properties and Classes</title>
+
+	<!-- CSS classes live in the <style> element -->
+	<!-- The <style> element lives in the <head> element -->
+	<style>
+
+		/* CSS class selector */
+		.my-class {
+			color: red;
+			font-family: sans-serif;
+			font-size: 50px;
+		}
+		
+		/* CSS tag selector */
+		strong {
+			letter-spacing: 5px;
+		}
+
+	</style>
 </head>
 <body>
 	
+	<p>
+		I’m a normal paragraph!
+	</p>
+
+	<p class="my-class">
+		I’m a paragraph with a class!
+	</p>
+
+	<p class="my-class">
+		I’m a paragraph with the same class!
+	</p>
+
+	<p>
+		You can also use <strong>CSS</strong> to affect <strong>all instances</strong> of an HTML element
+	</p>
+
 </body>
 </html>

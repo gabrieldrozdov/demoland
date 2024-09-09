@@ -77,6 +77,10 @@
 				"name": "Basics of the Box Model",
 				"color": "green"
 			},
+			"box-model-units": {
+				"name": "Units",
+				"color": "green"
+			},
 			"box-model-box-sizing": {
 				"name": "Box Sizing",
 				"color": "green"

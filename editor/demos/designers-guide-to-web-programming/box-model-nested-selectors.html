@@ -4,8 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Nested CSS Selectors</title>
+
+	<style>
+		.secret {
+			display: none;
+			font-size: 100px;
+		}
+		.secret-container:hover .secret {
+			display: block;
+		}
+		.secret-container:active .secret {
+			color: red;
+		}
+	</style>
 </head>
 <body>
 	
+	<div class="secret-container">
+		I have a secret! But you’ll have to force it out of me!
+		<div class="secret">I DIDN’T HAVE A SECRET I LIED</div>
+	</div>
+
 </body>
 </html>

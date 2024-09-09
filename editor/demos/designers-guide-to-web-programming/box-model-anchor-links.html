@@ -4,8 +4,65 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Anchor Links and IDs</title>
+
+	<style>
+		/* This makes the page scroll smoothly */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		/* Styling for specific sections */
+		section {
+			height: 100vh;
+		}
+		#section1 {
+			background-color: hsl(0deg, 50%, 50%);
+		}
+		#section2 {
+			background-color: hsl(50deg, 50%, 50%);
+		}
+		#section3 {
+			background-color: hsl(100deg, 50%, 50%);
+		}
+		#section4 {
+			background-color: hsl(150deg, 50%, 50%);
+		}
+		#section5 {
+			background-color: hsl(200deg, 50%, 50%);
+		}
+	</style>
 </head>
 <body>
+
+	<p style="font-size: 48px;">NOTE: open this demo in a new tab for it to work!!!</p>
+
+	<!-- <nav> elements are another semantic div element (a div by another name) -->
+	<nav>
+		<a href="#section1">Jump to section 1</a><br>
+		<a href="#section2">Jump to section 2</a><br>
+		<a href="#section3">Jump to section 3</a><br>
+		<a href="#section4">Jump to section 4</a><br>
+		<a href="#section5">Jump to section 5</a>
+	</nav>
 	
+	<section id="section1">
+		<h1>Section 1</h1>
+	</section>
+	
+	<section id="section2">
+		<h1>Section 2</h1>
+	</section>
+	
+	<section id="section3">
+		<h1>Section 3</h1>
+	</section>
+	
+	<section id="section4">
+		<h1>Section 4</h1>
+	</section>
+	
+	<section id="section5">
+		<h1>Section 5</h1>
+	</section>
 </body>
 </html>

@@ -4,8 +4,40 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@keyframes Animations</title>
+
+	<style>
+
+		@keyframes my-animation {
+			0% {
+				height: 0px;
+			}
+			50% {
+				height: 100px;
+				background-color: red;
+			}
+			100% {
+				height: 50px;
+				background-color: yellow;
+				border-radius: 50%;
+			}
+		}
+
+		.my-div {
+			animation-name: my-animation;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			animation-timing-function: ease-in-out;
+
+			/* A shortcut for all the previous properties */
+			animation: my-animation 1s infinite alternate ease-in-out;
+		}
+
+	</style>
 </head>
 <body>
 	
+	<div class="my-div"></div>
+
 </body>
 </html>

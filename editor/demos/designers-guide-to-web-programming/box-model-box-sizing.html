@@ -4,8 +4,29 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Box Sizing</title>
+
+	<style>
+		.without {
+			width: 100%;
+			padding: 20px;
+			background-color: hsl(0deg, 50%, 50%);
+		}
+		.with {
+			width: 100%;
+			padding: 20px;
+			box-sizing: border-box;
+			background-color: hsl(90deg, 50%, 50%);
+		}
+	</style>
 </head>
 <body>
 	
+	<p class="without">
+		Without proper box-sizing
+	</p>
+	<p class="with">
+		With proper box-sizing
+	</p>
+
 </body>
 </html>

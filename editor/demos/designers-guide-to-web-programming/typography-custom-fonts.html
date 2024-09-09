@@ -4,8 +4,55 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Custom Fonts</title>
+
+	<!-- Required code for using a font from Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+	<style>
+		body {
+			font-size: 24px;
+		}
+
+		/* Font via URL */
+		@font-face {
+			font-family: "Bashful";
+			src: url("https://toomuchtype.com/fonts/bashful/variable/TMT-BashfulVF.ttf");
+		}
+		.font-1 {
+			font-family: "Bashful", Arial, sans-serif;
+		}
+
+		/* Font via Google Fonts */
+		.font-2 {
+			font-family: "Nerko One", cursive;
+		}
+
+		/* Font hosted locally */
+		@font-face {
+			font-family: "IBM Plex Mono";
+			src: url("/assets/fonts/IBMPlexMono-Regular.ttf");
+		}
+		.font-3 {
+			font-family: "IBM Plex Mono", monospace;
+		}
+	</style>
+
 </head>
 <body>
 	
+	<p>
+		Hello <span class="font-1">world</span>!
+	</p>
+	
+	<p>
+		Hello <span class="font-2">world</span>!
+	</p>
+	
+	<p>
+		Hello <span class="font-3">world</span>!
+	</p>
+
 </body>
 </html>

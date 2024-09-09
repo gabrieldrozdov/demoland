@@ -4,8 +4,30 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Working with Divs</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.my-element {
+			border: 1px solid black;
+			padding: 20px;
+		}
+	</style>
 </head>
 <body>
 	
+	<div class="my-element">
+		<div class="my-element">
+			<div class="my-element">
+				<div class="my-element">
+					<div class="my-element"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
