@@ -1,26 +1,26 @@
 {
 	"tutorial": {
 		"title": "Tutorial",
-		"desc": "<p>Coming soon!</p>",
+		"desc": "<p>Get started with DEMOLAND and learn how to code websites! These tutorials go over DEMOLAND’s interface, as well as the basics of coding in HTML, CSS, and JavaScript.</p>",
 		"demos": {
 			"welcome": {
-				"name": "Welcome to Demoland!",
+				"name": "Welcome to DEMOLAND",
 				"color": "pink"
 			},
-			"tutorial-html": {
-				"name": "Tutorial: HTML",
+			"html": {
+				"name": "What is HTML?",
 				"color": "green"
 			},
-			"tutorial-css": {
-				"name": "Tutorial: CSS",
+			"css": {
+				"name": "What is CSS?",
 				"color": "blue"
 			},
-			"tutorial-js": {
-				"name": "Tutorial: JavaScript",
+			"js": {
+				"name": "What is JavaScript?",
 				"color": "yellow"
 			},
-			"tutorial-js-libraries": {
-				"name": "Tutorial: JavaScript Libraries",
+			"js-libraries": {
+				"name": "What are JavaScript Libraries?",
 				"color": "purple"
 			},
 			"template": {
@@ -31,34 +31,139 @@
 	},
 	"designers-guide-to-web-programming": {
 		"title": "The Designer’s Guide to Web Programming",
-		"desc": "<p>Coming soon!</p>",
+		"desc": "<p>A comprehensive overview of web programming, from the perspective of a designer. These demos go over everything you need to know to make websites, split into six units: Typography, The Box Model, Layout, Interaction, Loops, and Data.</p><p>Be sure to check out the guide’s <a href='https://webprogramming.gdwithgd.com/' target='_blank'>dedicated website</a> for more resources!</p>",
 		"demos": {
-			"typography": {
-				"name": "Typography",
+			"introduction": {
+				"name": "Introduction",
+				"color": "white"
+			},
+			"typography-template": {
+				"name": "A Basic HTML File",
 				"color": "pink"
 			},
-			"box-model": {
-				"name": "The Box Model",
+			"typography-elements": {
+				"name": "HTML Elements for Typography",
+				"color": "pink"
+			},
+			"typography-hierarchy": {
+				"name": "Typographic Hierarchy",
+				"color": "pink"
+			},
+			"typography-css": {
+				"name": "CSS Properties and Classes",
+				"color": "pink"
+			},
+			"typography-inline-css": {
+				"name": "Inline CSS",
+				"color": "pink"
+			},
+			"typography-colors": {
+				"name": "Color Codes",
+				"color": "pink"
+			},
+			"typography-inspect": {
+				"name": "Using the Inspect Tool",
+				"color": "pink"
+			},
+			"typography-custom-fonts": {
+				"name": "Custom Fonts",
+				"color": "pink"
+			},
+			"typography-variable-fonts": {
+				"name": "Variable Fonts",
+				"color": "pink"
+			},
+			"box-model-basics": {
+				"name": "Basics of the Box Model",
 				"color": "green"
 			},
-			"layout": {
-				"name": "Layout",
+			"box-model-box-sizing": {
+				"name": "Box Sizing",
+				"color": "green"
+			},
+			"box-model-css-overrides": {
+				"name": "CSS Overrides",
+				"color": "green"
+			},
+			"box-model-display": {
+				"name": "Using the “display” Property",
+				"color": "green"
+			},
+			"box-model-divs": {
+				"name": "Working with Divs",
+				"color": "green"
+			},
+			"box-model-grouping": {
+				"name": "Grouping Elements",
+				"color": "green"
+			},
+			"box-model-anchor-links": {
+				"name": "Anchor Links and IDs",
+				"color": "green"
+			},
+			"box-model-images": {
+				"name": "Responsive Images",
+				"color": "green"
+			},
+			"box-model-hover-states": {
+				"name": "Hover and Active States",
+				"color": "green"
+			},
+			"box-model-keyframes": {
+				"name": "@keyframes Animations",
+				"color": "green"
+			},
+			"box-model-nested-selectors": {
+				"name": "Nested CSS Selectors",
+				"color": "green"
+			},
+			"layout-flexbox": {
+				"name": "1-Dimensional Layouts Using Flexbox",
 				"color": "blue"
 			},
-			"interaction": {
-				"name": "Interaction",
-				"color": "yellow"
+			"layout-centering": {
+				"name": "Centering Content",
+				"color": "blue"
 			},
-			"loops": {
-				"name": "Loops",
-				"alias": "loops",
-				"color": "purple"
+			"layout-grid": {
+				"name": "2-Dimensional Layouts Using Grid",
+				"color": "blue"
 			},
-			"data": {
-				"name": "Data",
-				"alias": "data",
-				"color": "red"
+			"layout-media-queries": {
+				"name": "Responsive Layouts Using @media Queries",
+				"color": "blue"
+			},
+			"layout-relative-absolute": {
+				"name": "Relative and Absolute Positioning",
+				"color": "blue"
+			},
+			"layout-sticky": {
+				"name": "Sticky Positioning",
+				"color": "blue"
+			},
+			"layout-floats": {
+				"name": "Floats",
+				"color": "blue"
+			},
+			"layout-portfolio": {
+				"name": "Designing a Portfolio",
+				"color": "blue"
+			},
+			"layout-horizontal": {
+				"name": "Horizontal Scrolling",
+				"color": "blue"
+			},
+			"layout-scrolling-columns": {
+				"name": "Independently Scrolling Columns",
+				"color": "blue"
 			}
+		}
+	},
+	"too-much-type": {
+		"title": "Too Much Type",
+		"desc": "<p><a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a> (a GD with GD sister site) designs and develops typefaces and type specimens. These demos show off the foundry’s experiments with new type technologies, like variable fonts. Check out the code behind these experiments and learn how to implement similar functionality into your own sites!</p>",
+		"demos": {
+			
 		}
 	}
 }

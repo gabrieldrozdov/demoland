@@ -248,8 +248,10 @@ function generateEditor() {
 		autoCloseBrackets: true,
 		matchBrackets: true,
 		smartIndent: true,
+		indentWithTabs: true,
 		lineNumbers: true,
-		tabSize: 2,
+		tabSize: 4,
+		indentUnit: 4,
 		showHint: true,
 		extraKeys: {
 			"Ctrl-Space": "autocomplete",
@@ -258,7 +260,7 @@ function generateEditor() {
 			'Cmd-/': 'toggleComment',
 			'Ctrl-/': 'toggleComment',
 		},
-		lineWrapping: false,
+		lineWrapping: true,
 		theme: "gdwithgd",
 	});
 	cm.on("change", updatePreview);
@@ -273,6 +275,15 @@ function generateEditor() {
 	} else {
 		fetchDemo("tutorial", "welcome");
 	}
+
+	window.addEventListener("focus", cm.refresh());
+
+	cm.on("renderLine", function(cm, line, elmnt) {
+		let tabs = CodeMirror.countColumn(line.text, null, 1);
+		elmnt.style.textIndent = `-${tabs*2.4}em`;
+		elmnt.style.paddingLeft = `calc(${tabs*2.4}em + 4px)`;
+	});
+	cm.refresh();
 }
 
 // Fetch catalog and find demo information
@@ -391,6 +402,9 @@ async function fetchCode() {
 			container.dataset.loading = 0;
 			cm.setValue(codeContent);
 			cm.refresh();
+
+			// Attempt to fix alignment issues
+			setTimeout(() => {cm.refresh()}, 100)
 		});
 	}
 	catch(e) {
@@ -507,7 +521,7 @@ function updatePreview() {
 }
 
 // Editor controls
-let lineWrap = false;
+let lineWrap = true;
 function editorToggleWrapping() {
 	const toggleWrap = document.querySelector("#toggle-wrap");
 	if (lineWrap) {
