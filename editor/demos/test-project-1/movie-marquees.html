@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>movie-marquees.html</title>
+
+	<style>
+		div {
+			font-size: 40px;
+			animation-name: marquee;
+			animation-duration: 10s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			transform: translateX(100%);
+		}
+		div:nth-child(even) {
+			animation-direction: reverse;
+			transform: translateX(-100%);
+		}
+		@keyframes marquee {
+			0% {
+				transform: translateX(100%);
+			}
+			100% {
+				transform: translateX(-100%);
+			}
+		}
+	</style>
+</head>
+<body>
+	
+	<div>
+		i lost the game
+	</div>
+	
+	<div>
+		i won the game?
+	</div>
+	
+	<div style="animation-delay: 2s;">
+		no i definitely lost the game
+	</div>
+	
+	<div style="animation-delay: -7s;">
+		you did too
+	</div>
+	
+	<div>
+		we all are losers
+	</div>
+	
+	<div>
+		sadness reigns
+	</div>
+</body>
+</html>

@@ -17,7 +17,7 @@ body {
 	font-family: 'Limkin', 'Arial', sans-serif;
 	font-variation-settings: 'wght' 400, 'SRFF' 0;
 	color: var(--white);
-	background-color: #111;
+	background-color: rgb(17,17,17);
 }
 :root {
 	--red: #FF734D;

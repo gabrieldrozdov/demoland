@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>personal-portrait.html</title>
+</head>
+<body>
+	<!-- elements with "position: absolute;" will be positioned relative to the nearest parent element that also has "position: absolute;" -->
+
+	<!-- header -->
+	<div style="position: absolute; left: 20px; top: 20px; width: 600px; height: 600px; border-radius: 50%; background-color: pink;">
+
+		<!-- glasses -->
+		<div style="position: absolute; top: 20%; left: 20%; transform: rotate(20deg);">
+
+			<!-- left eye -->
+			<div style="position: absolute; top: 0; left: 0; width: 100px; height: 50px; background-color: blue; border-radius: 10px;"></div>
+		
+			<!-- right eye -->
+			<div style="position: absolute; top: 0; left: 200px; width: 100px; height: 50px; background-color: blue; border-radius: 10px;"></div>
+		
+			<!-- middle -->
+			<div style="position: absolute; top: 20px; left: 100px; width: 100px; height: 2px; background-color: blue;"></div>
+
+		</div>
+
+		<!-- mouth -->
+		<div style="position: absolute; width: 200px; height: 100px; bottom: 20%; left: 20%; background-color: red; border-radius: 0 0 100px 100px; transform: rotate(10deg);"></div>
+
+	</div>
+</body>
+</html>

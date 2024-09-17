@@ -97,8 +97,7 @@ function generateCatalog() {
 					</div>
 					<div class="header-misc">
 						<p>
-							DEMOLAND was made by <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a> and <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>. This site is typeset in Limkin by <a href="https://toomuchtype.com/" target="_blank">Too Much Type</a>. 
-							DEMOLAND is best viewed on a laptop or desktop.
+							DEMOLAND is by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>. This site is typeset in Limkin by <a href="https://toomuchtype.com/" target="_blank">Too Much Type</a>, <a href="https://fonts.google.com/specimen/IBM+Plex+Mono" target="_blank">IBM Plex Mono</a>, and <a href="https://fonts.google.com/icons" target="_blank">Google Material Symbols</a>.<br><br>DEMOLAND is best viewed on a laptop or desktop.
 						</p>
 					</div>
 				</header>

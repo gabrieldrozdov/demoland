@@ -163,6 +163,56 @@
 			}
 		}
 	},
+	"test-project-1": {
+		"title": "test-project-1.html",
+		"desc": "<p><a href='https://testproject1.gdwithgd.com/' target='_blank'>test-project-1.html</a> is a collection of creative coding projects for any skill level.</p>",
+		"demos": {
+			"test-project-1": {
+				"name": "test-project-1",
+				"color": "white"
+			},
+			"ascii-art": {
+				"name": "ASCII Art",
+				"color": "pink"
+			},
+			"programmatic-poetry": {
+				"name": "Programmatic Poetry",
+				"color": "pink"
+			},
+			"text-textile": {
+				"name": "Text Textile",
+				"color": "pink"
+			},
+			"interconnected-images": {
+				"name": "Interconnected Images",
+				"color": "pink"
+			},
+			"pixelated-pattern": {
+				"name": "Pixelated Pattern",
+				"color": "green"
+			},
+			"brilliant-blog": {
+				"name": "Brilliant Blog",
+				"color": "green"
+			},
+			"geometric-garden": {
+				"name": "Geometric Garden",
+				"color": "green"
+			},
+			"movie-marquees": {
+				"name": "Movie Marquees",
+				"color": "green"
+			},
+			"personal-portrait": {
+				"name": "Personal Portrait",
+				"color": "green"
+			},
+			"sticky-sayings": {
+				"name": "Sticky Sayings",
+				"color": "green"
+			}
+		}
+	},
 	"too-much-type": {
 		"title": "Too Much Type",
 		"desc": "<p><a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a> (a GD with GD sister site) designs and develops typefaces and type specimens. These demos show off the foundry’s experiments with new type technologies, like variable fonts. Check out the code behind these experiments and learn how to implement similar functionality into your own sites!</p>",
