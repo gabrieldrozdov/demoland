@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>brick-barrier.html</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.flex-parent {
+			display: flex;
+			flex-direction: row;
+			gap: 1px;
+			padding: 1px;
+			background-color: black;
+			width: 100vw;
+			height: 100vh;
+		}
+		.flex-child {
+			flex-grow: 1;
+			background-color: white;
+			border-radius: 50%;
+			transition: flex-grow .5s;
+		}
+		.flex-child:hover {
+			flex-grow: 10;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="flex-parent">
+		<div class="flex-child"></div>
+		<div class="flex-child"></div>
+		<div class="flex-child"></div>
+		<div class="flex-child"></div>
+		<div class="flex-child"></div>
+		<div class="flex-child"></div>
+	</div>
+
+</body>
+</html>

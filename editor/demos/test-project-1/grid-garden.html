@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>grid-garden.html</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		body {
+			background-color: hsl(100deg, 50%, 20%);
+		}
+		.grid-parent {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+		}
+		.grid-parent div {
+			aspect-ratio: 1/1;
+			background-color: hsl(100deg, 50%, 50%);
+			transition: transform 5s, background-color 5s;
+		}
+		.grid-parent div:hover {
+			background-color: hsl(20deg, 100%, 80%);
+			transform: rotate(180deg);
+			transition: transform .5s, background-color .5s;
+		}
+		.grid-child-1 {
+			border-radius: 100% 0 0 0;
+		}
+		.grid-child-2 {
+			border-radius: 0 100% 0 0;
+		}
+		.grid-child-3 {
+			border-radius: 0 0 0 100%;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="grid-parent">
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+		<div class="grid-child-1"></div>
+		<div class="grid-child-2"></div>
+		<div class="grid-child-3"></div>
+	</div>
+
+</body>
+</html>

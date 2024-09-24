@@ -210,6 +210,26 @@
 			"sticky-sayings": {
 				"name": "Sticky Sayings",
 				"color": "green"
+			},
+			"disco-dancer": {
+				"name": "Disco Dancer",
+				"color": "blue"
+			},
+			"grid-garden": {
+				"name": "Grid Garden",
+				"color": "blue"
+			},
+			"card-catalog": {
+				"name": "Card Catalog",
+				"color": "blue"
+			},
+			"brick-barrier": {
+				"name": "Brick Barrier",
+				"color": "blue"
+			},
+			"lonely-link": {
+				"name": "Lonely Link",
+				"color": "blue"
 			}
 		}
 	},
