@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animating Variable Fonts</title>
+
+	<style>
+		/* Importing fonts */
+		/* (you should use local file paths!) */
+		@font-face {
+			font-family: "Limkin";
+			src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+		}
+
+		@font-face {
+			font-family: "Mini Mochi";
+			src: url("https://toomuchtype.com/fonts/mini-mochi/variable/TMT-MiniMochiVF.ttf");
+		}
+
+		/* CSS overrides */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		p {
+			font-size: 40px;
+		}
+
+		/* Example 1 */
+		.font1 {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" 500, "SRFF" 0;
+			animation-name: limkin-animation;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+		}
+		@keyframes limkin-animation {
+			0% {
+				font-variation-settings: "wght" 500, "SRFF" 0;
+			}
+			10% {
+				font-variation-settings: "wght" 900, "SRFF" 0;
+			}
+			25% {
+				font-variation-settings: "wght" 100, "SRFF" 100;
+			}
+			50% {
+				font-variation-settings: "wght" 900, "SRFF" 100;
+			}
+			100% {
+				font-variation-settings: "wght" 500, "SRFF" 0;
+			}
+		}
+
+		/* Example 2 */
+		.font2 {
+			font-family: "Mini Mochi", sans-serif;
+			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+			transition: font-variation-settings 2s;
+		}
+		.font2:hover {
+			font-variation-settings: "STCH" 100, "FLAV" 100, "SLCE" 0;
+			transition: font-variation-settings .5s;
+		}
+		.font2:active {
+			font-variation-settings: "STCH" 0, "FLAV" 100, "SLCE" 100;
+			transition: font-variation-settings .25s;
+		}
+	</style>
+</head>
+<body>
+	
+	<p class="font1">
+		oh boy oh boy oh boy
+	</p>
+
+	<p>
+		<span class="font1" style="animation-delay: .1s">a</span>
+		<span class="font1" style="animation-delay: .2s">a</span>
+		<span class="font1" style="animation-delay: .3s">a</span>
+		<span class="font1" style="animation-delay: .4s">a</span>
+		<span class="font1" style="animation-delay: .5s">a</span>
+		<span class="font1" style="animation-delay: .6s">a</span>
+		<span class="font1" style="animation-delay: .7s">a</span>
+	</p>
+
+	<p class="font2">
+		helloooooo
+	</p>
+
+</body>
+</html>

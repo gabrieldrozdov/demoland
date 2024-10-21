@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toggling Classes Using JavaScript</title>
+
+	<style>
+		@font-face {
+			font-family: "Bashful";
+			src: url("https://toomuchtype.com/fonts/bashful/variable/TMT-BashfulVF.ttf");
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		p {
+			font-family: "Bashful";
+			font-variation-settings: "BASH" 0;
+			font-size: 100px;
+			transition: font-variation-settings 1s;
+		}
+		.toggled-class {
+			font-variation-settings: "BASH" 100;
+		}
+	</style>
+</head>
+<body>
+	
+	<p id="hello1" contenteditable="plaintext-only">Hello</p>
+	<p class="hello2" contenteditable="plaintext-only">Hello</p>
+
+	<button onclick="changeMyClassPlease();">Click me!</button>
+	<button onclick="changeSomethingElse();">Or me!</button>
+
+	<p>
+		<span onmouseenter="changeMyself(this)" style="transition: 1s">HI</span>
+		<span onmouseenter="changeMyself(this)" style="transition: .5s">HI</span>
+		<span onmouseenter="changeMyself(this)" style="transition: 1.2s">HI</span>
+		<span onmouseenter="changeMyself(this)" style="transition: .2s">HI</span>
+		<span onmouseenter="changeMyself(this)" style="transition: .3s">HI</span>
+		<span onmouseenter="changeMyself(this)" style="transition: 2s">HI</span>
+		<span onmouseenter="changeMyself(this)" style="transition: .4s">HI</span>
+	</p>
+
+	<!-- JavaScript lives in the <script> element! -->
+	<script>
+
+		function changeMyClassPlease() {
+			document.querySelector('#hello1').classList.toggle('toggled-class');
+		}
+
+		function changeSomethingElse() {
+			document.querySelector('.hello2').classList.toggle('toggled-class');
+		}
+
+		function changeMyself(element) {
+			element.classList.toggle('toggled-class');
+		}
+
+	</script>
+</body>
+</html>

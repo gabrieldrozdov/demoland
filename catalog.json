@@ -237,7 +237,30 @@
 		"title": "Too Much Type",
 		"desc": "<p><a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a> (a GD with GD sister site) designs and develops typefaces and type specimens. These demos show off the foundry’s experiments with new type technologies, like variable fonts. Check out the code behind these experiments and learn how to implement similar functionality into your own sites!</p>",
 		"demos": {
-			
+			"using-variable-fonts": {
+				"name": "Using Variable Fonts",
+				"color": "pink"
+			},
+			"animating-variable-fonts": {
+				"name": "Animating Variable Fonts",
+				"color": "green"
+			},
+			"toggling-classes": {
+				"name": "Toggling Classes Using JavaScript",
+				"color": "blue"
+			},
+			"slider": {
+				"name": "Using CSS Variables and Sliders",
+				"color": "yellow"
+			},
+			"random-axis-values": {
+				"name": "Setting Random Variable Axis Values",
+				"color": "purple"
+			},
+			"advanced-javascript": {
+				"name": "Advanced JavaScript Interactions",
+				"color": "red"
+			}
 		}
 	}
 }
