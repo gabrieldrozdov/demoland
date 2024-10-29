@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toggling Variable States</title>
+
+	<style>
+		@font-face {
+			font-family: "Limkin";
+			src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+		}
+		.limkin {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" 500, "SRFF" 0;
+			font-size: 32px;
+			transition: font-variation-settings .5s;
+		}
+		.serif {
+			font-variation-settings: "wght" 500, "SRFF" 100;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="limkin" id="my-element" contenteditable="plaintext-only">Type here!</p>
+
+	<!-- Use the onclick attribute to call JavaScript functions -->
+	<button onclick="toggleMyVariableClass()">Click me!</button>
+
+	<p><strong>Challenge: try creating a new class and toggling that class too!</strong></p>
+
+	<!-- JavaScript goes in the <script> element -->
+	<script>
+		// JavaScript comments look like this!
+
+		// Our custom class
+		function toggleMyVariableClass() {
+
+			// Target the element
+			var myElement = document.querySelector('#my-element');
+			
+			// Add or remove the CSS class “serif”
+			myElement.classList.toggle('serif');
+
+			// Creates a popup dialog in your browser
+			// This is useful for finding and fixing bugs in your code
+			alert("The element’s class has changed!");
+
+			// Output the element’s classes into the console
+			// Open the console by clicking the bottom-left button in the editor
+			console.log(myElement.classList);
+		}
+	</script>
+</body>
+</html>

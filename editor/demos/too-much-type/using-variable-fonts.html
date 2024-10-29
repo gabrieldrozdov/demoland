@@ -6,54 +6,28 @@
 	<title>Using Variable Fonts</title>
 
 	<style>
-		/* Importing fonts */
-		/* (you should use local file paths!) */
-		@font-face {
-			font-family: "Limkin";
-			src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
-		}
-
 		@font-face {
 			font-family: "Mini Mochi";
 			src: url("https://toomuchtype.com/fonts/mini-mochi/variable/TMT-MiniMochiVF.ttf");
 		}
-
-		/* CSS overrides */
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		p {
-			font-size: 40px;
-		}
-
-		/* Using fonts via classes */
-		.font1 {
-			font-family: "Limkin", sans-serif;
-			font-variation-settings: "wght" 500, "SRFF" 0;
-		}
-		.font2 {
+		.mini-mochi {
 			font-family: "Mini Mochi", sans-serif;
 			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+			font-size: 64px;
 		}
 	</style>
 </head>
+
 <body>
-	
-	<p class="font1">
-		Hello! How are you?<br>
-		<span style="font-variation-settings: 'wght' 900, 'SRFF' 100;">I am good!</span><br>
-		Oh yay!<br>
-		<span style="font-variation-settings: 'wght' 900, 'SRFF' 100;">Wahoo!</span><br>
+	<p class="mini-mochi">
+		<span style="font-variation-settings: 'STCH' 0, 'FLAV' 0, 'SLCE' 0;" contenteditable="plaintext-only">Type here!</span>
+		<br>
+		<span style="font-variation-settings: 'STCH' 50, 'FLAV' 100, 'SLCE' 0;"contenteditable="plaintext-only">Type here!</span>
+		<br>
+		<span style="font-variation-settings: 'STCH' 100, 'FLAV' 0, 'SLCE' 100;"contenteditable="plaintext-only">Type here!</span>
+		<br>
 	</p>
 
-	<p class="font2">
-		<span>A</span>
-		<span style='font-variation-settings: "STCH" 100, "FLAV" 0, "SLCE" 0'>A</span>
-		<span style='font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0'>A</span>
-		<span style='font-variation-settings: "STCH" 50, "FLAV" 100, "SLCE" 50'>A</span>
-	</p>
-
+	<p><strong>Challenge: try creating a new span with different variable axis values!</strong></p>
 </body>
 </html>

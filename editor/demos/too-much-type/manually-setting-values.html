@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Manually Setting Values</title>
+
+	<style>
+		@font-face {
+			font-family: "Limkin";
+			src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+			font-weight: 100 900;
+		}
+		.limkin {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" 500, "SRFF" 0;
+			font-size: 100px;
+			transition: font-variation-settings .2s;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="limkin" id="my-element" contenteditable="plaintext-only">Type here!</p>
+
+	<div>
+		<h2>Reset variable axis values</h2>
+		<button onclick="resetVariableAxisValues()">Reset</button>
+	</div>
+
+	<div>
+		<h2>Sans-serif</h2>
+		<button onclick="setVariableAxisValues(100, 0)">100</button>
+		<button onclick="setVariableAxisValues(200, 0)">200</button>
+		<button onclick="setVariableAxisValues(300, 0)">300</button>
+		<button onclick="setVariableAxisValues(400, 0)">400</button>
+		<button onclick="setVariableAxisValues(500, 0)">500</button>
+		<button onclick="setVariableAxisValues(600, 0)">600</button>
+		<button onclick="setVariableAxisValues(700, 0)">700</button>
+		<button onclick="setVariableAxisValues(800, 0)">800</button>
+		<button onclick="setVariableAxisValues(900, 0)">900</button>
+	</div>
+
+	<div>
+		<h2>Flare</h2>
+		<button onclick="setVariableAxisValues(100, 50)">100</button>
+		<button onclick="setVariableAxisValues(200, 50)">200</button>
+		<button onclick="setVariableAxisValues(300, 50)">300</button>
+		<button onclick="setVariableAxisValues(400, 50)">400</button>
+		<button onclick="setVariableAxisValues(500, 50)">500</button>
+		<button onclick="setVariableAxisValues(600, 50)">600</button>
+		<button onclick="setVariableAxisValues(700, 50)">700</button>
+		<button onclick="setVariableAxisValues(800, 50)">800</button>
+		<button onclick="setVariableAxisValues(900, 50)">900</button>
+	</div>
+
+	<div>
+		<h2>Serif</h2>
+		<button onclick="setVariableAxisValues(100, 100)">100</button>
+		<button onclick="setVariableAxisValues(200, 100)">200</button>
+		<button onclick="setVariableAxisValues(300, 100)">300</button>
+		<button onclick="setVariableAxisValues(400, 100)">400</button>
+		<button onclick="setVariableAxisValues(500, 100)">500</button>
+		<button onclick="setVariableAxisValues(600, 100)">600</button>
+		<button onclick="setVariableAxisValues(700, 100)">700</button>
+		<button onclick="setVariableAxisValues(800, 100)">800</button>
+		<button onclick="setVariableAxisValues(900, 100)">900</button>
+	</div>
+
+	<div>
+		<h2>Change the text color</h2>
+		<button onclick="setFontColor('black')">Black</button>
+		<button onclick="setFontColor('red')">Red</button>
+		<button onclick="setFontColor('green')">Green</button>
+		<button onclick="setFontColor('blue')">Blue</button>
+	</div>
+
+	<div>
+		<p><strong>Challenge: try adding buttons to change font size!</strong></p>
+	</div>
+
+	<script>
+		// Target the element
+		var myElement = document.querySelector('#my-element');
+
+		// Function to reset our variable axis values
+		function resetVariableAxisValues() {
+			myElement.style.fontVariationSettings = `"wght" 500, "SRFF" 0`;
+		}
+
+		// Function to set new variable axis values
+		function setVariableAxisValues(newWeight, newSerif) {
+			myElement.style.fontVariationSettings = `"wght" ${newWeight}, "SRFF" ${newSerif}`;
+		}
+
+		// Function to set font color
+		function setFontColor(newColor) {
+			myElement.style.color = newColor;
+		}
+	</script>
+</body>
+</html>

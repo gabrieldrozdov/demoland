@@ -247,7 +247,6 @@ body {
 /* Content */
 .content {
 	display: flex;
-	/* border-left: 2px solid var(--black3); */
 	min-height: 0;
 	min-width: 0;
 }
@@ -272,7 +271,6 @@ body {
 	background-color: var(--black3);
 	color: var(--white);
 	fill: var(--primary);
-	/* border-top: 2px solid var(--black3); */
 	font-size: 12px;
 	padding: 1px 8px;
 	gap: 6px;
@@ -478,8 +476,8 @@ body {
 }
 .info-content {
 	font-size: 16px;
-	font-weight: 400;
-	font-variation-settings: "wght" 300, "SRFF" 0;
+	font-weight: 350;
+	font-variation-settings: "wght" 350, "SRFF" 0;
 	line-height: 1.4em;
 	padding: 48px;
 }
@@ -594,6 +592,11 @@ body {
 	font-family: "IBM Plex", monospace;
 	font-size: .8em;
 	background-color: rgba(0,0,0,.5);
+	color: var(--primary);
+}
+.info-code:hover {
+	color: var(--black);
+	background-color: var(--primary);
 }
 
 /* Info panel navigation */

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Setting Values Using Sliders</title>
+
+	<style>
+		:root {
+			--charge: 0;
+			--power: 0;
+			--font-size: 32px;
+			--letter-spacing: 0px;
+		}
+		@font-face {
+			font-family: "PowerPack";
+			src: url("https://toomuchtype.com/fonts/powerpack/variable/TMT-PowerPackVF.ttf");
+		}
+		.powerpack {
+			font-family: "PowerPack", sans-serif;
+			font-variation-settings: "CHRG" var(--charge), "POWR" var(--power);
+			font-size: var(--font-size);
+			letter-spacing: var(--letter-spacing);
+		}
+	</style>
+</head>
+
+<body>
+	<p class="powerpack" contenteditable="plaintext-only">Type here!</p>
+
+	<div>
+		<h2>Charge (CHRG)</h2>
+		<label for="charge">Current value: <span id="current-charge">0</span></label>
+		<input name="charge" type="range" min="0" max="100" value="0" oninput="setCharge(this.value)">
+	</div>
+
+	<div>
+		<h2>Power (POWR)</h2>
+		<label for="power">Current value: <span id="current-power">0</span></label>
+		<input name="power" type="range" min="0" max="100" value="0" oninput="setPower(this.value)">
+	</div>
+
+	<div>
+		<h2>Font size</h2>
+		<label for="font-size">Current value: <span id="current-font-size">32</span>px</label>
+		<input name="font-size" type="range" min="1" max="100" value="32" oninput="setFontSize(this.value)">
+	</div>
+
+	<div>
+		<h2>Letter spacing</h2>
+		<label for="letter-spacing">Current value: <span id="current-letter-spacing">0</span>px</label>
+		<input name="letter-spacing" type="range" min="-5" max="10" value="0" oninput="setLetterSpacing(this.value)">
+		<p><strong>Challenge: finish the code for this slider!</strong></p>
+	</div>
+
+	<div>
+		<p><strong>Challenge: create a slider for line height! Hint: you’ll have to add both CSS and JavaScript!</strong></p>
+	</div>
+
+	<script>
+		// Element that contains our CSS variables
+		var root = document.querySelector('html');
+
+		// Change the charge CSS variable
+		var currentCharge = document.querySelector('#current-charge');
+		function setCharge(newCharge) {
+			console.log(newCharge);
+			currentCharge.innerText = newCharge;
+			root.style.setProperty('--charge', newCharge);
+		}
+
+		// Change the power CSS variable
+		var currentPower = document.querySelector('#current-power');
+		function setPower(newPower) {
+			console.log(newPower);
+			currentPower.innerText = newPower;
+			root.style.setProperty('--power', newPower);
+		}
+
+		// Change the font-size CSS variable
+		var currentFontSize = document.querySelector('#current-font-size');
+		function setFontSize(newFontSize) {
+			console.log(newFontSize);
+			currentFontSize.innerText = newFontSize;
+			root.style.setProperty('--font-size', newFontSize + "px"); // we need to add the units onto here
+		}
+
+		// Change the letter-spacing CSS variable
+		var currentLetterSpacing = document.querySelector('#current-letter-spacing');
+		function setLetterSpacing(newLetterSpacing) {
+			console.log(newLetterSpacing);
+			// Challenge: finish this function!
+		}
+	</script>
+</body>
+</html>

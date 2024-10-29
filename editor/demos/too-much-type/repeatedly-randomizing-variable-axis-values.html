@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Repeatedly Randomizing Variable Axis Values</title>
+
+	<style>
+		@font-face {
+			font-family: "That Then This";
+			src: url("https://toomuchtype.com/fonts/that-then-this/variable/TMT-ThatThenThisVF.ttf");
+		}
+		.that-then-this {
+			font-family: "That Then This", sans-serif;
+			font-variation-settings: "THAT" 0, "THIS" 0;
+			font-size: 50px;
+			transition: font-variation-settings .5s;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="that-then-this" id="my-element" contenteditable="plaintext-only">Type here!</p>
+
+	<script>
+		// Target the element
+		var myElement = document.querySelector('#my-element');
+
+		// Function to randomize values
+		function randomizeValues() {
+			var randomNumber1 = Math.random(); // generates a random number between 0 and 1
+			var randomNumberAdjusted1 = randomNumber1*100; // converts number to range 0–100
+			var randomNumberRounded1 = Math.round(randomNumberAdjusted1); // round that number to an integer
+			console.log(randomNumberRounded1); // log the number so we can see it in the console (for bug testing)
+
+			// Same process with a new number, this time in a single line
+			var randomNumberRounded2 = Math.round(Math.random()*100);
+			console.log(randomNumberRounded2);
+
+			myElement.style.fontVariationSettings = `"THAT" ${randomNumberRounded1}, "THIS" ${randomNumberRounded2}`;
+		}
+
+		setInterval(randomizeValues, 500);
+	</script>
+</body>
+</html>

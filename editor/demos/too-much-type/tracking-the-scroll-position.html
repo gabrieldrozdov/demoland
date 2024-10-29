@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tracking the Scroll Position</title>
+
+	<style>
+		:root {
+			--burst: 0;
+		}
+		@font-face {
+			font-family: "Avara Burst";
+			src: url("https://toomuchtype.com/fonts/avara-burst/variable/TMT-AvaraBurstVF.ttf");
+		}
+		body {
+			margin: 0;
+		}
+		.container {
+			width: 100vw;
+			height: 5000px;
+		}
+		.avara-burst {
+			/* Positioning, using sticky to stay visible */
+			width: 100vw;
+			height: 100vh;
+			position: sticky;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			top: 0;
+
+			/* Normal styles */
+			font-family: "Avara Burst", sans-serif;
+			font-variation-settings: "BRST" var(--burst);
+			font-size: 64px;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body onscroll="setAxes(event)">
+	<div class="container">
+		<p class="avara-burst" contenteditable="plaintext-only">Type here!</p>
+	</div>
+
+	<script>
+		var root = document.querySelector('html');
+		var body = document.querySelector('body');
+		var container = document.querySelector('.container');
+		
+		function setAxes(event) {
+			// Top of container
+			// This is needed if not the first div on the page
+			var scrollTop = container.offsetTop;
+
+			// Full container height
+			var scrollHeight = container.offsetHeight;
+
+			// Full number of pixels scrolled down the page
+			var scrollPosition = window.scrollY;
+
+			// Calculate the number of pixels scrolled so far
+			var pixelsScrolled = scrollPosition - scrollTop;
+
+			// Calculate the percent scrolled (0–1)
+			// We’re adjusting the height slightly to make the max value visible
+			var percentScrolledWRONG = pixelsScrolled/scrollHeight;
+			var percentScrolled = pixelsScrolled/(scrollHeight - window.innerHeight);
+			console.log("Unfixed scrolled percents:", percentScrolledWRONG, percentScrolled);
+
+			// Prevent a negative value
+			if (percentScrolled < 0) {
+				percentScrolled = 0;
+			}
+			console.log("Fixed scrolled percent:", percentScrolled);
+
+			// Convert percentage to variable axis range
+			// For this font, that range is 0 to 100
+			var burst = Math.round(percentScrolled*100);
+
+			// Set CSS variable
+			root.style.setProperty('--burst', burst);
+		}
+	</script>
+</body>
+</html>

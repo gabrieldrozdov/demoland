@@ -237,28 +237,72 @@
 		"title": "Too Much Type",
 		"desc": "<p><a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a> (a GD with GD sister site) designs and develops typefaces and type specimens. These demos show off the foundry’s experiments with new type technologies, like variable fonts. Check out the code behind these experiments and learn how to implement similar functionality into your own sites!</p>",
 		"demos": {
+			"importing-variable-fonts": {
+				"name": "Importing Variable Fonts",
+				"color": "pink"
+			},
 			"using-variable-fonts": {
 				"name": "Using Variable Fonts",
+				"color": "pink"
+			},
+			"variable-font-weight": {
+				"name": "Variable Font Weight",
 				"color": "pink"
 			},
 			"animating-variable-fonts": {
 				"name": "Animating Variable Fonts",
 				"color": "green"
 			},
-			"toggling-classes": {
-				"name": "Toggling Classes Using JavaScript",
+			"interacting-with-variable-fonts": {
+				"name": "Interacting with Variable Fonts",
+				"color": "green"
+			},
+			"toggling-variable-states": {
+				"name": "Toggling Variable States",
 				"color": "blue"
 			},
-			"slider": {
-				"name": "Using CSS Variables and Sliders",
+			"targeting-elements-using-this": {
+				"name": "Targeting Elements Using “this”",
+				"color": "blue"
+			},
+			"manually-setting-values": {
+				"name": "Manually Setting Values",
+				"color": "blue"
+			},
+			"using-css-variables-for-variable-axis-values": {
+				"name": "Using CSS Variables for Variable Axis Values",
+				"color": "blue"
+			},
+			"setting-values-using-sliders": {
+				"name": "Setting Values Using Sliders",
 				"color": "yellow"
 			},
-			"random-axis-values": {
-				"name": "Setting Random Variable Axis Values",
+			"randomizing-variable-axis-values": {
+				"name": "Randomizing Variable Axis Values",
+				"color": "yellow"
+			},
+			"repeatedly-randomizing-variable-axis-values": {
+				"name": "Repeatedly Randomizing Variable Axis Values",
+				"color": "yellow"
+			},
+			"tracking-variable-axis-values": {
+				"name": "Tracking Variable Axis Values",
+				"color": "yellow"
+			},
+			"tracking-the-cursor-position": {
+				"name": "Tracking the Cursor Position",
 				"color": "purple"
 			},
-			"advanced-javascript": {
-				"name": "Advanced JavaScript Interactions",
+			"tracking-the-scroll-position": {
+				"name": "Tracking the Scroll Position",
+				"color": "purple"
+			},
+			"randomizing-individual-letters": {
+				"name": "Randomizing Individual Letters",
+				"color": "red"
+			},
+			"animating-individual-letters": {
+				"name": "Animating Individual Letters",
 				"color": "red"
 			}
 		}

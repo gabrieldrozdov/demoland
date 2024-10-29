@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Using Css Variables for Variable Axis Values</title>
+
+	<style>
+		/* We define CSS variables in the :root of our document */
+		:root {
+			--weight: 500; /* CSS variables start with -- */
+			--serif: 0;
+			--my-special-font-color: black;
+		}
+
+		@font-face {
+			font-family: "Limkin";
+			src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+			font-weight: 100 900;
+		}
+		.limkin {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" var(--weight), "SRFF" var(--serif); /* we can plug in CSS variables into other properties */
+			font-size: 100px;
+			transition: font-variation-settings .2s;
+			color: var(--my-special-font-color);
+		}
+	</style>
+</head>
+
+<body>
+	<p class="limkin" id="my-element" contenteditable="plaintext-only">Type here!</p>
+
+	<div>
+		<h2>Weight (wght)</h2>
+		<button onclick="setWeight(100)">100</button>
+		<button onclick="setWeight(200)">200</button>
+		<button onclick="setWeight(300)">300</button>
+		<button onclick="setWeight(400)">400</button>
+		<button onclick="setWeight(500)">500</button>
+		<button onclick="setWeight(600)">600</button>
+		<button onclick="setWeight(700)">700</button>
+		<button onclick="setWeight(800)">800</button>
+		<button onclick="setWeight(900)">900</button>
+	</div>
+
+	<div>
+		<h2>Serif (SRFF)</h2>
+		<button onclick="setSerif(0)">0</button>
+		<button onclick="setSerif(25)">25</button>
+		<button onclick="setSerif(50)">50</button>
+		<button onclick="setSerif(75)">75</button>
+		<button onclick="setSerif(100)">100</button>
+	</div>
+
+	<div>
+		<h2 style="color: var(--my-special-font-color);">Font color</h2>
+		<button onclick="setColor('black')">Black</button>
+		<button onclick="setColor('red')">Red</button>
+		<button onclick="setColor('green')">Green</button>
+		<button onclick="setColor('blue')">Blue</button>
+	</div>
+
+	<script>
+		// Target the root element
+		var root = document.querySelector('html');
+
+		// Functions to update our CSS variables
+		function setWeight(newWeight) {
+			root.style.setProperty('--weight', newWeight); // this is another notation to set CSS properties
+		}
+		function setSerif(newSerif) {
+			root.style.setProperty('--serif', newSerif);
+		}
+
+		// An example of setting a different CSS variable
+		function setColor(newColor) {
+			root.style.setProperty('--my-special-font-color', newColor);
+		}
+	</script>
+</body>
+</html>

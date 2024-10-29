@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animating Individual Letters</title>
+
+	<style>
+		@font-face {
+			font-family: "Caffeine";
+			src: url("https://toomuchtype.com/fonts/caffeine/variable/TMT-CaffeineVF.ttf");
+		}
+		.caffeine {
+			font-family: "Caffeine", sans-serif;
+			font-variation-settings: "SCRI" 0, "SCRA" 0;
+			font-size: 32px;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="caffeine" id="my-element">Hello there this is my handwriting!</p>
+
+	<script>
+		var myElement = document.querySelector('#my-element');
+		var newHTML = "";
+		for (let letter of myElement.innerText) {
+			var scribble = Math.round(Math.random()*100);
+			var scrabble = Math.round(Math.random()*100);
+			newHTML += `<span style="font-variation-settings: 'SCRI' ${scribble}, 'SCRA' ${scrabble};">${letter}</span>`;
+		}
+		myElement.innerHTML = newHTML;
+
+		setInterval(function() {
+			for (var span of myElement.querySelectorAll('span')) {
+				span.style.fontVariationSettings = `'SCRI' ${Math.round(Math.random()*100)}, 'SCRA' ${Math.round(Math.random()*100)}`;
+			}
+		}, 500)
+	</script>
+</body>
+</html>
