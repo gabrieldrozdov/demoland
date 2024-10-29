@@ -273,6 +273,10 @@
 				"name": "Using CSS Variables for Variable Axis Values",
 				"color": "blue"
 			},
+			"swapping-out-content": {
+				"name": "Swapping Out Content",
+				"color": "blue"
+			},
 			"setting-values-using-sliders": {
 				"name": "Setting Values Using Sliders",
 				"color": "yellow"
