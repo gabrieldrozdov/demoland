@@ -1,7 +1,7 @@
 // Scroll controls
 function scrollPage(delta) {
-	const container = document.querySelector('.container');
-	container.scrollLeft += delta;
+	const sections = document.querySelector('.sections');
+	sections.scrollLeft += delta;
 }
 
 // Hover effect

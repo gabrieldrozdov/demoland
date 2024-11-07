@@ -239,7 +239,58 @@ function openCollection() {
 let cm;
 let activeCollection = 'demoland';
 let activeDemo = 'welcome';
+let consoleActive = false;
+let lineWrap = false;
+let editorFontsize = 14;
+let delay = false;
+let paused = false;
+let currentSettings = {
+	"console": undefined,
+	"linewrapping": undefined,
+	"fontsize": undefined,
+	"delay": undefined,
+	"paused": undefined
+};
 function generateEditor() {
+	// Detect editor settings
+	const pageHref = window.location.search;
+	const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?')));
+	if (searchParams.has('console')) {
+		if (searchParams.get('console') == "true") {
+			consoleActive = true;
+			editorRefreshConsole();
+			currentSettings['console'] = consoleActive;
+		}
+	}
+	if (searchParams.has('linewrapping')) {
+		if (searchParams.get('linewrapping') == "true") {
+			lineWrap = true;
+			editorRefreshWrapping();
+			currentSettings['linewrapping'] = lineWrap;
+		}
+	}
+	if (searchParams.has('fontsize')) {
+		if (parseInt(searchParams.get('fontsize')) != undefined ) {
+			editorFontsize = parseInt(searchParams.get('fontsize'));
+			editorRefreshFontsize();
+			currentSettings['fontsize'] = editorFontsize;
+		}
+	}
+	if (searchParams.has('delay')) {
+		if (searchParams.get('delay') == "true") {
+			delay = true;
+			editorRefreshDelay();
+			currentSettings['delay'] = delay;
+		}
+	}
+	if (searchParams.has('paused')) {
+		if (searchParams.get('paused') == "true") {
+			paused = true;
+			editorRefreshPause();
+			currentSettings['paused'] = paused;
+		}
+	}
+	
 	const editor = document.querySelector('.editor-content');
 	cm = CodeMirror(editor, {
 		mode: "htmlmixed",
@@ -260,14 +311,12 @@ function generateEditor() {
 			'Cmd-/': 'toggleComment',
 			'Ctrl-/': 'toggleComment',
 		},
-		lineWrapping: true,
+		lineWrapping: lineWrap,
 		theme: "gdwithgd",
 	});
 	cm.on("change", updatePreview);
 
 	// Initialize page with demo (load requested demo if applicable)
-	const pageHref = window.location.search;
-	const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?')));
 	if (searchParams.has('collection') && searchParams.has('demo')) {
 		urlCollection = searchParams.get('collection');
 		urlDemo = searchParams.get('demo');
@@ -376,6 +425,40 @@ function populateInfo() {
 	headFaviconColor.type = "png";
 	headFaviconColor.href = `/assets/meta/favicon-${demos[activeDemo]['color']}.png`;
 	head.appendChild(headFaviconColor);
+
+	// Add current demo settings to all collection links
+	for (let link of document.querySelectorAll('.info-nav a')) {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			// Format settings
+			let formattedSettings = "";
+			for (let setting of Object.keys(currentSettings)) {
+				if (currentSettings[setting] != undefined) {
+					formattedSettings += `&${setting}=${currentSettings[setting]}`;
+				}
+			}
+
+			// Open link with current settings
+			if (link.target == "_blank") {
+				window.open(`${link.href}${formattedSettings}`, "_blank");
+			} else {
+				window.open(`${link.href}${formattedSettings}`, "_self");
+			}
+		})
+	}
+	infoNext.addEventListener('click', (e) => {
+		e.preventDefault();
+
+		// Format settings
+		let formattedSettings = "";
+		for (let setting of Object.keys(currentSettings)) {
+			formattedSettings += `&${setting}=${currentSettings[setting]}`;
+		}
+
+		// Open link with current settings
+		window.open(`${infoNext.href}${formattedSettings}`, "_self");
+	})
 }
 async function fetchInfo() {
 	try {
@@ -421,7 +504,6 @@ function resetDemo() {
 }
 
 // Pause preview from updating
-let paused = false;
 function editorPause() {
 	const togglePause = document.querySelector("#pause");
 	if (paused) {
@@ -432,6 +514,24 @@ function editorPause() {
 		togglePause.dataset.active = 1;
 	}
 	updatePreview();
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("paused", paused);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
+
+	// Update current settings
+	currentSettings['paused'] = paused;
+}
+function editorRefreshPause() {
+	const togglePause = document.querySelector("#pause");
+	if (paused) {
+		togglePause.dataset.active = 1;
+	} else {
+		togglePause.dataset.active = 0;
+	}
 }
 
 // Update preview when changes made in editor
@@ -520,8 +620,7 @@ function updatePreview() {
 	}
 }
 
-// Editor controls
-let lineWrap = true;
+// Editor line wrapping
 function editorToggleWrapping() {
 	const toggleWrap = document.querySelector("#toggle-wrap");
 	if (lineWrap) {
@@ -532,8 +631,27 @@ function editorToggleWrapping() {
 		lineWrap = true;
 	}
 	cm.setOption('lineWrapping', lineWrap);
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("linewrapping", lineWrap);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
+
+	// Update current settings
+	currentSettings['linewrapping'] = lineWrap;
 }
-let editorFontsize = 14;
+function editorRefreshWrapping() {
+	const toggleWrap = document.querySelector("#toggle-wrap");
+	if (lineWrap) {
+		toggleWrap.dataset.active = 1;
+	} else {
+		toggleWrap.dataset.active = 0;
+	}
+}
+
+// Editor font size
 function editorFontsizeDown() {
 	const editorCM = document.querySelector('.editor-content');
 	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
@@ -549,6 +667,16 @@ function editorFontsizeDown() {
 	}
 	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
 	cm.refresh();
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("fontsize", editorFontsize);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
+
+	// Update current settings
+	currentSettings['fontsize'] = editorFontsize;
 }
 function editorFontsizeUp() {
 	const editorCM = document.querySelector('.editor-content');
@@ -565,12 +693,44 @@ function editorFontsizeUp() {
 	}
 	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
 	cm.refresh();
+	
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("fontsize", editorFontsize);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
+
+	// Update current settings
+	currentSettings['fontsize'] = editorFontsize;
 }
+function editorRefreshFontsize() {
+	const editorCM = document.querySelector('.editor-content');
+	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
+	const toggleFontsizeUp = document.querySelector("#toggle-fontsize-up");
+	if (editorFontsize <= 8) {
+		editorFontsize = 8;
+		toggleFontsizeDown.dataset.disabled = 1;
+		toggleFontsizeUp.dataset.disabled = 0;
+	} else if (editorFontsize >= 24) {
+		editorFontsize = 24;
+		toggleFontsizeDown.dataset.disabled = 0;
+		toggleFontsizeUp.dataset.disabled = 1;
+	} else {
+		toggleFontsizeDown.dataset.disabled = 0;
+		toggleFontsizeUp.dataset.disabled = 0;
+	}
+	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
+}
+
+// Reset demo to original state
 function editorReset() {
 	resetDemo();
 	openAllPanels();
 	resetPanels();
 }
+
+// Download current demo
 function editorDownload() {
 	let codeBlob = new Blob([ cm.getValue()], { type: 'text/html' })
 	blobURL = URL.createObjectURL(codeBlob);
@@ -579,7 +739,8 @@ function editorDownload() {
 	tempLink.download = activeDemo;
 	tempLink.click();
 }
-let delay = false;
+
+// Editor delay
 function editorToggleDelay() {
 	const toggleDelay = document.querySelector("#toggle-delay");
 	if (delay) {
@@ -590,7 +751,27 @@ function editorToggleDelay() {
 		toggleDelay.dataset.active = 1;
 		delay = true;
 	}
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("delay", delay);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
+
+	// Update current settings
+	currentSettings['delay'] = delay;
 }
+function editorRefreshDelay() {
+	const toggleDelay = document.querySelector("#toggle-delay");
+	if (delay) {
+		toggleDelay.dataset.active = 1;
+	} else {
+		toggleDelay.dataset.active = 0;
+	}
+}
+
+// Rerun current demo
 function editorRerun() {
 	updatePreview();
 }
@@ -602,9 +783,32 @@ function editorToggleConsole() {
 	if (parseInt(editor.dataset.console) == 0) {
 		toggleConsole.dataset.active = 1;
 		editor.dataset.console = 1;
+		consoleActive = true;
 	} else {
 		toggleConsole.dataset.active = 0;
 		editor.dataset.console = 0;
+		consoleActive = false;
+	}
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("console", consoleActive);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
+
+	// Update current settings
+	currentSettings['console'] = consoleActive;
+}
+function editorRefreshConsole() {
+	const toggleConsole = document.querySelector("#toggle-console");
+	const editor = document.querySelector('#editor');
+	if (consoleActive == false) {
+		toggleConsole.dataset.active = 0;
+		editor.dataset.console = 0;
+	} else {
+		toggleConsole.dataset.active = 1;
+		editor.dataset.console = 1;
 	}
 }
 const consoleInput = document.querySelector('#console-input');

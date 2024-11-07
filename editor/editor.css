@@ -4,8 +4,9 @@
 	font-weight: 100 900;
 }
 @font-face {
-	font-family: "IBM Plex";
-	src: url('/assets/fonts/IBMPlexMono-Regular.ttf');
+	font-family: "Monaspace";
+	src: url('/assets/fonts/MonaspaceNeonVarVF[wght,wdth,slnt].ttf');
+	font-weight: 200 800;
 }
 * {
 	margin: 0;
@@ -145,6 +146,7 @@ body {
 	color: var(--black);
 	background-color: var(--white);
 	max-width: 240px;
+	border-radius: 4px;
 }
 .tooltip[data-direction="left"] {
 	animation: tooltip-left 1s ease-in-out infinite alternate;
@@ -332,7 +334,7 @@ body {
 /* Panel resizers */
 .resizer {
 	flex: 0 0 2px;
-	background-color: var(--black3);
+	background-color: #111;
 	cursor: ew-resize;
 	margin: 0 -1px;
 	z-index: 99;
@@ -464,22 +466,26 @@ body {
 .info-container {
 	overflow-y: scroll;
 	flex-grow: 1;
-	background-color: var(--black2);
+	background-color: var(--black3);
 	text-wrap: pretty;
+	padding-bottom: 25vh;
 }
 .info-body {
 	min-width: 320px;
-	max-width: 600px;
 	margin: 0 auto;
 	width: 100%;
 	background-color: var(--black);
 }
 .info-content {
 	font-size: 16px;
-	font-weight: 350;
-	font-variation-settings: "wght" 350, "SRFF" 0;
+	font-weight: 400;
+	font-variation-settings: "wght" 400, "SRFF" 0;
 	line-height: 1.4em;
 	padding: 48px;
+}
+.info-content section {
+	margin: 0 auto;
+	max-width: 540px;
 }
 .info-content h1 {
 	font-size: 40px;
@@ -501,22 +507,34 @@ body {
 	font-variation-settings: "wght" 700, "SRFF" 0;
 }
 .info-content h2 {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1em;
 	letter-spacing: .02em;
 	font-variation-settings: "wght" 700, "SRFF" 0;
-	color: var(--primary);
+	color: var(--black);
 	text-transform: uppercase;
 	margin: 40px 0 24px 0;
-	border-top: 1px solid var(--primary);
-	padding-top: 12px;
+	padding: 8px 8px 5px 8px;
+	background-color: var(--primary);
+	justify-self: start;
+	border-radius: 4px;
+}
+.info-content h3 {
+	font-size: 16px;
+	line-height: 1.4em;
+	font-variation-settings: "wght" 700, "SRFF" 0;
+	justify-self: start;
+	border-radius: 4px;
 }
 .info-content p {
-	margin: 16px 0;
+	margin-bottom: 16px;
 	letter-spacing: -0.01em;
 }
+.info-content-indent {
+	padding-left: 24px;
+}
 .info-content strong {
-	font-variation-settings: "wght" 650, "SRFF" 0;
+	font-variation-settings: "wght" 700, "SRFF" 0;
 }
 .info-content a {
 	color: var(--primary);
@@ -531,17 +549,18 @@ body {
 	color: var(--white);
 }
 .info-content ul, .info-content ol {
-	padding-left: 16px;
+	padding-left: 24px;
 	margin-top: 16px;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 }
 .info-content li {
-	padding-left: 10px;
+	padding-left: 8px;
 }
 .info-content li::marker {
 	color: var(--primary);
+	font-variation-settings: "wght" 700, "SRFF" 0;
 }
 .info-content figure {
 	margin: 32px 0;
@@ -589,14 +608,13 @@ body {
 	color: var(--black);
 }
 .info-code {
-	font-family: "IBM Plex", monospace;
+	padding: .2em .2em .1em .2em;
+	border-radius: 4px;
+	font-family: "Monaspace", monospace;
 	font-size: .8em;
 	background-color: rgba(0,0,0,.5);
 	color: var(--primary);
-}
-.info-code:hover {
-	color: var(--black);
-	background-color: var(--primary);
+	font-variation-settings: "wght" 600, "wdth" 100, "slnt" 0;
 }
 
 /* Info panel navigation */
@@ -620,9 +638,8 @@ body {
 	padding: 0 16px;
 	color: var(--primary);
 	fill: var(--primary);
-	font-size: 12px;
+	font-size: 14px;
 	letter-spacing: 0.02em;
-	text-transform: uppercase;
 	line-height: 1.2em;
 	margin-bottom: 8px;
 	gap: 12px;
@@ -697,6 +714,8 @@ body {
 }
 .info-nav-demo {
 	display: flex;
+	background-color: var(--black3);
+	align-items: center;
 }
 .info-nav-demo-link {
 	background-color: var(--black3);
@@ -741,16 +760,14 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding-top: .2em;
+	border-radius: 4px;
 }
 .info-nav-demo-link-name {
 	padding-top: .2em;
-	font-size: 12px;
+	font-size: 14px;
 	letter-spacing: 0.02em;
-	text-transform: uppercase;
 	line-height: 1.2em;
 	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	font-variation-settings: "wght" 700, "SRFF" 0;
 }
 .info-nav-demo-newtab {
@@ -796,7 +813,7 @@ body {
 .editor-controls {
 	display: flex;
 	background-color: var(--black2);
-	/* border-top: 2px solid var(--black3); */
+	border-top: 2px solid var(--black3);
 	flex-shrink: 0;
 	overflow-x: scroll;
 }
@@ -849,7 +866,8 @@ body {
 	flex-grow: 1;
 	overflow-y: scroll;
 	padding: 2px;
-	font-family: "IBM Plex", monospace;
+	font-family: "Monaspace", monospace;
+	font-variation-settings: "wght" 600, "wdth" 100, "slnt" 0;
 	font-size: 14px;
 	display: flex;
 	flex-direction: column;
@@ -871,9 +889,10 @@ body {
 .editor-console-input {
 	flex-shrink: 0;
 	display: flex;
-	font-family: "IBM Plex", monospace;
+	font-family: "Monaspace", monospace;
+	font-variation-settings: "wght" 500, "wdth" 100, "slnt" 0;
 	background-color: var(--black);
-	padding: 4px 8px;
+	padding: 4px 8px 2px 8px;
 	gap: 6px;
 	align-items: center;
 	min-width: 320px;
@@ -884,7 +903,8 @@ body {
 	fill: var(--primary);
 }
 .editor-console-input input {
-	font-family: "IBM Plex", monospace;
+	font-family: "Monaspace", monospace;
+	font-variation-settings: "wght" 500, "wdth" 100, "slnt" 0;
 	flex-grow: 1;
 	background-color: unset;
 	color: var(--white);
@@ -904,7 +924,8 @@ body {
 	overflow: scroll;
 }
 .CodeMirror * {
-	font-family: "IBM Plex", monospace;
+	font-family: "Monaspace", monospace;
+	font-variation-settings: "wght" 500, "wdth" 100, "slnt" 0;
 	font-size: var(--font-size);
 }
 .CodeMirror pre > * { text-indent: 0px; }
@@ -928,7 +949,7 @@ body {
 .cm-s-gdwithgd span.cm-number { color: var(--blue); }
 
 .cm-s-gdwithgd span.cm-property, .cm-s-gdwithgd span.cm-attribute { color: var(--green); }
-.cm-s-gdwithgd span.cm-keyword { color: var(--red); }
+.cm-s-gdwithgd span.cm-keyword { color: var(--purple); }
 .cm-s-gdwithgd span.cm-string { color: var(--yellow); }
 
 .cm-s-gdwithgd span.cm-variable { color: var(--green); }
@@ -951,7 +972,8 @@ body {
 }
 .CodeMirror-hint {
 	color: var(--black) !important;
-	font-family: "IBM Plex", monospace !important;
+	font-family: "Monaspace", monospace !important;
+	font-variation-settings: "wght" 500, "wdth" 100, "slnt" 0;
 	font-size: 12px !important;
 	border-radius: unset !important;
 	padding: 0 5px !important;
@@ -1024,6 +1046,7 @@ li.CodeMirror-hint-active {
 	line-height: 1.4em;
 	color: var(--black);
 	background-color: var(--white);
+	border-radius: 4px;
 }
 @keyframes preview-msg {
 	from {
@@ -1039,6 +1062,7 @@ li.CodeMirror-hint-active {
 	height: 24px;
 	max-width: 240px;
 	padding: 2px;
+	border-radius: 4px;
 }
 .preview-delay-timer-inside {
 	width: 100%;
@@ -1048,6 +1072,7 @@ li.CodeMirror-hint-active {
 	animation-duration: 5s;
 	animation-fill-mode: forwards;
 	animation-timing-function: linear;
+	border-radius: 1px;
 }
 @keyframes preview-delay {
 	from {
@@ -1072,7 +1097,7 @@ li.CodeMirror-hint-active {
 	color: var(--white);
 	fill: var(--white);
 	padding: 4px;
-	/* border-top: 2px solid var(--black3); */
+	border-top: 2px solid var(--black3);
 	position: sticky;
 	left: 0;
 	cursor: help;

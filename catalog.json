@@ -1,7 +1,8 @@
 {
 	"tutorial": {
 		"title": "Tutorial",
-		"desc": "<p>Get started with DEMOLAND and learn how to code websites! These tutorials go over DEMOLAND’s interface, as well as the basics of coding in HTML, CSS, and JavaScript.</p>",
+		"subtitle": "Start here",
+		"desc": "<p>Get started with DEMOLAND and learn how to code websites!</p>",
 		"demos": {
 			"welcome": {
 				"name": "Welcome to DEMOLAND",
@@ -31,7 +32,8 @@
 	},
 	"designers-guide-to-web-programming": {
 		"title": "The Designer’s Guide to Web Programming",
-		"desc": "<p>A comprehensive overview of web programming, from the perspective of a designer. These demos go over everything you need to know to make websites, split into six units: Typography, The Box Model, Layout, Interaction, Loops, and Data.</p><p>Be sure to check out the guide’s <a href='https://webprogramming.gdwithgd.com/' target='_blank'>dedicated website</a> for more resources!</p>",
+		"subtitle": "Learn it all",
+		"desc": "<p>Learn web programming from a designer’s perspective. Learn more at this collection’s <a href='https://webprogramming.gdwithgd.com/' target='_blank'>dedicated website</a>!</p>",
 		"demos": {
 			"introduction": {
 				"name": "Introduction",
@@ -165,7 +167,8 @@
 	},
 	"test-project-1": {
 		"title": "test-project-1.html",
-		"desc": "<p><a href='https://testproject1.gdwithgd.com/' target='_blank'>test-project-1.html</a> is a collection of creative coding projects for any skill level.</p>",
+		"subtitle": "Creative coding projects",
+		"desc": "<p>Creative coding projects for any skill level. Learn more at this collection’s <a href='https://testproject1.gdwithgd.com/' target='_blank'>dedicated website</a>!</p>",
 		"demos": {
 			"test-project-1": {
 				"name": "test-project-1",
@@ -233,9 +236,10 @@
 			}
 		}
 	},
-	"too-much-type": {
-		"title": "Too Much Type",
-		"desc": "<p><a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a> (a GD with GD sister site) designs and develops typefaces and type specimens. These demos show off the foundry’s experiments with new type technologies, like variable fonts. Check out the code behind these experiments and learn how to implement similar functionality into your own sites!</p>",
+	"variable-fonts-workshop": {
+		"title": "Variable Fonts Workshop",
+		"subtitle": "Fun with fonts",
+		"desc": "<p>Tutorials on importing, animating, and interacting with variable fonts. Featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!</p>",
 		"demos": {
 			"importing-variable-fonts": {
 				"name": "Importing Variable Fonts",

@@ -26,8 +26,11 @@ function generateCatalog() {
 		catalogSections += `
 			<section class="section">
 				<div class="section-desc">
+					<p class="section-subtitle">${entry['subtitle']}</p>
 					<h2 class="section-title">${entry['title']}</h2>
-					${entry['desc']}
+					<div class="section-desc-content">
+						${entry['desc']}
+					</div>
 				</div>
 				<div class="section-demos">
 					<h3 class="section-demos-title">
@@ -62,47 +65,38 @@ function generateCatalog() {
 			<link rel="stylesheet" href="style.css">
 		</head>
 		<body>
-			<nav class="nav">
-				<h1 class="nav-title">
-					<a class="nav-title-gd" href="https://gdwithgd.com/" target="_blank">GD with GD</a>
-					<span class="nav-title-demoland">DEMOLAND</span>
-				</h1>
-				<div class="nav-controls">
-					<button class="nav-controls-button" onclick="scrollPage(-400);">
-						<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
-					</button>
-					<button class="nav-controls-button" onclick="scrollPage(400);">
-						<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
-					</button>
-				</div>
-			</nav>
-		
 			<div class="container">
+
 				<header class="header">
 					<div class="header-title-container">
 						<svg viewBox="0 0 100 100" class="header-logo"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
-						<h2 class="header-title">
+						<h1 class="header-title">
 							<span class="header-title-small">Welcome to</span>
 							<span class="header-title-big">DEMOLAND</span>
-						</h2>
+						</h1>
 					</div>
 					<div class="header-desc">
 						<p>
-							Browse a collection of coding demos, presented entirely within your web browser. Try your hand at HTML, CSS, and JavaScript and learn how to code websites!
-						</p>
-						<button onclick="scrollPage(400)" class="header-desc-cta">
-							<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
-							<span>Pick a demo!</span>
-						</button>
-					</div>
-					<div class="header-misc">
-						<p>
-							DEMOLAND is by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>. This site is typeset in Limkin by <a href="https://toomuchtype.com/" target="_blank">Too Much Type</a>, <a href="https://fonts.google.com/specimen/IBM+Plex+Mono" target="_blank">IBM Plex Mono</a>, and <a href="https://fonts.google.com/icons" target="_blank">Google Material Symbols</a>.<br><br>DEMOLAND is best viewed on a laptop or desktop.
+							<span class="header-desc-long">HTML, CSS, and JavaScript demos presented entirely within your web browser.</span> By <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>.
 						</p>
 					</div>
 				</header>
+			
+				<main class="sections">
+					${catalogSections}
+				</main>
 
-				${catalogSections}
+				<nav class="nav">
+					<div class="nav-controls">
+						<button class="nav-controls-button" onclick="scrollPage(-400);">
+							<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
+						</button>
+						<button class="nav-controls-button" onclick="scrollPage(400);">
+							<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
+						</button>
+					</div>
+				</nav>
+
 			</div>
 		
 			<script src="script.js"></script>
