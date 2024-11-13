@@ -550,7 +550,7 @@ body {
 }
 .info-content ul, .info-content ol {
 	padding-left: 24px;
-	margin-top: 16px;
+	margin-bottom: 16px;
 	display: flex;
 	flex-direction: column;
 	gap: 4px;

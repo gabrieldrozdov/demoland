@@ -1,0 +1,35 @@
+<style>
+	/* The button’s normal state */
+	.my-button {
+		border: 5px solid black;
+		border-radius: 50%;
+		font-family: monospace;
+		padding: 40px;
+		font-size: 40px;
+		margin: 20px;
+		transition: .5s;
+		cursor: pointer;
+	}
+
+	/* When you hover over the button */
+	.my-button:hover {
+		border-radius: 0%;
+		border: 10px dotted blue;
+		background-color: yellow;
+		color: blue;
+	}
+
+	/* When you press on the button */
+	.my-button:active {
+		border-radius: 10px;
+		background-color: black;
+		font-size: 10px;
+		color: white;
+	}
+</style>
+
+<!-- A button without any added CSS -->
+<button>I’m a default button!</button>
+
+<!-- A button with a custom CSS class -->
+<button class="my-button">I’m a button with style!</button>

@@ -1,0 +1,46 @@
+<style>
+	/* Importing a whole bunch of fonts from Too Much Type */
+	@font-face {
+		font-family: "Mini Mochi";
+		src: url("https://toomuchtype.com/fonts/mini-mochi/variable/TMT-MiniMochiVF.ttf");
+	}
+	@font-face {
+		font-family: "AUTHENTIC Remixed";
+		src: url("https://toomuchtype.com/fonts/authentic-remixed/variable/TMT-AUTHENTICRemixedVF.ttf");
+	}
+	@font-face {
+		font-family: "Dreidel";
+		src: url("https://toomuchtype.com/fonts/dreidel/variable/TMT-DreidelVF.ttf");
+	}
+
+	/* CSS classes to use our imported fonts */
+	.mini-mochi-test {
+		font-family: "Mini Mochi";
+		font-size: 40px;
+		font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+	}
+	.authentic-remixed-test {
+		font-family: "AUTHENTIC Remixed";
+		font-size: 40px;
+		font-variation-settings: "XAXI" -100, "YAXI" 0;
+	}
+	.dreidel-test {
+		font-family: "Dreidel";
+		font-size: 40px;
+		font-variation-settings: "SPIN" 200;
+	}
+
+	/* Playing with animations */
+	@keyframes mini-mochi-animation {
+		0% {
+			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+		}
+		25% {
+			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+		}
+	}
+</style>
+
+<p class="mini-mochi-test">This is Mini Mochi</p>
+<p class="authentic-remixed-test">This is AUTHENTIC Remixed</p>
+<p class="dreidel-test">This is Dreidel</p>

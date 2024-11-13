@@ -242,75 +242,118 @@
 		"desc": "<p>Tutorials on importing, animating, and interacting with variable fonts. Featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!</p>",
 		"demos": {
 			"importing-variable-fonts": {
-				"name": "Importing Variable Fonts",
+				"name": "Importing variable fonts",
 				"color": "pink"
 			},
 			"using-variable-fonts": {
-				"name": "Using Variable Fonts",
+				"name": "Using variable fonts",
 				"color": "pink"
 			},
 			"variable-font-weight": {
-				"name": "Variable Font Weight",
+				"name": "Variable font weight",
 				"color": "pink"
 			},
 			"animating-variable-fonts": {
-				"name": "Animating Variable Fonts",
+				"name": "Animating variable fonts",
 				"color": "green"
 			},
 			"interacting-with-variable-fonts": {
-				"name": "Interacting with Variable Fonts",
+				"name": "Interacting with variable fonts",
 				"color": "green"
 			},
 			"toggling-variable-states": {
-				"name": "Toggling Variable States",
+				"name": "Toggling variable states",
 				"color": "blue"
 			},
 			"targeting-elements-using-this": {
-				"name": "Targeting Elements Using “this”",
+				"name": "Targeting elements using “this”",
 				"color": "blue"
 			},
 			"manually-setting-values": {
-				"name": "Manually Setting Values",
+				"name": "Manually setting values",
 				"color": "blue"
 			},
 			"using-css-variables-for-variable-axis-values": {
-				"name": "Using CSS Variables for Variable Axis Values",
+				"name": "Using CSS variables for variable axis values",
 				"color": "blue"
 			},
 			"swapping-out-content": {
-				"name": "Swapping Out Content",
+				"name": "Swapping out content",
 				"color": "blue"
 			},
 			"setting-values-using-sliders": {
-				"name": "Setting Values Using Sliders",
+				"name": "Setting values using sliders",
 				"color": "yellow"
 			},
 			"randomizing-variable-axis-values": {
-				"name": "Randomizing Variable Axis Values",
+				"name": "Randomizing variable axis values",
 				"color": "yellow"
 			},
 			"repeatedly-randomizing-variable-axis-values": {
-				"name": "Repeatedly Randomizing Variable Axis Values",
+				"name": "Repeatedly randomizing variable axis values",
 				"color": "yellow"
 			},
 			"tracking-variable-axis-values": {
-				"name": "Tracking Variable Axis Values",
+				"name": "Tracking variable axis values",
 				"color": "yellow"
 			},
 			"tracking-the-cursor-position": {
-				"name": "Tracking the Cursor Position",
+				"name": "Tracking the cursor position",
 				"color": "purple"
 			},
 			"tracking-the-scroll-position": {
-				"name": "Tracking the Scroll Position",
+				"name": "Tracking the scroll position",
 				"color": "purple"
 			},
 			"randomizing-individual-letters": {
-				"name": "Randomizing Individual Letters",
+				"name": "Randomizing individual letters",
 				"color": "red"
 			},
 			"animating-individual-letters": {
-				"name": "Animating Individual Letters",
+				"name": "Animating individual letters",
+				"color": "red"
+			}
+		}
+	},
+	"workshop-motion-design-for-the-web": {
+		"title": "Workshop: Motion Design for the Web",
+		"subtitle": "Make things move",
+		"desc": "<p>An introduction to animating using HTML and CSS!</p>",
+		"demos": {
+			"introduction": {
+				"name": "Introduction",
+				"color": "white"
+			},
+			"what-you-need-to-know": {
+				"name": "What you need to know",
+				"color": "pink"
+			},
+			"styling-text": {
+				"name": "Styling text",
+				"color": "green"
+			},
+			"animating-text": {
+				"name": "Animating text",
+				"color": "blue"
+			},
+			"bringing-text-to-life": {
+				"name": "Bringing text to life",
+				"color": "blue"
+			},
+			"a-story-of-a-square": {
+				"name": "A story of a square",
+				"color": "yellow"
+			},
+			"the-humble-button": {
+				"name": "The humble button",
+				"color": "purple"
+			},
+			"how-does-that-make-you-feel": {
+				"name": "How does that make you feel?",
+				"color": "purple"
+			},
+			"the-end-for-now": {
+				"name": "The end (for now!)",
 				"color": "red"
 			}
 		}
