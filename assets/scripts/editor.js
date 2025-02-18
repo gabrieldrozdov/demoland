@@ -1,6 +1,10 @@
 const colors = ['red', 'blue', 'purple', 'yellow', 'green', 'pink'];
 const container = document.querySelector('.container');
 
+// Search params
+const pageHref = window.location.search;
+const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?')));
+
 // ———————————————————————————————————
 // TOOLTIPS
 // ———————————————————————————————————
@@ -43,11 +47,33 @@ function positionTooltip(e) {
 		tooltip.style.right = '';
 		tooltip.style.bottom = '';
 		tooltip.style.left = e.clientX + "px";
+
+		// Prevent cropping
+		let rect = tooltip.getBoundingClientRect();
+		let diffRight = window.innerWidth - rect.right - 16;
+		if (diffRight < 0) {
+			tooltip.style.left = e.clientX+diffRight + "px";
+		}
+		let diffLeft = rect.left - 16;
+		if (diffLeft < 0) {
+			tooltip.style.left = `${e.clientX-diffLeft}px`;
+		}
 	} else if (tooltip.dataset.direction == 'bottom') {
 		tooltip.style.top = '';
 		tooltip.style.right = '';
 		tooltip.style.bottom = window.innerHeight-e.clientY + "px";
 		tooltip.style.left = e.clientX + "px";
+
+		// Prevent cropping
+		let rect = tooltip.getBoundingClientRect();
+		let diffRight = window.innerWidth - rect.right - 16;
+		if (diffRight < 0) {
+			tooltip.style.left = e.clientX+diffRight + "px";
+		}
+		let diffLeft = rect.left - 16;
+		if (diffLeft < 0) {
+			tooltip.style.left = `${e.clientX-diffLeft}px`;
+		}
 	}
 }
 
@@ -116,8 +142,8 @@ function startResize(e1, resizer) {
 		offset2 -= deltaPercent;
 		col1.dataset.offset = offset1;
 		col2.dataset.offset = offset2;
-		col1.style.width = `calc(${100/openPanelsLength}% + ${offset1}%)`;
-		col2.style.width = `calc(${100/openPanelsLength}% + ${offset2}%)`;
+		col1.style.width = `calc(calc(calc(100% - ${(openPanelsLength-1)*8}px) / ${openPanelsLength}) + ${offset1}%)`;
+		col2.style.width = `calc(calc(calc(100% - ${(openPanelsLength-1)*8}px) / ${openPanelsLength}) + ${offset2}%)`;
 		x1 = x2;
 	}
 
@@ -190,7 +216,7 @@ function resetPanels() {
 
 		// Calculate correct widths
 		for (let panel of document.querySelectorAll('.panel')) {
-			panel.style.width = 100/openPanelsLength + '%';
+			panel.style.width = `calc(calc(100% - ${(openPanelsLength-1)*8}px) / ${openPanelsLength})`;
 			panel.dataset.offset = 0;
 		}
 	
@@ -226,19 +252,20 @@ function enableIframes() {
 // ———————————————————————————————————
 
 // Info navbar
-function openCollection() {
+function openChapter() {
 	const infoNav = document.querySelector('.info-nav');
+	const infoNavDemos = document.querySelector('.info-nav-demos');
 	if (parseInt(infoNav.dataset.active) == 1) {
 		infoNav.dataset.active = 0;
+		infoNavDemos.dataset.active = 0;
 	} else {
 		infoNav.dataset.active = 1;
+		infoNavDemos.dataset.active = 1;
 	}
 }
 
 // Generate editor
 let cm;
-let activeCollection = 'demoland';
-let activeDemo = 'welcome';
 let consoleActive = false;
 let lineWrap = false;
 let editorFontsize = 14;
@@ -253,8 +280,6 @@ let currentSettings = {
 };
 function generateEditor() {
 	// Detect editor settings
-	const pageHref = window.location.search;
-	const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?')));
 	if (searchParams.has('console')) {
 		if (searchParams.get('console') == "true") {
 			consoleActive = true;
@@ -272,6 +297,9 @@ function generateEditor() {
 	if (searchParams.has('fontsize')) {
 		if (parseInt(searchParams.get('fontsize')) != undefined ) {
 			editorFontsize = parseInt(searchParams.get('fontsize'));
+			if (isNaN(editorFontsize)) {
+				editorFontsize = 14;
+			}
 			editorRefreshFontsize();
 			currentSettings['fontsize'] = editorFontsize;
 		}
@@ -316,14 +344,24 @@ function generateEditor() {
 	});
 	cm.on("change", updatePreview);
 
-	// Initialize page with demo (load requested demo if applicable)
-	if (searchParams.has('collection') && searchParams.has('demo')) {
-		urlCollection = searchParams.get('collection');
-		urlDemo = searchParams.get('demo');
-		fetchDemo(urlCollection, urlDemo);
+	// Detect chapter
+	if (searchParams.has('chapter')) {
+		activeChapter = searchParams.get('chapter');
 	} else {
-		fetchDemo("tutorial", "welcome");
+		// Default to first chapter and demo if not chapter available
+		activeChapter = Object.keys(bookData)[0];
 	}
+
+	// Detect demo
+	if (searchParams.has('demo')) {
+		activeDemo = searchParams.get('demo');
+	} else {
+		// Default to first demo if none selected
+		activeDemo = Object.keys(bookData[activeChapter]['demos'])[0];
+	}
+
+	fetchInfo();
+	populateInfo();
 
 	window.addEventListener("focus", cm.refresh());
 
@@ -335,42 +373,57 @@ function generateEditor() {
 	cm.refresh();
 }
 
-// Fetch catalog and find demo information
-let catalog;
-async function fetchCatalog() {
+// Fetch relevant JSON file and find demo information
+let overviewData, bookData, activeBook, activeChapter, activeDemo;
+async function fetchOverview() {
+	// Fetch overview data
 	try {
-		let response = await fetch(`/catalog.json`);
+		let response = await fetch(`../overview.json`);
 		response.json().then((json) => {
-			catalog = json;
+			overviewData = json;
+			fetchData();
+		});
+	}
+	catch(e) {
+		alert("Something went wrong while trying to load the file! Try checking your Internet connection, refreshing the page, or making sure there are no typos in the URL.");
+	}
+}
+async function fetchData() {
+	// Read URL to detect which book to fetch
+	if (searchParams.has('book')) {
+		activeBook = searchParams.get('book');
+	} else {
+		// Default to tutorial if no book available
+		activeBook = 'tutorial';
+	}
+
+	// Fetch book data
+	console.log
+	try {
+		let response = await fetch(`../demos/${activeBook}/${activeBook}.json`);
+		response.json().then((json) => {
+			bookData = json;
 			generateEditor();
 		});
 	}
 	catch(e) {
-		alert("Something went wrong while trying to load the file! Try checking your Internet connection and refreshing the page.");
+		alert("Something went wrong while trying to load the file! Try checking your Internet connection, refreshing the page, or making sure there are no typos in the URL.");
 	}
 }
-fetchCatalog();
+fetchOverview();
 
-// Fetch demo and populate info and editor panels
+// Populate info and editor panels
 let infoContent = "";
 let codeContent = "";
-async function fetchDemo(collection, demo) {
-	activeCollection = collection;
-	activeDemo = demo;
-	populateInfo();
-	fetchInfo();
-}
 function populateInfo() {
-	let collection = catalog[activeCollection];
+	let chapter = bookData[activeChapter];
 
 	// Set newtab URL
 	const newtab = document.querySelector('#newtab');
-	newtab.href = `demos/${activeCollection}/${activeDemo}.html`;
+	newtab.href = `../demos/${activeBook}/${activeChapter}/${activeDemo}.html`;
 
-	// Populate collection nav
-	const infoNavCollection = document.querySelector('#info-nav-collection');
-	infoNavCollection.innerText = collection['title'];
-	let demos = collection['demos'];
+	// Populate chapter nav
+	let demos = chapter['demos'];
 	let infoNavTemp = '';
 	let demoIndex = 0;
 	let index = 0;
@@ -380,12 +433,12 @@ function populateInfo() {
 			demoIndex = index;
 		}
 		infoNavTemp += `
-			<div class="info-nav-demo" style="--primary: var(--${demo['color']});">
-				<a href="./?collection=${activeCollection}&demo=${key}" class="info-nav-demo-link">
+			<div class="info-nav-demo" style="--primary: ${demo['color']};">
+				<a href="./?book=${activeBook}&chapter=${activeChapter}&demo=${key}" class="info-nav-demo-link">
 					<div class="info-nav-demo-link-number">${index+1}</div>
 					<div class="info-nav-demo-link-name">${demo['name']}</div>
 				</a>
-				<a href="./?collection=${activeCollection}&demo=${key}" target="_blank" class="info-nav-demo-newtab">
+				<a href="./?book=${activeBook}&chapter=${activeChapter}&demo=${key}" target="_blank" class="info-nav-demo-newtab">
 					<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
 				</a>
 			</div>
@@ -395,38 +448,102 @@ function populateInfo() {
 	const infoNavDemos = document.querySelector('.info-nav-demos');
 	infoNavDemos.innerHTML = infoNavTemp;
 
+	// Info and title
+	const infoNavCurrentNumber = document.querySelector('.info-nav-current-number');
+	infoNavCurrentNumber.innerText = demoIndex+1;
+	const infoNavCurrentName = document.querySelector('.info-nav-current-name');
+	infoNavCurrentName.innerText = bookData[activeChapter]['demos'][activeDemo]['name'];
+	const titleBook = document.querySelector('.title-book');
+	titleBook.innerHTML = `
+		<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
+		<span>${overviewData[activeBook]['title']}</span>
+	`;
+	titleBook.href = `../#${activeBook}`;
+
+	// Generate chapters in title bar
+	const title = document.querySelector('.title');
+	for (let chapterKey of Object.keys(bookData)) {
+		let chapter = bookData[chapterKey];
+		let firstDemo = Object.keys(chapter['demos'])[0];
+		let chapterSubtitle = '';
+		if (chapter['subtitle'] != '') {
+			chapterSubtitle = `<span class="title-chapter-subtitle">${chapter['subtitle']}</span>`;
+		}
+		let active = 0;
+		if (chapterKey == activeChapter) {
+			active = 1;
+		}
+		if (chapter['color'] == 'rainbow') {
+			title.innerHTML += `
+				<a class="title-chapter title-chapter-rainbow" href="./?book=${activeBook}&chapter=${chapterKey}&demo=${firstDemo}" data-active="${active}">
+					${chapterSubtitle}
+					<span class="title-chapter-title">${chapter['title']}</span>
+				</a>
+			`;
+		} else {
+			title.innerHTML += `
+				<a class="title-chapter" href="./?book=${activeBook}&chapter=${chapterKey}&demo=${firstDemo}" style="--primary: ${chapter['color']};" data-active="${active}">
+					${chapterSubtitle}
+					<span class="title-chapter-title">${chapter['title']}</span>
+				</a>
+			`;
+		}
+	}
+
+	// Info next shortcut
+	const infoNext = document.querySelector('.info-next');
+	if (demoIndex < Object.keys(demos).length-1) {
+		infoNext.innerHTML = `Click here to continue to the next demo!`;
+		let key = Object.keys(demos)[demoIndex+1];
+		infoNext.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
+	} else {
+		infoNext.innerHTML = `<span>You finished reading this chapter!</span> Click here to open a different chapter.`;
+		infoNext.href = `../#${activeBook}`;
+	}
+
 	// Navigate between demos
 	const infoNavPrev = document.querySelector('#info-nav-prev');
 	const infoNavNext = document.querySelector('#info-nav-next');
-	const infoNext = document.querySelector('.info-next');
 	if (demoIndex == 0) {
-		infoNavPrev.style.display = 'none';
+		infoNavPrev.dataset.active = 0;
 	} else {
 		let key = Object.keys(demos)[demoIndex-1];
-		infoNavPrev.href = `./?collection=${activeCollection}&demo=${key}`;
+		infoNavPrev.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
 	}
 	if (demoIndex == index-1) {
-		infoNavNext.style.display = 'none';
-		infoNext.style.display = 'none';
+		infoNavNext.dataset.active = 0;
 	} else {
 		let key = Object.keys(demos)[demoIndex+1];
-		infoNavNext.href = `./?collection=${activeCollection}&demo=${key}`;
-		infoNext.href = `./?collection=${activeCollection}&demo=${key}`;
+		infoNavNext.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
 	}
 	
 	// Set color
 	const container = document.querySelector('.container');
-	container.style.setProperty('--primary', `var(--${demos[activeDemo]['color']})`);
+	container.style.setProperty('--primary', `${demos[activeDemo]['color']}`);
 
 	// Update favicon to match demo color
 	const head = document.querySelector('head');
 	const headFaviconColor = document.createElement('link');
 	headFaviconColor.rel = "icon";
 	headFaviconColor.type = "png";
-	headFaviconColor.href = `/assets/meta/favicon-${demos[activeDemo]['color']}.png`;
+	let favicon = 'white';
+	if (demos[activeDemo]['color'] == "var(--pink)") {
+		favicon = 'pink';
+	} else if (demos[activeDemo]['color'] == "var(--green)") {
+		favicon = 'green';
+	} else if (demos[activeDemo]['color'] == "var(--blue)") {
+		favicon = 'blue';
+	} else if (demos[activeDemo]['color'] == "var(--yellow)") {
+		favicon = 'yellow';
+	} else if (demos[activeDemo]['color'] == "var(--purple)") {
+		favicon = 'purple';
+	} else if (demos[activeDemo]['color'] == "var(--red)") {
+		favicon = 'red';
+	}
+	headFaviconColor.href = `/assets/meta/favicon-${favicon}.png`;
 	head.appendChild(headFaviconColor);
 
-	// Add current demo settings to all collection links
+	// Add current demo settings to all chapter links
 	for (let link of document.querySelectorAll('.info-nav a')) {
 		link.addEventListener('click', (e) => {
 			e.preventDefault();
@@ -447,22 +564,32 @@ function populateInfo() {
 			}
 		})
 	}
-	infoNext.addEventListener('click', (e) => {
-		e.preventDefault();
 
-		// Format settings
-		let formattedSettings = "";
-		for (let setting of Object.keys(currentSettings)) {
-			formattedSettings += `&${setting}=${currentSettings[setting]}`;
-		}
+	// Add current demo settings to all book links
+	for (let link of document.querySelectorAll('.title-chapter')) {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
 
-		// Open link with current settings
-		window.open(`${infoNext.href}${formattedSettings}`, "_self");
-	})
+			// Format settings
+			let formattedSettings = "";
+			for (let setting of Object.keys(currentSettings)) {
+				if (currentSettings[setting] != undefined) {
+					formattedSettings += `&${setting}=${currentSettings[setting]}`;
+				}
+			}
+
+			// Open link with current settings
+			if (link.target == "_blank") {
+				window.open(`${link.href}${formattedSettings}`, "_blank");
+			} else {
+				window.open(`${link.href}${formattedSettings}`, "_self");
+			}
+		})
+	}
 }
 async function fetchInfo() {
 	try {
-		let responseInfo = await fetch(`demos/${activeCollection}/${activeDemo}-info.html`);
+		let responseInfo = await fetch(`../demos/${activeBook}/${activeChapter}/${activeDemo}-info.html`);
 		responseInfo.text().then((text) => {
 			infoContent = text;
 			const info = document.querySelector('.info-content');
@@ -471,36 +598,28 @@ async function fetchInfo() {
 		});
 	}
 	catch(e) {
-		fetchDemo("demoland", "welcome");
+		alert('Something went wrong! We couldn’t find your demo for some reason. Try going back to the homepage and starting over!')
 	}
 }
 async function fetchCode() {
 	try {
-		let responseCode = await fetch(`demos/${activeCollection}/${activeDemo}.html`);
+		let responseCode = await fetch(`../demos/${activeBook}/${activeChapter}/${activeDemo}.html`);
 		if (responseCode.status != 200) {
 			throw new Error('File not found');
 		}
 		responseCode.text().then((code) => {
 			codeContent = code;
-			container.dataset.loading = 0;
 			cm.setValue(codeContent);
 			cm.refresh();
+			container.dataset.loading = 0;
 
 			// Attempt to fix alignment issues
 			setTimeout(() => {cm.refresh()}, 100)
 		});
 	}
 	catch(e) {
-		alert("Something went wrong while trying to load the file! Try checking your Internet connection and refreshing the page.");
+		alert("Something went wrong! We couldn’t find your demo for some reason. Try going back to the homepage and starting over!");
 	}
-}
-
-// Reset back to stored code
-function resetDemo() {
-	const info = document.querySelector(".info-container");
-	info.scrollTop = 0;
-	cm.setValue(codeContent);
-	cm.refresh();
 }
 
 // Pause preview from updating
@@ -580,14 +699,14 @@ function updatePreview() {
 				console.error = function() {
 					const parentConsole = parent.document.querySelector('.editor-console-log');
 					var message = Array.from(arguments).join(' ');
-					parentConsole.innerHTML += '<div class="editor-console-log-out" style="color: var(--primary);">Error: ' + message + '</div>';
+					parentConsole.innerHTML += '<div class="editor-console-log-out">Error: ' + message + '</div>';
 					originalError.apply(console, arguments);
 					parentConsole.scrollTop = parentConsole.scrollHeight;
 				};
 
 				window.onerror = function(message, source, lineno, colno, error) {
 					const parentConsole = parent.document.querySelector('.editor-console-log');
-					parentConsole.innerHTML += '<div class="editor-console-log-out" style="color: var(--primary);">Uncaught Error: ' + message + '</div>';
+					parentConsole.innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + '</div>';
 					// Optionally, you can log the error object for more information
 					// console.error(error);
 					parentConsole.scrollTop = parentConsole.scrollHeight;
@@ -723,13 +842,6 @@ function editorRefreshFontsize() {
 	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
 }
 
-// Reset demo to original state
-function editorReset() {
-	resetDemo();
-	openAllPanels();
-	resetPanels();
-}
-
 // Download current demo
 function editorDownload() {
 	let codeBlob = new Blob([ cm.getValue()], { type: 'text/html' })
@@ -821,7 +933,7 @@ consoleInput.addEventListener('keydown', (e) => {
 			preview.contentWindow.eval(consoleInput.value);
 		}
 		catch (error) {
-			consoleLog.innerHTML += `<div class="editor-console-log-out" style="color: var(--primary);">${error.message}</div>`;
+			consoleLog.innerHTML += `<div class="editor-console-log-out">${error.message}</div>`;
 		}
 		consoleLog.scrollTop = consoleLog.scrollHeight;
 		consoleInput.value = "";

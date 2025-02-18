@@ -1,51 +1,120 @@
 const fs = require('fs');
 
 // Get JSON
-const catalog = require('./catalog.json');
+const overviewData = require('./overview.json');
 
-function generateCatalog() {
-	let catalogSections = '';
-	for (let catalogChapter of Object.keys(catalog)) {
-		let entry = catalog[catalogChapter];
-		
-		// Generate demos
-		let demos = '';
-		let demoIndex = 1;
-		for (let demo of Object.keys(entry['demos'])) {
-			let demoInfo = entry['demos'][demo];
-			demos += `
-				<a href="/editor/?collection=${catalogChapter}&demo=${demo}" class="section-demo" style="--primary: var(--${demoInfo['color']});">
-					<div class="section-demo-number">${demoIndex}</div>
-					<div class="section-demo-name">${demoInfo['name']}</div>
-				</a>
-			`;
-			demoIndex++;
-		}
+// Generate homepage
+function generateOverview() {
+	// HTML for the overview of all books
+	let overview = '';
 
-		// Put it all together
-		catalogSections += `
-			<section class="section">
-				<div class="section-desc">
-					<p class="section-subtitle">${entry['subtitle']}</p>
-					<h2 class="section-title">${entry['title']}</h2>
-					<div class="section-desc-content">
-						${entry['desc']}
+	// HTML for the individual books
+	let books = "";
+
+	// Array containing objects for all demo names, colors, and links
+	let allDemos = 'const allDemos = [';
+
+	for (let bookKey of Object.keys(overviewData)) {
+		let book = overviewData[bookKey];
+
+		// Build book data
+		const bookData = require(`./demos/${bookKey}/${bookKey}.json`);
+		let bookChapters = '';
+		let totalChapters = 0;
+		let totalDemos = 0;
+		for (let chapterKey of Object.keys(bookData)) {
+			let chapter = bookData[chapterKey];
+			totalChapters++;
+			
+			// Generate demos
+			let demos = '';
+			let demoIndex = 1;
+			for (let demoKey of Object.keys(chapter['demos'])) {
+				totalDemos++;
+				let demo = chapter['demos'][demoKey];
+				demos += `
+					<a href="/editor/?book=${bookKey}&chapter=${chapterKey}&demo=${demoKey}" class="chapter-demo" style="--primary: ${demo['color']};">
+						<div class="chapter-demo-number">${demoIndex}</div>
+						<div class="chapter-demo-name">${demo['name']}</div>
+					</a>
+				`;
+				allDemos += `{'name':'${demo['name']}','color':'${demo['color']}','url':'/editor/?book=${bookKey}&chapter=${chapterKey}&demo=${demoKey}'},`;
+				demoIndex++;
+			}
+
+			// Add rainbow class if needed
+			let rainbowClass = '';
+			if (chapter['color'] == 'rainbow') {
+				rainbowClass = ' rainbow';
+			}
+
+			// Put it all together
+			bookChapters += `
+				<section class="chapter ${rainbowClass}" id="${bookKey}-${chapterKey}" style="--primary: ${chapter['color']}">
+					<div class="chapter-header">
+						<a class="chapter-link" href="/editor/?book=${bookKey}&chapter=${chapterKey}&demo=${Object.keys(chapter['demos'])[0]}">
+							<div class="chapter-subtitle">
+								${chapter['subtitle']}
+							</div>
+							<h3 class="chapter-title">
+								${chapter['title']}
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							${chapter['desc']}
+						</p>
+						<a href="/editor/?book=${bookKey}&chapter=${chapterKey}&demo=${Object.keys(chapter['demos'])[0]}" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
-				</div>
-				<div class="section-demos">
-					<h3 class="section-demos-title">
-						<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-						<span>Demos</span>
-					</h3>
-					<div class="section-demos-links">
+					<div class="chapter-demos">
 						${demos}
 					</div>
+				</section>
+			`;
+		}
+
+		// Add to book string
+		books += `
+			<article class="book" data-active="0" id="${bookKey}">
+				<header class="book-intro">
+					<button class="book-intro-return" onclick="openIntro();">&nwarr;&nbsp; View all books</button>
+					<h2 class="book-intro-title">${book['title']}</h2>
+					<div class="book-intro-desc">${book['desc']}</div>
+				</header>
+				<div class="chapter-grid">
+					${bookChapters}
 				</div>
-			</section>
+			</article>
+		`;
+
+		// Add book link to overview
+		let chaptersPlural = '';
+		if (totalChapters > 1) {
+			chaptersPlural = 's';
+		}
+		let demosPlural = '';
+		if (totalDemos > 1) {
+			demosPlural = 's';
+		}
+		let shortdesc = '';
+		if (book['shortdesc'] != '') {
+			shortdesc = `<p class="intro-index-link-shortdesc">${book['shortdesc']}</p>`;
+		}
+		overview += `
+			<a href="#${bookKey}" class="intro-index-link" onclick="openBook('${bookKey}');">
+				<div class="intro-index-link-main">
+					<h3 class="intro-index-link-title">${book['title']}</h3>
+					${shortdesc}
+				</div>
+				<div class="intro-index-link-info">
+					<div>${totalChapters} Chapter${chaptersPlural}</div>
+					<div>${totalDemos} Demo${demosPlural}</div>
+				</div>
+			</a>
 		`;
 	}
 
-	let catalogContent = `
+	// Put everything together
+	let overviewContent = `
 		<!DOCTYPE html>
 		<html lang="en">
 		<head>
@@ -62,53 +131,74 @@ function generateCatalog() {
 			<meta property="og:image" content="/assets/meta/opengraph.jpg">
 			<link rel="icon" type="png" href="/assets/meta/favicon.png">
 		
-			<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="/assets/styles/home.css">
 		</head>
 		<body>
-			<div class="container">
+			<main class="content">
+				<div class="toggles">
+					<button onclick="toggleInfo()">
+						<svg viewBox="0 0 100 100"><rect x="45" y="40" width="10" height="50"/><circle cx="50" cy="20" r="10"/></svg>
+					</button>
+					<a href="https://github.com/gabrieldrozdov/demoland" target="_blank">
+						<svg viewBox="0 0 1024 1024">
+							<path class="cls-1" d="M512,0C229.12,0,0,229.12,0,512,0,738.56,146.56,929.92,350.08,997.76c25.6,4.48,35.2-10.88,35.2-24.32,0-12.16-.64-52.48-.64-95.36-128.64,23.68-161.92-31.36-172.16-60.16-5.76-14.72-30.72-60.16-52.48-72.32-17.92-9.6-43.52-33.28-.64-33.92,40.32-.64,69.12,37.12,78.72,52.48,46.08,77.44,119.68,55.68,149.12,42.24,4.48-33.28,17.92-55.68,32.64-68.48-113.92-12.8-232.96-56.96-232.96-252.8,0-55.68,19.84-101.76,52.48-137.6-5.12-12.8-23.04-65.28,5.12-135.68,0,0,42.88-13.44,140.8,52.48,40.96-11.52,84.48-17.28,128-17.28s87.04,5.76,128,17.28c97.92-66.56,140.8-52.48,140.8-52.48,28.16,70.4,10.24,122.88,5.12,135.68,32.64,35.84,52.48,81.28,52.48,137.6,0,196.48-119.68,240-233.6,252.8,18.56,16,34.56,46.72,34.56,94.72,0,68.48-.64,123.52-.64,140.8,0,13.44,9.6,29.44,35.2,24.32,202.24-67.84,348.8-259.84,348.8-485.76C1024,229.12,794.88,0,512,0Z"/>
+						</svg>
+					</a>
+				</div>
+				<div class="info" data-active="0">
+					<button class="info-close" onclick="toggleInfo();">
+						<svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg>
+					</button>
+					<p>
+						DEMOLAND is a website template that allows you to distribute editable code demos (HTML, CSS, JavaScript) entirely within your web browser. This project was created by <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> to make teaching code easier, without the need for subscribing to any premium code distribution services.
+					</p>
+					<p>
+						DEMOLAND is a metaphor for a library containing books featuring chapters of demos. Each book is organized via JSON files, and each demo is split up into two HTML files (content and information). A Node.js file generates the homepage as a static document, while the code editor page fetches demos dynamically. The editor is built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>.
+					</p>
+					<p>
+						Interested in launching your own DEMOLAND site? Clone the <a href="https://github.com/gabrieldrozdov/demoland-template" target="_blank">GitHub repository</a> and launch your site via GitHub pages!
+					</p>
+					<p class="info-credits">
+						<strong>CREDITS</strong><br>
+						DEMOLAND was developed by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a> / <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>. The site features <a href="https://toomuchtype.com/" target="_blank">Limkin by Too Much Type</a> and <a href="https://monaspace.githubnext.com/" target="_blank">Monaspace by GitHub</a>. Text editors are built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>. If you launch your own DEMOLAND, I’d appreciate it if you left these credits in (and <a href="mailto:gabriel@noreplica.com">sent me an email</a> just to share your work!).
+					</p>
+				</div>
 
-				<header class="header">
-					<div class="header-title-container">
-						<svg viewBox="0 0 100 100" class="header-logo"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
-						<h1 class="header-title">
-							<span class="header-title-small">Welcome to</span>
-							<span class="header-title-big">DEMOLAND</span>
-						</h1>
+				<div class="intro">
+					<div class="intro-content">
+						<header class="intro-header">
+							<h1 class="intro-title"><span class="intro-title-small">Welcome to</span><span class="intro-title-big">DEMOLAND</span></h1>
+							<p class="intro-subtitle">A library of HTML, CSS, and JavaScript demos presented entirely within your web browser. By&nbsp;<a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a>.</p>
+						</header>
+						<nav class="intro-index">
+							<h2 class="intro-index-title">Select a book</h2>
+							${overview}
+						</nav>
 					</div>
-					<div class="header-desc">
-						<p>
-							<span class="header-desc-long">HTML, CSS, and JavaScript demos presented entirely within your web browser.</span> By <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>.
-						</p>
-					</div>
-				</header>
-			
-				<main class="sections">
-					${catalogSections}
-				</main>
+					<div class="intro-books-container"><div class="intro-books"></div></div>
+				</div>
 
-				<nav class="nav">
-					<div class="nav-controls">
-						<button class="nav-controls-button" onclick="scrollPage(-400);">
-							<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
-						</button>
-						<button class="nav-controls-button" onclick="scrollPage(400);">
-							<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
-						</button>
-					</div>
-				</nav>
+				${books}
+			</main>
 
-			</div>
-		
-			<script src="script.js"></script>
+			<script src="/assets/scripts/all-demos.js"></script>
+			<script src="/assets/scripts/home.js"></script>
 		</body>
 		</html>
 	`;
 
 	// Create work file
-	fs.writeFile(`index.html`, catalogContent, err => {
+	fs.writeFile(`index.html`, overviewContent, err => {
+		if (err) {
+			console.error(err);
+		}
+	});
+
+	// Create file containing all demo names
+	fs.writeFile(`./assets/scripts/all-demos.js`, allDemos+']', err => {
 		if (err) {
 			console.error(err);
 		}
 	});
 }
-generateCatalog();
+generateOverview();

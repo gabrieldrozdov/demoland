@@ -1,0 +1,98 @@
+{
+	"test-project-1": {
+		"title": "test-project-1.html",
+		"subtitle": "Project 0",
+		"desc": "TBD",
+		"color": "rainbow",
+		"demos": {
+			"test-project-1": {
+				"name": "test-project-1",
+				"color": "var(--white)"
+			}
+		}
+	},
+	"unit-1": {
+		"title": "Title goes here",
+		"subtitle": "Unit 1",
+		"desc": "TBD",
+		"color": "var(--pink)",
+		"demos": {
+			"ascii-art": {
+				"name": "ASCII Art",
+				"color": "var(--pink)"
+			},
+			"programmatic-poetry": {
+				"name": "Programmatic Poetry",
+				"color": "var(--pink)"
+			},
+			"text-textile": {
+				"name": "Text Textile",
+				"color": "var(--pink)"
+			},
+			"interconnected-images": {
+				"name": "Interconnected Images",
+				"color": "var(--pink)"
+			}
+		}
+	},
+	"unit-2": {
+		"title": "Title goes here",
+		"subtitle": "Unit 2",
+		"desc": "TBD",
+		"color": "var(--green)",
+		"demos": {
+			"pixelated-pattern": {
+				"name": "Pixelated Pattern",
+				"color": "var(--green)"
+			},
+			"brilliant-blog": {
+				"name": "Brilliant Blog",
+				"color": "var(--green)"
+			},
+			"geometric-garden": {
+				"name": "Geometric Garden",
+				"color": "var(--green)"
+			},
+			"movie-marquees": {
+				"name": "Movie Marquees",
+				"color": "var(--green)"
+			},
+			"personal-portrait": {
+				"name": "Personal Portrait",
+				"color": "var(--green)"
+			},
+			"sticky-sayings": {
+				"name": "Sticky Sayings",
+				"color": "var(--green)"
+			}
+		}
+	},
+	"unit-3": {
+		"title": "The Box Model",
+		"subtitle": "Unit 3",
+		"desc": "TBD",
+		"color": "var(--blue)",
+		"demos": {
+			"disco-dancer": {
+				"name": "Disco Dancer",
+				"color": "var(--blue)"
+			},
+			"grid-garden": {
+				"name": "Grid Garden",
+				"color": "var(--blue)"
+			},
+			"card-catalog": {
+				"name": "Card Catalog",
+				"color": "var(--blue)"
+			},
+			"brick-barrier": {
+				"name": "Brick Barrier",
+				"color": "var(--blue)"
+			},
+			"lonely-link": {
+				"name": "Lonely Link",
+				"color": "var(--blue)"
+			}
+		}
+	}
+}

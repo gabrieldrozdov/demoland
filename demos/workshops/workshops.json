@@ -1,0 +1,126 @@
+{
+	"variable-fonts-workshop": {
+		"title": "Variable Fonts Workshop",
+		"subtitle": "RISD Fall 2024",
+		"desc": "Tutorials on importing, animating, and interacting with variable fonts. Featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!",
+		"color": "rainbow",
+		"demos": {
+			"importing-variable-fonts": {
+				"name": "Importing variable fonts",
+				"color": "var(--pink)"
+			},
+			"using-variable-fonts": {
+				"name": "Using variable fonts",
+				"color": "var(--pink)"
+			},
+			"variable-font-weight": {
+				"name": "Variable font weight",
+				"color": "var(--pink)"
+			},
+			"animating-variable-fonts": {
+				"name": "Animating variable fonts",
+				"color": "var(--green)"
+			},
+			"interacting-with-variable-fonts": {
+				"name": "Interacting with variable fonts",
+				"color": "var(--green)"
+			},
+			"toggling-variable-states": {
+				"name": "Toggling variable states",
+				"color": "var(--blue)"
+			},
+			"targeting-elements-using-this": {
+				"name": "Targeting elements using “this”",
+				"color": "var(--blue)"
+			},
+			"manually-setting-values": {
+				"name": "Manually setting values",
+				"color": "var(--blue)"
+			},
+			"using-css-variables-for-variable-axis-values": {
+				"name": "Using CSS variables for variable axis values",
+				"color": "var(--blue)"
+			},
+			"swapping-out-content": {
+				"name": "Swapping out content",
+				"color": "var(--blue)"
+			},
+			"setting-values-using-sliders": {
+				"name": "Setting values using sliders",
+				"color": "var(--yellow)"
+			},
+			"randomizing-variable-axis-values": {
+				"name": "Randomizing variable axis values",
+				"color": "var(--yellow)"
+			},
+			"repeatedly-randomizing-variable-axis-values": {
+				"name": "Repeatedly randomizing variable axis values",
+				"color": "var(--yellow)"
+			},
+			"tracking-variable-axis-values": {
+				"name": "Tracking variable axis values",
+				"color": "var(--yellow)"
+			},
+			"tracking-the-cursor-position": {
+				"name": "Tracking the cursor position",
+				"color": "var(--purple)"
+			},
+			"tracking-the-scroll-position": {
+				"name": "Tracking the scroll position",
+				"color": "var(--purple)"
+			},
+			"randomizing-individual-letters": {
+				"name": "Randomizing individual letters",
+				"color": "var(--red)"
+			},
+			"animating-individual-letters": {
+				"name": "Animating individual letters",
+				"color": "var(--red)"
+			}
+		}
+	},
+	"workshop-motion-design-for-the-web": {
+		"title": "Workshop: Motion Design for the Web",
+		"subtitle": "Boston University Fall 2024",
+		"desc": "An introduction to animating using HTML and CSS!",
+		"color": "rainbow",
+		"demos": {
+			"introduction": {
+				"name": "Introduction",
+				"color": "var(--pink)"
+			},
+			"what-you-need-to-know": {
+				"name": "What you need to know",
+				"color": "var(--pink)"
+			},
+			"styling-text": {
+				"name": "Styling text",
+				"color": "var(--green)"
+			},
+			"animating-text": {
+				"name": "Animating text",
+				"color": "var(--blue)"
+			},
+			"bringing-text-to-life": {
+				"name": "Bringing text to life",
+				"color": "var(--blue)"
+			},
+			"a-story-of-a-square": {
+				"name": "A story of a square",
+				"color": "var(--yellow)"
+			},
+			"the-humble-button": {
+				"name": "The humble button",
+				"color": "var(--purple)"
+			},
+			"how-does-that-make-you-feel": {
+				"name": "How does that make you feel?",
+				"color": "var(--purple)"
+			},
+			"the-end-for-now": {
+				"name": "The end (for now!)",
+				"color": "var(--red)"
+			}
+		}
+	}
+}

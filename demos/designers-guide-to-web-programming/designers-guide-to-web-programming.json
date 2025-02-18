@@ -1,0 +1,179 @@
+{
+	"typography": {
+		"title": "Typography",
+		"subtitle": "Chapter 1",
+		"desc": "Start by working with the designer’s most powerful material.",
+		"color": "var(--pink)",
+		"demos": {
+			"introduction": {
+				"name": "Introduction",
+				"color": "var(--pink)"
+			},
+			"template": {
+				"name": "A Basic HTML File",
+				"color": "var(--pink)"
+			},
+			"elements": {
+				"name": "HTML Elements for Typography",
+				"color": "var(--pink)"
+			},
+			"hierarchy": {
+				"name": "Typographic Hierarchy",
+				"color": "var(--pink)"
+			},
+			"css": {
+				"name": "CSS Properties and Classes",
+				"color": "var(--pink)"
+			},
+			"inline-css": {
+				"name": "Inline CSS",
+				"color": "var(--pink)"
+			},
+			"colors": {
+				"name": "Color Codes",
+				"color": "var(--pink)"
+			},
+			"inspect": {
+				"name": "Using the Inspect Tool",
+				"color": "var(--pink)"
+			},
+			"custom-fonts": {
+				"name": "Custom Fonts",
+				"color": "var(--pink)"
+			},
+			"variable-fonts": {
+				"name": "Variable Fonts",
+				"color": "var(--pink)"
+			}
+		}
+	},
+	"the-box-model": {
+		"title": "The Box Model",
+		"subtitle": "Chapter 2",
+		"desc": "Everything on the Internet is functionally a box, and it’s our job to make those boxes pretty.",
+		"color": "var(--green)",
+		"demos": {
+			"basics": {
+				"name": "Basics of the Box Model",
+				"color": "var(--green)"
+			},
+			"units": {
+				"name": "Units",
+				"color": "var(--green)"
+			},
+			"box-sizing": {
+				"name": "Box Sizing",
+				"color": "var(--green)"
+			},
+			"css-overrides": {
+				"name": "CSS Overrides",
+				"color": "var(--green)"
+			},
+			"display": {
+				"name": "Using the “display” Property",
+				"color": "var(--green)"
+			},
+			"divs": {
+				"name": "Working with Divs",
+				"color": "var(--green)"
+			},
+			"grouping": {
+				"name": "Grouping Elements",
+				"color": "var(--green)"
+			},
+			"anchor-links": {
+				"name": "Anchor Links and IDs",
+				"color": "var(--green)"
+			},
+			"images": {
+				"name": "Responsive Images",
+				"color": "var(--green)"
+			},
+			"hover-states": {
+				"name": "Hover and Active States",
+				"color": "var(--green)"
+			},
+			"keyframes": {
+				"name": "@keyframes Animations",
+				"color": "var(--green)"
+			},
+			"nested-selectors": {
+				"name": "Nested CSS Selectors",
+				"color": "var(--green)"
+			}				
+		}
+	},
+	"layout": {
+		"title": "Layout",
+		"subtitle": "Chapter 3",
+		"desc": "Arranging content takes just a couple of lines of code, but that code can work in surprising ways.",
+		"color": "var(--blue)",
+		"demos": {
+			"flexbox": {
+				"name": "1-Dimensional Layouts Using Flexbox",
+				"color": "var(--blue)"
+			},
+			"centering": {
+				"name": "Centering Content",
+				"color": "var(--blue)"
+			},
+			"grid": {
+				"name": "2-Dimensional Layouts Using Grid",
+				"color": "var(--blue)"
+			},
+			"media-queries": {
+				"name": "Responsive Layouts Using @media Queries",
+				"color": "var(--blue)"
+			},
+			"relative-absolute": {
+				"name": "Relative and Absolute Positioning",
+				"color": "var(--blue)"
+			},
+			"sticky": {
+				"name": "Sticky Positioning",
+				"color": "var(--blue)"
+			},
+			"floats": {
+				"name": "Floats",
+				"color": "var(--blue)"
+			},
+			"portfolio": {
+				"name": "Designing a Portfolio",
+				"color": "var(--blue)"
+			},
+			"horizontal": {
+				"name": "Horizontal Scrolling",
+				"color": "var(--blue)"
+			},
+			"scrolling-columns": {
+				"name": "Independently Scrolling Columns",
+				"color": "var(--blue)"
+			}
+		}
+	},
+	"interaction": {
+		"title": "Interaction",
+		"subtitle": "Chapter 4",
+		"desc": "Welcome to the world of JavaScript, where anything is possible (if you can code it).",
+		"color": "var(--yellow)",
+		"demos": {
+		}
+	},
+	"loops": {
+		"title": "Loops",
+		"subtitle": "Chapter 5",
+		"desc": "Make your code work for you, with a little help from our friends called logic and math.",
+		"color": "var(--purple)",
+		"demos": {
+		}
+	},
+	"data": {
+		"title": "Data",
+		"subtitle": "Chapter 6",
+		"desc": "Put everything together, and by the end your site will basically code itself.",
+		"color": "var(--red)",
+		"demos": {
+			
+		}
+	}
+}

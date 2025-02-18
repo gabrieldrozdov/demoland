@@ -15,544 +15,207 @@
 			<meta property="og:image" content="/assets/meta/opengraph.jpg">
 			<link rel="icon" type="png" href="/assets/meta/favicon.png">
 		
-			<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="/assets/styles/home.css">
 		</head>
 		<body>
-			<div class="container">
+			<main class="content">
+				<div class="toggles">
+					<button onclick="toggleInfo()">
+						<svg viewBox="0 0 100 100"><rect x="45" y="40" width="10" height="50"/><circle cx="50" cy="20" r="10"/></svg>
+					</button>
+					<a href="https://github.com/gabrieldrozdov/demoland" target="_blank">
+						<svg viewBox="0 0 1024 1024">
+							<path class="cls-1" d="M512,0C229.12,0,0,229.12,0,512,0,738.56,146.56,929.92,350.08,997.76c25.6,4.48,35.2-10.88,35.2-24.32,0-12.16-.64-52.48-.64-95.36-128.64,23.68-161.92-31.36-172.16-60.16-5.76-14.72-30.72-60.16-52.48-72.32-17.92-9.6-43.52-33.28-.64-33.92,40.32-.64,69.12,37.12,78.72,52.48,46.08,77.44,119.68,55.68,149.12,42.24,4.48-33.28,17.92-55.68,32.64-68.48-113.92-12.8-232.96-56.96-232.96-252.8,0-55.68,19.84-101.76,52.48-137.6-5.12-12.8-23.04-65.28,5.12-135.68,0,0,42.88-13.44,140.8,52.48,40.96-11.52,84.48-17.28,128-17.28s87.04,5.76,128,17.28c97.92-66.56,140.8-52.48,140.8-52.48,28.16,70.4,10.24,122.88,5.12,135.68,32.64,35.84,52.48,81.28,52.48,137.6,0,196.48-119.68,240-233.6,252.8,18.56,16,34.56,46.72,34.56,94.72,0,68.48-.64,123.52-.64,140.8,0,13.44,9.6,29.44,35.2,24.32,202.24-67.84,348.8-259.84,348.8-485.76C1024,229.12,794.88,0,512,0Z"/>
+						</svg>
+					</a>
+				</div>
+				<div class="info" data-active="0">
+					<button class="info-close" onclick="toggleInfo();">
+						<svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg>
+					</button>
+					<p>
+						DEMOLAND is a website template that allows you to distribute editable code demos (HTML, CSS, JavaScript) entirely within your web browser. This project was created by <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> to make teaching code easier, without the need for subscribing to any premium code distribution services.
+					</p>
+					<p>
+						DEMOLAND is a metaphor for a library containing books featuring chapters of demos. Each book is organized via JSON files, and each demo is split up into two HTML files (content and information). A Node.js file generates the homepage as a static document, while the code editor page fetches demos dynamically. The editor is built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>.
+					</p>
+					<p>
+						Interested in launching your own DEMOLAND site? Clone the <a href="https://github.com/gabrieldrozdov/demoland-template" target="_blank">GitHub repository</a> and launch your site via GitHub pages!
+					</p>
+					<p class="info-credits">
+						<strong>CREDITS</strong><br>
+						DEMOLAND was developed by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a> / <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>. The site features <a href="https://toomuchtype.com/" target="_blank">Limkin by Too Much Type</a> and <a href="https://monaspace.githubnext.com/" target="_blank">Monaspace by GitHub</a>. Text editors are built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>. If you launch your own DEMOLAND, I’d appreciate it if you left these credits in (and <a href="mailto:gabriel@noreplica.com">sent me an email</a> just to share your work!).
+					</p>
+				</div>
 
-				<header class="header">
-					<div class="header-title-container">
-						<svg viewBox="0 0 100 100" class="header-logo"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
-						<h1 class="header-title">
-							<span class="header-title-small">Welcome to</span>
-							<span class="header-title-big">DEMOLAND</span>
-						</h1>
+				<div class="intro">
+					<div class="intro-content">
+						<header class="intro-header">
+							<h1 class="intro-title"><span class="intro-title-small">Welcome to</span><span class="intro-title-big">DEMOLAND</span></h1>
+							<p class="intro-subtitle">A library of HTML, CSS, and JavaScript demos presented entirely within your web browser. By&nbsp;<a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a>.</p>
+						</header>
+						<nav class="intro-index">
+							<h2 class="intro-index-title">Select a book</h2>
+							
+			<a href="#tutorial" class="intro-index-link" onclick="openBook('tutorial');">
+				<div class="intro-index-link-main">
+					<h3 class="intro-index-link-title">Tutorial</h3>
+					<p class="intro-index-link-shortdesc">Learn how this website works</p>
+				</div>
+				<div class="intro-index-link-info">
+					<div>1 Chapter</div>
+					<div>6 Demos</div>
+				</div>
+			</a>
+		
+			<a href="#introduction-to-computation" class="intro-index-link" onclick="openBook('introduction-to-computation');">
+				<div class="intro-index-link-main">
+					<h3 class="intro-index-link-title">Introduction to Computation</h3>
+					<p class="intro-index-link-shortdesc">A beginner’s guide on how to code</p>
+				</div>
+				<div class="intro-index-link-info">
+					<div>1 Chapter</div>
+					<div>7 Demos</div>
+				</div>
+			</a>
+		
+						</nav>
 					</div>
-					<div class="header-desc">
-						<p>
-							<span class="header-desc-long">HTML, CSS, and JavaScript demos presented entirely within your web browser.</span> By <a href="https://gdwithgd.com/" target="_blank">GD with GD</a>.
-						</p>
-					</div>
+					<div class="intro-books-container"><div class="intro-books"></div></div>
+				</div>
+
+				
+			<article class="book" data-active="0" id="tutorial">
+				<header class="book-intro">
+					<button class="book-intro-return" onclick="openIntro();">&nwarr;&nbsp; View all books</button>
+					<h2 class="book-intro-title">Tutorial</h2>
+					<div class="book-intro-desc"><p>Get started with DEMOLAND and learn how to code websites!</p></div>
 				</header>
-			
-				<main class="sections">
+				<div class="chapter-grid">
 					
-			<section class="section">
-				<div class="section-desc">
-					<p class="section-subtitle">Start here</p>
-					<h2 class="section-title">Tutorial</h2>
-					<div class="section-desc-content">
-						<p>Get started with DEMOLAND and learn how to code websites!</p>
+				<section class="chapter  rainbow" id="tutorial-tutorial" style="--primary: rainbow">
+					<div class="chapter-header">
+						<a class="chapter-link" href="/editor/?book=tutorial&chapter=tutorial&demo=welcome">
+							<div class="chapter-subtitle">
+								Start here
+							</div>
+							<h3 class="chapter-title">
+								How to use DEMOLAND
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							Get started with DEMOLAND and learn how to code websites!
+						</p>
+						<a href="/editor/?book=tutorial&chapter=tutorial&demo=welcome" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
-				</div>
-				<div class="section-demos">
-					<h3 class="section-demos-title">
-						<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-						<span>Demos</span>
-					</h3>
-					<div class="section-demos-links">
+					<div class="chapter-demos">
 						
-				<a href="/editor/?collection=tutorial&demo=welcome" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">1</div>
-					<div class="section-demo-name">Welcome to DEMOLAND</div>
-				</a>
-			
-				<a href="/editor/?collection=tutorial&demo=html" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">2</div>
-					<div class="section-demo-name">What is HTML?</div>
-				</a>
-			
-				<a href="/editor/?collection=tutorial&demo=css" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">3</div>
-					<div class="section-demo-name">What is CSS?</div>
-				</a>
-			
-				<a href="/editor/?collection=tutorial&demo=js" class="section-demo" style="--primary: var(--yellow);">
-					<div class="section-demo-number">4</div>
-					<div class="section-demo-name">What is JavaScript?</div>
-				</a>
-			
-				<a href="/editor/?collection=tutorial&demo=js-libraries" class="section-demo" style="--primary: var(--purple);">
-					<div class="section-demo-number">5</div>
-					<div class="section-demo-name">What are JavaScript Libraries?</div>
-				</a>
-			
-				<a href="/editor/?collection=tutorial&demo=template" class="section-demo" style="--primary: var(--red);">
-					<div class="section-demo-number">6</div>
-					<div class="section-demo-name">Starter Template</div>
-				</a>
-			
+					<a href="/editor/?book=tutorial&chapter=tutorial&demo=welcome" class="chapter-demo" style="--primary: var(--pink);">
+						<div class="chapter-demo-number">1</div>
+						<div class="chapter-demo-name">Welcome to DEMOLAND</div>
+					</a>
+				
+					<a href="/editor/?book=tutorial&chapter=tutorial&demo=html" class="chapter-demo" style="--primary: var(--green);">
+						<div class="chapter-demo-number">2</div>
+						<div class="chapter-demo-name">What is HTML?</div>
+					</a>
+				
+					<a href="/editor/?book=tutorial&chapter=tutorial&demo=css" class="chapter-demo" style="--primary: var(--blue);">
+						<div class="chapter-demo-number">3</div>
+						<div class="chapter-demo-name">What is CSS?</div>
+					</a>
+				
+					<a href="/editor/?book=tutorial&chapter=tutorial&demo=js" class="chapter-demo" style="--primary: var(--yellow);">
+						<div class="chapter-demo-number">4</div>
+						<div class="chapter-demo-name">What is JavaScript?</div>
+					</a>
+				
+					<a href="/editor/?book=tutorial&chapter=tutorial&demo=js-libraries" class="chapter-demo" style="--primary: var(--purple);">
+						<div class="chapter-demo-number">5</div>
+						<div class="chapter-demo-name">What are JavaScript Libraries?</div>
+					</a>
+				
+					<a href="/editor/?book=tutorial&chapter=tutorial&demo=template" class="chapter-demo" style="--primary: var(--red);">
+						<div class="chapter-demo-number">6</div>
+						<div class="chapter-demo-name">Starter Template</div>
+					</a>
+				
 					</div>
+				</section>
+			
 				</div>
-			</section>
+			</article>
 		
-			<section class="section">
-				<div class="section-desc">
-					<p class="section-subtitle">Learn it all</p>
-					<h2 class="section-title">The Designer’s Guide to Web Programming</h2>
-					<div class="section-desc-content">
-						<p>Learn web programming from a designer’s perspective. Learn more at this collection’s <a href='https://webprogramming.gdwithgd.com/' target='_blank'>dedicated website</a>!</p>
+			<article class="book" data-active="0" id="introduction-to-computation">
+				<header class="book-intro">
+					<button class="book-intro-return" onclick="openIntro();">&nwarr;&nbsp; View all books</button>
+					<h2 class="book-intro-title">Introduction to Computation</h2>
+					<div class="book-intro-desc"><p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p></div>
+				</header>
+				<div class="chapter-grid">
+					
+				<section class="chapter " id="introduction-to-computation-week-1" style="--primary: var(--pink)">
+					<div class="chapter-header">
+						<a class="chapter-link" href="/editor/?book=introduction-to-computation&chapter=week-1&demo=introduction">
+							<div class="chapter-subtitle">
+								Week 1
+							</div>
+							<h3 class="chapter-title">
+								What is code?
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							Let’s get started by playing around with HTML and CSS!
+						</p>
+						<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=introduction" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
-				</div>
-				<div class="section-demos">
-					<h3 class="section-demos-title">
-						<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-						<span>Demos</span>
-					</h3>
-					<div class="section-demos-links">
+					<div class="chapter-demos">
 						
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=introduction" class="section-demo" style="--primary: var(--white);">
-					<div class="section-demo-number">1</div>
-					<div class="section-demo-name">Introduction</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-template" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">2</div>
-					<div class="section-demo-name">A Basic HTML File</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-elements" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">3</div>
-					<div class="section-demo-name">HTML Elements for Typography</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-hierarchy" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">4</div>
-					<div class="section-demo-name">Typographic Hierarchy</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-css" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">5</div>
-					<div class="section-demo-name">CSS Properties and Classes</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-inline-css" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">6</div>
-					<div class="section-demo-name">Inline CSS</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-colors" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">7</div>
-					<div class="section-demo-name">Color Codes</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-inspect" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">8</div>
-					<div class="section-demo-name">Using the Inspect Tool</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-custom-fonts" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">9</div>
-					<div class="section-demo-name">Custom Fonts</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=typography-variable-fonts" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">10</div>
-					<div class="section-demo-name">Variable Fonts</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-basics" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">11</div>
-					<div class="section-demo-name">Basics of the Box Model</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-units" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">12</div>
-					<div class="section-demo-name">Units</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-box-sizing" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">13</div>
-					<div class="section-demo-name">Box Sizing</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-css-overrides" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">14</div>
-					<div class="section-demo-name">CSS Overrides</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-display" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">15</div>
-					<div class="section-demo-name">Using the “display” Property</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-divs" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">16</div>
-					<div class="section-demo-name">Working with Divs</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-grouping" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">17</div>
-					<div class="section-demo-name">Grouping Elements</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-anchor-links" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">18</div>
-					<div class="section-demo-name">Anchor Links and IDs</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-images" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">19</div>
-					<div class="section-demo-name">Responsive Images</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-hover-states" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">20</div>
-					<div class="section-demo-name">Hover and Active States</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-keyframes" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">21</div>
-					<div class="section-demo-name">@keyframes Animations</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=box-model-nested-selectors" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">22</div>
-					<div class="section-demo-name">Nested CSS Selectors</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-flexbox" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">23</div>
-					<div class="section-demo-name">1-Dimensional Layouts Using Flexbox</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-centering" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">24</div>
-					<div class="section-demo-name">Centering Content</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-grid" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">25</div>
-					<div class="section-demo-name">2-Dimensional Layouts Using Grid</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-media-queries" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">26</div>
-					<div class="section-demo-name">Responsive Layouts Using @media Queries</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-relative-absolute" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">27</div>
-					<div class="section-demo-name">Relative and Absolute Positioning</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-sticky" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">28</div>
-					<div class="section-demo-name">Sticky Positioning</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-floats" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">29</div>
-					<div class="section-demo-name">Floats</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-portfolio" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">30</div>
-					<div class="section-demo-name">Designing a Portfolio</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-horizontal" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">31</div>
-					<div class="section-demo-name">Horizontal Scrolling</div>
-				</a>
-			
-				<a href="/editor/?collection=designers-guide-to-web-programming&demo=layout-scrolling-columns" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">32</div>
-					<div class="section-demo-name">Independently Scrolling Columns</div>
-				</a>
-			
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=introduction" class="chapter-demo" style="--primary: var(--pink);">
+						<div class="chapter-demo-number">1</div>
+						<div class="chapter-demo-name">Introduction</div>
+					</a>
+				
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=splitting-things-up" class="chapter-demo" style="--primary: var(--green);">
+						<div class="chapter-demo-number">2</div>
+						<div class="chapter-demo-name">Splitting things up</div>
+					</a>
+				
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=making-it-pretty" class="chapter-demo" style="--primary: var(--blue);">
+						<div class="chapter-demo-number">3</div>
+						<div class="chapter-demo-name">Making it pretty</div>
+					</a>
+				
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=programmatic-poetry" class="chapter-demo" style="--primary: var(--yellow);">
+						<div class="chapter-demo-number">4</div>
+						<div class="chapter-demo-name">Programmatic poetry</div>
+					</a>
+				
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=brought-to-life" class="chapter-demo" style="--primary: var(--purple);">
+						<div class="chapter-demo-number">5</div>
+						<div class="chapter-demo-name">Brought to life</div>
+					</a>
+				
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=every-click-a-story" class="chapter-demo" style="--primary: var(--red);">
+						<div class="chapter-demo-number">6</div>
+						<div class="chapter-demo-name">Every click, a story</div>
+					</a>
+				
+					<a href="/editor/?book=introduction-to-computation&chapter=week-1&demo=whats-next" class="chapter-demo" style="--primary: var(--pink);">
+						<div class="chapter-demo-number">7</div>
+						<div class="chapter-demo-name">What’s next?</div>
+					</a>
+				
 					</div>
+				</section>
+			
 				</div>
-			</section>
+			</article>
 		
-			<section class="section">
-				<div class="section-desc">
-					<p class="section-subtitle">Creative coding projects</p>
-					<h2 class="section-title">test-project-1.html</h2>
-					<div class="section-desc-content">
-						<p>Creative coding projects for any skill level. Learn more at this collection’s <a href='https://testproject1.gdwithgd.com/' target='_blank'>dedicated website</a>!</p>
-					</div>
-				</div>
-				<div class="section-demos">
-					<h3 class="section-demos-title">
-						<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-						<span>Demos</span>
-					</h3>
-					<div class="section-demos-links">
-						
-				<a href="/editor/?collection=test-project-1&demo=test-project-1" class="section-demo" style="--primary: var(--white);">
-					<div class="section-demo-number">1</div>
-					<div class="section-demo-name">test-project-1</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=ascii-art" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">2</div>
-					<div class="section-demo-name">ASCII Art</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=programmatic-poetry" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">3</div>
-					<div class="section-demo-name">Programmatic Poetry</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=text-textile" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">4</div>
-					<div class="section-demo-name">Text Textile</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=interconnected-images" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">5</div>
-					<div class="section-demo-name">Interconnected Images</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=pixelated-pattern" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">6</div>
-					<div class="section-demo-name">Pixelated Pattern</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=brilliant-blog" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">7</div>
-					<div class="section-demo-name">Brilliant Blog</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=geometric-garden" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">8</div>
-					<div class="section-demo-name">Geometric Garden</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=movie-marquees" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">9</div>
-					<div class="section-demo-name">Movie Marquees</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=personal-portrait" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">10</div>
-					<div class="section-demo-name">Personal Portrait</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=sticky-sayings" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">11</div>
-					<div class="section-demo-name">Sticky Sayings</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=disco-dancer" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">12</div>
-					<div class="section-demo-name">Disco Dancer</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=grid-garden" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">13</div>
-					<div class="section-demo-name">Grid Garden</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=card-catalog" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">14</div>
-					<div class="section-demo-name">Card Catalog</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=brick-barrier" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">15</div>
-					<div class="section-demo-name">Brick Barrier</div>
-				</a>
-			
-				<a href="/editor/?collection=test-project-1&demo=lonely-link" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">16</div>
-					<div class="section-demo-name">Lonely Link</div>
-				</a>
-			
-					</div>
-				</div>
-			</section>
-		
-			<section class="section">
-				<div class="section-desc">
-					<p class="section-subtitle">Fun with fonts</p>
-					<h2 class="section-title">Variable Fonts Workshop</h2>
-					<div class="section-desc-content">
-						<p>Tutorials on importing, animating, and interacting with variable fonts. Featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!</p>
-					</div>
-				</div>
-				<div class="section-demos">
-					<h3 class="section-demos-title">
-						<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-						<span>Demos</span>
-					</h3>
-					<div class="section-demos-links">
-						
-				<a href="/editor/?collection=variable-fonts-workshop&demo=importing-variable-fonts" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">1</div>
-					<div class="section-demo-name">Importing variable fonts</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=using-variable-fonts" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">2</div>
-					<div class="section-demo-name">Using variable fonts</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=variable-font-weight" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">3</div>
-					<div class="section-demo-name">Variable font weight</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=animating-variable-fonts" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">4</div>
-					<div class="section-demo-name">Animating variable fonts</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=interacting-with-variable-fonts" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">5</div>
-					<div class="section-demo-name">Interacting with variable fonts</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=toggling-variable-states" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">6</div>
-					<div class="section-demo-name">Toggling variable states</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=targeting-elements-using-this" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">7</div>
-					<div class="section-demo-name">Targeting elements using “this”</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=manually-setting-values" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">8</div>
-					<div class="section-demo-name">Manually setting values</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=using-css-variables-for-variable-axis-values" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">9</div>
-					<div class="section-demo-name">Using CSS variables for variable axis values</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=swapping-out-content" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">10</div>
-					<div class="section-demo-name">Swapping out content</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=setting-values-using-sliders" class="section-demo" style="--primary: var(--yellow);">
-					<div class="section-demo-number">11</div>
-					<div class="section-demo-name">Setting values using sliders</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=randomizing-variable-axis-values" class="section-demo" style="--primary: var(--yellow);">
-					<div class="section-demo-number">12</div>
-					<div class="section-demo-name">Randomizing variable axis values</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=repeatedly-randomizing-variable-axis-values" class="section-demo" style="--primary: var(--yellow);">
-					<div class="section-demo-number">13</div>
-					<div class="section-demo-name">Repeatedly randomizing variable axis values</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=tracking-variable-axis-values" class="section-demo" style="--primary: var(--yellow);">
-					<div class="section-demo-number">14</div>
-					<div class="section-demo-name">Tracking variable axis values</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=tracking-the-cursor-position" class="section-demo" style="--primary: var(--purple);">
-					<div class="section-demo-number">15</div>
-					<div class="section-demo-name">Tracking the cursor position</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=tracking-the-scroll-position" class="section-demo" style="--primary: var(--purple);">
-					<div class="section-demo-number">16</div>
-					<div class="section-demo-name">Tracking the scroll position</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=randomizing-individual-letters" class="section-demo" style="--primary: var(--red);">
-					<div class="section-demo-number">17</div>
-					<div class="section-demo-name">Randomizing individual letters</div>
-				</a>
-			
-				<a href="/editor/?collection=variable-fonts-workshop&demo=animating-individual-letters" class="section-demo" style="--primary: var(--red);">
-					<div class="section-demo-number">18</div>
-					<div class="section-demo-name">Animating individual letters</div>
-				</a>
-			
-					</div>
-				</div>
-			</section>
-		
-			<section class="section">
-				<div class="section-desc">
-					<p class="section-subtitle">Make things move</p>
-					<h2 class="section-title">Workshop: Motion Design for the Web</h2>
-					<div class="section-desc-content">
-						<p>An introduction to animating using HTML and CSS!</p>
-					</div>
-				</div>
-				<div class="section-demos">
-					<h3 class="section-demos-title">
-						<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-						<span>Demos</span>
-					</h3>
-					<div class="section-demos-links">
-						
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=introduction" class="section-demo" style="--primary: var(--white);">
-					<div class="section-demo-number">1</div>
-					<div class="section-demo-name">Introduction</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=what-you-need-to-know" class="section-demo" style="--primary: var(--pink);">
-					<div class="section-demo-number">2</div>
-					<div class="section-demo-name">What you need to know</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=styling-text" class="section-demo" style="--primary: var(--green);">
-					<div class="section-demo-number">3</div>
-					<div class="section-demo-name">Styling text</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=animating-text" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">4</div>
-					<div class="section-demo-name">Animating text</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=bringing-text-to-life" class="section-demo" style="--primary: var(--blue);">
-					<div class="section-demo-number">5</div>
-					<div class="section-demo-name">Bringing text to life</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=a-story-of-a-square" class="section-demo" style="--primary: var(--yellow);">
-					<div class="section-demo-number">6</div>
-					<div class="section-demo-name">A story of a square</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=the-humble-button" class="section-demo" style="--primary: var(--purple);">
-					<div class="section-demo-number">7</div>
-					<div class="section-demo-name">The humble button</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=how-does-that-make-you-feel" class="section-demo" style="--primary: var(--purple);">
-					<div class="section-demo-number">8</div>
-					<div class="section-demo-name">How does that make you feel?</div>
-				</a>
-			
-				<a href="/editor/?collection=workshop-motion-design-for-the-web&demo=the-end-for-now" class="section-demo" style="--primary: var(--red);">
-					<div class="section-demo-number">9</div>
-					<div class="section-demo-name">The end (for now!)</div>
-				</a>
-			
-					</div>
-				</div>
-			</section>
-		
-				</main>
+			</main>
 
-				<nav class="nav">
-					<div class="nav-controls">
-						<button class="nav-controls-button" onclick="scrollPage(-400);">
-							<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
-						</button>
-						<button class="nav-controls-button" onclick="scrollPage(400);">
-							<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
-						</button>
-					</div>
-				</nav>
-
-			</div>
-		
-			<script src="script.js"></script>
+			<script src="/assets/scripts/all-demos.js"></script>
+			<script src="/assets/scripts/home.js"></script>
 		</body>
 		</html>
 	

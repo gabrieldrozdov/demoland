@@ -4,38 +4,29 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>DEMOLAND | Editor</title>
-
-	<meta name="author" content="Gabriel Drozdov">
-	<meta name="keywords" content="Web Design, Web Development, Creative Coding, Design Education, Code Education">
-	<meta name="description" content="Learn how to code HTML, CSS, and JavaScript right in your web browser!">
-	<meta property="og:url" content="https://demoland.gdwithgd.com/">
-	<meta name="og:title" property="og:title" content="DEMOLAND">
-	<meta property="og:description" content="Learn how to code HTML, CSS, and JavaScript right in your web browser!">
-	<meta property="og:image" content="/assets/meta/opengraph.jpg">
-	<link rel="icon" type="png" href="/assets/meta/favicon.png">
-
-	<link rel="stylesheet" href="editor.css">
+	<link rel="icon" type="png" href="../assets/meta/favicon.png">
+	<link rel="stylesheet" href="../assets/styles/editor.css">
 
 	<!-- CodeMirror -->
-	<link rel="stylesheet" href="cm/lib/codemirror.css">
-	<script src="cm/lib/codemirror.js"></script>
-	<script src="cm/mode/htmlmixed/htmlmixed.js"></script>
-	<script src="cm/mode/xml/xml.js"></script>
-	<script src="cm/mode/css/css.js"></script>
-	<script src="cm/mode/javascript/javascript.js"></script>
+	<link rel="stylesheet" href="../assets/cm/lib/codemirror.css">
+	<script src="../assets/cm/lib/codemirror.js"></script>
+	<script src="../assets/cm/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="../assets/cm/mode/xml/xml.js"></script>
+	<script src="../assets/cm/mode/css/css.js"></script>
+	<script src="../assets/cm/mode/javascript/javascript.js"></script>
 
 	<!-- CodeMirror addons -->
-	<link rel="stylesheet" href="cm/addon/hint/show-hint.css">
-	<script src="cm/addon/hint/show-hint.js"></script>
-	<script src="cm/addon/hint/anyword-hint.js"></script>
-	<script src="cm/addon/hint/xml-hint.js"></script>
-	<script src="cm/addon/hint/html-hint.js"></script>
-	<script src="cm/addon/hint/css-hint.js"></script>
-	<script src="cm/addon/hint/javascript-hint.js"></script>
-	<script src="cm/addon/edit/closetag.js"></script>
-	<script src="cm/addon/edit/closebrackets.js"></script>
-	<script src="cm/addon/selection/active-line.js"></script>
-	<script src="cm/addon/edit/matchbrackets.js"></script>
+	<link rel="stylesheet" href="../assets/cm/addon/hint/show-hint.css">
+	<script src="../assets/cm/addon/hint/show-hint.js"></script>
+	<script src="../assets/cm/addon/hint/anyword-hint.js"></script>
+	<script src="../assets/cm/addon/hint/xml-hint.js"></script>
+	<script src="../assets/cm/addon/hint/html-hint.js"></script>
+	<script src="../assets/cm/addon/hint/css-hint.js"></script>
+	<script src="../assets/cm/addon/hint/javascript-hint.js"></script>
+	<script src="../assets/cm/addon/edit/closetag.js"></script>
+	<script src="../assets/cm/addon/edit/closebrackets.js"></script>
+	<script src="../assets/cm/addon/selection/active-line.js"></script>
+	<script src="../assets/cm/addon/edit/matchbrackets.js"></script>
 </head>
 <body>
 
@@ -45,49 +36,15 @@
 		<div class="tooltip-container">
 			<div class="tooltip-overflowfix">
 				<div class="tooltip" data-hide="1">
-					<svg viewBox="0 0 100 100"><polygon points="100 0 0 50 100 100 100 0"/></svg>
 					<p class="tooltip-text">Toggle Info</p>
 				</div>
 			</div>
 		</div>
 
-		<!-- CONTROLS -->
-		<nav class="controls">
-
-			<!-- CATALOG AND HELP -->
-			<a id="catalog-btn" class="controls-btn" data-tooltip-text="Open Catalog" data-tooltip-direction="left" href="/">
-				<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
-			</a>
-			<a class="controls-btn" data-tooltip-text="Tutorial" data-tooltip-direction="left" href="./" target="_blank">
-				<svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>
-			</a>
-
-			<div class="controls-spacer"></div>
-
-			<!-- PANEL TOGGLES -->
-			<div class="controls-btn" id="toggle-info" data-active="1" onclick="togglePanel('info')" data-tooltip-text="Toggle Info" data-tooltip-direction="left">
-				<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
-			</div>
-			<div class="controls-btn" id="toggle-editor" data-active="1" onclick="togglePanel('editor')" data-tooltip-text="Toggle Editor" data-tooltip-direction="left">
-				<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>
-			</div>
-			<div class="controls-btn" id="toggle-preview" data-active="1" onclick="togglePanel('preview')" data-tooltip-text="Toggle Preview" data-tooltip-direction="left">
-				<svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg>
-			</div>
-
-			<div class="controls-spacer"></div>
-
-			<!-- CODE FUNCTIONS -->
-			<div class="controls-btn" data-tooltip-text="Reset Demo" data-tooltip-direction="left" onclick="editorReset();">
-				<svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg>
-			</div>
-			<div class="controls-btn" data-tooltip-text="Download Code" data-tooltip-direction="left" onclick="editorDownload();">
-				<svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg>
-			</div>
-			<a class="controls-btn" data-tooltip-text="Open Demo in New Tab" data-tooltip-direction="left" href="#" target="_blank" id="newtab">
-				<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
-			</a>
-		</nav>
+		<!-- TITLE -->
+		<div class="title" data-tooltip-text="Current Book and Chapters" data-tooltip-direction="top">
+			<a class="title-book" href=""></a>
+		</div>
 		
 		<!-- PANELS -->
 		<div class="content">
@@ -107,9 +64,9 @@
 					<div class="info-body">
 						<div class="info-nav" data-active="0">
 							<div class="info-nav-bar">
-								<div onclick="openCollection();" class="info-nav-collection" data-tooltip-text="View All Demos in Collection" data-tooltip-direction="top">
-									<svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg>
-									<span id="info-nav-collection"></span>
+								<div onclick="openChapter();" class="info-nav-current" data-tooltip-text="View All Demos in Chapter" data-tooltip-direction="top">
+									<span class="info-nav-current-number"></span>
+									<span class="info-nav-current-name"></span>
 								</div>
 								<a href="" class="info-nav-prevnext" data-tooltip-text="Previous Demo" data-tooltip-direction="top" id="info-nav-prev">
 									<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
@@ -118,10 +75,10 @@
 									<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
 								</a>
 							</div>
-							<div class="info-nav-demos"></div>
 						</div>
+						<div class="info-nav-demos" data-active="0"></div>
 						<div class="info-content"></div>
-						<a href="" class="info-next">Click here to move on to the next demo!</a>
+						<a href="" class="info-next">Click here to continue to the next demo!</a>
 					</div>
 				</div>
 
@@ -131,7 +88,7 @@
 				</div>
 			</section>
 
-			<div class="resizer" id="resizer1" data-hide="0"></div>
+			<div class="resizer" id="resizer1" data-hide="0"><div></div></div>
 
 			<!-- EDITOR -->
 			<section class="panel" id="editor" data-offset="0" data-hide="0" data-console="0">
@@ -175,7 +132,7 @@
 				</div>
 			</section>
 
-			<div class="resizer" id="resizer2" data-hide="0"></div>
+			<div class="resizer" id="resizer2" data-hide="0"><div></div></div>
 
 			<!-- PREVIEW -->
 			<section class="panel" id="preview" data-offset="0" data-hide="0">
@@ -183,7 +140,6 @@
 					<div id="preview-delay" class="preview-msg-container" data-active="0">
 						<div class="preview-msg">
 							<p class="preview-msg-text">You can turn off this delay from the Editor panel!</p>
-							<svg viewBox="0 0 100 100"><polygon points="100 0 0 50 100 100 100 0"/></svg>
 						</div>
 						<div class="preview-delay-timer">
 							<div class="preview-delay-timer-inside"></div>
@@ -210,13 +166,50 @@
 
 			<div class="panel-empty" data-hide="1">
 				<div class="panel-empty-msg">
-					<svg viewBox="0 0 100 100"><polygon points="100 0 0 50 100 100 100 0"/></svg>
 					<p class="panel-empty-text">Open a panel to get started!</p>
 				</div>
 			</div>
 		</div>
+
+		<!-- CONTROLS -->
+		<nav class="controls">
+
+			<!-- CATALOG AND HELP -->
+			<a class="controls-btn controls-btn-override" data-tooltip-text="Home" data-tooltip-direction="bottom" href="../">
+				<svg viewBox="0 0 100 100"><path d="m50,10L15,45v45h70v-45L50,10Zm-25,70v-30.858l25-25,25,25v30.858H25Z"/></svg>
+			</a>
+			<a class="controls-btn controls-btn-override" data-tooltip-text="Tutorial" data-tooltip-direction="bottom" href="./" target="_blank">
+				<svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>
+			</a>
+
+			<div class="controls-spacer"></div>
+
+			<!-- PANEL TOGGLES -->
+			<div class="controls-btn" id="toggle-info" data-active="1" onclick="togglePanel('info')" data-tooltip-text="Toggle Info" data-tooltip-direction="bottom">
+				<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
+			</div>
+			<div class="controls-btn" id="toggle-editor" data-active="1" onclick="togglePanel('editor')" data-tooltip-text="Toggle Editor" data-tooltip-direction="bottom">
+				<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>
+			</div>
+			<div class="controls-btn" id="toggle-preview" data-active="1" onclick="togglePanel('preview')" data-tooltip-text="Toggle Preview" data-tooltip-direction="bottom">
+				<svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg>
+			</div>
+
+			<div class="controls-spacer"></div>
+
+			<!-- CODE FUNCTIONS -->
+			<a class="controls-btn" data-tooltip-text="Reset Demo" data-tooltip-direction="bottom" href="">
+				<svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg>
+			</a>
+			<div class="controls-btn" data-tooltip-text="Download Code" data-tooltip-direction="bottom" onclick="editorDownload();">
+				<svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg>
+			</div>
+			<a class="controls-btn" data-tooltip-text="Open Demo in New Tab" data-tooltip-direction="bottom" href="#" target="_blank" id="newtab">
+				<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
+			</a>
+		</nav>
 	</main>
 
-	<script src="editor.js"></script>
+	<script src="../assets/scripts/editor.js"></script>
 </body>
 </html>

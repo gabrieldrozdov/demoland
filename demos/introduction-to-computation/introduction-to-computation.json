@@ -1,0 +1,38 @@
+{
+	"week-1": {
+		"title": "What is code?",
+		"subtitle": "Week 1",
+		"desc": "Let’s get started by playing around with HTML and CSS!",
+		"color": "var(--pink)",
+		"demos": {
+			"introduction": {
+				"name": "Introduction",
+				"color": "var(--pink)"
+			},
+			"splitting-things-up": {
+				"name": "Splitting things up",
+				"color": "var(--green)"
+			},
+			"making-it-pretty": {
+				"name": "Making it pretty",
+				"color": "var(--blue)"
+			},
+			"programmatic-poetry": {
+				"name": "Programmatic poetry",
+				"color": "var(--yellow)"
+			},
+			"brought-to-life": {
+				"name": "Brought to life",
+				"color": "var(--purple)"
+			},
+			"every-click-a-story": {
+				"name": "Every click, a story",
+				"color": "var(--red)"
+			},
+			"whats-next": {
+				"name": "What’s next?",
+				"color": "var(--pink)"
+			}
+		}
+	}
+}
