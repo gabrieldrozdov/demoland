@@ -34,5 +34,57 @@
 				"color": "var(--pink)"
 			}
 		}
+	},
+	"week-2": {
+		"title": "The basics",
+		"subtitle": "Week 2",
+		"desc": "Introducing JavaScript, which looks and functions just like most programming languages.",
+		"color": "var(--green)",
+		"demos": {
+			"recap": {
+				"name": "Recap",
+				"color": "var(--pink)"
+			},
+			"html-template": {
+				"name": "HTML template",
+				"color": "var(--green)"
+			},
+			"testing-code": {
+				"name": "Testing code",
+				"color": "var(--blue)"
+			},
+			"variables": {
+				"name": "Variables",
+				"color": "var(--yellow)"
+			},
+			"data-types": {
+				"name": "Data types",
+				"color": "var(--purple)"
+			},
+			"operators": {
+				"name": "Operators",
+				"color": "var(--red)"
+			},
+			"conditionals": {
+				"name": "Conditionals",
+				"color": "var(--pink)"
+			},
+			"functions": {
+				"name": "Functions",
+				"color": "var(--green)"
+			},
+			"scope": {
+				"name": "Scope",
+				"color": "var(--blue)"
+			},
+			"weekly-challenge": {
+				"name": "Weekly challenge",
+				"color": "var(--yellow)"
+			},
+			"homework-template": {
+				"name": "Homework template",
+				"color": "var(--purple)"
+			}
+		}
 	}
 }
