@@ -73,12 +73,12 @@
 				"name": "Functions",
 				"color": "var(--green)"
 			},
-			"scope": {
-				"name": "Scope",
+			"side-effects": {
+				"name": "Side effects",
 				"color": "var(--blue)"
 			},
-			"weekly-challenge": {
-				"name": "Weekly challenge",
+			"scope": {
+				"name": "Scope",
 				"color": "var(--yellow)"
 			},
 			"homework-template": {

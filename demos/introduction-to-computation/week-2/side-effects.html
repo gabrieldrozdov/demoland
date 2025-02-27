@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+
+		// This variable tracks our money
+		let myMoney = 100;
+		
+		// Add to myMoney when we deposit money
+		function depositMoney(amount) {
+			myMoney = myMoney + amount;
+		}
+
+		// Subtract from myMoney when we withdraw money
+		function withdrawMoney(amount) {
+			myMoney = myMoney - amount;
+		}
+
+		// Check the value of myMoney to see if it’s positive or negative
+		// If negative, say we’re in debt
+		// Note that this function does NOT have any arguments
+		function checkMyAccount() {
+			if (myMoney > 0) {
+				console.log("You have $" + myMoney + " in the bank!");
+			} else {
+				console.log("You are $" + myMoney + " in debt!");
+			}
+		}
+
+		// Example usage
+		depositMoney(100);
+		withdrawMoney(25);
+		checkMyAccount();
+		depositMoney(3000);
+		withdrawMoney(4500);
+		checkMyAccount();
+
+	</script>
+</body>
+
+</html>

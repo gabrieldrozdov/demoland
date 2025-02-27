@@ -10,13 +10,18 @@
 <body>
 
 	<script>
-		function myFunctionName(argument1, argument2) {
-			let myComputation = argument1 - argument2;
-			return myComputation
+		
+		// This is a global variable
+		// We can access it from anywhere
+		let myNumber = 100;
+
+		// This is an example of a function-scoped variables
+		// “amount” is a local variable
+		// We can only access it inside the function
+		function changeNumber(amount) {
+			myNumber = myNumber + amount;
 		}
 
-		myFunctionName(1, 2); // This returns -1
-		console.log(myComputation); // This results in an error
 	</script>
 </body>
 

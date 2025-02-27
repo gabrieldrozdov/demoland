@@ -10,33 +10,43 @@
 <body>
 
 	<script>
-		// Example 1
+		// A basic conditional
 		if (1 < 2) {
-			// console.log('hello!');
+			console.log(true);
 		} else {
-			// console.log('goodbye!');
+			console.log(false);
 		}
 
-		// Example 2
-		let randomNumber = Math.random();
-		if (randomNumber < 0.5) {
-			// console.log('hello!');
-		} else {
-			// console.log('goodbye!');
-		}
-
-		// Example 3
+		// Comparing strings
 		let myString1 = 'hello';
 		let myString2 = 'goodbye';
-
 		if (myString1 == myString2) {
-			// console.log('it’s a match!');
+			console.log(true);
 		} else {
-			// console.log('it’s not a match!');
+			console.log(false);
 		}
 
-		// Example 4
-		// Math.random()<0.5 ? console.log('heads') : console.log('tails');
+		// Using multiple if statements
+		// This checks if a number is positive, negative, or 0
+		let myNumber = 10;
+		if (myNumber < 0) {
+			console.log('negative');
+		} else if (myNumber > 0) {
+			console.log('positive');
+		} else if (myNumber == 0) {
+			console.log('zero')
+		}
+
+		// Coin flip example using a random number
+		let randomNumber = Math.random();
+		if (randomNumber < 0.5) {
+			console.log('heads');
+		} else {
+			console.log('tails');
+		}
+
+		// The same conditional written using the ternary ? operator
+		Math.random()<0.5 ? console.log('heads') : console.log('tails');
 	</script>
 </body>
 

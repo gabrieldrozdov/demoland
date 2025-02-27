@@ -10,37 +10,42 @@
 <body>
 
 	<script>
-		// Example 1
-		function myFunctionName(argument1, argument2) {
-			let myComputation = argument1 - argument2;
-			return myComputation
-		}
 
-		// This returns -1
-		myFunctionName(1, 2);
+		// This is our function, which we called isEvenOrOdd
+		// It takes one argument, which we attach to a local variable called “num”
+		// We can refer to the inputted value inside of the function
+		function isEvenOrOdd(num) {
 
-		// ———————————————
-		// Example 2
-		let myVariable = 0;
+			// We can use the modulo operator to check if a number is divisible by 2
+			let remainder = num % 2;
 
-		function makeTheVariableGoUp() {
-			myVariable++;
-			if (myVariable >= 3) {
-				console.log('the variable is now ' + myVariable);
+			// If the remainder is 0, the number is even
+			if (remainder == 0) {
+				return true
+			} else {
+				return false
 			}
+			
 		}
 
-		makeTheVariableGoUp();
-		makeTheVariableGoUp();
-		makeTheVariableGoUp(); // logs 'the variable is now 3'
-		makeTheVariableGoUp(); // logs 'the variable is now 4'
-		makeTheVariableGoUp(); // logs 'the variable is now 5' 
+		// This returns true, but doesn’t log it
+		// It just returns the value true
+		isEvenOrOdd(2);
 
-		// ———————————————
-		// Example 3
-		const compareNums = (num1, num2) => { console.log(num1 < num2) }
-		compareNums(1, 2); // logs true
-		compareNums(2, 1); // logs false
+		// We can set the returned value to a variable
+		let result = isEvenOrOdd(3);
+		console.log(result);
+
+		// Functions are useful because we can reuse them
+		// They make our code much cleaner and more efficient
+		console.log(isEvenOrOdd(1000));
+		console.log(isEvenOrOdd(400));
+		console.log(isEvenOrOdd(25));
+		console.log(isEvenOrOdd(-503));
+
+		// But we have to be careful that we give them a correct argument!
+		// The following input would cause an error
+		// isEvenOrOdd('llama');
 
 	</script>
 </body>
