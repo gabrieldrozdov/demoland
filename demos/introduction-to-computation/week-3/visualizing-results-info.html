@@ -1,0 +1,24 @@
+<h1>
+	<span>innerHTML</span>
+	Visualizing results
+</h1>
+
+<p>
+	Functions become much more useful once we start tracking and displaying their results (i.e. whatever they return, or any of their side effects). We can easily do this with a little HTML.
+</p>
+
+<p>
+	This is the same demo as before, but we have a new <span class="info-code">&lt;div&gt;</span> element. This element has an <span class="info-code">id</span> attribute, which we can use as a unique identifier.
+</p>
+
+<p>
+	We can then <strong>target</strong> our element in our JavaScript. This lets us change its properties, such as its content and styling. We target elements by using <strong class="info-code">document.querySelector('#[element-id]')</strong>. We can then assign the targeted element to a variable to easily access it in our JavaScript.
+</p>
+
+<p>
+	In this demo, we target the element with the ID of “results” and then change its content using <strong class="info-code">.innerHTML</strong>. We can set this property to any string, which gets interpreted as actual HTML.
+</p>
+
+<p>
+	Right now, we’re setting the element’s inner HTML to a new value. What happens when you change the <span class="info-code">=</span> sign to a <span class="info-code">+=</span> sign and then repeatedly click the button?
+</p>

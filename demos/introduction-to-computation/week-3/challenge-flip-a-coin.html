@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<!-- TASK 1: Change this input to a slider -->
+	<input type="number" value="10" id="flips-input">
+
+	<button onclick="flipACoin();">
+		Flip a coin!
+	</button>
+
+	<div id="results"></div>
+
+	<script>
+
+		function flipACoin() {
+			const resultsElement = document.querySelector('#results');
+			const flipsInput = document.querySelector('#flips-input');
+			const totalFlips = flipsInput.value;
+			let flips = 0;
+			while (flips < totalFlips) {
+				if (Math.random() < .5) {
+
+					// TASK 2: Customize the “heads” result
+					resultsElement.innerHTML += '<span style="">TODO </span>';
+
+				} else {
+
+					// TASK 3: Customize the “tails” result
+					resultsElement.innerHTML += '<span style="">TODO </span>';
+
+				}
+				flips++;
+			}
+		}
+
+	</script>
+</body>
+
+</html>

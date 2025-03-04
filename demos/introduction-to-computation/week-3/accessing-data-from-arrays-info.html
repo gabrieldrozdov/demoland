@@ -1,0 +1,16 @@
+<h1>
+	<span>Array Indexing</span>
+	Accessing data from arrays
+</h1>
+
+<p>
+	We can access content in an array if we know its <strong>index</strong>. In this demo, we have an array called <span class="info-code">theBeatles</span> that contains the names of the four Beatles members.
+</p>
+
+<p>
+	Since arrays are <span class="info-code">0-indexed</span>, the first entry has the index value of 0. That means that <span class="info-code">theBeatles[0]</span> is “John” and <span class="info-code">theBeatles[3]</span> is “George”.
+</p>
+
+<p>
+	We can continuously iterate through the array by tracking our current index with a variable. When we run our function, we increase our variable’s number and then check if it is still within the valid range. If it is outside of the range, we set it back to 0. Otherwise, we end up with a <strong>boundary error</strong>.
+</p>

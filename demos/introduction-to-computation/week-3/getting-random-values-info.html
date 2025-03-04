@@ -1,0 +1,42 @@
+<h1>
+	<span>Math.random()</span>
+	Getting random values
+</h1>
+
+<p>
+	We’ve seen how <strong class="info-code">Math.random()</strong> gives us a random float between 0 and 1 (not including 1, so really up until 0.99999...). We can use this random number generator to do two more things:
+</p>
+
+<ul>
+	<li>Generate a random integer in any specified range</li>
+	<li>Use that integer to grab a random value from an array</li>
+</ul>
+
+<p>
+	In this demo, we have two helper functions. The first helper function is called <strong class="info-code">getRandomInteger</strong> and generates a random integer (rounded number) between an inputted minimum and maximum value. It then returns that integer. Here’s how it works:
+</p>
+
+<ol>
+	<li>Calculate the total range of possible numbers by subtracting the minimum from the maximum (<span class="info-code">max-min</span>).</li>
+	<li>Generate a random float between 0–1 using <span class="info-code">Math.random()</span>.</li>
+	<li>Multiply the random float by our full range from step 1.</li>
+	<li>Add the minimum possible value to that number.</li>
+	<li>Round that number down using <span class="info-code">Math.floor()</span>.</li>
+</ol>
+
+<h3>Example: Generate a random number between -100 and 50</h3>
+
+<div class="info-content-indent">
+	<ol>
+		<li>First, we subtract the max (50) by the min (-100). This gives us <span class="info-code">50 - -100 = 150</span>.</li>
+		<li><span class="info-code">Math.random()</span> gives us a random number between 0 and 1.</li>
+		<li><span class="info-code">0 * 150 = 0</span> and <span class="info-code">1 * 150 = 150</span>. That means that multiplying our random float by our range gives us a random number with a minimum of 0 and a maximum of 150.</li>
+		<li><span class="info-code">0 + -100 = -100</span> and <span class="info-code">150 + -100 = 50</span>. That means we’ve officially ended up with a number in the range of -100 and 50! But this number is still a float</li>
+		<li>We round that number down because if we’re accessing a value from an array, we don’t accidentally want to get a number too high for the array’s range. We could also round that number up using <span class="info-code">Math.ceil()</span> or to the nearest integer using <span class="info-code">Math.round()</span></li>
+	</ol>
+</div>
+
+<p>
+	The second helper function is called <strong class="info-code">getRandomValue</strong>. This function takes an array as its input and then uses <span class="info-code">getRandomInteger</span> to generate a random index in the array’s range. It then returns that value.
+</p>
+

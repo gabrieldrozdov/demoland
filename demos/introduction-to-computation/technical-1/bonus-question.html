@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		function isALeapYear(year) {
+			// If the year is divisible by 4
+			if (year % 4 == 0) {
+
+				// If it’s a centurial year, it also needs to be divisible by 400
+				if (year % 100 == 0) {
+
+					if (year % 400 == 0) {
+						return true
+					} else {
+						return false
+					}
+
+				} else {
+					return true
+				}
+
+			} else {
+				return false
+			}
+		}
+
+		// We can write this more simply
+		function isLeapYear2(year) {
+			return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+		}
+
+		console.log(isALeapYear(2024)); // true
+		console.log(isALeapYear(2023)); // false
+		console.log(isALeapYear(2000)); // true
+		console.log(isALeapYear(1990)); // false
+	</script>
+</body>
+
+</html>

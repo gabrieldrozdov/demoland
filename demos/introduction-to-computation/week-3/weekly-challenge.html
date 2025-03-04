@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<!-- TASK 3 -->
+	<!-- Add an input element of type="range" to control the total number of dice rolls -->
+
+	<button onclick="rollTheDice();">
+		Roll a dice!
+	</button>
+
+	<div id="output"></div>
+
+	<script>
+
+		// TASK 2
+		// Add options to your dice based on your theme from Task 1
+		let diceOptions = [
+			"<span style='color: red; font-size: 10px;'>TODO </span>",
+			"<span style='color: blue; font-size: 20px;'>TODO </span>",
+		];
+
+		function rollTheDice() {
+			const output = document.querySelector('#output');
+
+			// TASK 4
+			// Finish this loop to run based a certain number of times based on the input element’s value
+			// for () {
+			// 	output.innerHTML += getRandomDiceRoll();
+			// }
+			output.innerHTML += getRandomDiceRoll(); // Delete this once your loop works!
+		}
+
+		// Helper function for getting a random dice roll
+		function getRandomDiceRoll() {
+			return diceOptions[Math.floor(Math.random() * diceOptions.length)];
+		}
+
+	</script>
+</body>
+
+</html>

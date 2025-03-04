@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="getABeatle();">
+		Get a Beatle!
+	</button>
+
+	<div id="output"></div>
+
+	<script>
+
+		let theBeatles = [
+			"John",
+			"Paul",
+			"Ringo",
+			"George"
+		];
+
+		let index = 0;
+		function getABeatle() {
+			const output = document.querySelector('#output');
+			output.innerHTML += theBeatles[index] + " & ";
+
+			// Increment the index
+			index++;
+
+			// Check if the index is out of bounds
+			if (index >= theBeatles.length) {
+				index = 0;
+			}
+		}
+
+
+
+	</script>
+</body>
+
+</html>

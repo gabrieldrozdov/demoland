@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="getARandomBeatle();">
+		Get a random Beatle!
+	</button>
+
+	<div id="output"></div>
+
+	<script>
+
+		let theBeatles = [
+			"John",
+			"Paul",
+			"Ringo",
+			"George"
+		];
+
+		function getARandomBeatle() {
+			const output = document.querySelector('#output');
+			const randomBeatle = getRandomValueFromArray(theBeatles);
+			output.innerHTML += randomBeatle + " & ";
+		}
+
+		// Generate a random integer between a minimum number (inclusive) and maximum number (exclusive)
+		function getRandomInteger(min, max) {
+			const range = max - min;
+			const randomFloat = Math.random();
+			const adjustedValue1 = randomFloat * range;
+			const adjustedValue2 = adjustedValue1 + min;
+			const roundedValue = Math.floor(adjustedValue2);
+			return roundedValue;
+		}
+
+		// Grabs a value from an array by generating a random index in the array’s range
+		function getRandomValueFromArray(arr) {
+			const randomIndex = getRandomInteger(0, arr.length);
+			const randomValue = arr[randomIndex];
+			return randomValue;
+		}
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		function legalToDrink(year) {
+			const age = 2025-year;
+
+			if (age >= 21) {
+				return true
+			} else {
+				return false
+			}
+		}
+
+		console.log(legalToDrink(1997));
+		console.log(legalToDrink(2004));
+		console.log(legalToDrink(2010));
+	</script>
+</body>
+
+</html>

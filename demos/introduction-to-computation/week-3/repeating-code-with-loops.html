@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="flipACoin();">
+		Flip a coin!
+	</button>
+
+	<div id="results"></div>
+
+	<script>
+
+		function flipACoin() {
+			const resultsElement = document.querySelector('#results');
+
+			// This variable is our “loop counter”
+			let flips = 0;
+
+			while (flips < 10) {
+
+				if (Math.random() < .5) {
+					resultsElement.innerHTML += '<span style="color: red;">Heads! </span>';
+				} else {
+					resultsElement.innerHTML += '<span style="color: blue;">Tails! </span>';
+				}
+
+				// If we don’t increase flips, we get an infinite loop
+				flips = flips + 1;
+
+				// Another way to write this:
+				// flips++;
+
+			}
+		}
+
+	</script>
+</body>
+
+</html>

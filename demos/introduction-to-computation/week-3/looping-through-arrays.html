@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="whileExample();">
+		Use a while loop
+	</button>
+
+	<button onclick="forIndexExample();">
+		Use a for loop (index method)
+	</button>
+
+	<button onclick="forOfExample();">
+		Use a for loop (“of” method)
+	</button>
+
+	<div id="output"></div>
+
+	<script>
+
+		let theBeatles = [
+			"John",
+			"Paul",
+			"Ringo",
+			"George"
+		];
+
+		const output = document.querySelector('#output');
+
+		function whileExample() {
+			let i = 0;
+			while (i < theBeatles.length) {
+				output.innerHTML += theBeatles[i] + " & ";
+				i++;
+			}
+		}
+
+		function forIndexExample() {
+			for (let i = 0; i < theBeatles.length; i++) {
+				output.innerHTML += theBeatles[i] + " & ";
+			}
+		}
+
+		function forOfExample() {
+			for (let name of theBeatles) {
+				output.innerHTML += name + " & ";
+			}
+		}
+
+	</script>
+</body>
+
+</html>

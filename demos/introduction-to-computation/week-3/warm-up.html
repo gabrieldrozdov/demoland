@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- A graphical user interface (GUI) -->
+	<input type="range" value="50" min="1" max="500" id="poem-length">
+
+	<button onclick="generatePoem();">
+		Generate a poem!
+	</button>
+
+	<div id="output"></div>
+
+	<script>
+		// EDIT THE FOLLOWING: Storing words in arrays
+		let articles = [
+			"a",
+			"many",
+		];
+		let adjectives = [
+			"blue",
+			"red",
+		];
+		let nouns = [
+			"dog",
+			"cat",
+		];
+		let adverbs = [
+			"slowly",
+			"quickly",
+		];
+		let verbs = [
+			"walking",
+			"running",
+		];
+		let conjunctions = [
+			"and",
+			"then",
+		];
+
+		// An array to hold our other arrays
+		let categories = [articles, adjectives, nouns, adverbs, verbs, conjunctions];
+
+		// A function that randomly generates a poem
+		function generatePoem() {
+			// Getting data from HTML elements
+			const poemLength = document.querySelector('#poem-length').value;
+
+			// A “for” loop
+			let poem = "";
+			let categoryIndex = 0;
+			for (let i = 0; i < poemLength; i++) {
+				// Grab the current category
+				const currentCategory = categories[categoryIndex];
+		
+				// Get a random word from that category
+				const randomWord = currentCategory[Math.floor(Math.random()*currentCategory.length)];
+
+				// Add that word to the poem
+				poem += randomWord + " ";
+
+				// Go to the next category
+				categoryIndex++;
+				if (categoryIndex == 6) {
+					categoryIndex = 0;
+				}
+			}
+
+			// Visually displaying our poem
+			const output = document.querySelector('#output');
+			output.innerHTML = poem;
+		}
+
+		// A helper function
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<input type="number" value="10" id="flips-input">
+
+	<button onclick="flipACoin();">
+		Flip a coin!
+	</button>
+
+	<div id="results"></div>
+
+	<script>
+
+		function flipACoin() {
+			const resultsElement = document.querySelector('#results');
+
+			// Grab the value from our number input element
+			const flipsInput = document.querySelector('#flips-input');
+			const totalFlips = flipsInput.value;
+
+			let flips = 0;
+			while (flips < totalFlips) {
+				if (Math.random() < .5) {
+					resultsElement.innerHTML += '<span style="color: red;">Heads! </span>';
+				} else {
+					resultsElement.innerHTML += '<span style="color: blue;">Tails! </span>';
+				}
+				flips++;
+			}
+		}
+
+	</script>
+</body>
+
+</html>
