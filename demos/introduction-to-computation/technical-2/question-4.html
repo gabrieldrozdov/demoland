@@ -7,19 +7,17 @@
 	<title>Document</title>
 </head>
 
-<body>
 
-	<button onclick="alarm();">
-		Call the alarm!
-	</button>
+<body>
+	<button onclick="generateTallyMarks();">Click me!</button>
+
+	<div id="container"></div>
 
 	<script>
-
-		function alarm() {
-			// Make the alert run 10 times using a “for” loop
-			alert('OK PLEASE ACTUALLY WAKE UP');
+		function generateTallyMarks() {
+			let container = document.querySelector('#container');
+			container.innerHTML += "| ";
 		}
-
 	</script>
 </body>
 

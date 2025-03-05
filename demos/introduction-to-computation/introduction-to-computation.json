@@ -87,7 +87,7 @@
 			}
 		}
 	},
-	"technical-1": {
+	"technical-1-answers": {
 		"title": "Answers to Technical 1",
 		"subtitle": "Week 3",
 		"desc": "Try to answer these questions on your own first! You can access the assignment <a href='https://classroom.gdwithgd.com/?course=introduction-to-computation-v1&resource=technical-1' target='_blank'>here</a>.",
@@ -149,12 +149,12 @@
 				"name": "Try It Out: “while” loops",
 				"color": "var(--red)"
 			},
+			"try-it-out-while-loops-solution": {
+				"name": "Try It Out: “while” loops solution",
+				"color": "var(--red)"
+			},
 			"building-an-interface": {
 				"name": "Building an interface",
-				"color": "var(--pink)"
-			},
-			"try-it-out-input-elements": {
-				"name": "Try It Out: &lt;input&gt; elements",
 				"color": "var(--pink)"
 			},
 			"different-kinds-of-loops": {
@@ -163,6 +163,10 @@
 			},
 			"try-it-out-for-loops": {
 				"name": "Try It Out: “for” loops",
+				"color": "var(--green)"
+			},
+			"try-it-out-for-loops-solution": {
+				"name": "Try It Out: “for” loops solution",
 				"color": "var(--green)"
 			},
 			"accessing-data-from-arrays": {
@@ -185,9 +189,45 @@
 				"name": "Try It Out: Random numbers",
 				"color": "var(--red)"
 			},
+			"try-it-out-random-numbers-solution": {
+				"name": "Try It Out: Random numbers solution",
+				"color": "var(--red)"
+			},
 			"weekly-challenge": {
 				"name": "Weekly Challenge: Funky dice",
 				"color": "var(--pink)"
+			},
+			"weekly-challenge-solution": {
+				"name": "Weekly Challenge: Funky dice solution",
+				"color": "var(--pink)"
+			}
+		}
+	},
+	"technical-2": {
+		"title": "Technical 2",
+		"subtitle": "Week 4",
+		"desc": "Topics: random numbers, input elements, accessing data from arrays, for/while loops.",
+		"color": "var(--yellow)",
+		"demos": {
+			"question-1": {
+				"name": "Question 1",
+				"color": "var(--pink)"
+			},
+			"question-2": {
+				"name": "Question 2",
+				"color": "var(--green)"
+			},
+			"question-3": {
+				"name": "Question 3",
+				"color": "var(--blue)"
+			},
+			"question-4": {
+				"name": "Question 4",
+				"color": "var(--yellow)"
+			},
+			"bonus-question": {
+				"name": "Bonus Question",
+				"color": "var(--purple)"
 			}
 		}
 	}

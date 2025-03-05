@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<input type="range" min="-1000" max="1000" value="0" id="slider" oninput="updateText();">
+
+	<div id="text">0</div>
+
+	<script>
+
+		function updateText() {
+			console.log('You can look at the console to see that this function is running!');
+			console.log('Here’s a random number to prove it: ' + Math.random());
+			console.log('Your job is to make the div element with id="text" say the value of the slider when this function runs.');
+		}
+
+	</script>
+</body>
+
+</html>

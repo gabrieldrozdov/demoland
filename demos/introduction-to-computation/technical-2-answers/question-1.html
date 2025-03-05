@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<button onclick="generateRandomNumber();">Click me!</button>
+
+	<script>
+
+		function generateRandomNumber() {
+			let min = -485;
+			let max = 213;
+			let range = max - min;
+			let randomNumber = Math.random();
+			let fullRange = randomNumber * range;
+			let adjustedRange = fullRange + min;
+			let rounded = Math.round(adjustedRange);
+			alert(rounded);
+
+			// We can do all the previous code in a single line
+			let randomOneLine = Math.round((Math.random() * (213 - -485)) + -485);
+			alert(randomOneLine);
+		}
+
+	</script>
+</body>
+
+</html>

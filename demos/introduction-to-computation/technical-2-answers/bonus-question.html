@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+
+<body>
+	<button onclick="readAllData();">Click me!</button>
+
+	<script>
+
+		let myData = [
+			['red', 'green', 'blue'],
+			['cat', 'dog', 'owl', 'walrus', 'dugong', 'elephant'],
+			['sofa', 'armchair'],
+			['1', '2', '3', '4', '5']
+		]
+
+		function readAllData() {
+			for (let subarray of myData) {
+
+				for (let individualString of subarray) {
+					alert(individualString);
+				}
+
+			}
+		}
+		
+	</script>
+</body>
+
+</html>

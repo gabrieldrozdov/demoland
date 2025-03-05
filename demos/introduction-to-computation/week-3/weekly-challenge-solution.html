@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<input type="range" min="1" max="10" value="5" id="slider">
+	
+	<button onclick="rollTheDice();">
+		Roll a dice!
+	</button>
+
+	<div id="output"></div>
+
+	<script>
+
+		let diceOptions = [
+			"<span style='color: red; font-size: 10px;'>result 1 </span>",
+			"<span style='color: blue; font-size: 11px;'>result 2 </span>",
+			"<span style='color: green; font-size: 12px;'>result 3 </span>",
+			"<span style='color: yellow; font-size: 13px;'>result 4 </span>",
+			"<span style='color: orange; font-size: 14px;'>result 5 </span>",
+			"<span style='color: purple; font-size: 15px;'>result 6 </span>",
+			"<span style='color: pink; font-size: 16px;'>result 7 </span>",
+			"<span style='color: cyan; font-size: 17px;'>result 8 </span>",
+			"<span style='color: black; font-size: 18px;'>result 9 </span>",
+			"<span style='color: gray; font-size: 19px;'>result 10 </span>",
+		];
+
+		function rollTheDice() {
+			const output = document.querySelector('#output');
+
+			const slider = document.querySelector('#slider');
+			const totalRolls = slider.value;
+
+			for (let i=0; i<totalRolls; i++) {
+				output.innerHTML += getRandomDiceRoll();
+			}
+		}
+
+		// Helper function for getting a random dice roll
+		function getRandomDiceRoll() {
+			return diceOptions[Math.floor(Math.random() * diceOptions.length)];
+		}
+
+	</script>
+</body>
+
+</html>

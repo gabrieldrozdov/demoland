@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="randomNumber(0, 10);">
+		Generate a random number!
+	</button>
+
+	<script>
+
+		function randomNumber(min, max) {
+			let range = max-min;
+			let randomNumber = Math.random();
+			let numberInFullRange = randomNumber*range;
+			let numberInCorrectRange = numberInFullRange + min;
+			alert(numberInCorrectRange);
+
+			// To round the number, we can do the following:
+			alert(Math.round(numberInCorrectRange));
+		}
+
+	</script>
+</body>
+
+</html>
