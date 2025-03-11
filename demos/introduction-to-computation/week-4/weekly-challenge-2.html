@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<input type="text" id="animal-name">
+	<button onclick="addAnimal();">Add animal</button>
+	<button onclick="removeAnimal();">Remove animal</button>
+
+	<script>
+
+		let animals = [
+			"dog",
+			"cat",
+			"fish",
+			"goat",
+			"owl"
+		];
+
+		function addAnimal() {
+			let input = document.querySelector("#animal-name");
+
+			// Finish this function!
+			// Use .push()
+
+			// See what animals are in the array
+			alert(animals);
+		}
+
+		function removeAnimal() {
+			let input = document.querySelector("#animal-name");
+
+			// Finish this function!
+			// Use .indexOf() and also .splice()
+
+			// See what animals are in the array
+			alert(animals);
+		}
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<h1>Controls</h1>
+
+	<div>
+		<input type="text" id="input-1">
+		<button onclick="addToArray();">
+			Add element to end of array
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<button onclick="removeLastElement();">
+			Remove last element from array
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<input type="text" id="input-2">
+		<button onclick="getElementIndex();">
+			Get element index by content
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<input type="number" id="input-3">
+		<button onclick="removeElementByIndex();">
+			Remove element by index
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<input type="text" id="input-4">
+		<button onclick="removeElementByContent();">
+			Remove element by content
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<button onclick="sortArray();">
+			Sort array
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<button onclick="reverseArray();">
+			Reverse array
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<button onclick="shuffleArray();">
+			Shuffle array
+		</button>
+	</div>
+
+	<br>
+
+	<div>
+		<button onclick="emptyArray();">
+			Empty array
+		</button>
+	</div>
+
+	<br>
+
+	<h1>Array contents</h1>
+	<div id="output"></div>
+
+	<script>
+
+		let output = document.querySelector('#output');
+
+		let myData = [
+			"B is for bananas",
+			"F is for freelancer",
+			"A is for arm wrestle",
+			"Z is for zebra",
+			"C is for chair"
+		];
+
+		// We can an element to the end of an array using .push()
+		function addToArray() {
+			let newData = document.querySelector('#input-1').value;
+			myData.push(newData);
+			showArrayContents();
+		}
+
+		// .pop() removes the last element from an array
+		function removeLastElement() {
+			myData.pop();
+			showArrayContents();
+		}
+
+		// .indexOf() returns the index of an element in an array
+		function getElementIndex() {
+			let content = document.querySelector('#input-2').value;
+			let index = myData.indexOf(content);
+			alert(index);
+		}
+
+		// .splice() removes an element based on its index
+		// The second argument is how many elements to remove at that index
+		function removeElementByIndex() {
+			let index = document.querySelector('#input-3').value;
+			myData.splice(index, 1);
+			showArrayContents();
+		}
+
+		// We can use the .indexOf() with .splice() to remove it
+		function removeElementByContent() {
+			let content = document.querySelector('#input-4').value;
+			let index = myData.indexOf(content);
+			myData.splice(index, 1);
+			showArrayContents();
+		}
+
+		// We can sort an array alphanumerically with .sort()
+		function sortArray() {
+			myData.sort();
+			showArrayContents();
+		}
+
+		// We can reverse an array with .reverse()
+		function reverseArray() {
+			myData.reverse();
+			showArrayContents();
+		}
+
+		// Shuffling an array is a little tricky!
+		// Here’s a solution from StackOverflow
+		// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+		function shuffleArray() {
+			let currentIndex = myData.length;
+
+			// While there remain elements to shuffle...
+			while (currentIndex != 0) {
+
+				// Pick a remaining element...
+				let randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex--;
+
+				// And swap it with the current element.
+				[myData[currentIndex], myData[randomIndex]] = [
+					myData[randomIndex], myData[currentIndex]];
+			}
+
+			showArrayContents();
+		}
+
+		// We can clear out an array just by setting it back to an empty array
+		function emptyArray() {
+			myData = [];
+			showArrayContents();
+		}
+
+		// A helper function to show the contents of our array
+		function showArrayContents() {
+			output.innerHTML = ""; // clear contents first
+
+			// Go through array and add contents
+			for (let element of myData) {
+				output.innerHTML += element + "<br>";
+			}
+		}
+
+		showArrayContents();
+
+	</script>
+</body>
+
+</html>

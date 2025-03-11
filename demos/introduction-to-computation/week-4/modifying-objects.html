@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="navigateThroughObject();">
+		Check the values in my object!
+	</button>
+
+	<script>
+
+		let myObject = {
+			"name": 'Gabriel',
+			"home state": "NY",
+			"favorite color": "Puce"
+		}
+
+		// Override previous values
+		myObject['name'] = "Michael";
+		myObject['home state'] = "Utah";
+		
+		// Remove a key-value pair
+		delete myObject['favorite color'];
+
+		// Add a new key-value pair
+		myObject['business idea'] = "free hot dogs, no questions asked";
+
+		// Helper function to go through all key-value pairs
+		function navigateThroughObject() {
+			let keys = Object.keys(myObject);
+			for (let key of keys) {
+				alert(key + ": " + myObject[key]);
+			}
+		}
+
+	</script>
+</body>
+
+</html>

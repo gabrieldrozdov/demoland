@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+
+		let word1 = "Hello";
+		let word2 = "world!";
+
+		// Concatenate strings using +
+		let combined1 = word1 + " " + word2;
+		console.log(combined1);
+
+		// Or, use template literals!
+		// Use back ticks ` ` instead of quotes " "
+		// Back ticks are on the top-left of your keyboard
+		// Then use ${ } to insert variable names
+		let combined2 = `${word1} ${word2}`;
+		console.log(combined2);
+
+		// This makes it much easier to make complicated strings
+		let myString = `Hello there! Here is a random number: ${Math.random()} and here is a word: ${word2}`;
+		console.log(myString);
+
+	</script>
+</body>
+
+</html>

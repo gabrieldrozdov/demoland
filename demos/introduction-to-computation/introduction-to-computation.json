@@ -230,5 +230,73 @@
 				"color": "var(--purple)"
 			}
 		}
+	},
+	"technical-2-answers": {
+		"title": "Technical 2 Answers",
+		"subtitle": "Week 4",
+		"desc": "Topics: random numbers, input elements, accessing data from arrays, for/while loops.",
+		"color": "var(--yellow)",
+		"demos": {
+			"question-1": {
+				"name": "Question 1",
+				"color": "var(--pink)"
+			},
+			"question-2": {
+				"name": "Question 2",
+				"color": "var(--green)"
+			},
+			"question-3": {
+				"name": "Question 3",
+				"color": "var(--blue)"
+			},
+			"question-4": {
+				"name": "Question 4",
+				"color": "var(--yellow)"
+			},
+			"bonus-question": {
+				"name": "Bonus Question",
+				"color": "var(--purple)"
+			}
+		}
+	},
+	"week-4": {
+		"title": "Constructing data",
+		"subtitle": "Week 4",
+		"desc": "We can store, access, and modify data (relatively) easily using arrays and objects.",
+		"color": "var(--yellow)",
+		"demos": {
+			"template-literals": {
+				"name": "Template literals",
+				"color": "var(--yellow)"
+			},
+			"modifying-arrays": {
+				"name": "Modifying arrays",
+				"color": "var(--yellow)"
+			},
+			"playing-with-arrays": {
+				"name": "Playing with arrays",
+				"color": "var(--yellow)"
+			},
+			"getting-data-from-objects": {
+				"name": "Getting data from objects",
+				"color": "var(--yellow)"
+			},
+			"modifying-objects": {
+				"name": "Modifying objects",
+				"color": "var(--yellow)"
+			},
+			"weekly-challenge-1": {
+				"name": "Weekly Challenge 1",
+				"color": "var(--yellow)"
+			},
+			"weekly-challenge-2": {
+				"name": "Weekly Challenge 2",
+				"color": "var(--yellow)"
+			},
+			"weekly-challenge-3": {
+				"name": "Weekly Challenge 3",
+				"color": "var(--yellow)"
+			}
+		}
 	}
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="navigateThroughObject();">
+		Check the values in my object!
+	</button>
+
+	<script>
+
+		let myObject = {
+			"name": 'Gabriel',
+			"home state": "NY",
+			"favorite color": "Puce"
+		}
+
+		// We can log key-value pairs
+		console.log(myObject['name']);
+		console.log(myObject['home state']);
+		console.log(myObject['favorite color']);
+
+		// We can get all the keys for an object using Object.keys()
+		let allMyKeys = Object.keys(myObject);
+		console.log(allMyKeys);
+
+		// We can go through keys individually with a for loop
+		for (let key of allMyKeys) {
+			console.log(key);
+		}
+
+		// Helper function to go through all key-value pairs
+		function navigateThroughObject() {
+			let keys = Object.keys(myObject);
+			for (let key of keys) {
+				alert(key + ": " + myObject[key]);
+			}
+		}
+
+	</script>
+</body>
+
+</html>

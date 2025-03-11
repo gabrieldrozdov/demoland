@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+
+		let myData = [
+			"A is for arm wrestle",
+			"B is for bananas",
+			"C is for chair"
+		];
+
+		// Log the array on a single line
+		console.log(myData);
+
+		// Log each element of the array individually
+		for (let element of myData) {
+			console.log(element);
+		}
+
+		// Add data to the end of an array with .push()
+		myData.push("A is for also");
+		console.log(myData);
+
+		// Sort an array with .sort()
+		myData.sort();
+		console.log(myData);
+
+		// Reverse an array with .reverse()
+		myData.reverse();
+		console.log(myData);
+
+		// Get index of an element with .indexOf()
+		console.log(myData.indexOf('B is for bananas'));
+
+		// Remove element at index using .splice()
+		// Second argument is how many elements to remove
+		myData.splice(1, 1);
+		console.log(myData);
+
+		// Remove last element in the array with .pop()
+		myData.pop();
+		console.log(myData);
+
+		// Clear an array by resetting it to an empty array
+		myData = [];
+		console.log(myData);
+
+		// Remove elements based on rules using .filter()
+		// More info here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+	</script>
+</body>
+
+</html>
