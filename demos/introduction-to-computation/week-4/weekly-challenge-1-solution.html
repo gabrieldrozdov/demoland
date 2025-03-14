@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="combineAnimals();">Click me!</button>
+
+	<script>
+
+		let animals = [
+			"dog",
+			"cat",
+			"fish",
+			"goat",
+			"owl"
+		];
+
+		function combineAnimals() {
+			let randomAnimal1 = animals[Math.floor(Math.random()*animals.length)];
+			let randomAnimal2 = animals[Math.floor(Math.random()*animals.length)];
+
+			// SOLUTION HERE
+			let combinedAnimal = `${randomAnimal1} ${randomAnimal2}`;
+
+			alert(combinedAnimal);
+		}
+
+	</script>
+</body>
+
+</html>

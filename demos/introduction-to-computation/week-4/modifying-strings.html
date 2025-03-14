@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+
+		let myString = 'wow what a cool string';
+
+		// Accessing a specific letter works just like accessing an element from an array
+		console.log(myString[3]);
+		console.log(myString[5]);
+		console.log(myString[10]);
+
+		// Can also use .indexOf just like with arrays
+		console.log(myString.indexOf('w'));
+		console.log(myString.indexOf('cool'));
+		console.log(myString.indexOf('ing'));
+
+		// Get a substring (some part of the bigger string) with .substring()
+		// Demo from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring
+
+		const str1 = "Mozilla";
+
+		console.log(str1.substring(1, 3));
+		// Expected output: "oz"
+
+		console.log(str1.substring(2));
+		// Expected output: "zilla"
+
+		// Replace substrings in a larger string with .replace()
+		// Demo from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+
+		const paragraph = "I think Ruth's dog is cuter than your dog!";
+
+		console.log(paragraph.replace("Ruth's", "my"));
+		// Expected output: "I think my dog is cuter than your dog!"
+
+		// .slice() let’s your split a string into smaller substrings
+		// Demo from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice
+
+		const str2 = "The quick brown fox jumps over the lazy dog.";
+
+		console.log(str2.slice(31));
+		// Expected output: "the lazy dog."
+
+		console.log(str2.slice(4, 19));
+		// Expected output: "quick brown fox"
+
+		console.log(str2.slice(-4));
+		// Expected output: "dog."
+
+		console.log(str2.slice(-9, -5));
+		// Expected output: "lazy"
+
+		// To reverse a string, we need to split it into multiple substrings of single letters, then reverse those, then join back together
+		str2.split("").reverse().join("");
+		console.log(str2);
+
+	</script>
+</body>
+
+</html>

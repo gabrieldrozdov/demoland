@@ -265,6 +265,10 @@
 		"desc": "We can store, access, and modify data (relatively) easily using arrays and objects.",
 		"color": "var(--yellow)",
 		"demos": {
+			"select-element": {
+				"name": "The &lt;select&gt; element",
+				"color": "var(--yellow)"
+			},
 			"template-literals": {
 				"name": "Template literals",
 				"color": "var(--yellow)"
@@ -275,6 +279,10 @@
 			},
 			"playing-with-arrays": {
 				"name": "Playing with arrays",
+				"color": "var(--yellow)"
+			},
+			"modifying-strings": {
+				"name": "Modifying strings",
 				"color": "var(--yellow)"
 			},
 			"getting-data-from-objects": {
@@ -289,12 +297,24 @@
 				"name": "Weekly Challenge 1",
 				"color": "var(--yellow)"
 			},
+			"weekly-challenge-1-solution": {
+				"name": "Weekly Challenge 1 Solution",
+				"color": "var(--yellow)"
+			},
 			"weekly-challenge-2": {
 				"name": "Weekly Challenge 2",
 				"color": "var(--yellow)"
 			},
+			"weekly-challenge-2-solution": {
+				"name": "Weekly Challenge 2 Solution",
+				"color": "var(--yellow)"
+			},
 			"weekly-challenge-3": {
 				"name": "Weekly Challenge 3",
+				"color": "var(--yellow)"
+			},
+			"weekly-challenge-3-solution": {
+				"name": "Weekly Challenge 3 Solution",
 				"color": "var(--yellow)"
 			}
 		}

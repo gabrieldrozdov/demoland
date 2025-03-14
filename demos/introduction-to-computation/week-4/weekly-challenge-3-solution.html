@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<button onclick="allMyAnimals();">Who’s on my farm?</button>
+
+	<script>
+
+		let myFarm = {
+			"dogs": ["Ezekiel", "Henry", "Scooter"],
+			"cats": ["Limmy", "Minnow", "Limmyminnow"],
+			"fish": ["Stud", "Chad", "Goldfish"],
+			"cows": ["Big Boy"]
+		}
+
+		function allMyAnimals() {
+			let keys = Object.keys(myFarm);
+
+			for (let key of keys) {
+
+				alert(key);
+
+				// SOLUTION HERE
+				let subArray = myFarm[key];
+				for (let name of subArray) {
+					alert(name);
+				}
+				
+			}
+
+		}
+
+	</script>
+</body>
+
+</html>
