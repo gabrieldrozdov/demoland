@@ -266,7 +266,7 @@
 		"color": "var(--yellow)",
 		"demos": {
 			"select-element": {
-				"name": "The &lt;select&gt; element",
+				"name": "The “select” element",
 				"color": "var(--yellow)"
 			},
 			"template-literals": {
