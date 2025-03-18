@@ -318,5 +318,17 @@
 				"color": "var(--yellow)"
 			}
 		}
+	},
+	"week-5": {
+		"title": "Fun with CSS",
+		"subtitle": "Week 5",
+		"desc": "Let’s make self-portraits!",
+		"color": "var(--purple)",
+		"demos": {
+			"css-self-portraits": {
+				"name": "CSS Self-portraits",
+				"color": "var(--purple)"
+			}
+		}
 	}
 }

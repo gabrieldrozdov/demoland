@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		/* This applies to all elements inside the body element */
+		body * {
+			position: absolute;
+		}
+
+		/* Add your classes here! */
+		.name-label {
+			top: 0;
+			left: 0;
+			padding: 20px;
+			background-color: teal;
+			font-family: cursive;
+		}
+		.green-oval {
+			background-color: green;
+			border-radius: 50%;
+		}
+		.blue-squircle {
+			background-color: blue;
+			border-radius: 10px;
+		}
+		.yellow-diamond {
+			background-color: yellow;
+			transform: rotate(45deg);
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Text -->
+
+	<div class="name-label">hi my name is ____</div>
+
+	<!-- Green ovals -->
+	<div class="green-oval" style="top: 100px; left: 100px; width: 100px; height: 100px;"></div>
+
+	<div class="green-oval" style="top: 200px; left: 100px; width: 100px; height: 100px;"></div>
+
+	<div class="green-oval" style="top: 100px; left: 200px; width: 100px; height: 100px;"></div>
+
+	<div class="green-oval" style="top: 200px; left: 200px; width: 200px; height: 100px;"></div>
+
+	<!-- Blue squircles -->
+	<div class="blue-squircle" style="top: 25%; left: 25%; width: 50%; height: 50vh;"></div>
+
+	<!-- Yellow diamonds -->
+	<div class="yellow-diamond" style="right: 10px; bottom: 10px; width: 200px; height: 200px;"></div>
+
+</body>
+
+</html>
