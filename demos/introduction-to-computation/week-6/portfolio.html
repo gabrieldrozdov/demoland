@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		/* Nav */
+		.nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			background-color: black;
+			padding: 5px;
+			gap: 10px;
+		}
+		.nav-link {
+			color: yellow;
+		}
+		.nav-spacer {
+			flex-grow: 1;
+		}
+
+		/* Header */
+		.header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: lightgray;
+			width: 100vw;
+			height: 100vh;
+			flex-direction: column;
+			gap: 20px;
+			text-align: center;
+			padding: 20px;
+		}
+		.header-logo {
+			font-size: 48px;
+		}
+		.header-links {
+			display: flex;
+			gap: 20px;
+		}
+		.header-link {
+			font-size: 24px;
+			color: red;
+		}
+
+		/* Portfolio */
+		.portfolio {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+			padding: 20px;
+		}
+
+		/* Portfolio item */
+		.portfolio-item {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			background-color: lightgray;
+			text-decoration: none;
+			color: black;
+			padding: 20px;
+		}
+		.portfolio-item img {
+			display: block;
+			width: 100%;
+		}
+		.portfolio-item h2 {
+			font-size: 24px;
+			
+		}
+		.portfolio-item p {
+			font-size: 18px;
+		}
+		
+		/* Mobile styles */
+		@media (max-width: 800px) {
+			.portfolio {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+		@media (max-width: 600px) {
+			.portfolio {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<nav class="nav">
+		<a href="#" class="nav-link">Home</a>
+		<div class="nav-spacer"></div>
+		<a href="#" class="nav-link">Page 1</a>
+		<a href="#" class="nav-link">Page 2</a>
+		<a href="#" class="nav-link">Page 3</a>
+	</nav>
+	
+	<header class="header">
+		<h1 class="header-logo">Hi! I’m Gabriel.</h1>
+
+		<div class="header-links">
+			<a class="header-link" href="#">About</a>
+			<a class="header-link" href="#">Work</a>
+			<a class="header-link" href="#">Contact</a>
+		</div>
+	</header>
+
+	<main class="portfolio">
+		<a class="portfolio-item" href="#">
+			<img src="https://money.com/wp-content/uploads/2024/03/Best-Small-Dog-Breeds-Poodle.jpg?quality=60">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://money.com/wp-content/uploads/2024/03/Best-Small-Dog-Breeds-Poodle.jpg?quality=60">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://money.com/wp-content/uploads/2024/03/Best-Small-Dog-Breeds-Poodle.jpg?quality=60">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://money.com/wp-content/uploads/2024/03/Best-Small-Dog-Breeds-Poodle.jpg?quality=60">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://money.com/wp-content/uploads/2024/03/Best-Small-Dog-Breeds-Poodle.jpg?quality=60">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+	</main>
+	
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		/* Portfolio */
+		.portfolio {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+			padding: 20px;
+		}
+
+		/* Portfolio item */
+		.portfolio-item {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			background-color: lightgray;
+			text-decoration: none;
+			color: black;
+			padding: 20px;
+		}
+		.portfolio-item img {
+			display: block;
+			width: 100%;
+		}
+		.portfolio-item h2 {
+			font-size: 24px;
+			
+		}
+		.portfolio-item p {
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="portfolio">
+		<a class="portfolio-item" href="#">
+			<img src="https://static.scientificamerican.com/sciam/cache/file/2AE14CDD-1265-470C-9B15F49024186C10_source.jpg?w=1200">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://static.scientificamerican.com/sciam/cache/file/2AE14CDD-1265-470C-9B15F49024186C10_source.jpg?w=1200">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://static.scientificamerican.com/sciam/cache/file/2AE14CDD-1265-470C-9B15F49024186C10_source.jpg?w=1200">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://static.scientificamerican.com/sciam/cache/file/2AE14CDD-1265-470C-9B15F49024186C10_source.jpg?w=1200">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+
+		<a class="portfolio-item" href="#">
+			<img src="https://static.scientificamerican.com/sciam/cache/file/2AE14CDD-1265-470C-9B15F49024186C10_source.jpg?w=1200">
+			<h2>Portfolio items</h2>
+			<p>Some description goes here</p>
+		</a>
+	</div>
+	
+</body>
+</html>

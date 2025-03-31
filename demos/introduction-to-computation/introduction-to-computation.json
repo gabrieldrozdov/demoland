@@ -330,5 +330,113 @@
 				"color": "var(--purple)"
 			}
 		}
+	},
+	"week-6": {
+		"title": "Reponsive design using flexbox and grid",
+		"subtitle": "Week 6",
+		"desc": "A real mess of a week.",
+		"color": "var(--red)",
+		"demos": {
+			"website-1990s": {
+				"name": "1990s web design",
+				"color": "var(--purple)"
+			},
+			"website-2000s": {
+				"name": "2000s web design",
+				"color": "var(--purple)"
+			},
+			"flexducks1": {
+				"name": "flexducks1",
+				"color": "var(--red)"
+			},
+			"flexducks2": {
+				"name": "flexducks2",
+				"color": "var(--red)"
+			},
+			"flexducks3": {
+				"name": "flexducks3",
+				"color": "var(--red)"
+			},
+			"flexducks4": {
+				"name": "flexducks4",
+				"color": "var(--red)"
+			},
+			"flexducks5": {
+				"name": "flexducks5",
+				"color": "var(--red)"
+			},
+			"flexducks6": {
+				"name": "flexducks6",
+				"color": "var(--red)"
+			},
+			"flexducks7": {
+				"name": "flexducks7",
+				"color": "var(--red)"
+			},
+			"flexducks-payoff": {
+				"name": "flexducks-payoff",
+				"color": "var(--red)"
+			},
+			"gridcats1": {
+				"name": "gridcats1",
+				"color": "var(--pink)"
+			},
+			"gridcats2": {
+				"name": "gridcats2",
+				"color": "var(--pink)"
+			},
+			"gridcats3": {
+				"name": "gridcats3",
+				"color": "var(--pink)"
+			},
+			"gridcats4": {
+				"name": "gridcats4",
+				"color": "var(--pink)"
+			},
+			"gridcats5": {
+				"name": "gridcats5",
+				"color": "var(--pink)"
+			},
+			"gridcats-payoff": {
+				"name": "gridcats-payoff",
+				"color": "var(--pink)"
+			},
+			"discodogs1": {
+				"name": "discodogs1",
+				"color": "var(--green)"
+			},
+			"discodogs2": {
+				"name": "discodogs2",
+				"color": "var(--green)"
+			},
+			"discodogs3": {
+				"name": "discodogs3",
+				"color": "var(--green)"
+			},
+			"discodogs-payoff": {
+				"name": "discodogs-payoff",
+				"color": "var(--green)"
+			},
+			"portfolio": {
+				"name": "portfolio",
+				"color": "var(--blue)"
+			},
+			"website-2010s-a": {
+				"name": "2010s web design exhibit A",
+				"color": "var(--yellow)"
+			},
+			"website-2010s-b": {
+				"name": "2010s web design exhibit B",
+				"color": "var(--yellow)"
+			},
+			"website-2010s-c": {
+				"name": "2010s web design exhibit C",
+				"color": "var(--yellow)"
+			},
+			"website-2010s-d": {
+				"name": "2010s web design exhibit D",
+				"color": "var(--yellow)"
+			}
+		}
 	}
 }

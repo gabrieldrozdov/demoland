@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+		
+		 /* flex parent */
+		.ducks {
+			display: flex;
+			gap: 20px; /* new property! */
+			flex-wrap: wrap; /* new property! */
+		}
+
+		/* flex child */
+		.duck {
+			font-size: 48px;
+			background-color: cyan;
+			border: 4px dotted blue;
+			flex-grow: 1;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="ducks">
+		<div class="duck">🦆</div>
+		<div class="duck" style="flex-grow: 10;">🦆</div>
+		<div class="duck">🦆</div>
+		<div class="duck">🦆</div>
+		<div class="duck">🦆</div>
+		<div class="duck">🦆</div>
+	</div>
+
+</body>
+</html>

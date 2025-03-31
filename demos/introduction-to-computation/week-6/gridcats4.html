@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		/* grid parent */
+		.cats {
+			font-size: 80px;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr); /* shorthand! */
+			gap: 20px;
+			padding: 20px;
+		}
+		/* grid child */
+		.cat-carrier {
+			background-color: blue;
+			padding: 20px;
+		}
+		.cat {
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="cats">
+		<div class="cat-carrier">
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+		</div>
+		<div class="cat-carrier">
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+		</div>
+		<div class="cat-carrier">
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+		</div>
+		<div class="cat-carrier">
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+			<div class="cat">😾</div>
+		</div>
+	</div>
+	
+</body>
+</html>

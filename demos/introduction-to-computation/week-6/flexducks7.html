@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		 /* flex parent */
+		.ducks {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: blue;
+			width: 100vw;
+			height: 100vh;
+			flex-direction: column;
+			gap: 80px;
+		}
+
+		/* flex child */
+		.duck {
+			font-size: 48px;
+			background-color: cyan;
+			border: 4px dotted blue;
+		}
+
+		/* flex child, and a NEW flex parent */
+		.chickens {
+			display: flex;
+			gap: 20px;
+		}
+
+		/* flex child */
+		.chicken {
+			font-size: 48px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="ducks">
+		<div class="duck">🦆</div>
+
+		<div class="chickens">
+			<div class="chicken">🐔</div>
+			<div class="chicken">🐔</div>
+			<div class="chicken">🐔</div>
+		</div>
+	</div>
+
+</body>
+</html>
