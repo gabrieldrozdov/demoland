@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+	<style>
+		@font-face {
+			font-family: "PowerPack";
+			src: url("https://toomuchtype.com/fonts/powerpack/variable/TMT-PowerPackVF.ttf");
+		}
+		.test-class1 {
+			font-size: 80px;
+			font-family: "PowerPack", sans-serif;
+			font-variation-settings: "CHRG" 0, "POWR" 0;
+			transition: font-variation-settings 1s;
+		}
+		.test-class1:hover {
+			font-variation-settings: "CHRG" 0, "POWR" 100;
+		}
+
+		@font-face {
+			font-family: "Avara Burst";
+			src: url("https://toomuchtype.com/fonts/avara-burst/variable/TMT-AvaraBurstVF.ttf");
+		}
+		.test-class2 {
+			font-size: 80px;
+			font-family: "Avara Burst", sans-serif;
+			font-variation-settings: "BRST" 0;
+			transition: font-variation-settings 1s;
+		}
+		.test-class2:hover {
+			font-variation-settings: "BRST" 100;
+		}
+
+		@font-face {
+			font-family: "Caffeine";
+			src: url("https://toomuchtype.com/fonts/caffeine/variable/TMT-CaffeineVF.ttf");
+		}
+		.test-class3 {
+			font-size: 80px;
+			font-family: "Caffeine", sans-serif;
+			font-variation-settings: "SCRI" 0, "SCRA" 0;
+			transition: font-variation-settings 1s;
+		}
+		.test-class3:hover {
+			font-variation-settings: "SCRI" 100, "SCRA" 100;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="test-class1">
+		I am so POWERFUL.
+	</p>
+
+	<p class="test-class2">
+		I am gonna FALL APART!
+	</p>
+
+	<p class="test-class3">
+		I am just trying my best!
+	</p>
+</body>
+
+</html>

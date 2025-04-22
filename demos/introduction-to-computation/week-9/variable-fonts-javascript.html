@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+	<style>
+		@font-face {
+			font-family: "Caffeine";
+			src: url("https://toomuchtype.com/fonts/caffeine/variable/TMT-CaffeineVF.ttf");
+		}
+		.container {
+			font-size: 80px;
+			font-family: "Caffeine", sans-serif;
+			font-variation-settings: "SCRI" 0, "SCRA" 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		Hello there I am some text!
+	</div>
+
+	<script>
+		let container = document.querySelector('.container');
+
+		// Replace the contents of the container with <span> elements
+		let tempHTML = "";
+		for (let letter of container.textContent) {
+			tempHTML += `<span>${letter}</span>`;
+		}
+		container.innerHTML = tempHTML;
+
+		// Repeate code
+		setInterval(function() {
+
+			// Randomize the variable axis values of all the span elements we just created
+			let letters = document.querySelectorAll('.container span');
+			for (let letter of letters) {
+				let axis1Value = Math.round(Math.random()*100);
+				let axis2Value = Math.round(Math.random()*100);
+				letter.style.fontVariationSettings = `"SCRI" ${axis1Value}, "SCRA" ${axis2Value}`;
+			}
+			
+		}, 250)
+	</script>
+</body>
+
+</html>

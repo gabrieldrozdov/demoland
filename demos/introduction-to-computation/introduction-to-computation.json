@@ -438,5 +438,93 @@
 				"color": "var(--yellow)"
 			}
 		}
+	},
+	"week-9": {
+		"title": "Design Process",
+		"subtitle": "Week 9",
+		"desc": "How can you use what we’ve learned so far to create something new?",
+		"color": "var(--pink)",
+		"demos": {
+			"blank-slate": {
+				"name": "Blank slate",
+				"color": "var(--pink)"
+			},
+			"filling-space": {
+				"name": "Filling space",
+				"color": "var(--pink)"
+			},
+			"applying-styles": {
+				"name": "Applying styles",
+				"color": "var(--pink)"
+			},
+			"making-it-move": {
+				"name": "Making it move",
+				"color": "var(--pink)"
+			},
+			"adding-interaction": {
+				"name": "Adding interaction",
+				"color": "var(--pink)"
+			},
+			"randomizing-styles": {
+				"name": "Randomizing styles",
+				"color": "var(--pink)"
+			},
+			"repeating-randomization": {
+				"name": "Repeating randomization",
+				"color": "var(--pink)"
+			},
+			"typesetting-content": {
+				"name": "Typesetting content",
+				"color": "var(--pink)"
+			},
+			"typographic-hierarchy": {
+				"name": "Typographic hierarchy",
+				"color": "var(--pink)"
+			},
+			"typographic-hierarchy-flipped": {
+				"name": "Typographic hierarchy, flipped",
+				"color": "var(--pink)"
+			},
+			"typographic-hierarchy-skewed": {
+				"name": "Typographic hierarchy, skewed",
+				"color": "var(--pink)"
+			},
+			"typographic-hierarchy-invisible": {
+				"name": "Typographic hierarchy, blurred",
+				"color": "var(--pink)"
+			},
+			"typographic-hierarchy-randomization": {
+				"name": "Typographic hierarchy, randomized",
+				"color": "var(--pink)"
+			},
+			"blank-slate-revisited": {
+				"name": "Blank slate, revisited",
+				"color": "var(--pink)"
+			},
+			"blank-slate-interactive": {
+				"name": "Blank slate, interactive",
+				"color": "var(--pink)"
+			},
+			"adding-sound": {
+				"name": "Adding sound",
+				"color": "var(--pink)"
+			},
+			"adding-sound-randomized": {
+				"name": "Adding sound, randomized",
+				"color": "var(--pink)"
+			},
+			"blank-slate-sound": {
+				"name": "Blank slate, with sound",
+				"color": "var(--pink)"
+			},
+			"variable-fonts": {
+				"name": "Variable fonts",
+				"color": "var(--pink)"
+			},
+			"variable-fonts-javascript": {
+				"name": "Variable fonts and JavaScript",
+				"color": "var(--pink)"
+			}
+		}
 	}
 }

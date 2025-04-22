@@ -398,7 +398,6 @@ async function fetchData() {
 	}
 
 	// Fetch book data
-	console.log
 	try {
 		let response = await fetch(`../demos/${activeBook}/${activeBook}.json`);
 		response.json().then((json) => {
@@ -683,6 +682,8 @@ function updatePreview() {
 	}
 
 	// Custom console function
+	const consoleLog = document.querySelector('.editor-console-log');
+	consoleLog.innerHTML = ``;
 	let consoleCode = `
 		<script>
 			(function() {

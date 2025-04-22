@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Tone.js Oscillator Demo</title>
+
+	<!-- Import the JavaScript library in the <head> element -->
+	<script src="https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js"></script>
+</head>
+
+<body>
+	<button id="playButton">Play Random Note</button>
+
+	<script>
+		// Create a synth (basic oscillator with envelope)
+		let synth = new Tone.Synth().toDestination();
+
+		// List of possible notes
+		let notes = ["C", "D", "E", "F", "G", "A", "B", "C"];
+
+		// Button click event
+		document.getElementById("playButton").addEventListener("click", function () {
+			Tone.start(); // required to unlock audio on first interaction
+
+			// Generate a random note
+			let randomNote = notes[Math.floor(Math.random() * notes.length)];
+
+			// Generate a random octave
+			let randomOctave = Math.round(Math.random() * 5 + 1);
+
+			// Put them together and play the combined note
+			synth.triggerAttackRelease(randomNote + randomOctave, "16n");
+		});
+	</script>
+</body>
+
+</html>

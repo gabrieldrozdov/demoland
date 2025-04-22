@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Typographic Hierarchy Example</title>
+	<style>
+		/* NEW CODE! */
+		main > * {
+			filter: blur(20px);
+			transition: filter .5s;
+		}
+		main > *:hover {
+			filter: blur(0px);
+		}
+
+		/* Base reset */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Containers */
+		body {
+			font-family: "Helvetica", sans-serif;
+			background: hsl(0, 0%, 95%);
+			padding: 40px;
+		}
+		main {
+			max-width: 800px;
+			margin: 0 auto;
+			background: white;
+			padding: 80px;
+			border-radius: 5px;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+		}
+
+		/* Headings */
+		h1 {
+			font-size: 48px;
+			line-height: 1em;
+			letter-spacing: -0.03em; /* Adjusting letter-spacing slightly can make things feel more "designed" */
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		h2 {
+			font-size: 32px;
+			line-height: 1.1em;
+			letter-spacing: -0.03em;
+			margin-top: 40px;
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		h3 {
+			font-size: 24px;
+			line-height: 1.1em;
+			letter-spacing: -0.03em;
+			margin-top: 40px;
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+
+		/* Paragraphs */
+		p {
+			font-size: 18px;
+			line-height: 1.4em;
+		}
+
+		/* Lists */
+		ul {
+			padding-left: 20px;
+			font-size: 18px;
+			line-height: 1.4em;
+		}
+
+		/* Links */
+		a {
+			color: blue;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a:active {
+			opacity: .5;
+		}
+
+		/* Quotes */
+		blockquote {
+			margin: 20px 0;
+			padding: 20px;
+			border-left: 4px solid blue;
+			background: hsl(0, 0%, 98%);
+			font-style: italic;
+			border-radius: 0 5px 5px 0;
+			font-size: 18px;
+			line-height: 1.4em;
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<h1>Welcome to Our Website</h1>
+		<p>This is a demonstration of clear typographic hierarchy, designed for readability and elegance. Every element has its place and purpose.</p>
+
+		<h2>Why Typography Matters</h2>
+		<p>Good typography helps communicate your message effectively. It sets the tone, creates structure, and improves user experience.</p>
+
+		<h3>Elements of Hierarchy</h3>
+		<ul>
+			<li>Font size and weight</li>
+			<li>Color and contrast</li>
+			<li>Spacing and alignment</li>
+			<li>Consistent rhythm</li>
+		</ul>
+
+		<h3>Example Quote</h3>
+		<blockquote>
+			“Typography is the craft of endowing human language with a durable visual form.” — Robert Bringhurst
+		</blockquote>
+
+		<h2>Get Started</h2>
+		<p>If you're building your own site, <a href="#">start with a strong typographic foundation</a>. It’ll make everything else easier.</p>
+	</main>
+</body>
+
+</html>

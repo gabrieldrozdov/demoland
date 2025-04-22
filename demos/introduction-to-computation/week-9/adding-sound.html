@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Tone.js Oscillator Demo</title>
+
+	<!-- Import the JavaScript library in the <head> element -->
+	<script src="https://cdn.jsdelivr.net/npm/tone@latest/build/Tone.js"></script>
+</head>
+
+<body>
+	<button id="playButton">Play Random Note</button>
+
+	<script>
+		// Create a synth (basic oscillator with envelope)
+		let synth = new Tone.Synth().toDestination();
+
+		// Button click event
+		document.getElementById("playButton").addEventListener("click", function () {
+			Tone.start(); // required to unlock audio on first interaction
+
+			// Play the oscillator with a specific note and duration
+			synth.triggerAttackRelease("C4", "16n");
+		});
+	</script>
+</body>
+
+</html>
