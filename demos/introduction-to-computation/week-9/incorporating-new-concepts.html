@@ -17,11 +17,9 @@
 			background-color: black;
 		}
 		.container div {
-			border: 2px solid white;
-			border-radius: 50%;
-		}
-		.active {
 			background-color: white;
+			border-radius: 50%;
+			flex-grow: 1;
 		}
 	</style>
 </head>
@@ -32,23 +30,23 @@
 		// Target the container
 		let container = document.querySelector(".container");
 
-		for (let i=0; i<200; i++) {
+		// Run code repeatedly every 25ms
+		setInterval(function() {
 			// Create a new element
 			let newElement = document.createElement('div');
 
 			// Give it random CSS
-			newElement.style.minWidth = Math.round(Math.random()*25) + "%";
-			newElement.style.flexGrow = Math.round(Math.random()*100);
-			newElement.style.order = Math.round(Math.random()*1000);
+			newElement.style.minWidth = Math.round(Math.random()*20) + "%";
 
 			// Add it to the container
 			container.appendChild(newElement);
 
-			// Add event listener
-			newElement.addEventListener('mouseenter', function() {
-				newElement.classList.toggle('active');
-			})
-		}
+			// Start over if there are too many
+			let allElements = document.querySelectorAll(".container div");
+			if (allElements.length > 50) {
+				container.innerHTML = '';
+			}
+		}, 200)
 	</script>
 </body>
 </html>

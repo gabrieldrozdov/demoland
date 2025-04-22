@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+
+	<script>
+		// Target the container
+		let container = document.querySelector(".container");
+
+		// Run code repeatedly every 25ms
+		setInterval(function() {
+			// Create a new element
+			let newElement = document.createElement('span');
+
+			// Give it random CSS
+			// TODO: Try changing this part of the code up!
+			newElement.style.fontSize = Math.random()*100 + "px";
+			newElement.textContent = "| ";
+
+			// Add it to the container
+			container.appendChild(newElement);
+
+			// Start over if there are too many
+			let allElements = document.querySelectorAll(".container span");
+			if (allElements.length > 500) {
+				container.innerHTML = '';
+			}
+		}, 10)
+	</script>
+</body>
+</html>

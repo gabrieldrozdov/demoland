@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			
+		}
+		.container div {
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+
+	<script>
+		// Target the container
+		let container = document.querySelector(".container");
+
+		// Run code repeatedly every 25ms
+		setInterval(function() {
+			// Create a new element
+			let newElement = document.createElement('div');
+
+			// Give it random CSS
+			// TODO: Try switching this part of the code up!
+			// What else can you randomize?
+			newElement.style.width = Math.round(Math.random()*100) + "%";
+			newElement.style.height = Math.round(Math.random()*50) + "px";
+
+			// Add it to the container
+			container.appendChild(newElement);
+
+			// Start over if there are too many
+			let allElements = document.querySelectorAll(".container div");
+			if (allElements.length > 50) {
+				container.innerHTML = '';
+			}
+		}, 50)
+	</script>
+</body>
+</html>

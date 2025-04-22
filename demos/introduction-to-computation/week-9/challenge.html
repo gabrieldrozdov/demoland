@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* TODO: Try changing the CSS properties here! */
+		.container {
+			display: flex;
+			gap: 40px;
+			padding: 40px;
+			flex-wrap: wrap;
+		}
+		.container div {
+			width: 50px;
+			height: 10px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+
+	<script>
+		let container = document.querySelector('.container');
+		
+		let i = 0;
+		setInterval(function() {
+			// Create a new element
+			let newElement = document.createElement('div');
+
+			// Set random CSS
+			// TODO: Try changing the CSS properties here!
+			// Change the current transform property, and also add 3 more
+			newElement.style.transform = `rotate(${Math.random()*360}deg)`;
+
+			// Add to the container
+			container.appendChild(newElement);
+
+			// Start over where there are too many elements
+			let allChildren = document.querySelectorAll('.container div');
+			if (allChildren.length > 100) {
+				container.innerHTML = '';
+			}
+		}, 25)
+	</script>
+</body>
+</html>

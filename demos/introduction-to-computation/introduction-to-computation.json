@@ -497,12 +497,24 @@
 				"name": "Typographic hierarchy, randomized",
 				"color": "var(--pink)"
 			},
-			"blank-slate-revisited": {
-				"name": "Blank slate, revisited",
+			"starting-from-nothing": {
+				"name": "Starting from nothing",
 				"color": "var(--pink)"
 			},
-			"blank-slate-interactive": {
-				"name": "Blank slate, interactive",
+			"adding-shapes": {
+				"name": "Adding shapes",
+				"color": "var(--pink)"
+			},
+			"incorporating-new-concepts": {
+				"name": "Incorporating new concepts",
+				"color": "var(--pink)"
+			},
+			"incorporating-new-concepts-fancy": {
+				"name": "Incorporating new concepts, but fancier",
+				"color": "var(--pink)"
+			},
+			"switching-to-an-interactive-experience": {
+				"name": "Switching to an interactive experience",
 				"color": "var(--pink)"
 			},
 			"adding-sound": {
@@ -513,8 +525,12 @@
 				"name": "Adding sound, randomized",
 				"color": "var(--pink)"
 			},
-			"blank-slate-sound": {
-				"name": "Blank slate, with sound",
+			"incorporating-sound": {
+				"name": "Incorporating sound into another design",
+				"color": "var(--pink)"
+			},
+			"challenge": {
+				"name": "Challenge",
 				"color": "var(--pink)"
 			},
 			"variable-fonts": {
