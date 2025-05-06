@@ -1,0 +1,26 @@
+<h1>
+	APIs (Application Programming Interfaces)
+</h1>
+<h2>
+	Note: this is a lot of info! You don’t need to understand it all right now. Instead, the big lesson is that objects are used to transmit and receive data all the time between websites.
+</h2>
+<p>
+	<strong>APIs</strong> let us read and write data between computers and applications. On websites, APIs are often used to <strong>fetch</strong> data from online resources. For example, Wikipedia has an API that let’s us fetch a random assortment of articles. Other examples include <a href="https://dev.are.na/documentation/channels" target="_blank">Are.na’s API</a> for getting content from channels, or the <a href="https://openweathermap.org/api" target="_blank">OpenWeather API</a> for fetching forecasts.
+</p>
+<p>
+	To use Wikipedia’s API, we’d first want to <a href="https://www.mediawiki.org/wiki/API:Random" target="_blank">read its documentation</a>. This reveals that by inputting a URL in our web browser results in a JavaScript object, like in <a href="https://www.mediawiki.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=2" target="_blank">this example</a>.
+</p>
+<p>
+	Let’s look at the following URL to see how it’s structured: <a href="https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=200" target="_blank">https://en.wikipedia.org/w/api.php?&#8203;origin=*&action=query&&#8203;format=json&list=random&&#8203;rnnamespace=0&rnlimit=200</a>
+</p>
+<ol>
+	<li>The URL starts with the normal Wikipedia domain name with an extra w/ at the end: https://en.wikipedia.org/w/</li>
+	<li>Then, we have api.php followed by a question mark <span class="info-code">?</span></li>
+	<li>Then, we get a series of <strong>URL parameters</strong> in the form <span class="info-code">parameter=value</span>, with & signs in between these settings.</li>
+</ol>
+<p>
+	The actual settings for each of these parameters are things we’d have to determine from Wikipedia’s API documentation.
+</p>
+<p>
+	<a href="https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=200" target="_blank">Accessing the URL</a> reveals a JavaScript object (technically a <a href="https://stackoverflow.blog/2022/06/02/a-beginners-guide-to-json-the-data-format-for-the-internet/" target="_blank"><strong>JSON</strong> file</a>) with a random assortment of article names. We can fetch this data in our code using the <span class="info-code">fetch</span> function, which has a funny format (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">more info here</a>) and eventually returns the object from the URL. We can then go through this object to get the specific data we want.
+</p>

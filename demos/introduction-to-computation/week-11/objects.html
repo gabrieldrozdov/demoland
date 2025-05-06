@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Objects</title>
+</head>
+
+<body>
+	<script>
+		// Creating an object
+		let gameGenres = {
+			"platformer": "Mario",
+			"puzzle": "Professor Layton",
+			"arcade": "Pacman",
+			"fps": "Metroid Prime"
+		}
+
+		// Accessing data from an object, method 1
+		console.log( gameGenres["platformer"] );
+		console.log( gameGenres["puzzle"] );
+		console.log( gameGenres["arcade"] );
+		console.log( gameGenres["fps"] );
+
+		// Accessing data from an object, method 2
+		console.log( gameGenres.platformer );
+		console.log( gameGenres.puzzle );
+		console.log( gameGenres.arcade );
+		console.log( gameGenres.fps );
+
+		// Getting all the keys from an object
+		console.log( Object.keys(gameGenres) );
+
+		// Adding to an object
+		gameGenres['adventure'] = "Oblivion";
+		console.log( gameGenres['adventure'] );
+		console.log( Object.keys(gameGenres) );
+
+		// Changing a preview entry
+		gameGenres['puzzle'] = "Fez";
+		console.log( gameGenres['puzzle'] );
+
+		// Removing an entry
+		delete gameGenres["adventure"]
+		console.log( Object.keys(gameGenres) );
+
+		// Looping through an object using a “for...in” loop
+		for (let key in gameGenres) {
+			console.log( gameGenres[key] );
+		}
+	</script>
+</body>
+
+</html>

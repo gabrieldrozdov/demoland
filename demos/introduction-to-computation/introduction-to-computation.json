@@ -542,5 +542,41 @@
 				"color": "var(--pink)"
 			}
 		}
+	},
+	"week-11": {
+		"title": "Objects (recap) and APIs",
+		"subtitle": "Week 9",
+		"desc": "How can we handle data using JavaScript?",
+		"color": "var(--green)",
+		"demos": {
+			"inputs": {
+				"name": "Inputs (recap)",
+				"color": "var(--green)"
+			},
+			"building-an-interface": {
+				"name": "Building an interface",
+				"color": "var(--green)"
+			},
+			"objects": {
+				"name": "Objects (recap)",
+				"color": "var(--green)"
+			},
+			"tracking-settings": {
+				"name": "Tracking settings using objects",
+				"color": "var(--green)"
+			},
+			"document-object-model": {
+				"name": "The Document Object Model (DOM)",
+				"color": "var(--green)"
+			},
+			"APIs": {
+				"name": "APIs",
+				"color": "var(--green)"
+			},
+			"putting-it-all-together": {
+				"name": "Putting it all together",
+				"color": "var(--green)"
+			}
+		}
 	}
 }

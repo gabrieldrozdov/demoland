@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inputs</title>
+</head>
+
+<body>
+
+	<h1>Color sliders</h1>
+
+	<div>
+		<h2>red</h2>
+		<input id="redSlider" type="range" min="0" max="255" value="255">
+		<label id="redSliderNumber">255</label>
+	</div>
+
+	<div>
+		<h2>green</h2>
+		<input id="greenSlider" type="range" min="0" max="255" value="255">
+		<label id="greenSliderNumber">255</label>
+	</div>
+
+	<div>
+		<h2>blue</h2>
+		<input id="blueSlider" type="range" min="0" max="255" value="255">
+		<label id="blueSliderNumber">255</label>
+	</div>
+
+	<div>
+		<h2>opacity</h2>
+		<input id="opacitySlider" type="range" min="50" max="100" value="100">
+		<label id="opacitySliderNumber">100</label>
+	</div>
+
+	<div>
+		<h2>blur</h2>
+		<input id="blurSlider" type="range" min="0" max="20" value="0">
+		<label id="blurSliderNumber">0</label>
+	</div>
+
+	<div>
+		<h2>invert</h2>
+		<input id="invertSlider" type="range" min="0" max="100" value="0">
+		<label id="invertSliderNumber">0</label>
+	</div>
+
+	<script>
+		// NEW CODE: object to track our “settings”
+		let settings = {
+			"red": 255,
+			"green": 255,
+			"blue": 255,
+			"opacity": 100,
+			"blur": 0,
+			"invert": 0
+		}
+
+		// Target all our elements
+		let body = document.querySelector('body');
+		
+		let redSlider = document.querySelector("#redSlider");
+		let redSliderNumber = document.querySelector("#redSliderNumber");
+
+		let greenSlider = document.querySelector("#greenSlider");
+		let greenSliderNumber = document.querySelector("#greenSliderNumber");
+
+		let blueSlider = document.querySelector("#blueSlider");
+		let blueSliderNumber = document.querySelector("#blueSliderNumber");
+
+		let opacitySlider = document.querySelector("#opacitySlider");
+		let opacitySliderNumber = document.querySelector("#opacitySliderNumber");
+
+		let blurSlider = document.querySelector("#blurSlider");
+		let blurSliderNumber = document.querySelector("#blurSliderNumber");
+
+		let invertSlider = document.querySelector("#invertSlider");
+		let invertSliderNumber = document.querySelector("#invertSliderNumber");
+
+		// Add event listeners
+		redSlider.addEventListener('input', function() {
+			settings.red = redSlider.value; // get value from slider
+			redSliderNumber.textContent = redSlider.value; // update the displayed value
+			updateBackground();
+		})
+
+		greenSlider.addEventListener('input', function() {
+			settings.green = greenSlider.value; // get value from slider
+			greenSliderNumber.textContent = greenSlider.value; // update the displayed value
+			updateBackground();
+		})
+
+		blueSlider.addEventListener('input', function() {
+			settings.blue = blueSlider.value; // get value from slider
+			blueSliderNumber.textContent = blueSlider.value; // update the displayed value
+			updateBackground();
+		})
+
+		opacitySlider.addEventListener('input', function() {
+			settings.opacity = opacitySlider.value; // get value from slider
+			opacitySliderNumber.textContent = opacitySlider.value; // update the displayed value
+			updateBackground();
+		})
+
+		blurSlider.addEventListener('input', function() {
+			settings.blur = blurSlider.value; // get value from slider
+			blurSliderNumber.textContent = blurSlider.value; // update the displayed value
+			updateBackground();
+		})
+
+		invertSlider.addEventListener('input', function() {
+			settings.invert = invertSlider.value; // get value from slider
+			invertSliderNumber.textContent = invertSlider.value; // update the displayed value
+			updateBackground();
+		})
+
+		// Function to update color of the body background
+		function updateBackground() {
+			body.style.backgroundColor = `rgb(${settings.red}, ${settings.green}, ${settings.blue})`;
+			body.style.opacity = settings.opacity/100;
+			body.style.filter = `blur(${settings.blur}px) invert(${settings.invert}%)`;
+		}
+	</script>
+</body>
+
+</html>

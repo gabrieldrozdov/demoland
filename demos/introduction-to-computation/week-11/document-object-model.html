@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Objects</title>
+</head>
+
+<body>
+
+	<div id="myElement" class="myClass" style="color: red; font-size: 48px;">Hello!</div>
+
+	<script>
+		let myElement = document.querySelector('#myElement');
+
+		// This won’t give us much info
+		console.log(myElement);
+
+		// We need this to see all the key-value pairs in the element’s object
+		// This won’t appear in the DEMOLAND console though
+		// Instead, open your browser’s console to see the full object
+		// Chrome on Macs: COMMAND + OPTION + I
+		// Chrome on Windows: CTRL + SHIFT + J
+		console.dir(myElement);
+
+		// Imaging each element is a giant object
+		let exampleObject = {
+			"classList": ["myClass"],
+			"style": {
+				"color": "red",
+				"fontSize": "48px"
+			}
+		}
+
+		// Comparing the real element object and our fake test object
+		console.log(exampleObject.style.color);
+		console.log(myElement.style.color);
+
+		console.log(exampleObject.classList[0]);
+		console.log(myElement.classList[0]);
+	</script>
+</body>
+
+</html>

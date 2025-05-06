@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inputs</title>
+</head>
+
+<body>
+	<div>
+		<input id="slider" type="range" min="0" max="100" value="0">
+		<label id="sliderDisplay"></label>
+	</div>
+
+	<div>
+		<input id="color" type="color" min="0" max="100" value="0">
+		<label id="colorDisplay"></label>
+	</div>
+
+	<div>
+		<input id="date" type="date" min="0" max="100" value="0">
+		<label id="dateDisplay"></label>
+	</div>
+
+	<script>
+		// ————————————————————————————
+		// EXAMPLE 1: range sliders
+		// Target the elements
+		let slider = document.querySelector("#slider");
+		let sliderDisplay = document.querySelector("#sliderDisplay");
+
+		// Add event listener
+		slider.addEventListener('input', function() {
+			sliderDisplay.textContent = slider.value; // get value from slider
+		})
+
+
+		// ————————————————————————————
+		// EXAMPLE 2: color selector
+		// Target the elements
+		let color = document.querySelector("#color");
+		let colorDisplay = document.querySelector("#colorDisplay");
+
+		// Add event listener
+		color.addEventListener('input', function() {
+			colorDisplay.textContent = color.value; // get value from color
+		})
+
+		// ————————————————————————————
+		// EXAMPLE 3: date selector
+		// Target the elements
+		let date = document.querySelector("#date");
+		let dateDisplay = document.querySelector("#dateDisplay");
+
+		// Add event listener
+		date.addEventListener('input', function() {
+			dateDisplay.textContent = date.value; // get value from date
+		})
+	</script>
+</body>
+
+</html>

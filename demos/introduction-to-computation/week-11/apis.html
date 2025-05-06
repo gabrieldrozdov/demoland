@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wikipedia Randomizer</title>
+</head>
+
+<body>
+
+	<div class="container"></div>
+
+	<script>
+
+		// This is a long URL that fetches random articles using Wikipedia’s random API
+		// More info here: https://www.mediawiki.org/wiki/API:Random
+		let url = "https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=200";
+
+		// We use fetch to get data from APIs
+		fetch(url)
+			.then(function (response) { return response.json(); }) // tries to return a JSON file
+			.then(function (response) {
+
+				// This is the raw JSON data from Wikipedia
+				// This is just a JavaScript object
+				console.log(response);
+
+				// We want to look at one specific entry in the object
+				// This contains all the articles we fetched
+				let wikipediaData = response.query.random;
+				console.log(wikipediaData);
+				
+				// Go through all the keys in the wikipediaData object
+				for (let key in wikipediaData) {
+
+					// Get the entry for each key
+					let entry = wikipediaData[key];
+
+					// Get the title of the entry
+					let articleName = entry.title;
+
+					// Add these as titles inside of the container element
+					let container = document.querySelector('.container');
+					container.innerHTML += articleName + "<br>";
+				}
+
+			})
+
+	</script>
+</body>
+
+</html>

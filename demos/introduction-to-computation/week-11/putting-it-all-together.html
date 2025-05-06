@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wikipedia Randomizer</title>
+
+	<!-- No need to edit this code unless you want to go extra! -->
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		.controls {
+			background-color: #ccc;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			padding: 20px;
+		}
+		.controls button {
+			padding: 10px;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			padding: 10px;
+			gap: 10px;
+		}
+		.container a {
+			flex-grow: 1;
+			text-decoration: none;
+			font-family: sans-serif;
+			background-color: blue;
+			color: white;
+			text-align: center;
+			padding: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.container a:hover {
+			opacity: .5;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Controls -->
+	<div class="controls">
+		<div>
+			<h2>Number of articles</h2>
+			<input id="controlsNumberOfArticles" type="range" value="20" min="1" max="200">
+			<label id="controlsNumberOfArticlesLabel">20</label>
+		</div>
+		<div>
+			<h2>Font size</h2>
+			<input id="controlsFontSize" type="range" value="18" min="4" max="32">
+			<label id="controlsFontSizeLabel">18</label>
+		</div>
+		<div>
+			<h2>Background color</h2>
+			<input id="controlsBackgroundColor" type="color" value="#0000ff">
+			<label id="controlsBackgroundColorLabel">#0000ff</label>
+		</div>
+		<div>
+			<h2>Text color</h2>
+			<input id="controlsTextColor" type="color" value="#ffffff">
+			<label id="controlsTextColorLabel">#ffffff</label>
+		</div>
+		<button id="generateButton">Fetch Wikipedia articles!</button>
+	</div>
+
+	<div class="container"></div>
+
+	<script>
+		// ————————————————————————————————————————
+		// Object to hold all of the settings
+
+		let settings = {
+			"numberOfArticles": 20,
+			"fontSize": 18,
+			"backgroundColor": "#0000ff",
+			"textColor": "#ffffff",
+		}
+
+		// ————————————————————————————————————————
+		// Target all of the relevant elements
+
+		let controlsNumberOfArticles = document.querySelector("#controlsNumberOfArticles");
+		let controlsNumberOfArticlesLabel = document.querySelector("#controlsNumberOfArticlesLabel");
+
+		let controlsFontSize = document.querySelector("#controlsFontSize");
+		let controlsFontSizeLabel = document.querySelector("#controlsFontSizeLabel");
+
+		let controlsBackgroundColor = document.querySelector("#controlsBackgroundColor");
+		let controlsBackgroundColorLabel = document.querySelector("#controlsBackgroundColorLabel");
+
+		let controlsTextColor = document.querySelector("#controlsTextColor");
+		let controlsTextColorLabel = document.querySelector("#controlsTextColorLabel");
+
+		// ————————————————————————————————————————
+		// Add event listeners to the input elements
+
+		controlsNumberOfArticles.addEventListener('input', function () {
+			settings.numberOfArticles = controlsNumberOfArticles.value;
+			controlsNumberOfArticlesLabel.textContent = controlsNumberOfArticles.value;
+		});
+
+		controlsFontSize.addEventListener('input', function () {
+			settings.fontSize = controlsFontSize.value;
+			controlsFontSizeLabel.textContent = controlsFontSize.value;
+		});
+
+		controlsBackgroundColor.addEventListener('input', function () {
+			settings.backgroundColor = controlsBackgroundColor.value;
+			controlsBackgroundColorLabel.textContent = controlsBackgroundColor.value;
+		});
+
+		controlsTextColor.addEventListener('input', function () {
+			settings.textColor = controlsTextColor.value;
+			controlsTextColorLabel.textContent = controlsTextColor.value;
+		});
+		
+		// ————————————————————————————————————————
+		// Big function to get all the random articles
+
+		function getRandomArticles() {
+
+			// Reset the container
+			let container = document.querySelector('.container');
+			container.innerHTML = '';
+
+			// Build the URL to fetch content from
+			let url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&rnnamespace=0&rnlimit=${settings.numberOfArticles}`;
+
+			fetch(url)
+				.then(function (response) { return response.json(); })
+				.then(function (response) {
+					let wikipediaData = response.query.random;
+					for (let key in wikipediaData) {
+						let entry = wikipediaData[key];
+						let articleName = entry.title;
+
+						// Create a new element
+						let newLink = document.createElement('a');
+						newLink.href = `https://en.wikipedia.org/wiki/${articleName}`; // the actual article URL
+						newLink.target = "_blank"; // open in new tab
+						newLink.textContent = articleName; // the article name
+
+						// Set the CSS of the newly created element
+						newLink.style.fontSize = settings.fontSize + "px";
+						newLink.style.backgroundColor = settings.backgroundColor;
+						newLink.style.color = settings.textColor;
+
+						// Add the element to the container
+						container.append(newLink);
+					}
+
+				})
+		}
+
+		// Add event listener to the button to generate articles
+		let generateButton = document.querySelector('#generateButton');
+		generateButton.addEventListener('click', getRandomArticles);
+
+	</script>
+</body>
+
+</html>
