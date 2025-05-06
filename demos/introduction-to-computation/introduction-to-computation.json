@@ -569,7 +569,7 @@
 				"name": "The Document Object Model (DOM)",
 				"color": "var(--green)"
 			},
-			"APIs": {
+			"apis": {
 				"name": "APIs",
 				"color": "var(--green)"
 			},
