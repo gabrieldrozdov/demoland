@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		/* The usual CSS overrides */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Fills up the full screen */
+		.container {
+			width: 100vw;
+			height: 100vh;
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* Each child uses absolute positioning */
+		.child {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #fafafa;
+			box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+			border-radius: 20px;
+			aspect-ratio: 4/3;
+			width: 240px;
+			transition: top 1s cubic-bezier(0.76, 0, 0.24, 1), left 1s cubic-bezier(0.76, 0, 0.24, 1), transform .5s;
+		}
+		.child:hover {
+			transform: translate(-50%, -50%) scale(1.1);
+			z-index: 1;
+		}
+
+		/* The cursors are going to be SVGs and absolutely positioned inside of the child elements */
+		.cursor {
+			width: 24px;
+			position: absolute;
+			fill: black;
+			transform: translate(-50%, -50%);
+			transition: top 1s cubic-bezier(0.76, 0, 0.24, 1), left 1s cubic-bezier(0.76, 0, 0.24, 1);
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container"></div>
+
+	<script>
+		let container = document.querySelector('.container');
+
+		// A big function to do the following:
+		// - generate a new element + a cursor SVG
+		// - animate the element in
+		// - animate the cursor out
+
+		function animateElement() {
+
+			// Create a new element
+			let newElement = document.createElement('div');
+
+			// Add a class to that element
+			newElement.classList.add('child');
+
+			// Set the initial position of that element via absolute positioning
+			let posX = (Math.random() * -100) - 100;
+			let posY = (Math.random() * 400) - 200;
+
+			newElement.style.left = posX + "vw";
+			newElement.style.top = posY + "vh";
+
+			// Add the mouse cursor inside of the element with a random position
+			let cursorPosX = Math.random() * 100;
+			let cursorPosY = Math.random() * 100;
+			newElement.innerHTML = `
+				<svg viewBox="0 0 100 100" class="cursor" style="left: ${cursorPosX}px; top: ${cursorPosY}px;">
+					<polygon points="26.379 10 26.379 90 49.236 63.326 84.316 65.166 26.379 10"/>
+				</svg>
+			`;
+
+			// Target the cursor to animate it later
+			let cursor = newElement.querySelector('.cursor');
+
+			// Add to the container
+			container.append(newElement);
+
+			// Animate element somewhere in the middle after a small delay
+			let delay = (Math.random() * 1000) + 100; // in milliseconds
+
+			setTimeout(function () {
+
+				// Set the target position and apply it to the element
+				let targetPosX = (Math.random() * 60) + 20;
+				let targetPosY = (Math.random() * 60) + 20;
+
+				newElement.style.left = targetPosX + "vw";
+				newElement.style.top = targetPosY + "vh";
+
+			}, delay)
+
+			// Animate mouse cursor out to the right after another delay		
+			setTimeout(function () {
+
+				// Set the target position and apply it to the cursor
+				let cursorTargetPosX = (Math.random() * 100) + 100;
+				let cursorTargetPosY = (Math.random() * 400) - 200;
+
+				cursor.style.left = cursorTargetPosX + "vw";
+				cursor.style.top = cursorTargetPosY + "vh";
+
+			}, delay + 1200)
+
+		}
+
+		// Run the function a random number of times
+		for (let i = 0; i < Math.random() * 20 + 10; i++) {
+			animateElement();
+		}
+
+		// Just for fun, click anywhere to add a new element!
+		container.addEventListener('click', animateElement);
+	</script>
+</body>
+
+</html>

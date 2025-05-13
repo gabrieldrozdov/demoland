@@ -545,7 +545,7 @@
 	},
 	"week-11": {
 		"title": "Objects (recap) and APIs",
-		"subtitle": "Week 9",
+		"subtitle": "Week 11",
 		"desc": "How can we handle data using JavaScript?",
 		"color": "var(--green)",
 		"demos": {
@@ -576,6 +576,18 @@
 			"putting-it-all-together": {
 				"name": "Putting it all together",
 				"color": "var(--green)"
+			}
+		}
+	},
+	"week-12": {
+		"title": "Wrapping up",
+		"subtitle": "Week 12",
+		"desc": "One last demo for fun!",
+		"color": "var(--blue)",
+		"demos": {
+			"no-replica": {
+				"name": "No Replica",
+				"color": "var(--blue)"
 			}
 		}
 	}
