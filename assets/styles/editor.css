@@ -6,9 +6,9 @@
 	font-weight: 100 900;
 }
 @font-face {
-	font-family: "Monaspace";
-	src: url('../fonts/MonaspaceNeonVarVF[wght,wdth,slnt].ttf');
-	font-weight: 200 800;
+	font-family: 'Geist Mono';
+	src: url('../fonts/GeistMono-VariableFont_wght.ttf') format('truetype');
+	font-weight: 100 900;
 }
 * {
 	margin: 0;
@@ -162,7 +162,7 @@ body {
 .title-chapter-subtitle {
 	text-transform: uppercase;
 	font-size: 10px;
-	letter-spacing: .02em;
+	letter-spacing: .1em;
 	padding: .25em .4em .1em .42em;
 	transform: translateY(-.1em);
 	border-radius: 2px;
@@ -565,7 +565,7 @@ body {
 	width: 100%;
 }
 .info-content {
-	font-size: 16px;
+	font-size: 18px;
 	font-variation-settings: "wght" 400, "SRFF" 0;
 	font-weight: 400;
 	line-height: 1.4em;
@@ -577,10 +577,10 @@ body {
 	font-size: 40px;
 	padding-top: 8px;
 	line-height: 1.05em;
-	letter-spacing: -0.03em;
+	letter-spacing: -0.04em;
 	font-family: 'Limkin', serif;
-	font-variation-settings: "wght" 550, "SRFF" 0;
-	font-weight: 550;
+	font-variation-settings: "wght" 600, "SRFF" 0;
+	font-weight: 600;
 	margin-bottom: 32px;
 	display: flex;
 	flex-direction: column;
@@ -598,8 +598,8 @@ body {
 	text-transform: uppercase;
 	align-items: center;
 	justify-content: center;
-	padding: .2em .6em 0 .65em;
-	letter-spacing: 0.05em;
+	padding: .2em .5em 0 .6em;
+	letter-spacing: 0.1em;
 	line-height: 1em;
 	font-size: 12px;
 	font-variation-settings: "wght" 700, "SRFF" 0;
@@ -617,7 +617,7 @@ body {
 	justify-self: start;
 }
 .info-content h3 {
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 1.4em;
 	font-variation-settings: "wght" 600, "SRFF" 0;
 	font-weight: 600;
@@ -626,18 +626,17 @@ body {
 }
 .info-code {
 	padding: .31em .25em .08em .26em;
-	font-family: "Monaspace", monospace;
+	font-family: "Geist Mono", monospace;
 	font-size: .9em;
 	background-color: var(--black);
 	border-radius: 2px;
-	font-variation-settings: "wght" 700, "wdth" 100, "slnt" 0;
+	font-variation-settings: "wght" 700;
 	font-weight: 700;
 	-webkit-box-decoration-break: clone;
 	box-decoration-break: clone;
 }
 .info-content p {
-	margin-bottom: 16px;
-	letter-spacing: -0.01em;
+	margin-bottom: 18px;
 }
 .info-content-indent {
 	padding-left: 24px;
@@ -1020,8 +1019,8 @@ body {
 .editor-console-log {
 	flex-grow: 1;
 	overflow-y: scroll;
-	font-family: "Monaspace", monospace;
-	font-variation-settings: "wght" 300, "wdth" 100, "slnt" 0;
+	font-family: "Geist Mono", monospace;
+	font-variation-settings: "wght" 300;
 	font-weight: 300;
 	font-size: 14px;
 	display: flex;
@@ -1042,8 +1041,8 @@ body {
 .editor-console-input {
 	flex-shrink: 0;
 	display: flex;
-	font-family: "Monaspace", monospace;
-	font-variation-settings: "wght" 300, "wdth" 100, "slnt" 0;
+	font-family: "Geist Mono", monospace;
+	font-variation-settings: "wght" 300;
 	font-weight: 300;
 	background-color: var(--black2);
 	padding: 4px 8px 2px 8px;
@@ -1057,8 +1056,8 @@ body {
 	fill: var(--primary);
 }
 .editor-console-input input {
-	font-family: "Monaspace", monospace;
-	font-variation-settings: "wght" 300, "wdth" 100, "slnt" 0;
+	font-family: "Geist Mono", monospace;
+	font-variation-settings: "wght" 300;
 	font-weight: 300;
 	flex-grow: 1;
 	background-color: unset;
@@ -1079,8 +1078,8 @@ body {
 	overflow: scroll;
 }
 .CodeMirror * {
-	font-family: "Monaspace", monospace;
-	font-variation-settings: "wght" 300, "wdth" 100, "slnt" 0;
+	font-family: "Geist Mono", monospace;
+	font-variation-settings: "wght" 300;
 	font-weight: 300;
 	font-size: var(--font-size);
 }
@@ -1128,8 +1127,8 @@ body {
 }
 .CodeMirror-hint {
 	color: var(--black3) !important;
-	font-family: "Monaspace", monospace !important;
-	font-variation-settings: "wght" 300, "wdth" 100, "slnt" 0;
+	font-family: "Geist Mono", monospace !important;
+	font-variation-settings: "wght" 300;
 	font-weight: 300;
 	font-size: 12px !important;
 	border-radius: unset !important;
@@ -1268,9 +1267,10 @@ li.CodeMirror-hint-active {
 	align-items: center;
 	justify-content: center;
 	font-size: 12px;
-	letter-spacing: 0.02em;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	line-height: 1.2em;
+	padding-left: .1em;
 	padding-top: .2em;
 	gap: 8px;
 	font-variation-settings: "wght" 700, "SRFF" 0;

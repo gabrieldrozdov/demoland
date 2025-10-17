@@ -10,6 +10,8 @@ function openBook(key) {
 	for (const book of document.querySelectorAll('.book')) {
 		book.dataset.active = 0;
 	}
+	const body = document.querySelector('body');
+	body.dataset.intro = 0;
 
 	// Activate correct book
 	const activeBook = document.querySelector(`#${key}`);
@@ -28,6 +30,8 @@ function openIntro() {
 	// Show intro
 	const intro = document.querySelector('.intro');
 	intro.dataset.active = 1;
+	const body = document.querySelector('body');
+	body.dataset.intro = 1;
 }
 
 // Read URL and open relevant book
@@ -71,16 +75,39 @@ for (let chapter of chapters) {
 
 // Books interactive art
 function generateBooks() {
-	const introBooks = document.querySelector('.intro-books');
-	let introBooksTemp = '<div class="intro-books-unit">';
+	// Foreground (clickable books)
+	const homeBooks = document.querySelector('.home-books');
+	let homeBooksTemp = '<div class="home-books-unit">';
 	const demoKeys = Object.keys(allDemos);
 	for (let i=0; i<100; i++) {
 		const randomKey = demoKeys[Math.floor(Math.random()*demoKeys.length)];
 		const randomDemo = allDemos[randomKey];
-		introBooksTemp += `<a style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*4-2}deg);' class="intro-books-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></a>`;
+		homeBooksTemp += `<a style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*6-3}deg);' class="home-books-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></a>`;
 	}
-	introBooksTemp += '</div>';
-	introBooks.innerHTML = introBooksTemp + introBooksTemp + introBooksTemp;
+	homeBooksTemp += '</div>';
+	homeBooks.innerHTML = homeBooksTemp + homeBooksTemp + homeBooksTemp;
+
+	// Background (faded out books)
+	const homeBooksBackground = document.querySelector('.home-books-background');
+	let homeBooksBackgroundTemp = '<div class="home-books-background-unit">';
+	for (let i=0; i<100; i++) {
+		const randomKey = demoKeys[Math.floor(Math.random()*demoKeys.length)];
+		const randomDemo = allDemos[randomKey];
+		homeBooksBackgroundTemp += `<div style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*10-5}deg);' class="home-books-background-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></div>`;
+	}
+	homeBooksBackgroundTemp += '</div>';
+	homeBooksBackground.innerHTML = homeBooksBackgroundTemp + homeBooksBackgroundTemp + homeBooksBackgroundTemp;
+
+	// Background2 (more faded out books)
+	const homeBooksBackground2 = document.querySelector('.home-books-background2');
+	let homeBooksBackground2Temp = '<div class="home-books-background2-unit">';
+	for (let i=0; i<100; i++) {
+		const randomKey = demoKeys[Math.floor(Math.random()*demoKeys.length)];
+		const randomDemo = allDemos[randomKey];
+		homeBooksBackground2Temp += `<div style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*12-6}deg);' class="home-books-background2-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></div>`;
+	}
+	homeBooksBackground2Temp += '</div>';
+	homeBooksBackground2.innerHTML = homeBooksBackground2Temp + homeBooksBackground2Temp + homeBooksBackground2Temp;
 }
 generateBooks();
 

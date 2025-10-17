@@ -1,34 +1,21 @@
-// ————————————————————————————————————————————————————————————
-// EDIT THIS
-// 
-// Edit this code to customize the homepage!
-// 
-// The introTitle and introSubtitle variables control the text
-// on the homescreen.
-// 
-// The info variable controls the hidden info menu toggled via
-// the button in to top-right corner.
-// 
-// The githubURL variable is attached to the link in the
-// top-right corner.
-// ————————————————————————————————————————————————————————————
-const introTitle = `Welcome to DEMOLAND!`;
-const introSubtitle = `DEMOLAND is an open source website template that allows you to distribute editable code demos (HTML, CSS, JavaScript) entirely within your web browser. By&nbsp;<a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a>.`;
+const introTitle = `Welcome to DEMOLAND, a book store that runs on code and teaches it too!`;
+const introSubtitle = `<p>Learn how to code websites using HTML, CSS, and JavaScript right in your web browser! Open a book to read chapters full of interactive demos you can edit and test without leaving this site.</p><p>Interested in diving deeper into learning design and development? Visit <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> for more resources!</p>`;
 const info = `
 	<p>
-		DEMOLAND is an open source website template that allows you to distribute editable code demos (HTML, CSS, JavaScript) entirely within your web browser. This project was created by <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> to make teaching code easier, without the need for subscribing to any premium code distribution services.
+		Hi there! I’m Gabriel, and I made <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> and DEMOLAND. I created this site because I needed a website to easily share code demos with my students. There are products out there that let you do this, but this one’s entirely open-source, which means that it’s free to run and you can launch your own DEMOLAND if you’d like!
 	</p>
 	<p>
-		DEMOLAND is a metaphor for a library containing books featuring chapters of demos. Each book is organized via JSON files, and each demo is split up into two HTML files (content and information). A Node.js file generates the homepage as a static document, while the code editor page fetches demos dynamically. The editor is built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>.
+		The site’s still a work-in-progress, but in a future version I’ll include instructions on how to launch your own version. In the meantime, you can check out the <a href="https://github.com/gabrieldrozdov/demoland-template" target="_blank">GitHub repository</a> to see this site’s code!
 	</p>
-	<p>
-		Interested in launching your own DEMOLAND site? Clone the <a href="https://github.com/gabrieldrozdov/demoland-template" target="_blank">GitHub repository</a> and launch your site via GitHub pages!
+	<div class="info-divider"></div>
+	<p class="info-credits">
+		<strong>CREDITS</strong>
 	</p>
 	<p class="info-credits">
-		<strong>CREDITS</strong><br>
-		DEMOLAND was developed by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a> / <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>. The site features <a href="https://toomuchtype.com/" target="_blank">Limkin by Too Much Type</a> and <a href="https://monaspace.githubnext.com/" target="_blank">Monaspace by GitHub</a>. Text editors are built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>. The original DEMOLAND site is available at <a href="https://demoland.gdwithgd.com/" target="_blank">demoland.gdwithgd.com</a>.<br>
-		<br>
-		If you launch your own DEMOLAND, I’d appreciate it if you left these credits in. And <a href="mailto:gabriel@noreplica.com">sent me an email</a> just to share your work!
+		DEMOLAND was developed by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a> / <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>. The site uses <a href="https://toomuchtype.com/" target="_blank">Limkin by Too Much Type</a> and <a href="https://vercel.com/font" target="_blank">Geist Mono</a>. Code editors are built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>.
+	</p>
+	<p class="info-credits">
+		If you launch your own DEMOLAND, I’d appreciate it if you left these credits in! And <a href="mailto:gabriel@noreplica.com">send me an email</a> if you’ve got questions or want to share your own DEMOLAND with me!
 	</p>
 `;
 const githubURL = `https://github.com/gabrieldrozdov/demoland`;
@@ -123,13 +110,15 @@ function generateOverview() {
 		// Add to book string
 		books += `
 			<article class="book" data-active="0" id="${bookKey}">
-				<header class="book-intro">
-					<button class="book-intro-return" onclick="openIntro();">&nwarr;&nbsp; View all books</button>
-					<h2 class="book-intro-title">${book['title']}</h2>
-					<div class="book-intro-desc">${book['desc']}</div>
-				</header>
-				<div class="chapter-grid">
-					${bookChapters}
+				<div class="book-content">
+					<header class="book-intro">
+						<button class="book-intro-return" onclick="openIntro();">←&nbsp; View all books</button>
+						<h2 class="book-intro-title">${book['title']}</h2>
+						<div class="book-intro-desc">${book['desc']}</div>
+					</header>
+					<div class="chapter-grid">
+						${bookChapters}
+					</div>
 				</div>
 			</article>
 		`;
@@ -168,8 +157,18 @@ function generateOverview() {
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>DEMOLAND</title>
+			<title>DEMOLAND, by GD with GD</title>
+
+			<meta name="author" content="Gabriel Drozdov / GD with GD">
+			<meta name="keywords" content="Web Design, Web Development, Creative Coding, Design Education, Code Education, Storytelling, Pedagogy">
+			<meta name="description" content="In-browser code editor with a library of tutorials!">
+			<meta property="og:url" content="https://demoland.gdwithgd.com/">
+			<meta name="og:title" property="og:title" content="Demoland, by GD with GD">
+			<meta property="og:description" content="In-browser code editor with a library of tutorials!">
+			<meta property="og:image" content="./assets/meta/opengraph.jpg">
 			<link rel="icon" type="png" href="./assets/meta/favicon.png">
+			<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+
 			<link rel="stylesheet" href="./assets/styles/home.css">
 		</head>
 		<body>
@@ -195,7 +194,7 @@ function generateOverview() {
 					<div class="intro-content">
 						<header class="intro-header">
 							<h1 class="intro-title">${introTitle}</h1>
-							<p class="intro-subtitle">${introSubtitle}</p>
+							<div class="intro-subtitle">${introSubtitle}</div>
 						</header>
 						<nav class="intro-index">
 							<h2 class="intro-index-title">
@@ -205,10 +204,20 @@ function generateOverview() {
 							${overview}
 						</nav>
 					</div>
-					<div class="intro-books-container"><div class="intro-books"></div></div>
 				</div>
 
 				${books}
+
+				<div class="home-vignette"></div>
+				<div class="home-books-container">
+					<div class="home-books"></div>
+				</div>
+				<div class="home-books-background-container">
+					<div class="home-books-background"></div>
+				</div>
+				<div class="home-books-background2-container">
+					<div class="home-books-background2"></div>
+				</div>
 			</main>
 
 			<script src="assets/scripts/all-demos.js"></script>

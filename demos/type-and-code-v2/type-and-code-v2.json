@@ -1,0 +1,46 @@
+{
+	"the-basics": {
+		"title": "The Basics",
+		"subtitle": "Start here",
+		"desc": "Get started with DEMOLAND and learn how to code websites!",
+		"color": "rainbow",
+		"demos": {
+			"what-is-html": {
+				"name": "What is HTML?",
+				"color": "var(--pink)"
+			},
+			"html-elements": {
+				"name": "HTML Elements",
+				"color": "var(--pink)"
+			},
+			"what-is-css": {
+				"name": "What is CSS?",
+				"color": "var(--green)"
+			},
+			"css-classes": {
+				"name": "CSS Classes",
+				"color": "var(--green)"
+			},
+			"css-in-use": {
+				"name": "CSS In-use",
+				"color": "var(--green)"
+			},
+			"inheritence": {
+				"name": "Inheritence",
+				"color": "var(--green)"
+			},
+			"box-model": {
+				"name": "Box Model",
+				"color": "var(--green)"
+			},
+			"putting-it-all-together": {
+				"name": "Putting It All Together",
+				"color": "var(--blue)"
+			},
+			"practice": {
+				"name": "Practice",
+				"color": "var(--blue)"
+			}
+		}
+	}
+}

@@ -4,9 +4,9 @@
 		"shortdesc": "Learn how this website works",
 		"desc": "<p>Get started with DEMOLAND and learn how to code websites!</p>"
 	},
-	"introduction-to-computation": {
-		"title": "Introduction to Computation",
-		"shortdesc": "A beginner’s guide on how to code",
+	"introduction-to-computation-v1": {
+		"title": "Introduction to Computation (v1)",
+		"shortdesc": "A beginner’s guide on how to code! Originally taught RISD Spring 2025.",
 		"desc": "<p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p>"
 	},
 	"designers-guide-to-web-programming": {
