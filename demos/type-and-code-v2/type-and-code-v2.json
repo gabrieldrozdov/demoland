@@ -2,8 +2,8 @@
 	"the-basics": {
 		"title": "The Basics",
 		"subtitle": "Start here",
-		"desc": "Get started with DEMOLAND and learn how to code websites!",
-		"color": "rainbow",
+		"desc": "Covering the fundamentals of HTML and CSS!",
+		"color": "var(--pink)",
 		"demos": {
 			"what-is-html": {
 				"name": "What is HTML?",
@@ -39,6 +39,26 @@
 			},
 			"practice": {
 				"name": "Practice",
+				"color": "var(--blue)"
+			}
+		}
+	},
+	"making-things-fun": {
+		"title": "Making Things Fun",
+		"subtitle": "Exercises",
+		"desc": "Taking what we learned so far to make some neat websites!!",
+		"color": "var(--green)",
+		"demos": {
+			"links": {
+				"name": "Links",
+				"color": "var(--pink)"
+			},
+			"links-worth-pressing": {
+				"name": "Links Worth Pressing",
+				"color": "var(--green)"
+			},
+			"building-your-foundry": {
+				"name": "Building Your Foundry",
 				"color": "var(--blue)"
 			}
 		}
