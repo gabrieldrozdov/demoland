@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tracking information</title>
+</head>
+<body>
+	<h1>We can use variables to track information and change it over time.</h1>
+	
+	<div onmousemove="increaseFontSize(this)" style="font-size: 5vw;">Hover over me!</div>
+
+	<script>
+		var currentSize = 5;
+
+		function increaseFontSize(element) {
+			currentSize = currentSize + .1;
+			element.style.fontSize = currentSize + "vw";
+
+			// OPTIONAL: add if statements to track when the variable reaches a certain value!
+			if (currentSize > 20) {
+				currentSize = 5;
+			}
+		}
+	</script>
+</body>
+</html>

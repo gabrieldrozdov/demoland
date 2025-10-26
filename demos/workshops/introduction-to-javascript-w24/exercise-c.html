@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EXERCISE C: a bit more generative art</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #fdc03a;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+
+		/* Try changing this CSS! */
+		.grid {
+			width: 100vw;
+			height: 100vh;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
+		.grid div {
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+	<h1>EXERCISE C: a bit more generative art</h1>
+	<p>Let’s try adding some randomness to HTML and CSS again, but this time make it automatic!</p>
+	<p>Here the steps we’ll take:</p>
+	<ol>
+		<li>Assign an array of HTML elements to a variable using document.querySelectorAll()</li>
+		<li>Create a function that picks a random element from the array to edit</li>
+		<li>Edit that element’s CSS using template literals</li>
+		<li>Assign a setInterval() loop to run that function repeatedly</li>
+	</ol>
+
+	<p>Things to try:</p>
+	<ul>
+		<li>How would you change this to go in order instead of being random?</li>
+		<li>What other CSS properties could be fun to edit?</li>
+	</ul>
+
+	<div class="grid">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+
+	<script>
+		var allGridChildrenDivs = document.querySelectorAll('.grid div');
+
+		function ourCoolFunction() {
+			// Select a random child element
+			var randomElementIndex = Math.floor(Math.random()*allGridChildrenDivs.length);
+			var randomElement = allGridChildrenDivs[randomElementIndex];
+
+			// Change the element’s background color
+			randomElement.style.backgroundColor = `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`;
+
+			// Change the element’s border radius
+			randomElement.style.borderRadius = `${Math.random()*100}%`;
+		}
+
+		setInterval(ourCoolFunction, 100)
+	</script>
+</body>
+</html>

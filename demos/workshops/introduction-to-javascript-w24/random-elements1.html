@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generating random elements</title>
+
+	<style>
+		.container {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+			gap: 1px;
+		}
+		.container div {
+			aspect-ratio: 1/1;
+			border: 1px solid black;
+			transition: 5s;
+		}
+		.container div:hover {
+			background-color: black;
+			transition: 0s;
+		}
+	</style>
+</head>
+<body>
+	<h1>We can also use for loops to run a specific number of times. In this case, the for loop takes 3 properties:</h1>
+	<ol>
+		<li>A variable to track the number of</li>
+		<li>A limit to the variable</li>
+		<li>How much the variable changes by per loop</li>
+	</ol>
+
+	<div class="container"></div>
+
+	<script>
+		var container = document.querySelector('.container');
+
+		// This is a loop that will run 20 times
+		// Try chaning 20 to a different number!
+		for (var i=0; i<20; i=i+1) {
+			container.innerHTML += "<div></div>";
+		}
+	</script>
+</body>
+</html>

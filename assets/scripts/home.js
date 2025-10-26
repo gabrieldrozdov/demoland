@@ -1,5 +1,9 @@
+const colors = ['pink', 'green', 'blue', 'yellow', 'purple', 'red'];
+
 // Open book
 function openBook(key) {
+	history.replaceState(null, null, `#${key}`);
+
 	if (document.querySelector(`#${key}`) == undefined) {
 		return
 	}
@@ -82,7 +86,8 @@ function generateBooks() {
 	for (let i=0; i<100; i++) {
 		const randomKey = demoKeys[Math.floor(Math.random()*demoKeys.length)];
 		const randomDemo = allDemos[randomKey];
-		homeBooksTemp += `<a style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*6-3}deg);' class="home-books-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></a>`;
+		const randomColor = colors[Math.floor(Math.random()*colors.length)];
+		homeBooksTemp += `<a style='--primary: var(--${randomColor}); --primary-rgb: var(--${randomColor}-rgb); transform: rotate(${Math.random()*6-3}deg);' class="home-books-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></a>`;
 	}
 	homeBooksTemp += '</div>';
 	homeBooks.innerHTML = homeBooksTemp + homeBooksTemp + homeBooksTemp;
@@ -93,7 +98,8 @@ function generateBooks() {
 	for (let i=0; i<100; i++) {
 		const randomKey = demoKeys[Math.floor(Math.random()*demoKeys.length)];
 		const randomDemo = allDemos[randomKey];
-		homeBooksBackgroundTemp += `<div style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*10-5}deg);' class="home-books-background-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></div>`;
+		const randomColor = colors[Math.floor(Math.random()*colors.length)];
+		homeBooksBackgroundTemp += `<div style='--primary: var(--${randomColor}); --primary-rgb: var(--${randomColor}-rgb); transform: rotate(${Math.random()*10-5}deg);' class="home-books-background-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></div>`;
 	}
 	homeBooksBackgroundTemp += '</div>';
 	homeBooksBackground.innerHTML = homeBooksBackgroundTemp + homeBooksBackgroundTemp + homeBooksBackgroundTemp;
@@ -104,7 +110,8 @@ function generateBooks() {
 	for (let i=0; i<100; i++) {
 		const randomKey = demoKeys[Math.floor(Math.random()*demoKeys.length)];
 		const randomDemo = allDemos[randomKey];
-		homeBooksBackground2Temp += `<div style='--primary: ${randomDemo['color']}; transform: rotate(${Math.random()*12-6}deg);' class="home-books-background2-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></div>`;
+		const randomColor = colors[Math.floor(Math.random()*colors.length)];
+		homeBooksBackground2Temp += `<div style='--primary: var(--${randomColor}); --primary-rgb: var(--${randomColor}-rgb); transform: rotate(${Math.random()*12-6}deg);' class="home-books-background2-unit-book" href='${randomDemo['url']}' target='_blank'><span>${randomDemo['name']}</span></div>`;
 	}
 	homeBooksBackground2Temp += '</div>';
 	homeBooksBackground2.innerHTML = homeBooksBackground2Temp + homeBooksBackground2Temp + homeBooksBackground2Temp;

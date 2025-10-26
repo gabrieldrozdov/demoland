@@ -1,65 +1,49 @@
 {
 	"the-basics": {
 		"title": "The Basics",
-		"subtitle": "Start here",
 		"desc": "Covering the fundamentals of HTML and CSS!",
-		"color": "var(--pink)",
 		"demos": {
 			"what-is-html": {
-				"name": "What is HTML?",
-				"color": "var(--pink)"
+				"name": "What is HTML?"
 			},
 			"html-elements": {
-				"name": "HTML Elements",
-				"color": "var(--pink)"
+				"name": "HTML Elements"
 			},
 			"what-is-css": {
-				"name": "What is CSS?",
-				"color": "var(--green)"
+				"name": "What is CSS?"
 			},
 			"css-classes": {
-				"name": "CSS Classes",
-				"color": "var(--green)"
+				"name": "CSS Classes"
 			},
 			"css-in-use": {
-				"name": "CSS In-use",
-				"color": "var(--green)"
+				"name": "CSS In-use"
 			},
 			"inheritence": {
-				"name": "Inheritence",
-				"color": "var(--green)"
+				"name": "Inheritence"
 			},
 			"box-model": {
-				"name": "Box Model",
-				"color": "var(--green)"
+				"name": "Box Model"
 			},
 			"putting-it-all-together": {
-				"name": "Putting It All Together",
-				"color": "var(--blue)"
+				"name": "Putting It All Together"
 			},
 			"practice": {
-				"name": "Practice",
-				"color": "var(--blue)"
+				"name": "Practice"
 			}
 		}
 	},
 	"making-things-fun": {
 		"title": "Making Things Fun",
-		"subtitle": "Exercises",
 		"desc": "Taking what we learned so far to make some neat websites!!",
-		"color": "var(--green)",
 		"demos": {
 			"links": {
-				"name": "Links",
-				"color": "var(--pink)"
+				"name": "Links"
 			},
 			"links-worth-pressing": {
-				"name": "Links Worth Pressing",
-				"color": "var(--green)"
+				"name": "Links Worth Pressing"
 			},
 			"building-your-foundry": {
-				"name": "Building Your Foundry",
-				"color": "var(--blue)"
+				"name": "Building Your Foundry"
 			}
 		}
 	}

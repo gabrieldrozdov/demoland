@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 4: Math.random()</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #fdc03a;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 4: Math.random()</h1>
+
+	<h2>4.1: getting a random number</h2>
+	<p>
+		We can easily get a random number using the <strong><a href="https://www.w3schools.com/js/js_random.asp" target="_blank">Math.random()</a></strong> function.<br>
+		This outputs a decimal number between 0 and 1 (not including 1)<br><br>
+
+		<button onclick="alert(Math.random())">Give me a random number!</button>
+	</p>
+
+	<h2>4.2: range with an upper limit</h2>
+	<p>
+		To get a random number between 0 and some higher number, we multiply Math.random() by the upper limit (non-inclusive)<br><br>
+
+		<button onclick="alert(Math.random()*100)">Give me a random number between 0 and 100! Math.random()*100</button>
+
+		<br><br>
+		If we don’t want decimals, we can round our number to the nearest integer using <strong><a href="https://www.w3schools.com/jsref/jsref_round.asp" target="_blank">Math.round()</a></strong>.<br>
+		This can round up or down, so now our range is 0 to 100<br><br>
+
+		<button onclick="alert(Math.round(Math.random()*100))">Math.round(Math.random()*100)</button>
+	</p>
+
+	<h2>4.3: random entry in an array</h2>
+	<p>
+		We can use the previous approach to get a random entry in an array.<br>
+		The plan is to get the number for a random index, and then use that to access the data stored at that index.<br><br>
+		Example: <span style="font-family: monospace">var myArray = ['hi', 'hello', 'whatsup'];</span><br>
+		So, myArray.length == 3 and Math.random()*myArray.length gives us a random number between 0 and 3.<br>
+		But, Math.round(2.9) == 3, and myArray[3] is invalid since array[2] actually access the third value.<br>
+		So, we always want to round DOWN instead.<br>
+		We can do that using <strong><a href="https://www.w3schools.com/jsref/jsref_floor.asp" target="_blank">Math.floor()</a></strong>.<br><br>
+
+		Here’s our new equation for a random index:<br>
+		<span style="font-family: monospace">Math.floor(Math.random()*arrayName.length)</span><br><br>
+
+		And here is track actually accessing the array:<br>
+		<span style="font-family: monospace">myArray[Math.floor(Math.random()*arrayName.length)]</span><br><br>
+
+		<button onclick="alert(Math.floor(Math.random()*myArray.length))">Random index from the array</button><br>
+		<button onclick="alert(myArray[Math.floor(Math.random()*myArray.length)])">Random entry from the array</button>
+		<script>
+			var myArray = ['hi', 'hello', 'whatsup'];
+		</script>
+	</p>
+
+	<h2>4.4: range that starts above 0</h2>
+	<p>
+		Let’s say we want a random number between 20 and 80.<br>
+		There are 60 (80-20 = 60) total whole numbers in that range.<br>
+		So, first we multiply by the total possible numbers:<br>
+		<span style="font-family: monospace">Math.random()*60</span><br><br>
+
+		Then, we need to add the minimum possible value:<br>
+		<span style="font-family: monospace">Math.random()*60+20</span><br><br>
+		<button onclick="alert(Math.random()*60+20)">Random number between 20 and 80</button>
+	</p>
+
+	<h2>4.5: range with a lower limit</h2>
+	<p>
+		Let’s say we want a random number between -50 and 100<br>
+		In that range, there are 150 total numbers<br>
+		So the first thing we do is multiply by the total amount of possible values:<br>
+		<span style="font-family: monospace">Math.random()*150</span><br><br>
+
+		Then, we subtract by how far into the negative we’re starting at, which is -50 in this case:
+		<span style="font-family: monospace">Math.random()*150-50</span><br><br>
+
+		<button onclick="alert(Math.random()*150-50)">Give me a random number between -50 and 150!</button>
+	</p>
+</body>
+</html>

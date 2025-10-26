@@ -57,7 +57,7 @@
 				<div class="intro">
 					<div class="intro-content">
 						<header class="intro-header">
-							<h1 class="intro-title">Welcome to DEMOLAND, a book store that runs on code and teaches it too!</h1>
+							<h1 class="intro-title">Welcome to <span>DEMOLAND</span>, a bookstore that runs on code and teaches it too!</h1>
 							<div class="intro-subtitle"><p>Learn how to code websites using HTML, CSS, and JavaScript right in your web browser! Open a book to read chapters full of interactive demos you can edit and test without leaving this site.</p><p>Interested in diving deeper into learning design and development? Visit <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> for more resources!</p></div>
 						</header>
 						<nav class="intro-index">
@@ -68,7 +68,7 @@
 							
 			<a href="#tutorial" class="intro-index-link" onclick="openBook('tutorial');">
 				<div class="intro-index-link-main">
-					<h3 class="intro-index-link-title">Tutorial</h3>
+					<h3 class="intro-index-link-title">🎓&nbsp;&nbsp;Tutorial</h3>
 					<p class="intro-index-link-shortdesc">Learn how to use this website!</p>
 				</div>
 				<div class="intro-index-link-info">
@@ -77,9 +77,20 @@
 				</div>
 			</a>
 		
+			<a href="#workshops" class="intro-index-link" onclick="openBook('workshops');">
+				<div class="intro-index-link-main">
+					<h3 class="intro-index-link-title">🛠️&nbsp;&nbsp;Workshops</h3>
+					<p class="intro-index-link-shortdesc">Standalone chapters for in-person lessons!</p>
+				</div>
+				<div class="intro-index-link-info">
+					<div>3 Chapters</div>
+					<div>39 Demos</div>
+				</div>
+			</a>
+		
 			<a href="#type-and-code-v2" class="intro-index-link" onclick="openBook('type-and-code-v2');">
 				<div class="intro-index-link-main">
-					<h3 class="intro-index-link-title">Type+Code v2</h3>
+					<h3 class="intro-index-link-title">🔠&nbsp;&nbsp;Type+Code <span style='opacity: .5;'>v2</span></h3>
 					<p class="intro-index-link-shortdesc">Creating experimental type specimens in the form of websites! Taught during RISD’s Fall 2025 semester.</p>
 				</div>
 				<div class="intro-index-link-info">
@@ -88,9 +99,9 @@
 				</div>
 			</a>
 		
-			<a href="#introduction-to-computation" class="intro-index-link" onclick="openBook('introduction-to-computation');">
+			<a href="#introduction-to-computation-v1" class="intro-index-link" onclick="openBook('introduction-to-computation-v1');">
 				<div class="intro-index-link-main">
-					<h3 class="intro-index-link-title">Introduction to Computation v1</h3>
+					<h3 class="intro-index-link-title">🤖&nbsp;&nbsp;Introduction to Computation <span style='opacity: .5;'>v1</span></h3>
 					<p class="intro-index-link-shortdesc">A beginner’s guide on how to code! Taught during RISD’s Spring 2025 semester.</p>
 				</div>
 				<div class="intro-index-link-info">
@@ -107,17 +118,20 @@
 			<article class="book" data-active="0" id="tutorial">
 				<div class="book-content">
 					<header class="book-intro">
-						<button class="book-intro-return" onclick="openIntro();">←&nbsp; View all books</button>
-						<h2 class="book-intro-title">Tutorial</h2>
-						<div class="book-intro-desc"><p>DEMOLAND features a collection of tutorials that are organized into books and presented using an in-browser code editor. Inside each book, you’ll read chapters full of demos that you can edit without downloading any additional apps. Start here to learn how to use the site’s interface!</p></div>
+						<button class="book-intro-return" onclick="openIntro();">
+							<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+							<span>View all books</span>
+						</button>
+						<h2 class="book-intro-title">🎓&nbsp;&nbsp;Tutorial</h2>
+						<div class="book-intro-desc"><p>DEMOLAND lets you books full of web demos that you can read, edit, and test right in your browser! Start here to learn how to use the site’s interface.</p></div>
 					</header>
 					<div class="chapter-grid">
 						
-				<section class="chapter  rainbow" id="tutorial-tutorial" style="--primary: rainbow">
+				<section class="chapter" id="tutorial-tutorial">
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=tutorial&chapter=tutorial&demo=welcome">
 							<div class="chapter-subtitle">
-								Start here
+								Chapter 1
 							</div>
 							<h3 class="chapter-title">
 								How to use DEMOLAND
@@ -130,34 +144,305 @@
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=tutorial&chapter=tutorial&demo=welcome" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=welcome" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
-						<div class="chapter-demo-name">Welcome to DEMOLAND</div>
+						<div class="chapter-demo-name">Welcome to DEMOLAND!</div>
 					</a>
 				
-					<a href="editor/?book=tutorial&chapter=tutorial&demo=html" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=html" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">What is HTML?</div>
 					</a>
 				
-					<a href="editor/?book=tutorial&chapter=tutorial&demo=css" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=css" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">What is CSS?</div>
 					</a>
 				
-					<a href="editor/?book=tutorial&chapter=tutorial&demo=js" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=js" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">What is JavaScript?</div>
 					</a>
 				
-					<a href="editor/?book=tutorial&chapter=tutorial&demo=js-libraries" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=js-libraries" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">What are JavaScript Libraries?</div>
 					</a>
 				
-					<a href="editor/?book=tutorial&chapter=tutorial&demo=template" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=template" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Starter Template</div>
+					</a>
+				
+					</div>
+				</section>
+			
+					</div>
+				</div>
+			</article>
+		
+			<article class="book" data-active="0" id="workshops">
+				<div class="book-content">
+					<header class="book-intro">
+						<button class="book-intro-return" onclick="openIntro();">
+							<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+							<span>View all books</span>
+						</button>
+						<h2 class="book-intro-title">🛠️&nbsp;&nbsp;Workshops</h2>
+						<div class="book-intro-desc"><p>Every now and then, I’m asked to run a coding workshop introducing web programming or a topic related to websites. Each of these chapters represents one workshop.</p></div>
+					</header>
+					<div class="chapter-grid">
+						
+				<section class="chapter" id="workshops-variable-fonts-workshop-f24">
+					<div class="chapter-header">
+						<a class="chapter-link" href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=importing-variable-fonts">
+							<div class="chapter-subtitle">
+								Chapter 1
+							</div>
+							<h3 class="chapter-title">
+								Variable Fonts Workshop [RISD Fall 2024]
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							Tutorials on importing, animating, and interacting with variable fonts, featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!
+						</p>
+						<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=importing-variable-fonts" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+					</div>
+					<div class="chapter-demos">
+						
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=importing-variable-fonts" class="chapter-demo">
+						<div class="chapter-demo-number">1</div>
+						<div class="chapter-demo-name">Importing variable fonts</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=using-variable-fonts" class="chapter-demo">
+						<div class="chapter-demo-number">2</div>
+						<div class="chapter-demo-name">Using variable fonts</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=variable-font-weight" class="chapter-demo">
+						<div class="chapter-demo-number">3</div>
+						<div class="chapter-demo-name">Variable font weight</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=animating-variable-fonts" class="chapter-demo">
+						<div class="chapter-demo-number">4</div>
+						<div class="chapter-demo-name">Animating variable fonts</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=interacting-with-variable-fonts" class="chapter-demo">
+						<div class="chapter-demo-number">5</div>
+						<div class="chapter-demo-name">Interacting with variable fonts</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=toggling-variable-states" class="chapter-demo">
+						<div class="chapter-demo-number">6</div>
+						<div class="chapter-demo-name">Toggling variable states</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=targeting-elements-using-this" class="chapter-demo">
+						<div class="chapter-demo-number">7</div>
+						<div class="chapter-demo-name">Targeting elements using “this”</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=manually-setting-values" class="chapter-demo">
+						<div class="chapter-demo-number">8</div>
+						<div class="chapter-demo-name">Manually setting values</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=using-css-variables-for-variable-axis-values" class="chapter-demo">
+						<div class="chapter-demo-number">9</div>
+						<div class="chapter-demo-name">Using CSS variables for variable axis values</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=swapping-out-content" class="chapter-demo">
+						<div class="chapter-demo-number">10</div>
+						<div class="chapter-demo-name">Swapping out content</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=setting-values-using-sliders" class="chapter-demo">
+						<div class="chapter-demo-number">11</div>
+						<div class="chapter-demo-name">Setting values using sliders</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=randomizing-variable-axis-values" class="chapter-demo">
+						<div class="chapter-demo-number">12</div>
+						<div class="chapter-demo-name">Randomizing variable axis values</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=repeatedly-randomizing-variable-axis-values" class="chapter-demo">
+						<div class="chapter-demo-number">13</div>
+						<div class="chapter-demo-name">Repeatedly randomizing variable axis values</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=tracking-variable-axis-values" class="chapter-demo">
+						<div class="chapter-demo-number">14</div>
+						<div class="chapter-demo-name">Tracking variable axis values</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=tracking-the-cursor-position" class="chapter-demo">
+						<div class="chapter-demo-number">15</div>
+						<div class="chapter-demo-name">Tracking the cursor position</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=tracking-the-scroll-position" class="chapter-demo">
+						<div class="chapter-demo-number">16</div>
+						<div class="chapter-demo-name">Tracking the scroll position</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=randomizing-individual-letters" class="chapter-demo">
+						<div class="chapter-demo-number">17</div>
+						<div class="chapter-demo-name">Randomizing individual letters</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=animating-individual-letters" class="chapter-demo">
+						<div class="chapter-demo-number">18</div>
+						<div class="chapter-demo-name">Animating individual letters</div>
+					</a>
+				
+					</div>
+				</section>
+			
+				<section class="chapter" id="workshops-motion-design-for-the-web-f24">
+					<div class="chapter-header">
+						<a class="chapter-link" href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=introduction">
+							<div class="chapter-subtitle">
+								Chapter 2
+							</div>
+							<h3 class="chapter-title">
+								Motion Design for the Web [Boston University Fall 2024]
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							An introduction to animating using HTML and CSS!
+						</p>
+						<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=introduction" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+					</div>
+					<div class="chapter-demos">
+						
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=introduction" class="chapter-demo">
+						<div class="chapter-demo-number">1</div>
+						<div class="chapter-demo-name">Introduction</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=what-you-need-to-know" class="chapter-demo">
+						<div class="chapter-demo-number">2</div>
+						<div class="chapter-demo-name">What you need to know</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=styling-text" class="chapter-demo">
+						<div class="chapter-demo-number">3</div>
+						<div class="chapter-demo-name">Styling text</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=animating-text" class="chapter-demo">
+						<div class="chapter-demo-number">4</div>
+						<div class="chapter-demo-name">Animating text</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=bringing-text-to-life" class="chapter-demo">
+						<div class="chapter-demo-number">5</div>
+						<div class="chapter-demo-name">Bringing text to life</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=a-story-of-a-square" class="chapter-demo">
+						<div class="chapter-demo-number">6</div>
+						<div class="chapter-demo-name">A story of a square</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=the-humble-button" class="chapter-demo">
+						<div class="chapter-demo-number">7</div>
+						<div class="chapter-demo-name">The humble button</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=how-does-that-make-you-feel" class="chapter-demo">
+						<div class="chapter-demo-number">8</div>
+						<div class="chapter-demo-name">How does that make you feel?</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=the-end-for-now" class="chapter-demo">
+						<div class="chapter-demo-number">9</div>
+						<div class="chapter-demo-name">The end (for now!)</div>
+					</a>
+				
+					</div>
+				</section>
+			
+				<section class="chapter" id="workshops-introduction-to-javascript-w24">
+					<div class="chapter-header">
+						<a class="chapter-link" href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-1">
+							<div class="chapter-subtitle">
+								Chapter 3
+							</div>
+							<h3 class="chapter-title">
+								Introduction to JavaScript [RISD Wintersession 2024]
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							An introduction to coding in JavaScript!
+						</p>
+						<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+					</div>
+					<div class="chapter-demos">
+						
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-1" class="chapter-demo">
+						<div class="chapter-demo-number">1</div>
+						<div class="chapter-demo-name">onclick, alert(), strings, numbers</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-2" class="chapter-demo">
+						<div class="chapter-demo-number">2</div>
+						<div class="chapter-demo-name">&lt;script&gt;, functions, variables</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-3" class="chapter-demo">
+						<div class="chapter-demo-number">3</div>
+						<div class="chapter-demo-name">inspect panel, console.log()</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-4" class="chapter-demo">
+						<div class="chapter-demo-number">4</div>
+						<div class="chapter-demo-name">Booleans, if/else statements, arrays, .length</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=exercise-a" class="chapter-demo">
+						<div class="chapter-demo-number">5</div>
+						<div class="chapter-demo-name">Exercise: a short story</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-5" class="chapter-demo">
+						<div class="chapter-demo-number">6</div>
+						<div class="chapter-demo-name">Math.random()</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-6" class="chapter-demo">
+						<div class="chapter-demo-number">7</div>
+						<div class="chapter-demo-name">document.querySelector(), .innerText, .style, .classList</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=exercise-b" class="chapter-demo">
+						<div class="chapter-demo-number">8</div>
+						<div class="chapter-demo-name">Exercise: a bit of generative art</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-7" class="chapter-demo">
+						<div class="chapter-demo-number">9</div>
+						<div class="chapter-demo-name">document.querySelectorAll(), setInterval(), template strings</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=exercise-c" class="chapter-demo">
+						<div class="chapter-demo-number">10</div>
+						<div class="chapter-demo-name">Exercise: a bit more generative art</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-8" class="chapter-demo">
+						<div class="chapter-demo-number">11</div>
+						<div class="chapter-demo-name">while loops, for loops, .innerHTML</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=exercise-d" class="chapter-demo">
+						<div class="chapter-demo-number">12</div>
+						<div class="chapter-demo-name">Exercise: let the computer code the page</div>
 					</a>
 				
 					</div>
@@ -170,17 +455,20 @@
 			<article class="book" data-active="0" id="type-and-code-v2">
 				<div class="book-content">
 					<header class="book-intro">
-						<button class="book-intro-return" onclick="openIntro();">←&nbsp; View all books</button>
-						<h2 class="book-intro-title">Type+Code v2</h2>
+						<button class="book-intro-return" onclick="openIntro();">
+							<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+							<span>View all books</span>
+						</button>
+						<h2 class="book-intro-title">🔠&nbsp;&nbsp;Type+Code <span style='opacity: .5;'>v2</span></h2>
 						<div class="book-intro-desc"><p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p></div>
 					</header>
 					<div class="chapter-grid">
 						
-				<section class="chapter " id="type-and-code-v2-the-basics" style="--primary: var(--pink)">
+				<section class="chapter" id="type-and-code-v2-the-basics">
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=type-and-code-v2&chapter=the-basics&demo=what-is-html">
 							<div class="chapter-subtitle">
-								Start here
+								Chapter 1
 							</div>
 							<h3 class="chapter-title">
 								The Basics
@@ -193,47 +481,47 @@
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=what-is-html" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=what-is-html" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">What is HTML?</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=html-elements" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=html-elements" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">HTML Elements</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=what-is-css" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=what-is-css" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">What is CSS?</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=css-classes" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=css-classes" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">CSS Classes</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=css-in-use" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=css-in-use" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">CSS In-use</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=inheritence" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=inheritence" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Inheritence</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=box-model" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=box-model" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Box Model</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=putting-it-all-together" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=putting-it-all-together" class="chapter-demo">
 						<div class="chapter-demo-number">8</div>
 						<div class="chapter-demo-name">Putting It All Together</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=practice" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=type-and-code-v2&chapter=the-basics&demo=practice" class="chapter-demo">
 						<div class="chapter-demo-number">9</div>
 						<div class="chapter-demo-name">Practice</div>
 					</a>
@@ -241,11 +529,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="type-and-code-v2-making-things-fun" style="--primary: var(--green)">
+				<section class="chapter" id="type-and-code-v2-making-things-fun">
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=links">
 							<div class="chapter-subtitle">
-								Exercises
+								Chapter 2
 							</div>
 							<h3 class="chapter-title">
 								Making Things Fun
@@ -258,17 +546,17 @@
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=links" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=links" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Links</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=links-worth-pressing" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=links-worth-pressing" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Links Worth Pressing</div>
 					</a>
 				
-					<a href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=building-your-foundry" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=type-and-code-v2&chapter=making-things-fun&demo=building-your-foundry" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Building Your Foundry</div>
 					</a>
@@ -280,20 +568,23 @@
 				</div>
 			</article>
 		
-			<article class="book" data-active="0" id="introduction-to-computation">
+			<article class="book" data-active="0" id="introduction-to-computation-v1">
 				<div class="book-content">
 					<header class="book-intro">
-						<button class="book-intro-return" onclick="openIntro();">←&nbsp; View all books</button>
-						<h2 class="book-intro-title">Introduction to Computation v1</h2>
+						<button class="book-intro-return" onclick="openIntro();">
+							<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+							<span>View all books</span>
+						</button>
+						<h2 class="book-intro-title">🤖&nbsp;&nbsp;Introduction to Computation <span style='opacity: .5;'>v1</span></h2>
 						<div class="book-intro-desc"><p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p></div>
 					</header>
 					<div class="chapter-grid">
 						
-				<section class="chapter " id="introduction-to-computation-week-1" style="--primary: var(--pink)">
+				<section class="chapter" id="introduction-to-computation-v1-week-1">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-1&demo=introduction">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=introduction">
 							<div class="chapter-subtitle">
-								Week 1
+								Chapter 1
 							</div>
 							<h3 class="chapter-title">
 								What is code?
@@ -302,41 +593,41 @@
 						<p class="chapter-desc">
 							Let’s get started by playing around with HTML and CSS!
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=introduction" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=introduction" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=introduction" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=introduction" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Introduction</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=splitting-things-up" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=splitting-things-up" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Splitting things up</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=making-it-pretty" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=making-it-pretty" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Making it pretty</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=programmatic-poetry" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=programmatic-poetry" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Programmatic poetry</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=brought-to-life" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=brought-to-life" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Brought to life</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=every-click-a-story" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=every-click-a-story" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Every click, a story</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-1&demo=whats-next" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-1&demo=whats-next" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">What’s next?</div>
 					</a>
@@ -344,11 +635,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-2" style="--primary: var(--green)">
+				<section class="chapter" id="introduction-to-computation-v1-week-2">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-2&demo=recap">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=recap">
 							<div class="chapter-subtitle">
-								Week 2
+								Chapter 2
 							</div>
 							<h3 class="chapter-title">
 								The basics
@@ -357,61 +648,61 @@
 						<p class="chapter-desc">
 							Introducing the basics of JavaScript: variables, data types, operators, conditionals, and functions.
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=recap" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=recap" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=recap" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=recap" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Recap</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=html-template" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=html-template" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">HTML template</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=testing-code" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=testing-code" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Testing code</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=variables" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=variables" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Variables</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=data-types" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=data-types" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Data types</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=operators" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=operators" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Operators</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=conditionals" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=conditionals" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Conditionals</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=functions" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=functions" class="chapter-demo">
 						<div class="chapter-demo-number">8</div>
 						<div class="chapter-demo-name">Functions</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=side-effects" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=side-effects" class="chapter-demo">
 						<div class="chapter-demo-number">9</div>
 						<div class="chapter-demo-name">Side effects</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=scope" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=scope" class="chapter-demo">
 						<div class="chapter-demo-number">10</div>
 						<div class="chapter-demo-name">Scope</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-2&demo=homework-template" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-2&demo=homework-template" class="chapter-demo">
 						<div class="chapter-demo-number">11</div>
 						<div class="chapter-demo-name">Homework template</div>
 					</a>
@@ -419,11 +710,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-technical-1-answers" style="--primary: var(--blue)">
+				<section class="chapter" id="introduction-to-computation-v1-technical-1-answers">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-1">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-1">
 							<div class="chapter-subtitle">
-								Week 3
+								Chapter 3
 							</div>
 							<h3 class="chapter-title">
 								Answers to Technical 1
@@ -432,41 +723,41 @@
 						<p class="chapter-desc">
 							Try to answer these questions on your own first! You can access the assignment <a href='https://classroom.gdwithgd.com/?course=introduction-to-computation-v1&resource=technical-1' target='_blank'>here</a>.
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-1" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-1" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Question 1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-2" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-2" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Question 2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-3" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-3" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Question 3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-4" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-4" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Question 4</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-5" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-5" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Question 5</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=question-6" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=question-6" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Question 6</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-1-answers&demo=bonus-question" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-1-answers&demo=bonus-question" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Bonus Question</div>
 					</a>
@@ -474,11 +765,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-3" style="--primary: var(--blue)">
+				<section class="chapter" id="introduction-to-computation-v1-week-3">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-3&demo=warm-up">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=warm-up">
 							<div class="chapter-subtitle">
-								Week 3
+								Chapter 4
 							</div>
 							<h3 class="chapter-title">
 								On a loop
@@ -487,96 +778,96 @@
 						<p class="chapter-desc">
 							How can we use code to do a whole bunch of things at once? With loops!
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=warm-up" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=warm-up" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=warm-up" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=warm-up" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Warm Up: Poem generator</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=running-functions" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=running-functions" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Running functions</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=visualizing-results" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=visualizing-results" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Visualizing results</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=repeating-code-with-loops" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=repeating-code-with-loops" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Repeating code with loops</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=try-it-out-while-loops" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=try-it-out-while-loops" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Try It Out: “while” loops</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=try-it-out-while-loops-solution" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=try-it-out-while-loops-solution" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Try It Out: “while” loops solution</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=building-an-interface" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=building-an-interface" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Building an interface</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=different-kinds-of-loops" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=different-kinds-of-loops" class="chapter-demo">
 						<div class="chapter-demo-number">8</div>
 						<div class="chapter-demo-name">Different kinds of loops</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=try-it-out-for-loops" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=try-it-out-for-loops" class="chapter-demo">
 						<div class="chapter-demo-number">9</div>
 						<div class="chapter-demo-name">Try It Out: “for” loops</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=try-it-out-for-loops-solution" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=try-it-out-for-loops-solution" class="chapter-demo">
 						<div class="chapter-demo-number">10</div>
 						<div class="chapter-demo-name">Try It Out: “for” loops solution</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=accessing-data-from-arrays" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=accessing-data-from-arrays" class="chapter-demo">
 						<div class="chapter-demo-number">11</div>
 						<div class="chapter-demo-name">Looping through arrays</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=looping-through-arrays" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=looping-through-arrays" class="chapter-demo">
 						<div class="chapter-demo-number">12</div>
 						<div class="chapter-demo-name">Looping through arrays</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=helper-functions" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=helper-functions" class="chapter-demo">
 						<div class="chapter-demo-number">13</div>
 						<div class="chapter-demo-name">Helper functions</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=getting-random-values" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=getting-random-values" class="chapter-demo">
 						<div class="chapter-demo-number">14</div>
 						<div class="chapter-demo-name">Getting random values</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=try-it-out-random-numbers" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=try-it-out-random-numbers" class="chapter-demo">
 						<div class="chapter-demo-number">15</div>
 						<div class="chapter-demo-name">Try It Out: Random numbers</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=try-it-out-random-numbers-solution" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=try-it-out-random-numbers-solution" class="chapter-demo">
 						<div class="chapter-demo-number">16</div>
 						<div class="chapter-demo-name">Try It Out: Random numbers solution</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=weekly-challenge" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=weekly-challenge" class="chapter-demo">
 						<div class="chapter-demo-number">17</div>
 						<div class="chapter-demo-name">Weekly Challenge: Funky dice</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-3&demo=weekly-challenge-solution" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-3&demo=weekly-challenge-solution" class="chapter-demo">
 						<div class="chapter-demo-number">18</div>
 						<div class="chapter-demo-name">Weekly Challenge: Funky dice solution</div>
 					</a>
@@ -584,11 +875,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-technical-2" style="--primary: var(--yellow)">
+				<section class="chapter" id="introduction-to-computation-v1-technical-2">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=technical-2&demo=question-1">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=question-1">
 							<div class="chapter-subtitle">
-								Week 4
+								Chapter 5
 							</div>
 							<h3 class="chapter-title">
 								Technical 2
@@ -597,31 +888,31 @@
 						<p class="chapter-desc">
 							Topics: random numbers, input elements, accessing data from arrays, for/while loops.
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=technical-2&demo=question-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=question-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2&demo=question-1" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=question-1" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Question 1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2&demo=question-2" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=question-2" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Question 2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2&demo=question-3" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=question-3" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Question 3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2&demo=question-4" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=question-4" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Question 4</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2&demo=bonus-question" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2&demo=bonus-question" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Bonus Question</div>
 					</a>
@@ -629,11 +920,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-technical-2-answers" style="--primary: var(--yellow)">
+				<section class="chapter" id="introduction-to-computation-v1-technical-2-answers">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=question-1">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=question-1">
 							<div class="chapter-subtitle">
-								Week 4
+								Chapter 6
 							</div>
 							<h3 class="chapter-title">
 								Technical 2 Answers
@@ -642,31 +933,31 @@
 						<p class="chapter-desc">
 							Topics: random numbers, input elements, accessing data from arrays, for/while loops.
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=question-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=question-1" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=question-1" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=question-1" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Question 1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=question-2" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=question-2" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Question 2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=question-3" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=question-3" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Question 3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=question-4" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=question-4" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Question 4</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=technical-2-answers&demo=bonus-question" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=technical-2-answers&demo=bonus-question" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Bonus Question</div>
 					</a>
@@ -674,11 +965,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-4" style="--primary: var(--yellow)">
+				<section class="chapter" id="introduction-to-computation-v1-week-4">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-4&demo=select-element">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=select-element">
 							<div class="chapter-subtitle">
-								Week 4
+								Chapter 7
 							</div>
 							<h3 class="chapter-title">
 								Constructing data
@@ -687,71 +978,71 @@
 						<p class="chapter-desc">
 							We can store, access, and modify data (relatively) easily using arrays and objects.
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=select-element" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=select-element" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=select-element" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=select-element" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">The “select” element</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=template-literals" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=template-literals" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Template literals</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=modifying-arrays" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=modifying-arrays" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Modifying arrays</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=playing-with-arrays" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=playing-with-arrays" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Playing with arrays</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=modifying-strings" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=modifying-strings" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Modifying strings</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=getting-data-from-objects" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=getting-data-from-objects" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Getting data from objects</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=modifying-objects" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=modifying-objects" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Modifying objects</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=weekly-challenge-1" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=weekly-challenge-1" class="chapter-demo">
 						<div class="chapter-demo-number">8</div>
 						<div class="chapter-demo-name">Weekly Challenge 1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=weekly-challenge-1-solution" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=weekly-challenge-1-solution" class="chapter-demo">
 						<div class="chapter-demo-number">9</div>
 						<div class="chapter-demo-name">Weekly Challenge 1 Solution</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=weekly-challenge-2" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=weekly-challenge-2" class="chapter-demo">
 						<div class="chapter-demo-number">10</div>
 						<div class="chapter-demo-name">Weekly Challenge 2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=weekly-challenge-2-solution" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=weekly-challenge-2-solution" class="chapter-demo">
 						<div class="chapter-demo-number">11</div>
 						<div class="chapter-demo-name">Weekly Challenge 2 Solution</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=weekly-challenge-3" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=weekly-challenge-3" class="chapter-demo">
 						<div class="chapter-demo-number">12</div>
 						<div class="chapter-demo-name">Weekly Challenge 3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-4&demo=weekly-challenge-3-solution" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-4&demo=weekly-challenge-3-solution" class="chapter-demo">
 						<div class="chapter-demo-number">13</div>
 						<div class="chapter-demo-name">Weekly Challenge 3 Solution</div>
 					</a>
@@ -759,11 +1050,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-5" style="--primary: var(--purple)">
+				<section class="chapter" id="introduction-to-computation-v1-week-5">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-5&demo=css-self-portraits">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-5&demo=css-self-portraits">
 							<div class="chapter-subtitle">
-								Week 5
+								Chapter 8
 							</div>
 							<h3 class="chapter-title">
 								Fun with CSS
@@ -772,11 +1063,11 @@
 						<p class="chapter-desc">
 							Let’s make self-portraits!
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-5&demo=css-self-portraits" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-5&demo=css-self-portraits" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-5&demo=css-self-portraits" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-5&demo=css-self-portraits" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">CSS Self-portraits</div>
 					</a>
@@ -784,11 +1075,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-6" style="--primary: var(--red)">
+				<section class="chapter" id="introduction-to-computation-v1-week-6">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-1990s">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-1990s">
 							<div class="chapter-subtitle">
-								Week 6
+								Chapter 9
 							</div>
 							<h3 class="chapter-title">
 								Reponsive design using flexbox and grid
@@ -797,131 +1088,131 @@
 						<p class="chapter-desc">
 							A real mess of a week.
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-1990s" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-1990s" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-1990s" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-1990s" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">1990s web design</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-2000s" class="chapter-demo" style="--primary: var(--purple);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-2000s" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">2000s web design</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks1" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks1" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">flexducks1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks2" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks2" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">flexducks2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks3" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks3" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">flexducks3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks4" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks4" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">flexducks4</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks5" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks5" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">flexducks5</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks6" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks6" class="chapter-demo">
 						<div class="chapter-demo-number">8</div>
 						<div class="chapter-demo-name">flexducks6</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks7" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks7" class="chapter-demo">
 						<div class="chapter-demo-number">9</div>
 						<div class="chapter-demo-name">flexducks7</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=flexducks-payoff" class="chapter-demo" style="--primary: var(--red);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=flexducks-payoff" class="chapter-demo">
 						<div class="chapter-demo-number">10</div>
 						<div class="chapter-demo-name">flexducks-payoff</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=gridcats1" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=gridcats1" class="chapter-demo">
 						<div class="chapter-demo-number">11</div>
 						<div class="chapter-demo-name">gridcats1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=gridcats2" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=gridcats2" class="chapter-demo">
 						<div class="chapter-demo-number">12</div>
 						<div class="chapter-demo-name">gridcats2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=gridcats3" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=gridcats3" class="chapter-demo">
 						<div class="chapter-demo-number">13</div>
 						<div class="chapter-demo-name">gridcats3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=gridcats4" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=gridcats4" class="chapter-demo">
 						<div class="chapter-demo-number">14</div>
 						<div class="chapter-demo-name">gridcats4</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=gridcats5" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=gridcats5" class="chapter-demo">
 						<div class="chapter-demo-number">15</div>
 						<div class="chapter-demo-name">gridcats5</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=gridcats-payoff" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=gridcats-payoff" class="chapter-demo">
 						<div class="chapter-demo-number">16</div>
 						<div class="chapter-demo-name">gridcats-payoff</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=discodogs1" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=discodogs1" class="chapter-demo">
 						<div class="chapter-demo-number">17</div>
 						<div class="chapter-demo-name">discodogs1</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=discodogs2" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=discodogs2" class="chapter-demo">
 						<div class="chapter-demo-number">18</div>
 						<div class="chapter-demo-name">discodogs2</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=discodogs3" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=discodogs3" class="chapter-demo">
 						<div class="chapter-demo-number">19</div>
 						<div class="chapter-demo-name">discodogs3</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=discodogs-payoff" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=discodogs-payoff" class="chapter-demo">
 						<div class="chapter-demo-number">20</div>
 						<div class="chapter-demo-name">discodogs-payoff</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=portfolio" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=portfolio" class="chapter-demo">
 						<div class="chapter-demo-number">21</div>
 						<div class="chapter-demo-name">portfolio</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-2010s-a" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-2010s-a" class="chapter-demo">
 						<div class="chapter-demo-number">22</div>
 						<div class="chapter-demo-name">2010s web design exhibit A</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-2010s-b" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-2010s-b" class="chapter-demo">
 						<div class="chapter-demo-number">23</div>
 						<div class="chapter-demo-name">2010s web design exhibit B</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-2010s-c" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-2010s-c" class="chapter-demo">
 						<div class="chapter-demo-number">24</div>
 						<div class="chapter-demo-name">2010s web design exhibit C</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-6&demo=website-2010s-d" class="chapter-demo" style="--primary: var(--yellow);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-6&demo=website-2010s-d" class="chapter-demo">
 						<div class="chapter-demo-number">25</div>
 						<div class="chapter-demo-name">2010s web design exhibit D</div>
 					</a>
@@ -929,11 +1220,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-9" style="--primary: var(--pink)">
+				<section class="chapter" id="introduction-to-computation-v1-week-9">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-9&demo=blank-slate">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=blank-slate">
 							<div class="chapter-subtitle">
-								Week 9
+								Chapter 10
 							</div>
 							<h3 class="chapter-title">
 								Design Process
@@ -942,126 +1233,126 @@
 						<p class="chapter-desc">
 							How can you use what we’ve learned so far to create something new?
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=blank-slate" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=blank-slate" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=blank-slate" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=blank-slate" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Blank slate</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=filling-space" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=filling-space" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Filling space</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=applying-styles" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=applying-styles" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Applying styles</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=making-it-move" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=making-it-move" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Making it move</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=adding-interaction" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=adding-interaction" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">Adding interaction</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=randomizing-styles" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=randomizing-styles" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">Randomizing styles</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=repeating-randomization" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=repeating-randomization" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Repeating randomization</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=typesetting-content" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=typesetting-content" class="chapter-demo">
 						<div class="chapter-demo-number">8</div>
 						<div class="chapter-demo-name">Typesetting content</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=typographic-hierarchy" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=typographic-hierarchy" class="chapter-demo">
 						<div class="chapter-demo-number">9</div>
 						<div class="chapter-demo-name">Typographic hierarchy</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=typographic-hierarchy-flipped" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=typographic-hierarchy-flipped" class="chapter-demo">
 						<div class="chapter-demo-number">10</div>
 						<div class="chapter-demo-name">Typographic hierarchy, flipped</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=typographic-hierarchy-skewed" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=typographic-hierarchy-skewed" class="chapter-demo">
 						<div class="chapter-demo-number">11</div>
 						<div class="chapter-demo-name">Typographic hierarchy, skewed</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=typographic-hierarchy-invisible" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=typographic-hierarchy-invisible" class="chapter-demo">
 						<div class="chapter-demo-number">12</div>
 						<div class="chapter-demo-name">Typographic hierarchy, blurred</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=typographic-hierarchy-randomization" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=typographic-hierarchy-randomization" class="chapter-demo">
 						<div class="chapter-demo-number">13</div>
 						<div class="chapter-demo-name">Typographic hierarchy, randomized</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=starting-from-nothing" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=starting-from-nothing" class="chapter-demo">
 						<div class="chapter-demo-number">14</div>
 						<div class="chapter-demo-name">Starting from nothing</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=adding-shapes" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=adding-shapes" class="chapter-demo">
 						<div class="chapter-demo-number">15</div>
 						<div class="chapter-demo-name">Adding shapes</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=incorporating-new-concepts" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=incorporating-new-concepts" class="chapter-demo">
 						<div class="chapter-demo-number">16</div>
 						<div class="chapter-demo-name">Incorporating new concepts</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=incorporating-new-concepts-fancy" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=incorporating-new-concepts-fancy" class="chapter-demo">
 						<div class="chapter-demo-number">17</div>
 						<div class="chapter-demo-name">Incorporating new concepts, but fancier</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=switching-to-an-interactive-experience" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=switching-to-an-interactive-experience" class="chapter-demo">
 						<div class="chapter-demo-number">18</div>
 						<div class="chapter-demo-name">Switching to an interactive experience</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=adding-sound" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=adding-sound" class="chapter-demo">
 						<div class="chapter-demo-number">19</div>
 						<div class="chapter-demo-name">Adding sound</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=adding-sound-randomized" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=adding-sound-randomized" class="chapter-demo">
 						<div class="chapter-demo-number">20</div>
 						<div class="chapter-demo-name">Adding sound, randomized</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=incorporating-sound" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=incorporating-sound" class="chapter-demo">
 						<div class="chapter-demo-number">21</div>
 						<div class="chapter-demo-name">Incorporating sound into another design</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=challenge" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=challenge" class="chapter-demo">
 						<div class="chapter-demo-number">22</div>
 						<div class="chapter-demo-name">Challenge</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=variable-fonts" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=variable-fonts" class="chapter-demo">
 						<div class="chapter-demo-number">23</div>
 						<div class="chapter-demo-name">Variable fonts</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-9&demo=variable-fonts-javascript" class="chapter-demo" style="--primary: var(--pink);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-9&demo=variable-fonts-javascript" class="chapter-demo">
 						<div class="chapter-demo-number">24</div>
 						<div class="chapter-demo-name">Variable fonts and JavaScript</div>
 					</a>
@@ -1069,11 +1360,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-11" style="--primary: var(--green)">
+				<section class="chapter" id="introduction-to-computation-v1-week-11">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-11&demo=inputs">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=inputs">
 							<div class="chapter-subtitle">
-								Week 11
+								Chapter 11
 							</div>
 							<h3 class="chapter-title">
 								Objects (recap) and APIs
@@ -1082,41 +1373,41 @@
 						<p class="chapter-desc">
 							How can we handle data using JavaScript?
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=inputs" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=inputs" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=inputs" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=inputs" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">Inputs (recap)</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=building-an-interface" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=building-an-interface" class="chapter-demo">
 						<div class="chapter-demo-number">2</div>
 						<div class="chapter-demo-name">Building an interface</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=objects" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=objects" class="chapter-demo">
 						<div class="chapter-demo-number">3</div>
 						<div class="chapter-demo-name">Objects (recap)</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=tracking-settings" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=tracking-settings" class="chapter-demo">
 						<div class="chapter-demo-number">4</div>
 						<div class="chapter-demo-name">Tracking settings using objects</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=document-object-model" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=document-object-model" class="chapter-demo">
 						<div class="chapter-demo-number">5</div>
 						<div class="chapter-demo-name">The Document Object Model (DOM)</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=apis" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=apis" class="chapter-demo">
 						<div class="chapter-demo-number">6</div>
 						<div class="chapter-demo-name">APIs</div>
 					</a>
 				
-					<a href="editor/?book=introduction-to-computation&chapter=week-11&demo=putting-it-all-together" class="chapter-demo" style="--primary: var(--green);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-11&demo=putting-it-all-together" class="chapter-demo">
 						<div class="chapter-demo-number">7</div>
 						<div class="chapter-demo-name">Putting it all together</div>
 					</a>
@@ -1124,11 +1415,11 @@
 					</div>
 				</section>
 			
-				<section class="chapter " id="introduction-to-computation-week-12" style="--primary: var(--blue)">
+				<section class="chapter" id="introduction-to-computation-v1-week-12">
 					<div class="chapter-header">
-						<a class="chapter-link" href="editor/?book=introduction-to-computation&chapter=week-12&demo=no-replica">
+						<a class="chapter-link" href="editor/?book=introduction-to-computation-v1&chapter=week-12&demo=no-replica">
 							<div class="chapter-subtitle">
-								Week 12
+								Chapter 12
 							</div>
 							<h3 class="chapter-title">
 								Wrapping up
@@ -1137,11 +1428,11 @@
 						<p class="chapter-desc">
 							One last demo for fun!
 						</p>
-						<a href="editor/?book=introduction-to-computation&chapter=week-12&demo=no-replica" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=introduction-to-computation-v1&chapter=week-12&demo=no-replica" class="chapter-open">Open chapter &nbsp;&nearr;</a>
 					</div>
 					<div class="chapter-demos">
 						
-					<a href="editor/?book=introduction-to-computation&chapter=week-12&demo=no-replica" class="chapter-demo" style="--primary: var(--blue);">
+					<a href="editor/?book=introduction-to-computation-v1&chapter=week-12&demo=no-replica" class="chapter-demo">
 						<div class="chapter-demo-number">1</div>
 						<div class="chapter-demo-name">No Replica</div>
 					</a>

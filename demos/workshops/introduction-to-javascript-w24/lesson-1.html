@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 1: onclick, alert(), strings, numbers</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #f3a8dd;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+		.test1 {
+			color: red;
+		}
+		.test1:hover {
+			opacity: .5;
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 1: onclick, alert(), strings, numbers</h1>
+	<p>
+		HTML is made up of <strong>elements</strong>.<br>
+		CSS is made up of <strong>properties</strong> and <strong>classes</strong>.<br>
+		JavaScript is made up of <strong>data/variables</strong> and <strong>functions</strong>.
+	</p>
+
+	<h2>1.1: onclick and alert()</h2>
+	<p>
+		Let’s start with a function called <strong><a href="https://www.w3schools.com/jsref/met_win_alert.asp" target="_blank">alert()</a></strong>.<br>
+		We can call it by adding an <strong><a href="https://www.w3schools.com/jsref/event_onclick.asp" target="_blank">onclick</a></strong> attribute to an HTML element.<br><br>
+		alert() brings up a dialog box.<br><br>
+
+		<button onclick="alert()">Hey, click me!</button>
+
+		<br><br>
+		Anything can have an onclick attribute.<br>
+		<span onclick="alert()" class="test1">Try clicking this text.</span><br>
+		For now, I’ll just use buttons to make this easier to understand.<br><br>
+
+		There are a few other attributes that can utlize JavaScript:
+	</p>
+	<ul style="font-family: monospace">
+		<li>ondblclick (double-click)</li>
+		<li>onmousedown</li>
+		<li>onmouseenter</li>
+		<li>onmouseleave</li>
+		<li>onmousemove</li>
+		<li>onmouseout</li>
+		<li>onmouseover</li>
+		<li>onmouseup</li>
+	</ul>
+
+	<h2>1.2: arguments and strings</h2>
+	<p>
+		alert() doesn’t do much unless we pass an argument into it.<br><br>
+		<strong><a href="https://www.w3schools.com/js/js_function_parameters.asp" target="_blank">Arguments</a></strong> go inside the parentheses, a.k.a. (_), of a function.<br><br>
+		<strong><a href="https://www.w3schools.com/js/js_strings.asp" target="_blank">Strings</a></strong> are a basic type of data that represents text.<br>
+		In JavaScript, we indicate strings via single or double quotation marks, a.k.a. '_' and "_".<br><br>
+		So in this example, the argument is the string "I think you’re cool!".<br><br>
+
+		<button onclick="alert('I think you’re cool!')">Wanna know what I think about you?</button>
+
+		<br><br>
+		In our code, we have to be careful about if we use single or double quotes.<br>
+		I’m using single quotes from the string argument because double quotes would cancel out the onlick="" attribute.
+	</p>
+
+	<h2>1.3: numbers and math</h2>
+	<p>
+		Besides strings, there are a few <strong><a href="https://www.w3schools.com/js/js_datatypes.asp" target="_blank">types</a></strong> of data in JavaScript.<br>
+		Another basic type of data is a <strong><a href="https://www.w3schools.com/js/js_numbers.asp" target="_blank">number</a></strong>.<br><br>
+		Numbers are cool because they can do MATH!<br><br>
+
+		In JavaScript, we have the following <strong><a href="https://www.w3schools.com/js/js_arithmetic.asp" target="_blank">arithmetic/math operators</a></strong>:
+	</p>
+	<ul>
+		<li>+ for adding</li>
+		<li>- for subtracting</li>
+		<li>* for multiplying</li>
+		<li>** for exponentiation</li>
+		<li>/ for division</li>
+		<li>% for remainders (aka modulus)</li>
+		<li>() for grouping calculations</li>
+	</ul>
+	<p>
+		<button onclick="alert(5+10)">What’s 5+10?</button><br>
+		<button onclick="alert(10/2)">What’s 10/2?</button><br>
+		<button onclick="alert(3**10)">What’s 3 to the power of 10?</button><br>
+		<button onclick="alert((2+29-4+16)/2)">What’s (2+29-4+16)/2?</button><br>
+		<button onclick="alert(6%4)">What’s the remainder when you divide 6 by 4?</button><br>
+	</p>
+
+	<h2>1.4: combining strings and numbers, a.k.a. concatenation</h2>
+	<p>
+		We can add strings to strings, or numbers to strings, to combine them.<br>
+		This is called <strong>concatenation</strong>.<br><br>
+
+		<button onclick="alert('Hello'+'Hello')">"Hello" + "Hello"</button><br>
+		<button onclick="alert('Hello'+100)">"Hello" + 100</button><br>
+		<button onclick="alert(100+'Hello')">100 + "Hello"</button><br>
+		<button onclick="alert('Hello'+100+'Hello')">"Hello" + 100 + "Hello"</button><br>
+		<button onclick="alert('Hello'+100+100)">"Hello" + 100 + 100</button><br>
+		<button onclick="alert('Hello'+(100+100))">"Hello" + (100 + 100)</button><br>
+		<button onclick="alert('Hello'+('100'+100))">"Hello" + ("100" + 100)</button><br><br>
+
+		This only works with addition, a.k.a. +.<br>
+		Using a different math operator results in an error.<br>
+		<button onclick="alert('Hello'*100)">"Hello" - 100</button>
+	</p>
+</body>
+</html>

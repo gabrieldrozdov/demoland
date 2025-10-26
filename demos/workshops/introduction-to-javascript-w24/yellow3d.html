@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		.hoverable {
+			border: 1px solid black;
+			font-size: 10vw;
+		}
+	</style>
+</head>
+<body>
+	Inspired by https://yellow3d.com/
+
+	<p class="hoverable">This is an an element!</p>
+
+	<script>
+		var element = document.querySelector('.hoverable');
+
+		element.addEventListener('mousemove', function(event) {
+			console.log(event);
+
+			var xPosition = event.pageX - element.offsetLeft;
+			var yPosition = event.pageY - element.offsetTop;
+
+			console.log(xPosition, yPosition);
+
+			var xPercent = xPosition/element.offsetWidth;
+			var yPercent = yPosition/element.offsetHeight;
+
+			console.log(xPercent, yPercent);
+
+			var hue = Math.floor(xPercent*360);
+			var lightness = Math.floor(yPercent*100);
+
+			element.style.color = `hsl(${hue}, 100%, ${lightness}%)`;
+		})
+	</script>
+</body>
+</html>

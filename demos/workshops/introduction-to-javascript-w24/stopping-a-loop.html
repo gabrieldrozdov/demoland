@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Repeatedly and automatically running a function</title>
+
+	<style>
+		body {
+			transition: .5s;
+		}
+	</style>
+</head>
+<body>
+	<h1>We can stop a setInterval() loop by assigning the loop to a variable and then using clearInterval()</h1>
+
+	<button onclick="clearInterval(myLoop1)">Stop the background color loop!</button>
+
+	<button onclick="clearInterval(myLoop2)">Stop the text color loop!</button>
+
+	<script>
+		var body = document.querySelector('body');
+
+		// Using a function name
+		var myLoop1 = setInterval(changeColor, 1000)
+
+		function changeColor() {
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+		}
+
+		// Using an anonymous (unnamed) function
+		var myLoop2 = setInterval(function() {
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			body.style.color = `rgb(${red}, ${green}, ${blue})`;
+		}, 1000)
+	</script>
+</body>
+</html>

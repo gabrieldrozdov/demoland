@@ -13,6 +13,7 @@
 	<meta property="og:description" content="In-browser code editor with a library of tutorials!">
 	<meta property="og:image" content="../assets/meta/opengraph.jpg">
 	<link rel="icon" type="png" href="../assets/meta/favicon.png">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 	
 	<link rel="stylesheet" href="../assets/styles/editor.css">
 
@@ -42,89 +43,103 @@
 
 	<main class="container" data-loading="1">
 
-		<!-- TOOLTIP -->
-		<div class="tooltip-container">
-			<div class="tooltip-overflowfix">
-				<div class="tooltip" data-hide="1">
-					<p class="tooltip-text">Toggle Info</p>
+		<!-- NAVBAR -->
+		<div class="navbar">
+			<header class="navbar-header">
+				<a href="../" class="navbar-header-logo">
+					<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"></path><rect x="38" y="25" width="27" height="10"></rect></svg>
+				</a>
+				<div class="navbar-header-content">
+					<div class="navbar-header-info">
+						<a href="../" class="navbar-header-info-item" style="--primary: var(--yellow);"><span style="opacity: .5;">Book</span> <span id="navbar-book">Loading</span></a>
+						<div class="navbar-header-info-divider"></div>
+						<a href="../" class="navbar-header-info-item" id="navbar-chapter-link" style="--primary: var(--purple);"><span style="opacity: .5;">Chapter</span> <span id="navbar-chapter">Loading</span></a>
+						<div class="navbar-header-info-divider"></div>
+						<button class="navbar-header-info-item" style="--primary: var(--red);" onclick="toggleNavbarDemos();"><span style="opacity: .5;">Demo</span> <span id="navbar-number">Loading</span></button>
+					</div>
+					<h1 class="navbar-header-demo" id="navbar-demo">
+						DEMOLAND Editor
+					</h1>
 				</div>
-			</div>
-		</div>
+			</header>
 
-		<!-- TITLE -->
-		<div class="title" data-tooltip-text="Current Book and Chapters" data-tooltip-direction="top">
-			<a class="title-book" href=""></a>
+			<nav class="navbar-controls" style="--primary: var(--purple); --primary-rgb: var(--purple-rgb);">
+				<a href="" class="navbar-controls-button" id="navbar-prev">
+					<span>Previous Demo</span>
+					<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+				</a>
+				<a href="" class="navbar-controls-button" id="navbar-next">
+					<span>Next Demo</span>
+					<svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg>
+				</a>
+				<button class="navbar-controls-button" onclick="toggleNavbarDemos();" data-active="0" id="navbar-demos">
+					<span>Select Demo</span>
+					<svg viewBox="0 0 100 100"><rect x="22.5" y="24.5" width="55" height="10"/><rect x="22.5" y="45" width="55" height="10"/><rect x="22.5" y="65.5" width="55" height="10"/></svg>
+				</button>
+				<a href="../" class="navbar-controls-button" id="navbar-chapter-link2">
+					<span>Select Chapter</span>
+					<svg viewBox="0 0 100 100"><path d="M25,14.97v70.06l25-21.25,25,21.25V14.97H25ZM66,65.56l-16-13.6-16,13.6V23.97h32v41.59Z"/></svg>
+				</a>
+			</nav>
 		</div>
+		<div class="navbar-demos" data-active="0"></div>
 		
 		<!-- PANELS -->
 		<div class="content">
 
 			<!-- LOADING -->
 			<div class="loading">
-				<div class="preview-msg">
-					<p class="preview-msg-text">I’m loading your demo, sit tight!</p>
-					<svg viewBox="0 0 100 100"><polygon points="100 0 0 50 100 100 100 0"/></svg>
-				</div>
+				<p class="loading-text">
+					<span>I’m loading your demo, sit tight!</span>
+					<span style="opacity: .5;">If this takes a while, try refreshing your browser and make sure your link is correct!</span>
+				</p>
 				<svg class="loading-icon" viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg>
 			</div>
 
 			<!-- INFO -->
-			<section class="panel" id="info" data-offset="0"  data-hide="0">
+			<section class="panel" id="info" data-offset="0"  data-hide="0" style="--primary: var(--pink); --primary-rgb: var(--pink-rgb);">
+				<div class="panel-label" onclick="fullscreenPanel('info')">
+					<div class="panel-label-content">
+						<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
+						<div>Info</div>
+					</div>
+				</div>
 				<div class="info-container">
 					<div class="info-body">
-						<div class="info-nav" data-active="0">
-							<div class="info-nav-bar">
-								<div onclick="openChapter();" class="info-nav-current" data-tooltip-text="View All Demos in Chapter" data-tooltip-direction="top">
-									<span class="info-nav-current-number"></span>
-									<span class="info-nav-current-name"></span>
-								</div>
-								<a href="" class="info-nav-prevnext" data-tooltip-text="Previous Demo" data-tooltip-direction="top" id="info-nav-prev">
-									<svg viewBox="0 0 100 100"><polygon points="67.697 28.749 46.445 50 67.697 71.251 60.626 78.322 32.303 50 60.626 21.678 67.697 28.749"/></svg>
-								</a>
-								<a href="" class="info-nav-prevnext" data-tooltip-text="Next Demo" data-tooltip-direction="top" id="info-nav-next">
-									<svg viewBox="0 0 100 100"><polygon points="32.303 28.749 53.555 50 32.303 71.251 39.374 78.322 67.697 50 39.374 21.678 32.303 28.749"/></svg>
-								</a>
-							</div>
-						</div>
-						<div class="info-nav-demos" data-active="0"></div>
 						<div class="info-content"></div>
 						<a href="" class="info-next">Click here to continue to the next demo!</a>
 					</div>
-				</div>
-
-				<div class="panel-label" data-tooltip-text="Read about the current demo and learn how its code works!" data-tooltip-direction="bottom">
-					<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
-					<div>Info</div>
 				</div>
 			</section>
 
 			<div class="resizer" id="resizer1" data-hide="0"><div></div></div>
 
 			<!-- EDITOR -->
-			<section class="panel" id="editor" data-offset="0" data-hide="0" data-console="0">
+			<section class="panel" id="editor" data-offset="0" data-hide="0" data-console="0" style="--primary: var(--green); --primary-rgb: var(--green-rgb);">
+				<div class="panel-label" onclick="fullscreenPanel('editor')">
+					<div class="panel-label-content">
+						<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>
+						<div>Editor</div>
+					</div>
+				</div>
 				<div class="editor-container">
 					<div class="editor-content"></div>
 					<div class="editor-controls">
-						<button data-tooltip-text="Toggle Console" data-tooltip-direction="bottom" data-active="0" onclick="editorToggleConsole();" id="toggle-console">
+						<button data-active="0" onclick="editorToggleConsole();" id="toggle-console">
 							<svg viewBox="0 0 100 100"><polygon points="10 28.749 31.251 50 10 71.251 17.071 78.322 45.393 50 17.071 21.678 10 28.749"/><rect x="40" y="80" width="50" height="10"/></svg>
+							<span>Console</span>
 						</button>
-						<button data-tooltip-text="Toggle Text Wrapping" data-active="0" data-tooltip-direction="bottom" onclick="editorToggleWrapping();" id="toggle-wrap">
+						<button data-active="0" onclick="editorToggleWrapping();" id="toggle-wrap">
 							<svg viewBox="0 0 100 100"><path d="M58.75,15H24.14v10h34.61c11.73,0,21.24,9.51,21.24,21.24s-9.51,21.26-21.24,21.26l-29.61-.03,10.43-10.4-7.07-7.07-22.5,22.5,22.5,22.5,7.07-7.07-10.43-10.43h29.61c17.26,0,31.25-13.99,31.25-31.25s-13.99-31.25-31.25-31.25Z"/></svg>
+							<span>Wrap</span>
 						</button>
-						<button data-tooltip-text="Decrease Font Size" data-tooltip-direction="bottom" onclick="editorFontsizeDown();" data-disabled="0" id="toggle-fontsize-down">
+						<button onclick="editorFontsizeDown();" data-disabled="0" id="toggle-fontsize-down">
 							<svg viewBox="0 0 100 100"><path d="M41.5,20h-10L6.5,80h10l7.5-18h25l7.5,18h10l-25-60ZM28.167,52l8.333-20,8.333,20h-16.667ZM93.5,52h-30v-10h30v10Z"/></svg>
+							<span>Font&nbsp;−</span>
 						</button>
-						<button data-tooltip-text="Increase Font Size" data-tooltip-direction="bottom" onclick="editorFontsizeUp();" data-disabled="0" id="toggle-fontsize-up">
+						<button onclick="editorFontsizeUp();" data-disabled="0" id="toggle-fontsize-up">
 							<svg viewBox="0 0 100 100"><path d="M40.5,20h-10L5.5,80h10l7.5-18h25l7.5,18h10l-25-60ZM27.167,52l8.333-20,8.333,20h-16.667ZM94.5,52h-10v10h-10v-10h-10v-10h10v-10h10v10h10v10Z"/></svg>
-						</button>
-						<button data-tooltip-text="Toggle Preview Delay" data-tooltip-direction="bottom" data-active="0" onclick="editorToggleDelay();" id="toggle-delay">
-							<svg viewBox="0 0 100 100"><path d="M69,49v10h-25v-29h10v19h15ZM90,50c0,22.09-17.91,40-40,40S10,72.09,10,50,27.91,10,50,10s40,17.91,40,40ZM80,50c0-16.57-13.43-30-30-30s-30,13.43-30,30,13.43,30,30,30,30-13.43,30-30Z"/></svg>
-						</button>
-						<button data-tooltip-text="Pause Preview" data-tooltip-direction="bottom" data-active="0" onclick="editorPause();" id="pause">
-							<svg viewBox="0 0 100 100"><path d="M40,85.23h-10V14.77h10v70.46ZM70,14.77h-10v70.46h10V14.77Z"/></svg>
-						</button>
-						<button data-tooltip-text="Run Code Again" data-tooltip-direction="bottom" data-active="0" onclick="editorRerun();" id="rerun">
-							<svg viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg>
+							<span>Font&nbsp;+</span>
 						</button>
 					</div>
 					<div class="editor-console">
@@ -135,21 +150,28 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="panel-label" data-tooltip-text="View and edit code here!" data-tooltip-direction="bottom">
-					<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>
-					<div>Editor</div>
-				</div>
 			</section>
 
 			<div class="resizer" id="resizer2" data-hide="0"><div></div></div>
 
 			<!-- PREVIEW -->
-			<section class="panel" id="preview" data-offset="0" data-hide="0">
+			<section class="panel" id="preview" data-offset="0" data-hide="0" style="--primary: var(--blue); --primary-rgb: var(--blue-rgb);">
+				<div class="panel-label" onclick="fullscreenPanel('preview')">
+					<div class="panel-label-content">
+						<svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg>
+						<div>Preview</div>
+					</div>
+					<div class="panel-label-dimensions">
+						<span style="opacity: .5;">Dimensions</span> <span id="preview-width">500</span> <span>×</span> <span id="preview-height">500</span>
+					</div>
+				</div>
 				<div class="preview-container">
 					<div id="preview-delay" class="preview-msg-container" data-active="0">
 						<div class="preview-msg">
-							<p class="preview-msg-text">You can turn off this delay from the Editor panel!</p>
+							<p class="preview-msg-text">
+								<span class="preview-msg-text-title">PREVIEW DELAYED</span>
+								<span class="preview-msg-text-body">Turn off this setting by clicking the button below!</span>
+							</p>
 						</div>
 						<div class="preview-delay-timer">
 							<div class="preview-delay-timer-inside"></div>
@@ -157,67 +179,87 @@
 					</div>
 					<div id="preview-paused" class="preview-msg-container" data-active="0">
 						<div class="preview-msg">
-							<p class="preview-msg-text">PREVIEW PAUSED<br>Turn the preview back on from the Editor panel!</p>
+							<p class="preview-msg-text">
+								<span class="preview-msg-text-title">PREVIEW PAUSED</span>
+								<span class="preview-msg-text-body">Turn off this setting by clicking the button below!</span>
+							</p>
 						</div>
 					</div>
 					<iframe class="preview-content"></iframe>
-					<div class="preview-dimensions" data-tooltip-text="Preview Width and Height" data-tooltip-direction="bottom">
-						<span id="preview-width">500</span>
-						<svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg>
-						<span id="preview-height">500</span>
-					</div>
 				</div>
-
-				<div class="panel-label" data-tooltip-text="See a live preview of your code!" data-tooltip-direction="bottom">
-					<svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg>
-					<div>Preview</div>
+				<div class="preview-controls">
+					<button data-active="0" onclick="editorToggleDelay();" id="toggle-delay">
+						<svg viewBox="0 0 100 100"><path d="M69,49v10h-25v-29h10v19h15ZM90,50c0,22.09-17.91,40-40,40S10,72.09,10,50,27.91,10,50,10s40,17.91,40,40ZM80,50c0-16.57-13.43-30-30-30s-30,13.43-30,30,13.43,30,30,30,30-13.43,30-30Z"/></svg>
+						<span>Delay</span>
+					</button>
+					<button data-active="0" onclick="editorPause();" id="pause">
+						<svg viewBox="0 0 100 100"><path d="M40,85.23h-10V14.77h10v70.46ZM70,14.77h-10v70.46h10V14.77Z"/></svg>
+						<span>Pause</span>
+					</button>
+					<button data-active="0" onclick="editorRerun();" id="rerun">
+						<svg viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg>
+						<span>Refresh</span>
+					</button>
 				</div>
 			</section>
 
-			<div class="panel-empty" data-hide="1">
-				<div class="panel-empty-msg">
-					<p class="panel-empty-text">Open a panel to get started!</p>
-				</div>
+			<!-- ALL PANELS CLOSED MESSAGE -->
+			<div class="empty" data-hide="1">
+				<p class="empty-text">Open a panel below!</p>
 			</div>
 		</div>
 
-		<!-- CONTROLS -->
-		<nav class="controls">
-
-			<!-- CATALOG AND HELP -->
-			<a class="controls-btn controls-btn-override" data-tooltip-text="Home" data-tooltip-direction="bottom" href="../">
-				<svg viewBox="0 0 100 100"><path d="m50,10L15,45v45h70v-45L50,10Zm-25,70v-30.858l25-25,25,25v30.858H25Z"/></svg>
-			</a>
-			<a class="controls-btn controls-btn-override" data-tooltip-text="Tutorial" data-tooltip-direction="bottom" href="./" target="_blank">
-				<svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>
-			</a>
-
-			<div class="controls-spacer"></div>
-
-			<!-- PANEL TOGGLES -->
-			<div class="controls-btn" id="toggle-info" data-active="1" onclick="togglePanel('info')" data-tooltip-text="Toggle Info" data-tooltip-direction="bottom">
-				<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
-			</div>
-			<div class="controls-btn" id="toggle-editor" data-active="1" onclick="togglePanel('editor')" data-tooltip-text="Toggle Editor" data-tooltip-direction="bottom">
-				<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>
-			</div>
-			<div class="controls-btn" id="toggle-preview" data-active="1" onclick="togglePanel('preview')" data-tooltip-text="Toggle Preview" data-tooltip-direction="bottom">
-				<svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg>
+		<!-- FOOTER -->
+		<footer class="footer">
+			<div class="footer-section" style="--primary: var(--yellow); --primary-rgb: var(--yellow-rgb);" id="footer-section-nav">
+				<a class="footer-button" href="../">
+					<svg viewBox="0 0 100 100"><path d="m50,10L15,45v45h70v-45L50,10Zm-25,70v-30.858l25-25,25,25v30.858H25Z"/></svg>
+					<span>Home</span>
+				</a>
+				<a class="footer-button" href="./?book=tutorial&chapter=tutorial&demo=welcome">
+					<svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>
+					<span>Tutorial</span>
+				</a>
+				<a class="footer-button" href="./">
+					<svg viewBox="0 0 100 100"><polygon points="90 45 55 45 55 10 45 10 45 45 10 45 10 55 45 55 45 90 55 90 55 55 90 55 90 45"/></svg>
+					<span>Blank Demo</span>
+				</a>
+				<a class="footer-button" href="https://cheatsheet.gdwithgd.com/" target="_blank">
+					<svg viewBox="0 0 100 100"><path d="M59.07,12.65L16.64,55.08v28.27h28.29l42.43-42.42-28.29-28.28ZM40.79,73.36l-14.15-14.14L59.07,26.78l14.14,14.15-32.42,32.43Z"/></svg>
+					<span>Cheatsheet</span>
+				</a>
 			</div>
 
-			<div class="controls-spacer"></div>
-
-			<!-- CODE FUNCTIONS -->
-			<a class="controls-btn" data-tooltip-text="Reset Demo" data-tooltip-direction="bottom" href="">
-				<svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg>
-			</a>
-			<div class="controls-btn" data-tooltip-text="Download Code" data-tooltip-direction="bottom" onclick="editorDownload();">
-				<svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg>
+			<div class="footer-section" id="footer-section-panels">
+				<button class="footer-button" id="toggle-info" data-active="1" data-disabled="0" onclick="togglePanel('info')" style="--primary: var(--pink); --primary-rgb: var(--pink-rgb);">
+					<svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg>
+					<span>Info</span>
+				</button>
+				<button class="footer-button" id="toggle-editor" data-active="1" onclick="togglePanel('editor')" style="--primary: var(--green); --primary-rgb: var(--green-rgb);">
+					<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>
+					<span>Editor</span>
+				</button>
+				<button class="footer-button" id="toggle-preview" data-active="1" onclick="togglePanel('preview')" style="--primary: var(--blue); --primary-rgb: var(--blue-rgb);">
+					<svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg>
+					<span>Preview</span>
+				</button>
 			</div>
-			<a class="controls-btn" data-tooltip-text="Open Demo in New Tab" data-tooltip-direction="bottom" href="#" target="_blank" id="newtab">
-				<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
-			</a>
-		</nav>
+
+			<div class="footer-section" style="--primary: var(--red); --primary-rgb: var(--red-rgb);" id="footer-section-controls">
+				<a class="footer-button" href="">
+					<svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg>
+					<span>Reset Demo</span>
+				</a>
+				<button class="footer-button" onclick="editorDownload();">
+					<svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg>
+					<span>Download Code</span>
+				</button>
+				<a class="footer-button" href="" target="_blank" id="newtab">
+					<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
+					<span>Open Demo in New Tab</span>
+				</a>
+			</div>
+		</footer>
 	</main>
 
 	<script src="../assets/scripts/editor.js"></script>

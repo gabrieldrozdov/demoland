@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 7: while loops, for loops, .innerHTML</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #f3a8dd;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #353535;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+
+		/* Used in example 7.3 */
+		.test-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			width: 50vw;
+			height: 50vh;
+			border: 10px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 7: while loops, for loops, .innerHTML</h1>
+	<p>
+		So far, we’ve been looking at how to change CSS with JavaScript one element at a time.<br>
+		We can use <strong>while</strong> and <strong>for</strong> loops to change multiple elements all at once.
+	</p>
+
+	<h2>7.1: while loops</h2>
+	<p>
+		A <strong><code><a href="https://www.w3schools.com/js/js_loop_while.asp" target="_blank">while</a></code></strong> loops infinitely while a condition is true.<br>
+		Once the condition is false, it stops looping.<br><br>
+		<code>
+			while (condition) {<br>
+				// your javascript goes here!<br>
+			}
+		</code><br><br>
+		For example, let’s say we have 10 elements.<br>
+		When we click the button below, we want all 10 elements to change the font-size property at the same time.<br><br>
+
+		<button onclick="exampleWhileLoop()">Change those sizes up!</button><br>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<span class="test-element">hi</span>
+		<script>
+			var testElements = document.querySelectorAll('.test-element');
+			function exampleWhileLoop() {
+				var testElementIndex = 0;
+
+				while (testElementIndex < testElements.length) {
+
+					testElements[testElementIndex].style.fontSize = `${Math.random()*20}px`;
+
+					testElementIndex = testElementIndex+1;
+				}
+			}
+		</script>
+	</p>
+
+	<h2>7.2: for loops</h2>
+	<p>
+		A <strong><code><a href="https://www.w3schools.com/js/js_loop_for.asp" target="_blank">for</a></code></strong> loop is just like a <code>while</code> loop, but contains more information about how it runs.<br>
+		There are three parameters for a <code>for</code> loop:
+	</p>
+	<ol>
+		<li>a <strong>number variable</strong> that starts at a specific value</li>
+		<li>a <strong>condition</strong> for the loop to end at</li>
+		<li>an <strong>equation</strong> for the loop to change by each time it loops</li>
+	</ol>
+	<br>
+	<code>
+		for (var variableName = 0; variableName &lt; 10; variableName = variableName + 1) {<br>
+			// your javascript goes here!<br>
+		}
+	</code><br>
+	<p>
+		Let’s do the same example from before, but with a for loop this time.<br><br>
+
+		<button onclick="exampleForLoop()">Change those sizes up again!</button><br>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<span class="another-element">hi</span>
+		<script>
+			var myElements = document.querySelectorAll('.another-element');
+			function exampleForLoop() {
+				var myElementIndex = 0;
+	
+				for (var myElementIndex = 0; myElementIndex < myElements.length; myElementIndex = myElementIndex + 1) {
+	
+					myElements[myElementIndex].style.fontSize = `${Math.random()*20}px`;
+				}
+			}
+		</script>
+
+		<br><br>
+		Another use for <code>for</code> loops is to just go through the array directly.<br>
+		The notation for this is WAY simpler.<br><br>
+		<code>
+			for (var variableName of arrayName) {<br>
+				// your javascript goes here!<br>
+			}
+		</code><br><br>
+
+		<button onclick="exampleForLoop2()">Change those sizes up once more!</button><br>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<span class="helloooooo">hi</span>
+		<script>
+			var helloElements = document.querySelectorAll('.helloooooo');
+			function exampleForLoop2() {	
+				for (var element of helloElements) {
+					element.style.fontSize = `${Math.random()*20}px`;
+				}
+			}
+		</script>
+	</p>
+
+	<h2>7.3: .innerHTML</h2>
+	<p>
+		Using these techniques, we can write complicated HTML using JavaScript directly!<br>
+		We can add custom HTML into an element using the <strong><code><a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp" target="_blank">.innerHTML</a></code></strong> property.<br><br>
+
+		<button onclick="getThatButtonInThere()">Add a button inside the text below!</button><br>
+		<span id="plz-add-button">yo wassup</span>
+
+		<script>
+			var plzAddButton = document.querySelector('#plz-add-button');
+			function getThatButtonInThere() {
+				plzAddButton.innerHTML = '<button>yo yo yo</button>';
+			}
+		</script>
+
+		<br><br>
+		Now, let’s use <code>.innerHTML</code> in combination with a <code>for</code> loop to create a grid of divs automatically.<br>
+		We’ll use template literals and inline CSS to give each div a unique background color.
+
+		<button onclick="randomDivs()">Add random divs to the grid below!</button><br>
+		<div class="test-grid">hi hi hi plz make me pretty</div>
+
+		<script>
+			var testGrid = document.querySelector('.test-grid');
+			function randomDivs() {
+				// remove all previous HTML from inside the grid
+				testGrid.innerHTML = "";
+
+				// i++ is the same as i = i + 1;
+				for (let i=0; i<100; i++) {
+					testGrid.innerHTML += `<div style="background-color: rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})"></div>`;
+
+					// We say += to add onto what’s already inside the grid
+					// This is the same as saying:
+					// testGrid.innerHTML = testGrid.innerHTML + "newcode";
+				}
+			}
+		</script>
+	</p>
+
+</body>
+</html>

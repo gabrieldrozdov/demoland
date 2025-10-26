@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 5: document.querySelector(), .innerText, .style, .classList</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #a690fc;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #353535;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+		#test-square {
+			width: 100px;
+			height: 100px;
+		}
+		.hide-an-element {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 5: document.querySelector(), .innerText, .style, .classList</h1>
+	<p>
+		So far, we’ve just been outputting information via alert().<br>
+		Now, it’s time to start changing HTML and CSS with JavaScript.
+	</p>
+
+	<h2>5.1: document.querySelector() and .innerText</h2>
+	<p>
+		To edit HTML with JavaScript, we need to tell our code which element to change.<br>
+		We can do this using <strong><code><a href="https://www.w3schools.com/jsref/met_document_queryselector.asp" target="_blank">document.querySelector()</a></code></strong><br><br>
+		Inside of the parentheses, we put the element’s class OR it’s <a href="https://www.w3schools.com/html/html_id.asp" target="_blank">id</a> attribute.<br>
+		(id is similar to class, but should be unique per element)<br><br>
+		So, if our element has the class "test-class-1", we would write:<br>
+		<code>document.querySelector(".test-class-1")</code><br>
+		Notice we had to use a period before the class name!<br><br>
+		So, if our element has the id "test-id-1", we would write:<br>
+		<code>document.querySelector("#test-id-1")</code><br>
+		Notice we had to use a hashtag/pound sign before the class name!<br><br>
+		To prove that we’ve selected the right element, let’s change something about it.<br>
+		We can use <strong><a href="https://www.w3schools.com/jsref/prop_node_innertext.asp" target="_blank">.innerText</a></strong> to change the text inside of an element.<br><br>
+
+		<button onclick="tryChangingText()">Click me to change the text below!</button><br>
+		<span id="test-id-1">hi there!</span>
+		<script>
+			function tryChangingText() {
+				document.querySelector('#test-id-1').innerText = "what’s up?";
+			}
+		</script>
+
+		<br><br>
+		NOTE: if you have multiple elements with the same class, you can only select 1 of them this way.<br>
+		<button onclick="tryChangingTextAgain()">Click me to change the text below!</button><br>
+		<span class="hi-there">i have the class "hi-there"</span><br>
+		<span class="hi-there">i ALSO have the class "hi-there"</span>
+		<script>
+			function tryChangingTextAgain() {
+				document.querySelector('.hi-there').innerText = "i changed!";
+			}
+		</script>
+	</p>
+
+	<h2>5.2: editing CSS with .style</h2>
+	<p>
+		We can an element’s CSS with JavaScript.<br>
+		We can do this using <strong><a href="https://www.w3schools.com/jsref/prop_html_style.asp" target="_blank">.style</a></strong> and specifying which property to change.<br>
+		Then, we provide a string to set the value to.<br><br>
+		Example: <code>document.querySelector('#test-id-2').style.fontFamily = "serif";</code><br><br>
+
+		<button onclick="tryChangingCSS()">Click me to change the CSS of text below!</button><br>
+		<span id="test-id-2">what are you doing????</span>
+		<script>
+			function tryChangingCSS() {
+				document.querySelector('#test-id-2').innerText = "i’m different now!!!";
+				document.querySelector('#test-id-2').style.color = "red";
+				document.querySelector('#test-id-2').style.fontFamily = "serif";
+				document.querySelector('#test-id-2').style.letterSpacing = ".5em";
+			}
+		</script>
+		<br><br>
+
+		It can get annoying to keep writing document.querySelector().<br>
+		So, we can assign it to a variable, and then just edit that variable.<br><br>
+
+		<button onclick="tryChangingCSSAgain()">Click me click me click me</button><br>
+		<span id="test-id-3">im warning you!!!!</span>
+		<script>
+			function tryChangingCSSAgain() {
+				var ourElement = document.querySelector('#test-id-3');
+				ourElement.innerText = "YOU DID IT AGAIN STOP CHANGING ME!!!";
+				ourElement.style.color = "red";
+				ourElement.style.fontFamily = "serif";
+				ourElement.style.letterSpacing = ".5em";
+			}
+		</script>
+	</p>
+
+	<h2>5.3: randomness and CSS</h2>
+	<p>
+		How about we make decisions about CSS based on the <code>Math.random()</code> techniques we learned in the last lesson?<br><br>
+		Let’s make our very own <a href="https://www.sometimesredsometimesblue.com/" target="_blank">Sometimes Red, Sometimes Blue</a>!<br><br>
+		Every time you reload the page (or make changes to the code), the square below will randomly be red or blue.<br>
+
+		<div id="test-square"></div>
+		<script>
+			var testSquare = document.querySelector("#test-square");
+			if (Math.random() < .5) {
+				testSquare.style.backgroundColor = "red";
+			} else {
+				testSquare.style.backgroundColor = "blue";
+			}
+		</script>
+	</p>
+
+	<h2>5.4: adding/removing classes with .classList</h2>
+	<p>
+		We can also add, remove, and toggle classes via JavaScript.<br>
+		Toggling a class means adding OR removing a class if the element already has it or not.<br><br>
+		We can do this using <code><strong><a href="https://www.w3schools.com/jsref/prop_element_classlist.asp" target="_blank">classList</a></strong></code> on an element.<br><br>
+		Our options are:
+	</p>
+	<ul>
+		<li><code>classList.remove("class-name")</code></li>
+		<li><code>classList.add("class-name")</code></li>
+		<li><code>classList.toggle("class-name")</code></li>
+	</ul>
+	<p>
+		This is incredibly useful for hiding/showing elements, like a menu!<br><br>
+
+		<button onclick="tryTogglingClass()">Toggle a class on the text below</button><br>
+		<span id="test-id-4">don’t make me disappear!</span>
+		<script>
+			function tryTogglingClass() {
+				var ourElement = document.querySelector('#test-id-4');
+				ourElement.classList.toggle('hide-an-element');
+			}
+		</script>
+
+		<br><br>
+		Notice that we don’t put a period before the class name in the toggle function.
+	</p>
+
+</body>
+</html>

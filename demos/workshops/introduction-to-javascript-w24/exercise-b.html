@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EXERCISE B: a bit of generative art</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #fdc03a;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+
+		/* Try changing the CSS of this id! */
+		#output {
+			transition: .5s;
+		}
+	</style>
+</head>
+<body>
+	<h1>EXERCISE B: a bit of generative art</h1>
+	<p>Let’s try adding some randomness to HTML and CSS!</p>
+	<p>Here the steps we’ll take:</p>
+	<ol>
+		<li>Assign an HTML element to a variable using document.querySelector()</li>
+		<li>Create a few arrays of possible values for the element’s text and CSS</li>
+		<li>Create a function that picks a random value from each of these arrays and applies it to the element</li>
+		<li>Also, the function uses random math to change other CSS properties</li>
+		<li>Trigger that function via an onclick attribute on a button or something</li>
+	</ol>
+
+	<button onclick="changeOurCSS()">Let’s go rando!!!</button>
+	<p id="output">Your art will appear here!</p>
+
+	<script>
+		var outputElement = document.querySelector('#output');
+
+		// Try editing these arrays or adding your own!
+		var textOptions = [
+			"hi there!",
+			"what’s up!",
+			"who are you????",
+			"how are you????",
+			"bleh",
+			"dogfishcatface"
+		];
+
+		var colorOptions = [
+			"red",
+			"green",
+			"blue",
+			"rgb(100,100,100)",
+			"#a690fc"
+		]
+
+		function changeOurCSS() {
+			// Pick random text
+			var randomTextIndex = Math.floor(Math.random()*textOptions.length);
+			var randomTextEntry = textOptions[randomTextIndex];
+			outputElement.innerText = randomTextEntry;
+
+			// Pick random color
+			var randomColorIndex = Math.floor(Math.random()*colorOptions.length);
+			var randomColorEntry = colorOptions[randomColorIndex];
+			outputElement.style.color = randomColorEntry;
+
+			// Pick random font size
+			// Notice that we need to add units to the end on the previous line
+			var randomFontSize = Math.random()*100;
+			outputElement.style.fontSize = randomFontSize + "px";
+
+			// Try adding your own code here!
+			
+		}
+
+	</script>
+</body>
+</html>

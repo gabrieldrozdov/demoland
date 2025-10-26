@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reading from an array randomly</title>
+</head>
+<body>
+	<h1>Another way to change CSS with JavaScript is to create a preset array of options and then pick one at random.</h1>
+
+	<div style="font-size: 5vw;" onclick="pickColor(this)">Click me to change color!</div>
+
+	<script>
+		var colors = ['red', 'green', 'blue', 'pink', 'yellow', 'rgb(255,100,100)', '#5383ec'];
+
+		function pickColor(element) {
+			// Get a random number index within the array's range
+			var randomIndex = Math.floor(Math.random()*colors.length);
+
+			element.style.color = colors[randomIndex];
+		}
+	</script>
+
+</body>
+</html>

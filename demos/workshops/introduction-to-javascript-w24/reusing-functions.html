@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Functions</title>
+</head>
+<body>
+	<h1>Functions allow us to reuse JavaScript in different situations. In these examples, we run the same JavaScript function while passing different arguments to change different elements.</h1>
+
+	<div style="font-size: 7vw;">
+		<div id="element1" onclick="changeColor('#element1')">Click me!</div>
+		<div id="element2" onmousedown="changeColor('#element2')">Press the mouse on me!</div>
+		<div id="element3" onmouseup="changeColor('#element3')">Release the mouse on me!</div>
+		<div id="element4" onmouseenter="changeColor('#element4')">Hover over me!</div>
+		<div id="element5" onmouseleave="changeColor('#element5')">Move the mouse off of me!</div>
+		<div id="element6" onmousemove="changeColor('#element6')">Move the mouse over me!</div>
+		<div id="element7" onwheel="changeColor('#element7')">Scroll on me!</div>
+	</div>
+
+	<script>
+		function changeColor(targetID) {
+			var element = document.querySelector(targetID);
+
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			element.style.color = `rgb(${red}, ${green}, ${blue})`;
+		}
+	</script>
+</body>
+</html>

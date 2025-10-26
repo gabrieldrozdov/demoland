@@ -1,16 +1,25 @@
 {
 	"tutorial": {
-		"title": "Tutorial",
+		"title": "🎓&nbsp;&nbsp;Tutorial",
+		"title-plaintext": "Tutorial",
 		"shortdesc": "Learn how to use this website!",
-		"desc": "<p>DEMOLAND features a collection of tutorials that are organized into books and presented using an in-browser code editor. Inside each book, you’ll read chapters full of demos that you can edit without downloading any additional apps. Start here to learn how to use the site’s interface!</p>"
+		"desc": "<p>DEMOLAND lets you books full of web demos that you can read, edit, and test right in your browser! Start here to learn how to use the site’s interface.</p>"
+	},
+	"workshops": {
+		"title": "🛠️&nbsp;&nbsp;Workshops",
+		"title-plaintext": "Workshops",
+		"shortdesc": "Standalone chapters for in-person lessons!",
+		"desc": "<p>Every now and then, I’m asked to run a coding workshop introducing web programming or a topic related to websites. Each of these chapters represents one workshop.</p>"
 	},
 	"type-and-code-v2": {
-		"title": "Type+Code v2",
+		"title": "🔠&nbsp;&nbsp;Type+Code <span style='opacity: .5;'>v2</span>",
+		"title-plaintext": "Type+Code [v2]",
 		"shortdesc": "Creating experimental type specimens in the form of websites! Taught during RISD’s Fall 2025 semester.",
 		"desc": "<p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p>"
 	},
-	"introduction-to-computation": {
-		"title": "Introduction to Computation v1",
+	"introduction-to-computation-v1": {
+		"title": "🤖&nbsp;&nbsp;Introduction to Computation <span style='opacity: .5;'>v1</span>",
+		"title-plaintext": "Introduction to Computation [v2]",
 		"shortdesc": "A beginner’s guide on how to code! Taught during RISD’s Spring 2025 semester.",
 		"desc": "<p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p>"
 	}

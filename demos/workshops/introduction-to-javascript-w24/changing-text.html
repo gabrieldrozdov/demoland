@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Changing text</title>
+</head>
+<body>
+	<h1>Using the same methods from before, we can change text on our page.</h1>
+
+	<div onclick="changeTextInOrder(this)" style="font-size: 5vw;">Click me!</div>
+
+	<div onclick="changeTextRandomly(this)" style="font-size: 5vw;">Click me!</div>
+
+	<script>
+		var textOptions = [
+			"hello!",
+			"whats up!",
+			"hi there!",
+			"how are you!",
+			"dont forget your commas when coding an array!"
+		]
+
+		var index = 0;
+		function changeTextInOrder(element) {
+			element.innerText = textOptions[index];
+
+			index = index + 1;
+			if (index == textOptions.length) {
+				index = 0;
+			}
+		}
+
+		function changeTextRandomly(element) {
+			var randomIndex = Math.floor(Math.random()*textOptions.length);
+
+			element.innerText = textOptions[randomIndex];
+		}
+
+	</script>
+</body>
+</html>

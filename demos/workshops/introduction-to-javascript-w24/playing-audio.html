@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Playing audio</title>
+</head>
+<body>
+	<h1>We can play audio pretty easily with JavaScript! We just need to make sure we include the audio files in the same repository as our .html file or correctly linked to.</h1>
+	<p>We unfortunately aren’t allowed to play audio automatically when we load a page.</p>
+
+	<button onclick="playAudio('assets/hello.mp3')">Hello</button>
+	<button onclick="playAudio('assets/hi.mp3')">Hi</button>
+	<button onclick="playAudio('assets/whatsup.mp3')">Whats up</button>
+	<button onclick="playAudio('assets/whoareyou.mp3')">Who are you</button>
+
+	<br><br>
+
+	<button onmouseover="playAudio('assets/whoareyou.mp3')">This audio plays on mouseover, but is unable to play until the user clicks the page at least once.</button>
+
+	<script>
+		function playAudio(fileName) {
+			var audio = new Audio(fileName);
+			audio.play();
+		}
+	</script>
+</body>
+</html>

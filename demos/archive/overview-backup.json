@@ -1,0 +1,22 @@
+{
+	"tutorial": {
+		"title": "Tutorial",
+		"shortdesc": "Learn how this website works",
+		"desc": "<p>Get started with DEMOLAND and learn how to code websites!</p>"
+	},
+	"introduction-to-computation-v1": {
+		"title": "Introduction to Computation (v1)",
+		"shortdesc": "A beginner’s guide on how to code! Originally taught RISD Spring 2025.",
+		"desc": "<p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p>"
+	},
+	"designers-guide-to-web-programming": {
+		"title": "The Designer’s Guide to Web Programming",
+		"shortdesc": "A comprehensive guide on how to code websites",
+		"desc": "<p>Learn web programming from a designer’s perspective. Learn more at this book’s <a href='https://webprogramming.gdwithgd.com/' target='_blank'>dedicated website</a>!</p>"
+	},
+	"test-project-1": {
+		"title": "test-project-1.html",
+		"shortdesc": "Creating coding projects for any skill level",
+		"desc": "<p>Creative coding projects for any skill level. Learn more at this book’s <a href='https://testproject1.gdwithgd.com/' target='_blank'>dedicated website</a>!</p>"
+	}
+}

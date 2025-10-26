@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EXERCISE D: let the computer code the page</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #fdc03a;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+
+
+		/* Your CSS goes here! */
+		.container {
+			width: 100vw;
+			height: 100vh;
+			position: relative;
+		}
+		.container div {
+			position: absolute;
+			transition: all 1s, background-color 0s;
+			width: 100px;
+			height: 100px;
+			top: 0px;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<h1>EXERCISE D: let the computer code the page</h1>
+	<p>Let’s generate some HTML using loops, and then use setInterval() to animate those new divs.</p>
+	<p>Here the steps we’ll take:</p>
+	<ol>
+		<li>Create a CSS class for a container element with position relative (so that all absolutely positioned children will stay inside of it)</li>
+		<li>Set up some CSS for the children of that container element</li>
+		<li>Use a <code>for</code> loop to create a whole bunch of elements inside of a pre-existing element.</li>
+		<li>Use <code>document.querySelectorAll()</code> to store all of these new elements inside an array.</li>
+		<li>Use <code>setInterval()</code> to change the CSS of these elements over time.</li>
+	</ol>
+	<p>Things to try:</p>
+	<ul>
+		<li>What other CSS properties could be fun to randomize at the start?</li>
+		<li>What other CSS properties could be fun to play with in our setInterval()?</li>
+		<li>Are there any ways we could make this interactive?</li>
+	</ul>
+
+	<div class="container"></div>
+
+	<script>
+		var container = document.querySelector('.container');
+
+		// Generate the elements
+		for (let i=0; i<100; i++) {
+
+			// Randomly decide if background should be red or blue
+			var randomBackground = "";
+			if (Math.random() < .5) {
+				randomBackground = "red";
+			} else {
+				randomBackground = "blue";
+			}
+
+			container.innerHTML += `<div style="background-color: ${randomBackground};"></div>`;
+		}
+
+		var allChildren = document.querySelectorAll('.container div');
+		setInterval(changeRandomElement, 100)
+
+		// Change the elements over time
+		function changeRandomElement() {
+			var randomElementIndex = Math.floor(Math.random()*allChildren.length);
+			
+			// Randomly position
+			allChildren[randomElementIndex].style.top = `${Math.random()*100}%`;
+			allChildren[randomElementIndex].style.left = `${Math.random()*100}%`;
+			
+			// Randomly width/height
+			allChildren[randomElementIndex].style.width = `${Math.random()*100}px`;
+			allChildren[randomElementIndex].style.height = `${Math.random()*100}px`;
+		}
+	</script>
+</body>
+</html>

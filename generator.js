@@ -1,4 +1,4 @@
-const introTitle = `Welcome to DEMOLAND, a book store that runs on code and teaches it too!`;
+const introTitle = `Welcome to <span>DEMOLAND</span>, a bookstore that runs on code and teaches it too!`;
 const introSubtitle = `<p>Learn how to code websites using HTML, CSS, and JavaScript right in your web browser! Open a book to read chapters full of interactive demos you can edit and test without leaving this site.</p><p>Interested in diving deeper into learning design and development? Visit <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> for more resources!</p>`;
 const info = `
 	<p>
@@ -46,7 +46,7 @@ function generateOverview() {
 	// HTML for the individual books
 	let books = "";
 
-	// Array containing objects for all demo names, colors, and links
+	// Array containing objects for all demo names and links
 	let allDemos = 'const allDemos = [';
 
 	for (let bookKey of Object.keys(overviewData)) {
@@ -68,28 +68,22 @@ function generateOverview() {
 				totalDemos++;
 				let demo = chapter['demos'][demoKey];
 				demos += `
-					<a href="editor/?book=${bookKey}&chapter=${chapterKey}&demo=${demoKey}" class="chapter-demo" style="--primary: ${demo['color']};">
+					<a href="editor/?book=${bookKey}&chapter=${chapterKey}&demo=${demoKey}" class="chapter-demo">
 						<div class="chapter-demo-number">${demoIndex}</div>
 						<div class="chapter-demo-name">${demo['name']}</div>
 					</a>
 				`;
-				allDemos += `{'name':'${demo['name']}','color':'${demo['color']}','url':'editor/?book=${bookKey}&chapter=${chapterKey}&demo=${demoKey}'},`;
+				allDemos += `{'name':'${demo['name']}','url':'editor/?book=${bookKey}&chapter=${chapterKey}&demo=${demoKey}'},`;
 				demoIndex++;
-			}
-
-			// Add rainbow class if needed
-			let rainbowClass = '';
-			if (chapter['color'] == 'rainbow') {
-				rainbowClass = ' rainbow';
 			}
 
 			// Put it all together
 			bookChapters += `
-				<section class="chapter ${rainbowClass}" id="${bookKey}-${chapterKey}" style="--primary: ${chapter['color']}">
+				<section class="chapter" id="${bookKey}-${chapterKey}">
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=${bookKey}&chapter=${chapterKey}&demo=${Object.keys(chapter['demos'])[0]}">
 							<div class="chapter-subtitle">
-								${chapter['subtitle']}
+								Chapter ${totalChapters}
 							</div>
 							<h3 class="chapter-title">
 								${chapter['title']}
@@ -112,7 +106,10 @@ function generateOverview() {
 			<article class="book" data-active="0" id="${bookKey}">
 				<div class="book-content">
 					<header class="book-intro">
-						<button class="book-intro-return" onclick="openIntro();">←&nbsp; View all books</button>
+						<button class="book-intro-return" onclick="openIntro();">
+							<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+							<span>View all books</span>
+						</button>
 						<h2 class="book-intro-title">${book['title']}</h2>
 						<div class="book-intro-desc">${book['desc']}</div>
 					</header>

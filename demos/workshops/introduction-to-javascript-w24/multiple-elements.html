@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Changing multiple elements at once</title>
+
+	<style>
+		.container span {
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+	<h1>We can create an array of multiple elements of the same class using <code>document.querySelectorAll()</code>.</h1>
+	<h2>Then, we can use a <em>for</em> loop to edit every element in that array.</h2>
+
+	<button onclick="randomizeEverything()">Click me!</button>
+	<br><br>
+
+	<div class="container">
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+		<span>Hello</span>
+	</div>
+
+	<script>
+		var spans = document.querySelectorAll('.container span');
+
+		function randomizeEverything() {
+
+			// This loop will go through each element individually
+			for (let element of spans) {
+				element.style.fontSize = Math.random() * 100 + "px";
+			}
+		}
+	</script>
+</body>
+</html>

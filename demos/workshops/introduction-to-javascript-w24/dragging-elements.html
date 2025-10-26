@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dragging Elements</title>
+
+	<style>
+		.my-element {
+			border: 1px solid black;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	Coming soon!
+
+	<div onmousedown="dragMe(event, this)" class="my-element"></div>
+
+	<script>
+		function dragMe(event, element) {
+			console.log(event);
+		}
+	</script>
+</body>
+</html>

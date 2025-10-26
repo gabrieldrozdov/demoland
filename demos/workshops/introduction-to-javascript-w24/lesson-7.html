@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 6: document.querySelectorAll(), setInterval(), template strings</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #ff734d;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #353535;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 6: document.querySelectorAll(), setInterval(), template strings</h1>
+	<p>
+		We’ve figured out how to edit a single element using JavaScript.<br>
+		What if we want to edit more than one?
+	</p>
+
+	<h2>6.1: document.querySelectorAll()</h2>
+	<p>
+		Let’s say we have 5 elements with the same class, "test-class-1".<br>
+		If we use <code>document.querySelector()</code> like before, we can only select one of them.<br><br>
+		Instead, we can create an array of all of the elements using <code><strong><a href="https://www.w3schools.com/jsref/met_document_queryselectorall.asp" target="_blank">document.querySelectorAll()</a></strong></code>.<br>
+		(Notice the "All" part!)<br><br>
+		Then, we can access an element in this array using the same notation we always use.<br><br>
+
+		<button onclick="someNewFunction()">Change the next element with the class "test-class-1"</button><br>
+		<span class="test-class-1">hi there!</span><br>
+		<span class="test-class-1">hi there!</span><br>
+		<span class="test-class-1">hi there!</span><br>
+		<span class="test-class-1">hi there!</span><br>
+		<span class="test-class-1">hi there!</span><br>
+
+		<script>
+			var myElements = document.querySelectorAll('.test-class-1');
+			var myCurrentElementIndex = 0;
+			function someNewFunction() {
+				// Target the next element in the array
+				var currentElement = myElements[myCurrentElementIndex];
+
+				// Change some CSS
+				currentElement.style.fontSize = Math.random()*50 + "px";
+
+				// Prevent accessing an element outside the range
+				myCurrentElementIndex = myCurrentElementIndex + 1;
+				if (myCurrentElementIndex == myElements.length) {
+					myCurrentElementIndex = 0;
+				}
+			}
+		</script>
+	</p>
+
+	<h2>6.2: setInterval()</h2>
+	<p>
+		So far, we’ve had to trigger JavaScript functions manually.<br>
+		What if we wanted it to trigger multiple times automatically?<br><br>
+
+		We can create an infinite loop using <code><strong><a href="https://www.w3schools.com/jsref/met_win_setinterval.asp" target="_blank">setInterval()</a></strong></code>.<br>
+		setInterval() takes a function name without the parentheses, as well as a loop time in milliseconds.
+		<br><br>
+
+		<span class="test-class-2">what’s up?</span><br>
+		<span class="test-class-2">what’s up?</span><br>
+		<span class="test-class-2">what’s up?</span><br>
+		<span class="test-class-2">what’s up?</span><br>
+		<span class="test-class-2">what’s up?</span>
+
+		<script>
+			var someElements = document.querySelectorAll('.test-class-2');
+
+			function exampleOfARepeatedFunction() {
+				// Select a random element in the array
+				var randomIndex = Math.floor(Math.random()*someElements.length);
+				var selectedElement = someElements[randomIndex];
+
+				// Change some CSS
+				selectedElement.style.letterSpacing = Math.random()*10 + "px";
+			}
+
+			setInterval(exampleOfARepeatedFunction, 500)
+		</script>
+	</p>
+
+	<h2>6.3: stopping setInterval() with clearInterval()</h2>
+	<p>
+		setInterval() will run forever unless we stop it.<br>
+		But to stop it, we need to first assign it to a variable.<br>
+		Then, we can run <code><strong><a href="https://www.w3schools.com/jsref/met_win_clearinterval.asp" target="_blank">clearInterval(variableName)</a></strong></code> to stop the loop.<br><br>
+
+		We can set up a variable without data attached to it at first.<br>
+		Then we can run a function to attach a setInterval() to the variable.<br>
+		Finally, we can run another function to stop the loop via the variable.<br>
+		We can create a Boolean (true/false) to keep track if the loop is currently running.<br><br>
+		
+		<button onclick="toggleOurLoop()">Start/stop the loop!</button><br>
+		<span id="random-number">0</span>
+		<script>
+			var ourLoop;
+			var currentlyLooping = false;
+
+			function toggleOurLoop() {
+				if (currentlyLooping == true) {
+					clearInterval(ourLoop);
+					currentlyLooping = false;
+				} else {
+					ourLoop = setInterval(randomNumberPlease, 100);
+					currentlyLooping = true;
+				}
+			}
+
+			function randomNumberPlease() {
+				var randomNumberElement = document.querySelector('#random-number');
+				randomNumberElement.innerText = Math.random();
+			}
+		</script>
+	</p>
+
+	<h2>6.4: template strings</h2>
+	<p>
+		<strong><a href="https://www.w3schools.com/js/js_string_templates.asp" target="_blank">Template strings</a></strong> let us combine multiple pieces of data together really easily.<br>
+		They act just like strings, but instead of using quotation marks we use the <strong>back tick `</strong> symbol.<br>
+		(It’s on the top-left of your keyboard!)<br><br>
+
+		Let’s say we want to pick a random RGB color every 100ms using a setInterval().<br>
+		That means we need to generate 3 random numbers like this:<br><br>
+		<code>
+			var redValue = Math.floor(Math.random()*255);<br>
+			var greenValue = Math.floor(Math.random()*255);<br>
+			var blueValue = Math.floor(Math.random()*255);
+		</code>
+		<br><br>
+		...and stick them together like this:<br><br>
+		<code>
+			var rgbValue = "rgb(" + redValue + "," + greenValue + "," + blueValue + ")";
+		</code>
+		<br><br>
+		That’s pretty hard to write, and pretty hard to read!<br>
+		With template literals, we can write the final string instead like this:<br><br>
+		<code>
+			var rgbValue = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+		</code><br>
+		Notice how we insert the variables into the template string by writing them inside <code>${}</code>
+		<br><br>
+
+		<span id="random-color">I’m changing colors!</span>
+		<script>
+			var randomColorElement = document.querySelector('#random-color');
+			setInterval(randomColor, 100)
+
+			function randomColor() {
+				var redValue = Math.floor(Math.random()*255);
+				var greenValue = Math.floor(Math.random()*255);
+				var blueValue = Math.floor(Math.random()*255);
+
+				var rgbValue = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+				randomColorElement.style.color = rgbValue;
+			}
+		</script>
+		<br><br>
+
+		You can also put JavaScript math directly into a template literal!<br><br>
+		<span id="random-font-size">I’m changing font size!</span>
+		<script>
+			var randomFontSize = document.querySelector('#random-font-size');
+			setInterval(chooseRandomFontSize, 1000)
+
+			function chooseRandomFontSize() {
+				randomFontSize.style.fontSize = `${Math.random()*20}px`;
+			}
+		</script>
+	</p>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adding HTML</title>
+
+	<style>
+		#scream {
+			font-size: 20px;
+			overflow-wrap: break-word;
+		}
+	</style>
+</head>
+<body>
+	Inspired by http://onelongscream.com/
+
+	<h1>We can use .innerHTML to add or replace HTML on a page.</h1>
+
+	<button onclick="startOver()">Start over!</button>
+
+	<p id="scream">AH</p>
+	
+	<script>
+		var scream = document.querySelector('#scream');
+		
+		setInterval(function() {
+			scream.innerHTML += `<span style='font-size:${Math.random()*100+10}px'>H</span>`;
+		}, 50)
+
+		function startOver() {
+			scream.innerHTML = 'AH';
+		}
+	</script>
+</body>
+</html>

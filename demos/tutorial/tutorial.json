@@ -1,33 +1,25 @@
 {
 	"tutorial": {
 		"title": "How to use DEMOLAND",
-		"subtitle": "Start here",
 		"desc": "Get started with DEMOLAND and learn how to code websites!",
-		"color": "rainbow",
 		"demos": {
 			"welcome": {
-				"name": "Welcome to DEMOLAND",
-				"color": "var(--pink)"
+				"name": "Welcome to DEMOLAND!"
 			},
 			"html": {
-				"name": "What is HTML?",
-				"color": "var(--green)"
+				"name": "What is HTML?"
 			},
 			"css": {
-				"name": "What is CSS?",
-				"color": "var(--blue)"
+				"name": "What is CSS?"
 			},
 			"js": {
-				"name": "What is JavaScript?",
-				"color": "var(--yellow)"
+				"name": "What is JavaScript?"
 			},
 			"js-libraries": {
-				"name": "What are JavaScript Libraries?",
-				"color": "var(--purple)"
+				"name": "What are JavaScript Libraries?"
 			},
 			"template": {
-				"name": "Starter Template",
-				"color": "var(--red)"
+				"name": "Starter Template"
 			}
 		}
 	}

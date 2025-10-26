@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generating random elements</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.container {
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			border: 10px solid gray;
+		}
+		.container div {
+			position: absolute;
+			transition: 1s;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<p>Inspired by https://www.tiger.exposed/index</p>
+
+	<h1>Let’s put all of these ideas together into something complicated!</h1>
+
+	<div class="container"></div>
+
+	<script>
+		var container = document.querySelector('.container');
+
+		// This is a loop that will run 20 times
+		// Try chaning 20 to a different number!
+		for (var i=0; i<20; i=i+1) {
+
+			// Pick random color
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			// Set random position (percent from 0-100)
+			var positionTop = Math.random()*100;
+			var positionLeft = Math.random()*100;
+
+			// Set random size (min dimension 100px, max 600px)
+			var elementWidth = Math.random()*500+100;
+			var elementHeight = Math.random()*500+100;
+
+			// Set random rotation (0-360deg)
+			var elementRotation = Math.random()*360;
+
+			// Create new element inside container
+			container.innerHTML += `<div style="background-color: rgb(${red}, ${green}, ${blue}); top: ${positionTop}%; left: ${positionLeft}%; width: ${elementWidth}px; height: ${elementHeight}px; transform: rotate(${elementRotation}deg)" onclick="changeSettings(this)"></div>`;
+		}
+
+		function changeSettings(element) {
+			// Pick random color
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+			element.style.backgroundColor = `rgb(${red},${green},${blue})`;
+
+			// Set random position (percent from 0-100)
+			var positionTop = Math.random()*100;
+			var positionLeft = Math.random()*100;
+			element.style.top = positionTop + "%";
+			element.style.left = positionLeft + "%";
+
+			// Set random size (min dimension 100px, max 600px)
+			var elementWidth = Math.random()*500+100;
+			var elementHeight = Math.random()*500+100;
+			element.style.width = elementWidth + "px";
+			element.style.height = elementHeight + "px";
+
+			// Set random rotation (0-360deg)
+			var elementRotation = Math.random()*360;
+			element.style.transform = `rotate(${elementRotation}deg)`;
+		}
+	</script>
+</body>
+</html>

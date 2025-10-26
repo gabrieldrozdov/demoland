@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 2: inspect panel, console.log()</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #98db6b;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 2A: inspect panel, console.log()</h1>
+	<p>
+		Let’s see how to fix our code if something is wrong.<br>
+	</p>
+
+	<h2>2A.1: the inspect panel</h2>
+	<p>
+		This lesson assumes you’re using <strong><a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a></strong>.<br>
+		If you aren’t, then switch to it now!<br><br>
+
+		Previously, we saw that we can read data using the <code>alert()</code> function.<br>
+		But sometimes our code can have errors.<br>
+		To see errors, we need to open up the inspect panel.<br><br>
+
+		Mac Shortcut: <code>Command + Option + C</code><br>
+		Windows Shortcut: <code>Command + Option + C</code><br>
+		Or, you can right-click anywhere on the page and press "Inspect".<br><br>
+
+		In the inspect panel, navigate to the <strong>console</strong> tab.<br>
+		You’ll notice an error message.<br>
+		That’s because I created a variable but didn’t write its value in quotes.<br>
+		Try fixing my code and seeing if the error goes away!<br><br>
+
+		NOTE: the errors you see on this website might look a little funky because of the built-in text editor. When you’re editing a file directly, you might experience slightly different error information.
+
+		<script>
+			var testVariable1 = hi there!
+		</script>
+	</p>
+
+	<h2>2A.2: console.log()</h2>
+	<p>
+		We can’t always rely on the console to give us helpful information.<br>
+		We can manually check our code using <code><strong><a href="https://www.w3schools.com/jsref/met_console_log.asp" target="_blank">console.log()</a></strong></code>.<br>
+		This let’s us output our own values into the console whenever we want.<br><br>
+		Let’s take the click tracker function from the previous lesson and output it to the console instead of an alert.<br><br>
+
+		<button onclick="trackNumberOfClicks();">Click me and then check your console!</button>
+		<script>
+			var numberOfClicks = 0;
+			function trackNumberOfClicks() {
+				numberOfClicks = numberOfClicks + 1;
+				console.log("Total clicks: " + numberOfClicks);
+			}
+		</script>
+
+		<br><br>
+		If your function isn’t working, you can check what a variable is via console.log().<br>
+		Or, you can see if a certain right was reached via console.log().<br><br>
+		For example, the next button is supposed a function.<br>
+		If the function runs correctly, you should see some text appear in the console.<br>
+		Why isn’t the function running?<br><br>
+
+		<button onclick="testFuncton();">Click... me?</button>
+		<script>
+			function testFunction() {
+				console.log("It worked!");
+			}
+		</script>
+	</p>
+</body>
+</html>

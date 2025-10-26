@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Repeatedly and automatically running a function</title>
+
+	<style>
+		body {
+			transition: .5s;
+		}
+	</style>
+</head>
+<body>
+	<h1>We can run a function multiple times automatically by using setInterval()</h1>
+
+	<script>
+		var body = document.querySelector('body');
+
+		// Using a function name
+		setInterval(changeColor, 1000)
+
+		function changeColor() {
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+		}
+
+		// Using an anonymous (unnamed) function
+		setInterval(function() {
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			body.style.color = `rgb(${red}, ${green}, ${blue})`;
+		}, 1000)
+	</script>
+</body>
+</html>

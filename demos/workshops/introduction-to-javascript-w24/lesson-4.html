@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 3: Booleans, if/else statements, arrays, .length</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #5adee8;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 3: Booleans, if/else statements, arrays, .length</h1>
+
+	<h2>3.1: Booleans (true and false)</h2>
+	<p>
+		JavaScript features another type of data called <strong><a href="https://www.w3schools.com/js/js_booleans.asp" target="_blank">Booleans</a></strong><br><br>
+		Unlike strings and numbers, Booleans can only be one of two values: <strong>true</strong> or <strong>false</strong>.<br><br>
+		We can use <strong><a href="https://www.w3schools.com/js/js_comparisons.asp" target="_blank">comparison operators</a></strong> to check the relationship between two pieces of data:
+	</p>
+	<ul>
+		<li>== checks if two values are equal</li>
+		<li>!= checks if two values are NOT equal</li>
+		<li>&gt; greater than</li>
+		<li>&lt; less than</li>
+		<li>&gt;= greater than or equal to</li>
+		<li>&lt;= less than or equal to</li>
+		<li>&& checks if two conditions are true</li>
+		<li>|| checks if one of two conditions are true</li>
+		<li>! checks if a condition isn’t true</li>
+	</ul>
+	<p>
+		<button onclick="alert(1>2)">Is 1 greater than 2?</button><br>
+		<button onclick="alert(1<2)">Is 1 less than 2?</button><br>
+		<button onclick="alert(1+2==3)">Is 1+2 equal to 3?</button><br>
+		<button onclick="alert(1+2!=3)">Is 1+2 NOT equal to 3?</button><br>
+		<button onclick="alert(0<1 || 0<-1)">Is 0 less than 1 OR 0 less than -1?</button><br>
+		<button onclick="alert(0<1 && 0<-1)">Is 0 less than 1 AND 0 less than -1?</button><br><br>
+
+		This also works with strings and variables:<br>
+		<button onclick="alert(myVariable1 == 'cat')">Is myVariable1 equal to "cat"?</button><br>
+		<button onclick="alert(myVariable1 != 'cat')">Is myVariable1 NOT equal to "cat"?</button><br>
+	</p>
+	<script>
+		var myVariable1 = "cat";
+		var myVariable2 = 100;
+	</script>
+
+	<h2>3.2: if/else statements</h2>
+	<p>
+		Booleans are super useful because they let us check if a condition has been reached.<br>
+		We can check if a Boolean is true or false using an if/then statement.<br><br>
+		In this example, let’s create a variable that tracks the number of user clicks.<br>
+		We’ll increase this variable by 1 every time the button is pressed.<br>
+		We’ll use an "if" statement to detect once the variable is 5, meaning the button has been clicked 5 times.<br>
+		We can use the "else" statement to do something when the condition isn’t true.<br><br>
+
+		<button onclick="numberOfClicks()">Click me!</button>
+		<script>
+			var totalClicks = 0;
+			function numberOfClicks() {
+				totalClicks = totalClicks + 1;
+				if (totalClicks == 5) {
+					alert('That was 5 clicks!');
+				} else {
+					alert('Not there yet!')
+				}
+			}
+		</script>
+	</p>
+
+	<h2>3.3: arrays</h2>
+	<p>
+		There’s one more basic type of data that’s super useful: arrays.<br>
+		<strong><a href="https://www.w3schools.com/js/js_arrays.asp" target="_blank">Arrays</a></strong> store other pieces of data, like strings, numbers, and other arrays.<br><br>
+		Example: <span style="font-family: monospace;">var myFirstArray = ["Hello", "What’s up?", 0, 100, 200];</span><br><br>
+		To access an item in an array, we say the array's name followed by a number in square brackets.<br>
+		The first item of an array is actually the 0th item of the array.<br><br>
+		Example: <span style="font-family: monospace">myFirstArray[0] == "Hello"</span><br>
+		Example: <span style="font-family: monospace">myFirstArray[4] == 200</span><br><br>
+
+		<button onclick="alert(myFirstArray[0])">Access the first (0th) item of an array, a.k.a. myFirstArray[0]</button><br>
+		<button onclick="alert(myFirstArray[4])">myFirstArray[4]</button>
+		<script>
+			var myFirstArray = ["Hello", "What’s up?", 0, 100, 200];
+		</script>
+	</p>
+
+	<h2>3.4: moving through arrays and .length</h2>
+	<p>
+		Let’s put this all together now!<br>
+		We’ll create an array with a few lines of text in it.<br>
+		Clicking on a button switches to the next line of text.<br><br>
+
+		<button onclick="moveThroughTheArray()">Hey! Click me!</button>
+		<script>
+			var mySecondArray = ["Hi there", "I’m gabriel", "who are you?", "what are you doing?"];
+			var currentEntry = 0;
+			function moveThroughTheArray() {
+				alert(mySecondArray[currentEntry]);
+				currentEntry = currentEntry + 1;
+			}
+		</script>
+		<br><br>
+
+		We have a problem! If we click too many times, we get an "undefined" error.<br>
+		This is because we tried to access a value outside of the range of the array.<br>
+		The array is 4 items long, so mySecondArray[4] results in undefined.<br><br>
+
+		We can fix this by checking if we’ve reached the end of the array.<br>
+		Writing __arrayName___.length gives us the length of an array.<br><br>
+		<button onclick="alert(mySecondArray.length)">How long was that array?</button>
+
+		<br><br>
+		Now, we can revise our function to include an "if" statement.<br>
+		Once we reach the end of the array, let’s set our position back to 0.<br><br>
+
+		<button onclick="moveThroughTheArray2()">Let’s try this again!</button>
+	</p>
+	<script>
+		var currentEntry2 = 0;
+		function moveThroughTheArray2() {
+			alert(mySecondArray[currentEntry2]);
+			currentEntry2 = currentEntry2 + 1;
+			if (currentEntry2 == mySecondArray.length) {
+				currentEntry2 = 0;
+			}
+		}
+	</script>
+</body>
+</html>

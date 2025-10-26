@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Combining text</title>
+</head>
+<body>
+	<h1>We can also combine multiple pieces of text to make a random sentence generator or something similar.</h1>
+
+	<div style="font-size: 5vw;" onclick="changeText(this)">Click me!</div>
+
+	<script>
+		var words1 = [
+			"I am ",
+			"You are ",
+			"He is ",
+			"She is ",
+			"They are "
+		]
+
+		var words2 = [
+			"running and ",
+			"thinking and ",
+			"hopping around and "
+		]
+
+		var words3 = [
+			"having fun!",
+			"having a terrible time!",
+			"wishing they were at home!",
+			"remembering this forever!"
+		]
+
+		function changeText(element) {
+			var randomIndex1 = Math.floor(Math.random()*words1.length);
+			var randomIndex2 = Math.floor(Math.random()*words2.length);
+			var randomIndex3 = Math.floor(Math.random()*words3.length);
+
+			element.innerText = words1[randomIndex1] + words2[randomIndex2] + words3[randomIndex3];
+		}
+
+	</script>
+</body>
+</html>

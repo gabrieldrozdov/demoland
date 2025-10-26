@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Delay</title>
+</head>
+<body>
+	<h1>We can delay a function from running by using setTimeout()</h1>
+
+	<script>
+		var body = document.querySelector('body');
+
+		// Using a function name
+		setTimeout(changeColor, 1000)
+
+		function changeColor() {
+			body.style.backgroundColor = "blue";
+		}
+
+		// Using an anonymous (unnamed) function
+		setTimeout(function() {
+			body.style.backgroundColor = "red";
+		}, 3000)
+	</script>
+</body>
+</html>

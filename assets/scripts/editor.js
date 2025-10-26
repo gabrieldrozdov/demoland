@@ -1,96 +1,23 @@
-const colors = ['red', 'blue', 'purple', 'yellow', 'green', 'pink'];
 const container = document.querySelector('.container');
+
+// Empty demo template
+const template = `<style>
+	/* Write your CSS here! */
+	
+</style>
+<body>
+	<!-- Write your HTML here! -->
+	
+
+	<script>
+		// Write your JavaScript here!
+		
+	</script>
+</body>`;
 
 // Search params
 const pageHref = window.location.search;
 const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?')));
-
-// ———————————————————————————————————
-// TOOLTIPS
-// ———————————————————————————————————
-
-// Add event listeners for all tooltip-related items
-window.addEventListener('mousemove', (e) => {positionTooltip(e)});
-function refreshTooltips() {
-	for (let btn of document.querySelectorAll('[data-tooltip-text]')) {
-		btn.addEventListener('mouseenter', (e) => {setTooltip(e, btn)})
-		btn.addEventListener('mouseleave', () => {hideTooltip()})
-	}
-}
-refreshTooltips();
-
-// Wait until mouse moved before showing tooltip
-setTimeout(() => {
-	window.addEventListener('mousemove', showTooltip);
-}, 100)
-function showTooltip() {
-	const tooltipContainer = document.querySelector('.tooltip-container');
-	tooltipContainer.style.opacity = 1;
-	window.removeEventListener('mousemove', showTooltip);
-}
-
-// Move tooltip
-function positionTooltip(e) {
-	let tooltip = document.querySelector('.tooltip');
-	if (tooltip.dataset.direction == 'left') {
-		tooltip.style.right = '';
-		tooltip.style.top = e.clientY + "px";
-		tooltip.style.bottom = '';
-		tooltip.style.left = e.clientX + "px";
-	} else if (tooltip.dataset.direction == 'right') {
-		tooltip.style.top = e.clientY + "px";
-		tooltip.style.right = window.innerWidth*2-e.clientX + "px"; // *2 for overflow fix
-		tooltip.style.bottom = '';
-		tooltip.style.left = '';
-	} else if (tooltip.dataset.direction == 'top') {
-		tooltip.style.top = e.clientY + "px";
-		tooltip.style.right = '';
-		tooltip.style.bottom = '';
-		tooltip.style.left = e.clientX + "px";
-
-		// Prevent cropping
-		let rect = tooltip.getBoundingClientRect();
-		let diffRight = window.innerWidth - rect.right - 16;
-		if (diffRight < 0) {
-			tooltip.style.left = e.clientX+diffRight + "px";
-		}
-		let diffLeft = rect.left - 16;
-		if (diffLeft < 0) {
-			tooltip.style.left = `${e.clientX-diffLeft}px`;
-		}
-	} else if (tooltip.dataset.direction == 'bottom') {
-		tooltip.style.top = '';
-		tooltip.style.right = '';
-		tooltip.style.bottom = window.innerHeight-e.clientY + "px";
-		tooltip.style.left = e.clientX + "px";
-
-		// Prevent cropping
-		let rect = tooltip.getBoundingClientRect();
-		let diffRight = window.innerWidth - rect.right - 16;
-		if (diffRight < 0) {
-			tooltip.style.left = e.clientX+diffRight + "px";
-		}
-		let diffLeft = rect.left - 16;
-		if (diffLeft < 0) {
-			tooltip.style.left = `${e.clientX-diffLeft}px`;
-		}
-	}
-}
-
-// Set tooltip content and type
-function setTooltip(e, btn) {
-	let tooltip = document.querySelector('.tooltip');
-	e.stopPropagation();
-	tooltip.dataset.hide = 0;
-	tooltip.querySelector('p').innerText = btn.dataset.tooltipText;
-	tooltip.dataset.direction = btn.dataset.tooltipDirection;
-}
-
-// Hide tooltip
-function hideTooltip() {
-	let tooltip = document.querySelector('.tooltip');
-	tooltip.dataset.hide = 1;
-}
 
 // ———————————————————————————————————
 // PANELS
@@ -131,7 +58,7 @@ function startResize(e1, resizer) {
 	function updateResize(e2) {
 		let x2 = e2.clientX;
 		let delta = x2 - x1;
-		let defaultSize = 100/openPanelsLength;
+		let defaultSize = (100/openPanelsLength);
 		if (delta > 0 && offset2+defaultSize < 15) {
 			return
 		} else if (delta < 0 && offset1+defaultSize < 15) {
@@ -142,8 +69,8 @@ function startResize(e1, resizer) {
 		offset2 -= deltaPercent;
 		col1.dataset.offset = offset1;
 		col2.dataset.offset = offset2;
-		col1.style.width = `calc(calc(calc(100% - ${(openPanelsLength-1)*8}px) / ${openPanelsLength}) + ${offset1}%)`;
-		col2.style.width = `calc(calc(calc(100% - ${(openPanelsLength-1)*8}px) / ${openPanelsLength}) + ${offset2}%)`;
+		col1.style.width = `calc(calc(calc(100% - ${(openPanelsLength-1)*40}px) / ${openPanelsLength}) + ${offset1}%)`;
+		col2.style.width = `calc(calc(calc(100% - ${(openPanelsLength-1)*40}px) / ${openPanelsLength}) + ${offset2}%)`;
 		x1 = x2;
 	}
 
@@ -176,6 +103,14 @@ function togglePanel(target) {
 	}
 	resetPanels();
 }
+function fullscreenPanel(target) {
+	let panel = document.querySelector("#"+target);
+	if (parseInt(panel.dataset.fullscreen) == 1) {
+		panel.dataset.fullscreen = 0;
+	} else {
+		panel.dataset.fullscreen = 1;
+	}
+}
 
 // Open all panels
 function openAllPanels() {
@@ -201,7 +136,7 @@ function openAllPanels() {
 // Reset panel sizes
 function resetPanels() {
 	openPanelsLength = 3;
-	let emptyNotice = document.querySelector('.panel-empty');
+	let empty = document.querySelector('.empty');
 	for (let panel of Object.keys(openPanels)) {
 		if (!openPanels[panel]) {
 			openPanelsLength--;
@@ -209,14 +144,14 @@ function resetPanels() {
 	}
 	if (openPanelsLength == 0) {
 		// Show empty notice
-		emptyNotice.dataset.hide = 0;
+		empty.dataset.hide = 0;
 	} else {
 		// Hide empty notice
-		emptyNotice.dataset.hide = 1;
+		empty.dataset.hide = 1;
 
 		// Calculate correct widths
 		for (let panel of document.querySelectorAll('.panel')) {
-			panel.style.width = `calc(calc(100% - ${(openPanelsLength-1)*8}px) / ${openPanelsLength})`;
+			panel.style.width = `calc(calc(100% - ${(openPanelsLength-1)*40}px) / ${openPanelsLength})`;
 			panel.dataset.offset = 0;
 		}
 	
@@ -251,71 +186,52 @@ function enableIframes() {
 // CONTENT
 // ———————————————————————————————————
 
-// Info navbar
-function openChapter() {
-	const infoNav = document.querySelector('.info-nav');
-	const infoNavDemos = document.querySelector('.info-nav-demos');
-	if (parseInt(infoNav.dataset.active) == 1) {
-		infoNav.dataset.active = 0;
-		infoNavDemos.dataset.active = 0;
-	} else {
-		infoNav.dataset.active = 1;
-		infoNavDemos.dataset.active = 1;
-	}
-}
-
 // Generate editor
 let cm;
-let consoleActive = false;
-let lineWrap = false;
-let editorFontsize = 14;
-let delay = false;
-let paused = false;
+let update;
+let updateCount = 0;
+let override = false;
 let currentSettings = {
-	"console": undefined,
-	"linewrapping": undefined,
-	"fontsize": undefined,
-	"delay": undefined,
-	"paused": undefined
+	"console": false,
+	"linewrap": false,
+	"fontsize": 14,
+	"delay": false,
+	"paused": false
 };
-function generateEditor() {
+function generateEditor(blank) {
 	// Detect editor settings
 	if (searchParams.has('console')) {
 		if (searchParams.get('console') == "true") {
-			consoleActive = true;
+			currentSettings['console'] = true;
 			editorRefreshConsole();
-			currentSettings['console'] = consoleActive;
 		}
 	}
-	if (searchParams.has('linewrapping')) {
-		if (searchParams.get('linewrapping') == "true") {
-			lineWrap = true;
+	if (searchParams.has('linewrap')) {
+		if (searchParams.get('linewrap') == "true") {
+			currentSettings['linewrap'] = true;
 			editorRefreshWrapping();
-			currentSettings['linewrapping'] = lineWrap;
 		}
 	}
 	if (searchParams.has('fontsize')) {
 		if (parseInt(searchParams.get('fontsize')) != undefined ) {
-			editorFontsize = parseInt(searchParams.get('fontsize'));
-			if (isNaN(editorFontsize)) {
-				editorFontsize = 14;
+			currentSettings['fontsize'] = parseInt(searchParams.get('fontsize'));
+			if (isNaN(currentSettings['fontsize'])) {
+				currentSettings['fontsize'] = 14;
 			}
 			editorRefreshFontsize();
-			currentSettings['fontsize'] = editorFontsize;
+			currentSettings['fontsize'] = currentSettings['fontsize'];
 		}
 	}
 	if (searchParams.has('delay')) {
 		if (searchParams.get('delay') == "true") {
-			delay = true;
+			currentSettings['delay'] = true;
 			editorRefreshDelay();
-			currentSettings['delay'] = delay;
 		}
 	}
 	if (searchParams.has('paused')) {
 		if (searchParams.get('paused') == "true") {
-			paused = true;
+			currentSettings['paused'] = true;
 			editorRefreshPause();
-			currentSettings['paused'] = paused;
 		}
 	}
 	
@@ -339,64 +255,87 @@ function generateEditor() {
 			'Cmd-/': 'toggleComment',
 			'Ctrl-/': 'toggleComment',
 		},
-		lineWrapping: lineWrap,
+		lineWrapping: currentSettings['linewrap'],
 		theme: "gdwithgd",
 	});
 	cm.on("change", updatePreview);
 
-	// Detect chapter
-	if (searchParams.has('chapter')) {
-		activeChapter = searchParams.get('chapter');
+	// Fetch content if not blank editor
+	if (blank == true) {
+		// Hide unnecessary features
+		hideInfo();
+		container.dataset.empty = 1;
+
+		// Initialize editor
+		cm.setValue(template);
+		cm.refresh();
+		container.dataset.loading = 0;
+
+		// Attempt to fix CM alignment issues
+		setTimeout(() => {cm.refresh()}, 100)
 	} else {
-		// Default to first chapter and demo if not chapter available
-		activeChapter = Object.keys(bookData)[0];
+		// Detect chapter
+		if (searchParams.has('chapter')) {
+			activeChapter = searchParams.get('chapter');
+		} else {
+			// Default to first chapter and demo if not chapter available
+			activeChapter = Object.keys(bookData)[0];
+		}
+
+		// Detect demo
+		if (searchParams.has('demo')) {
+			activeDemo = searchParams.get('demo');
+		} else {
+			// Default to first demo if none selected
+			activeDemo = Object.keys(bookData[activeChapter]['demos'])[0];
+		}
+
+		fetchInfo();
+		populateInfo();
 	}
 
-	// Detect demo
-	if (searchParams.has('demo')) {
-		activeDemo = searchParams.get('demo');
-	} else {
-		// Default to first demo if none selected
-		activeDemo = Object.keys(bookData[activeChapter]['demos'])[0];
-	}
-
-	fetchInfo();
-	populateInfo();
-
-	window.addEventListener("focus", cm.refresh());
-
+	// Make tabbed lines appear on continuous indentation
 	cm.on("renderLine", function(cm, line, elmnt) {
 		let tabs = CodeMirror.countColumn(line.text, null, 1);
 		elmnt.style.textIndent = `-${tabs*2.4}em`;
 		elmnt.style.paddingLeft = `calc(${tabs*2.4}em + 4px)`;
 	});
+
+	window.addEventListener("focus", cm.refresh());
 	cm.refresh();
 }
 
 // Fetch relevant JSON file and find demo information
 let overviewData, bookData, activeBook, activeChapter, activeDemo;
 async function fetchOverview() {
-	// Fetch overview data
-	try {
-		let response = await fetch(`../overview.json`);
-		response.json().then((json) => {
-			overviewData = json;
-			fetchData();
-		});
-	}
-	catch(e) {
-		alert("Something went wrong while trying to load the file! Try checking your Internet connection, refreshing the page, or making sure there are no typos in the URL.");
+	// Read URL to detect which book to fetch
+	// If no book, open blank editor
+	if (searchParams.has('book')) {
+		activeBook = searchParams.get('book');
+
+		// Fetch overview data and check if book exists
+		// If not, load blank editor
+		try {
+			let response = await fetch(`../overview.json`);
+			response.json().then((json) => {
+				overviewData = json;
+				if (Object.keys(overviewData).includes(activeBook)) {
+					fetchData();
+				} else {
+					generateEditor(true);
+					alert("This book doesn’t exist! Opening up a blank editor. Head to the homepage to pick another book.");
+				}
+			});
+		}
+		catch(e) {
+			alert("Something went wrong while trying to load the editor! Try checking your Internet connection, refreshing the page, or making sure there are no typos in the URL.");
+		}
+		
+	} else {
+		generateEditor(true);
 	}
 }
 async function fetchData() {
-	// Read URL to detect which book to fetch
-	if (searchParams.has('book')) {
-		activeBook = searchParams.get('book');
-	} else {
-		// Default to tutorial if no book available
-		activeBook = 'tutorial';
-	}
-
 	// Fetch book data
 	try {
 		let response = await fetch(`../demos/${activeBook}/${activeBook}.json`);
@@ -411,7 +350,7 @@ async function fetchData() {
 }
 fetchOverview();
 
-// Populate info and editor panels
+// Populate navbar, info panel, editor panel
 let infoContent = "";
 let codeContent = "";
 function populateInfo() {
@@ -423,7 +362,7 @@ function populateInfo() {
 
 	// Populate chapter nav
 	let demos = chapter['demos'];
-	let infoNavTemp = '';
+	let navbarDemosTemp = '';
 	let demoIndex = 0;
 	let index = 0;
 	for (let key of Object.keys(demos)) {
@@ -431,65 +370,35 @@ function populateInfo() {
 		if (key == activeDemo) {
 			demoIndex = index;
 		}
-		infoNavTemp += `
-			<div class="info-nav-demo" style="--primary: ${demo['color']};">
-				<a href="./?book=${activeBook}&chapter=${activeChapter}&demo=${key}" class="info-nav-demo-link">
-					<div class="info-nav-demo-link-number">${index+1}</div>
-					<div class="info-nav-demo-link-name">${demo['name']}</div>
-				</a>
-				<a href="./?book=${activeBook}&chapter=${activeChapter}&demo=${key}" target="_blank" class="info-nav-demo-newtab">
-					<svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>
-				</a>
-			</div>
+		navbarDemosTemp += `
+			<a href="./?book=${activeBook}&chapter=${activeChapter}&demo=${key}" class="navbar-demo">
+				<div class="navbar-demo-number">${index+1}</div>
+				<div class="navbar-demo-name">${demo['name']}</div>
+			</a>
 		`;
 		index++;
 	}
-	const infoNavDemos = document.querySelector('.info-nav-demos');
-	infoNavDemos.innerHTML = infoNavTemp;
+	const navbarDemos = document.querySelector('.navbar-demos');
+	navbarDemos.innerHTML = navbarDemosTemp;
 
-	// Info and title
-	const infoNavCurrentNumber = document.querySelector('.info-nav-current-number');
-	infoNavCurrentNumber.innerText = demoIndex+1;
-	const infoNavCurrentName = document.querySelector('.info-nav-current-name');
-	infoNavCurrentName.innerText = bookData[activeChapter]['demos'][activeDemo]['name'];
-	const titleBook = document.querySelector('.title-book');
-	titleBook.innerHTML = `
-		<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"/><rect x="38" y="25" width="27" height="10"/></svg>
-		<span>${overviewData[activeBook]['title']}</span>
-	`;
-	titleBook.href = `../#${activeBook}`;
+	// Navbar content
+	const navbarBook = document.querySelector('#navbar-book');
+	navbarBook.innerHTML = overviewData[activeBook]['title-plaintext'];
 
-	// Generate chapters in title bar
-	const title = document.querySelector('.title');
-	for (let chapterKey of Object.keys(bookData)) {
-		let chapter = bookData[chapterKey];
-		let firstDemo = Object.keys(chapter['demos'])[0];
-		let chapterSubtitle = '';
-		if (chapter['subtitle'] != '') {
-			chapterSubtitle = `<span class="title-chapter-subtitle">${chapter['subtitle']}</span>`;
-		}
-		let active = 0;
-		if (chapterKey == activeChapter) {
-			active = 1;
-		}
-		if (chapter['color'] == 'rainbow') {
-			title.innerHTML += `
-				<a class="title-chapter title-chapter-rainbow" href="./?book=${activeBook}&chapter=${chapterKey}&demo=${firstDemo}" data-active="${active}">
-					${chapterSubtitle}
-					<span class="title-chapter-title">${chapter['title']}</span>
-				</a>
-			`;
-		} else {
-			title.innerHTML += `
-				<a class="title-chapter" href="./?book=${activeBook}&chapter=${chapterKey}&demo=${firstDemo}" style="--primary: ${chapter['color']};" data-active="${active}">
-					${chapterSubtitle}
-					<span class="title-chapter-title">${chapter['title']}</span>
-				</a>
-			`;
-		}
-	}
+	const navbarChapter = document.querySelector('#navbar-chapter');
+	navbarChapter.innerHTML = bookData[activeChapter]['title'];
+	const navbarChapterLink = document.querySelector('#navbar-chapter-link');
+	const navbarChapterLink2 = document.querySelector('#navbar-chapter-link2');
+	navbarChapterLink.href = `../#${activeBook}`;
+	navbarChapterLink2.href = `../#${activeBook}`;
 
-	// Info next shortcut
+	const navbarNumber = document.querySelector('#navbar-number');
+	navbarNumber.innerHTML = `${demoIndex+1} of ${Object.keys(bookData[activeChapter]['demos']).length}`;
+
+	const navbarDemo = document.querySelector('#navbar-demo');
+	navbarDemo.innerText = bookData[activeChapter]['demos'][activeDemo]['name'];
+
+	// Info panel next shortcut
 	const infoNext = document.querySelector('.info-next');
 	if (demoIndex < Object.keys(demos).length-1) {
 		infoNext.innerHTML = `Click here to continue to the next demo!`;
@@ -501,46 +410,20 @@ function populateInfo() {
 	}
 
 	// Navigate between demos
-	const infoNavPrev = document.querySelector('#info-nav-prev');
-	const infoNavNext = document.querySelector('#info-nav-next');
+	const navbarPrev = document.querySelector('#navbar-prev');
+	const navbarNext = document.querySelector('#navbar-next');
 	if (demoIndex == 0) {
-		infoNavPrev.dataset.active = 0;
+		navbarPrev.dataset.hidden = 1;
 	} else {
 		let key = Object.keys(demos)[demoIndex-1];
-		infoNavPrev.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
+		navbarPrev.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
 	}
 	if (demoIndex == index-1) {
-		infoNavNext.dataset.active = 0;
+		navbarNext.dataset.hidden = 1;
 	} else {
 		let key = Object.keys(demos)[demoIndex+1];
-		infoNavNext.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
+		navbarNext.href = `./?book=${activeBook}&chapter=${activeChapter}&demo=${key}`;
 	}
-	
-	// Set color
-	const container = document.querySelector('.container');
-	container.style.setProperty('--primary', `${demos[activeDemo]['color']}`);
-
-	// Update favicon to match demo color
-	const head = document.querySelector('head');
-	const headFaviconColor = document.createElement('link');
-	headFaviconColor.rel = "icon";
-	headFaviconColor.type = "png";
-	let favicon = 'white';
-	if (demos[activeDemo]['color'] == "var(--pink)") {
-		favicon = 'pink';
-	} else if (demos[activeDemo]['color'] == "var(--green)") {
-		favicon = 'green';
-	} else if (demos[activeDemo]['color'] == "var(--blue)") {
-		favicon = 'blue';
-	} else if (demos[activeDemo]['color'] == "var(--yellow)") {
-		favicon = 'yellow';
-	} else if (demos[activeDemo]['color'] == "var(--purple)") {
-		favicon = 'purple';
-	} else if (demos[activeDemo]['color'] == "var(--red)") {
-		favicon = 'red';
-	}
-	headFaviconColor.href = `/assets/meta/favicon-${favicon}.png`;
-	head.appendChild(headFaviconColor);
 
 	// Add current demo settings to all chapter links
 	for (let link of document.querySelectorAll('.info-nav a')) {
@@ -563,41 +446,19 @@ function populateInfo() {
 			}
 		})
 	}
-
-	// Add current demo settings to all book links
-	for (let link of document.querySelectorAll('.title-chapter')) {
-		link.addEventListener('click', (e) => {
-			e.preventDefault();
-
-			// Format settings
-			let formattedSettings = "";
-			for (let setting of Object.keys(currentSettings)) {
-				if (currentSettings[setting] != undefined) {
-					formattedSettings += `&${setting}=${currentSettings[setting]}`;
-				}
-			}
-
-			// Open link with current settings
-			if (link.target == "_blank") {
-				window.open(`${link.href}${formattedSettings}`, "_blank");
-			} else {
-				window.open(`${link.href}${formattedSettings}`, "_self");
-			}
-		})
-	}
 }
 async function fetchInfo() {
-	try {
-		let responseInfo = await fetch(`../demos/${activeBook}/${activeChapter}/${activeDemo}-info.html`);
+	let responseInfo = await fetch(`../demos/${activeBook}/${activeChapter}/${activeDemo}-info.html`);
+	if (responseInfo.status != 200) {
+		hideInfo();
+		fetchCode();
+	} else {
 		responseInfo.text().then((text) => {
 			infoContent = text;
 			const info = document.querySelector('.info-content');
 			info.innerHTML += infoContent;
 			fetchCode();
 		});
-	}
-	catch(e) {
-		alert('Something went wrong! We couldn’t find your demo for some reason. Try going back to the homepage and starting over!')
 	}
 }
 async function fetchCode() {
@@ -621,14 +482,34 @@ async function fetchCode() {
 	}
 }
 
+// Hide info panel if not needed (blank editor or no info file)
+function hideInfo() {
+	const toggleInfo = document.querySelector(`#toggle-info`);
+	toggleInfo.dataset.disabled = 1;
+	togglePanel('info');
+}
+
+// Toggle navbar demos menu
+function toggleNavbarDemos() {
+	const navbarDemos = document.querySelector('.navbar-demos');
+	const navbarDemosLink = document.querySelector('#navbar-demos');
+	if (parseInt(navbarDemos.dataset.active) == 0) {
+		navbarDemos.dataset.active = 1;
+		navbarDemosLink.dataset.active = 1;
+	} else {
+		navbarDemos.dataset.active = 0;
+		navbarDemosLink.dataset.active = 0;
+	}
+}
+
 // Pause preview from updating
 function editorPause() {
 	const togglePause = document.querySelector("#pause");
-	if (paused) {
-		paused = false;
+	if (currentSettings['paused']) {
+		currentSettings['paused'] = false;
 		togglePause.dataset.active = 0;
 	} else {
-		paused = true;
+		currentSettings['paused'] = true;
 		togglePause.dataset.active = 1;
 	}
 	updatePreview();
@@ -636,25 +517,27 @@ function editorPause() {
 	// Update URL params
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(url.search);
-	params.set("paused", paused);
+	params.set("paused", currentSettings['paused']);
 	url.search = params.toString();
 	window.history.replaceState({}, '', url);
-
-	// Update current settings
-	currentSettings['paused'] = paused;
 }
 function editorRefreshPause() {
 	const togglePause = document.querySelector("#pause");
-	if (paused) {
+	if (currentSettings['paused']) {
 		togglePause.dataset.active = 1;
 	} else {
 		togglePause.dataset.active = 0;
 	}
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("paused", currentSettings['paused']);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
 }
 
 // Update preview when changes made in editor
-let update;
-let updateCount = 0;
 function updatePreview() {
 	// Add warning before closing the tab if editor changed by user
 	if (updateCount > 1) {
@@ -672,13 +555,21 @@ function updatePreview() {
 	previewDelayTimerInside.style.animationName = "unset";
 
 	// Stop update if preview paused
+	// Allow for override if manually refreshed
 	const previewPaused = document.querySelector("#preview-paused");
-	if (paused) {
-		previewPaused.dataset.active = 1;
-		previewDelay.dataset.active = 0;
-		return
+	if (!override) {
+		if (currentSettings['paused']) {
+			previewPaused.dataset.active = 1;
+			previewDelay.dataset.active = 0;
+			return
+		} else {
+			previewPaused.dataset.active = 0;
+		}
 	} else {
+		currentSettings['paused'] = false;
+		previewDelay.dataset.active = 0;
 		previewPaused.dataset.active = 0;
+		editorRefreshPause();
 	}
 
 	// Custom console function
@@ -687,88 +578,131 @@ function updatePreview() {
 	let consoleCode = `
 		<script>
 			(function() {
-				var originalLog = console.log;
-				console.log = function() {
-					const parentConsole = parent.document.querySelector('.editor-console-log');
-					var message = Array.from(arguments).join(' ');
-					parentConsole.innerHTML += '<div class="editor-console-log-out">' + message + '</div>';
-					originalLog.apply(console, arguments);
-					parentConsole.scrollTop = parentConsole.scrollHeight;
-				};
-	
-				var originalError = console.error;
-				console.error = function() {
-					const parentConsole = parent.document.querySelector('.editor-console-log');
-					var message = Array.from(arguments).join(' ');
-					parentConsole.innerHTML += '<div class="editor-console-log-out">Error: ' + message + '</div>';
-					originalError.apply(console, arguments);
-					parentConsole.scrollTop = parentConsole.scrollHeight;
-				};
+			const originalLog = console.log;
+			const originalError = console.error;
 
-				window.onerror = function(message, source, lineno, colno, error) {
-					const parentConsole = parent.document.querySelector('.editor-console-log');
-					parentConsole.innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + '</div>';
-					// Optionally, you can log the error object for more information
-					// console.error(error);
-					parentConsole.scrollTop = parentConsole.scrollHeight;
-					return true; // Prevent the default browser error handling
-				};
+			console.log = function(...args) {
+				parent.document.querySelector('.editor-console-log').innerHTML +=
+				'<div class="editor-console-log-out">' + args.join(' ') + '</div>';
+				originalLog.apply(console, args);
+			}
+
+			console.error = function(...args) {
+				parent.document.querySelector('.editor-console-log').innerHTML +=
+				'<div class="editor-console-log-out">Error: ' + args.join(' ') + '</div>';
+				originalError.apply(console, args);
+			}
+
+			window.onerror = function(message, source, lineno, colno, error) {
+				const log = parent.document.querySelector('.editor-console-log');
+				log.innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + ' (line ' + (lineno-44) +': column ' + colno + ')</div>';
+				log.scrollTop = log.scrollHeight;
+				return true; // prevent default browser alert
+			}
 			})();
 		</script>
 	`;
-	let codeSplit = cm.getValue().split("</head>");
-	let previewCode;
-	if (codeSplit.length == 2) {
-		previewCode = codeSplit[0] + consoleCode + codeSplit[1];
-	} else {
-		previewCode = cm.getValue();
-	}
+	let previewCode = consoleCode + preventInfiniteLoops(cm.getValue());
 
 	// Handle delay
-	if (delay) {
-		previewDelay.dataset.active = 1;
-		setTimeout(() => {
-			previewDelayTimerInside.style.animationName = "preview-delay";
-		}, 10)
-		update = setTimeout(() => {
+	// Skip if override
+	if (!override) {
+		if (currentSettings['delay']) {
+			previewDelay.dataset.active = 1;
+			setTimeout(() => {
+				previewDelayTimerInside.style.animationName = "preview-delay";
+			}, 10)
+			update = setTimeout(() => {
+				previewDelay.dataset.active = 0;
+				preview.srcdoc = previewCode;
+			}, 5000);
+		} else {
 			previewDelay.dataset.active = 0;
 			preview.srcdoc = previewCode;
-		}, 5000);
+		}
 	} else {
 		previewDelay.dataset.active = 0;
 		preview.srcdoc = previewCode;
 	}
+
+	override = false;
+}
+
+// Prevent infinite loops inside preview
+function preventInfiniteLoops(code) {
+	// Track loop counts and enforce timeout
+	const safetyWrapper = `
+		<script>
+			let __loopStart = Date.now();
+			let __loopCounter = 0;
+			function __loopReset() {
+				__loopStart = Date.now();
+				__loopCounter = 0;
+			}
+			function __checkLoop(lineNumber) {
+				if (++__loopCounter > 10000) {
+				  throw new Error("Infinite loop detected near line " + lineNumber + ": exceeded 10000 iterations");
+				}
+				if (Date.now() - __loopStart > 2000) {
+					throw new Error("Infinite loop detected near line " + lineNumber + ": exceeded 2 seconds");
+				}
+			}
+		</script>
+	`;
+
+	// Add code at the *start* of any loop
+	code = code.replace(
+		/\b(for|while|do)\b\s*(?:await\s+)?\([^)]*\)\s*\{/g,
+		match => "__loopReset(); " + match
+	  );
+
+	// Replace loop headers and inject line number
+	let line = 1;
+	code = code.replace(/^.*$/gm, (fullLine) => {
+		const loopMatch = fullLine.match(/\b(for|while|do)\b\s*(?:await\s+)?\([^)]*\)\s*\{/);
+		if (loopMatch) {
+			fullLine = fullLine.replace('{', `{__checkLoop(${line});`);
+		}
+		line++;
+		return fullLine;
+	});
+  
+	return safetyWrapper + "\n" + code;
 }
 
 // Editor line wrapping
 function editorToggleWrapping() {
 	const toggleWrap = document.querySelector("#toggle-wrap");
-	if (lineWrap) {
+	if (currentSettings['linewrap']) {
 		toggleWrap.dataset.active = 0;
-		lineWrap = false;
+		currentSettings['linewrap'] = false;
 	} else {
 		toggleWrap.dataset.active = 1;
-		lineWrap = true;
+		currentSettings['linewrap'] = true;
 	}
-	cm.setOption('lineWrapping', lineWrap);
+	cm.setOption('lineWrapping', currentSettings['linewrap']);
 
 	// Update URL params
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(url.search);
-	params.set("linewrapping", lineWrap);
+	params.set("linewrap", currentSettings['linewrap']);
 	url.search = params.toString();
 	window.history.replaceState({}, '', url);
-
-	// Update current settings
-	currentSettings['linewrapping'] = lineWrap;
 }
 function editorRefreshWrapping() {
 	const toggleWrap = document.querySelector("#toggle-wrap");
-	if (lineWrap) {
+	if (currentSettings['linewrap']) {
 		toggleWrap.dataset.active = 1;
 	} else {
 		toggleWrap.dataset.active = 0;
 	}
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("linewrap", currentSettings['linewrap']);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
 }
 
 // Editor font size
@@ -776,71 +710,72 @@ function editorFontsizeDown() {
 	const editorCM = document.querySelector('.editor-content');
 	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
 	const toggleFontsizeUp = document.querySelector("#toggle-fontsize-up");
-	editorFontsize -= 2;
-	if (editorFontsize <= 8) {
-		editorFontsize = 8;
+	currentSettings['fontsize'] -= 2;
+	if (currentSettings['fontsize'] <= 8) {
+		currentSettings['fontsize'] = 8;
 		toggleFontsizeDown.dataset.disabled = 1;
 		toggleFontsizeUp.dataset.disabled = 0;
 	} else {
 		toggleFontsizeDown.dataset.disabled = 0;
 		toggleFontsizeUp.dataset.disabled = 0;
 	}
-	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
+	editorCM.style.setProperty('--font-size', currentSettings['fontsize'] + 'px');
 	cm.refresh();
 
 	// Update URL params
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(url.search);
-	params.set("fontsize", editorFontsize);
+	params.set("fontsize", currentSettings['fontsize']);
 	url.search = params.toString();
 	window.history.replaceState({}, '', url);
-
-	// Update current settings
-	currentSettings['fontsize'] = editorFontsize;
 }
 function editorFontsizeUp() {
 	const editorCM = document.querySelector('.editor-content');
 	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
 	const toggleFontsizeUp = document.querySelector("#toggle-fontsize-up");
-	editorFontsize += 2;
-	if (editorFontsize >= 24) {
-		editorFontsize = 24;
+	currentSettings['fontsize'] += 2;
+	if (currentSettings['fontsize'] >= 24) {
+		currentSettings['fontsize'] = 24;
 		toggleFontsizeDown.dataset.disabled = 0;
 		toggleFontsizeUp.dataset.disabled = 1;
 	} else {
 		toggleFontsizeDown.dataset.disabled = 0;
 		toggleFontsizeUp.dataset.disabled = 0;
 	}
-	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
+	editorCM.style.setProperty('--font-size', currentSettings['fontsize'] + 'px');
 	cm.refresh();
 	
 	// Update URL params
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(url.search);
-	params.set("fontsize", editorFontsize);
+	params.set("fontsize", currentSettings['fontsize']);
 	url.search = params.toString();
 	window.history.replaceState({}, '', url);
-
-	// Update current settings
-	currentSettings['fontsize'] = editorFontsize;
 }
 function editorRefreshFontsize() {
 	const editorCM = document.querySelector('.editor-content');
 	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
 	const toggleFontsizeUp = document.querySelector("#toggle-fontsize-up");
-	if (editorFontsize <= 8) {
-		editorFontsize = 8;
+	if (currentSettings['fontsize'] <= 8) {
+		currentSettings['fontsize'] = 8;
 		toggleFontsizeDown.dataset.disabled = 1;
 		toggleFontsizeUp.dataset.disabled = 0;
-	} else if (editorFontsize >= 24) {
-		editorFontsize = 24;
+	} else if (currentSettings['fontsize'] >= 24) {
+		currentSettings['fontsize'] = 24;
 		toggleFontsizeDown.dataset.disabled = 0;
 		toggleFontsizeUp.dataset.disabled = 1;
 	} else {
 		toggleFontsizeDown.dataset.disabled = 0;
 		toggleFontsizeUp.dataset.disabled = 0;
 	}
-	editorCM.style.setProperty('--font-size', editorFontsize + 'px');
+	editorCM.style.setProperty('--font-size', currentSettings['fontsize'] + 'px');
+	
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("fontsize", currentSettings['fontsize']);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
 }
 
 // Download current demo
@@ -856,36 +791,41 @@ function editorDownload() {
 // Editor delay
 function editorToggleDelay() {
 	const toggleDelay = document.querySelector("#toggle-delay");
-	if (delay) {
+	if (currentSettings['delay']) {
 		toggleDelay.dataset.active = 0;
-		delay = false;
+		currentSettings['delay'] = false;
 		updatePreview();
 	} else {
 		toggleDelay.dataset.active = 1;
-		delay = true;
+		currentSettings['delay'] = true;
 	}
 
 	// Update URL params
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(url.search);
-	params.set("delay", delay);
+	params.set("delay", currentSettings['delay']);
 	url.search = params.toString();
 	window.history.replaceState({}, '', url);
-
-	// Update current settings
-	currentSettings['delay'] = delay;
 }
 function editorRefreshDelay() {
 	const toggleDelay = document.querySelector("#toggle-delay");
-	if (delay) {
+	if (currentSettings['delay']) {
 		toggleDelay.dataset.active = 1;
 	} else {
 		toggleDelay.dataset.active = 0;
 	}
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("delay", currentSettings['delay']);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
 }
 
 // Rerun current demo
 function editorRerun() {
+	override = true;
 	updatePreview();
 }
 
@@ -896,33 +836,37 @@ function editorToggleConsole() {
 	if (parseInt(editor.dataset.console) == 0) {
 		toggleConsole.dataset.active = 1;
 		editor.dataset.console = 1;
-		consoleActive = true;
+		currentSettings['console'] = true;
 	} else {
 		toggleConsole.dataset.active = 0;
 		editor.dataset.console = 0;
-		consoleActive = false;
+		currentSettings['console'] = false;
 	}
 
 	// Update URL params
 	const url = new URL(window.location.href);
 	const params = new URLSearchParams(url.search);
-	params.set("console", consoleActive);
+	params.set("console", currentSettings['console']);
 	url.search = params.toString();
 	window.history.replaceState({}, '', url);
-
-	// Update current settings
-	currentSettings['console'] = consoleActive;
 }
 function editorRefreshConsole() {
 	const toggleConsole = document.querySelector("#toggle-console");
 	const editor = document.querySelector('#editor');
-	if (consoleActive == false) {
+	if (currentSettings['console'] == false) {
 		toggleConsole.dataset.active = 0;
 		editor.dataset.console = 0;
 	} else {
 		toggleConsole.dataset.active = 1;
 		editor.dataset.console = 1;
 	}
+
+	// Update URL params
+	const url = new URL(window.location.href);
+	const params = new URLSearchParams(url.search);
+	params.set("console", currentSettings['console']);
+	url.search = params.toString();
+	window.history.replaceState({}, '', url);
 }
 const consoleInput = document.querySelector('#console-input');
 consoleInput.addEventListener('keydown', (e) => {
@@ -965,3 +909,6 @@ function previewDimensions() {
 }
 previewDimensions();
 new ResizeObserver(previewDimensions).observe(document.querySelector(".preview-content"));
+
+// TODO
+// fix buttons on homepage to use svg icons

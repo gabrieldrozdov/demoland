@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Changing images</title>
+
+	<style>
+		#image {
+			display: block;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<h1>Image files are basically just strings, so can be organized into an array and changed via JavaScript just like text.</h1>
+	<p>Also, images are not responsive by default, so I'm doing some essential CSS here to make sure it fits on the screen.</p>
+
+	<button onclick="prevImage()">Previous image</button>
+	<button onclick="nextImage()">Next image</button>
+
+	<p>Current index: <span id="current-index">0</span></p>
+	<p>Current filename: <span id="filename">assets/cute-dog.jpeg</span></p>
+
+	<img id="image" src="assets/cute-dog.jpeg">
+	
+	<script>
+		var image = document.querySelector("#image");
+		var currentIndex = document.querySelector("#current-index");
+		var filename = document.querySelector("#filename");
+
+		var files = [
+			"assets/cute-dog.jpeg",
+			"assets/another-cute-dog.jpeg",
+			"assets/just-the-face.png",
+			"assets/what-a-gorgeous-dog.jpg"
+		]
+
+		var index = 0;
+
+		function nextImage() {
+			index = index + 1;
+			if (index == files.length) {
+				index = 0;
+			}
+
+			currentIndex.innerText = index;
+			filename.innerText = files[index];
+			image.src = files[index];
+		}
+
+		function prevImage() {
+			index = index - 1;
+			if (index < 0) {
+				index = files.length-1;
+			}
+
+			currentIndex.innerText = index;
+			filename.innerText = files[index];
+			image.src = files[index];
+		}
+
+	</script>
+</body>
+</html>

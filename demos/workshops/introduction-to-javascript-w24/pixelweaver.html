@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pixel Weaver</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.grid {
+			width: 100vw;
+			height: 100vh;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			transition: 1s;
+		}
+		.grid div {
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="grid">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	
+	<script>
+		var grid = document.querySelector('.grid');
+		var gridChildren = document.querySelectorAll('.grid div');
+
+		setInterval(function() {
+			grid.style.gridTemplateColumns = `${Math.random()*10}fr ${Math.random()*10}fr ${Math.random()*10}fr ${Math.random()*10}fr`;
+			grid.style.gridTemplateRows = `${Math.random()*10}fr ${Math.random()*10}fr ${Math.random()*10}fr ${Math.random()*10}fr`;
+
+			for (let element of gridChildren) {
+				var red = Math.floor(Math.random()*255);
+				var green = Math.floor(Math.random()*255);
+				var blue = Math.floor(Math.random()*255);
+
+				element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+			}
+		}, 1000)
+	</script>
+</body>
+</html>

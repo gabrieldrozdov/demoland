@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reading from an array in order</title>
+</head>
+<body>
+	<h1>One way to change CSS with JavaScript is to create a preset array of options and then move through that array in order.</h1>
+
+	<div style="font-size: 5vw;" onclick="pickColor(this)">Click me to change color!</div>
+
+	<script>
+		var colors = ['red', 'green', 'blue', 'pink', 'yellow', 'rgb(255,100,100)', '#5383ec'];
+		var index = 0;
+
+		function pickColor(element) {
+
+			element.style.color = colors[index];
+
+			// Move to the next index when the function is called again
+			index = index + 1;
+
+			// Prevent an invalid index by resetting to 0 once the whole array is finished
+			if (index == colors.length) {
+				index = 0;
+			}
+		}
+	</script>
+
+</body>
+</html>

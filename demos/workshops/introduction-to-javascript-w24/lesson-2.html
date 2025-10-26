@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LESSON 2: &lt;script&gt;, functions, variables</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 18px;
+		}
+		a {
+			color: blue;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		h2 {
+			background-color: #98db6b;
+			color: #353535;
+			padding: 10px;
+			margin-top: 80px;
+		}
+		p {
+			color: #333;
+			line-height: 1.5em;
+		}
+		button {
+			border: 2px solid black;
+			padding: 10px 20px;
+			font-size: 18px;
+			background-color: white;
+			box-shadow: 2px 2px 0 black;
+			cursor: pointer;
+			margin: 10px 0px;
+			font-family: monospace;
+		}
+		button:hover {
+			box-shadow: 4px 4px 0 black;
+			transform: translate(-2px, -2px);
+		}
+		button:active {
+			box-shadow: 0px 0px 0 black;
+			transform: translate(2px, 2px);
+		}
+	</style>
+</head>
+<body>
+	<h1>LESSON 2: &lt;script&gt;, functions, variables</h1>
+	<p>
+		In the previous lesson, we embedded JavaScript inside of HTML elements using the onclick attribute.<br>
+		In this lesson, we’ll learn how to write JavaScript that spans multiple lines.<br>
+	</p>
+
+	<h2>2.1: &lt;script&gt; and functions</h2>
+	<p>
+		The &lt;style&gt; element indicates CSS code.<br>
+		Meanwhile, the <strong><a href="https://www.w3schools.com/tags/tag_script.asp" target="_blank">&lt;script&gt;</a></strong> element indicates JavaScript code.<br><br>
+		Inside of the &lt;script&gt; element, we can write things called <strong><a href="https://www.w3schools.com/js/js_functions.asp" target="_blank">functions</a></strong>.<br>
+		Functions let us run multiple lines of JavaScript at once.<br>
+		We can call a function just like we called alert() before.<br>
+		Except, this time we refer to the function by the name we’ve given it.<br><br><span style="font-family: monospace">function myFirstFunction() { alert("hi"); alert("what’s up!"); }</span><br>
+
+		<button onclick="myFirstFunction()">This button runs a custom function called myFirstFunction()</button>
+		<script>
+			function myFirstFunction() {
+				alert("hi!");
+				alert("what’s up!");
+			}
+		</script>
+
+		<br><br>
+		Functions can also pass arguments just like we did with alert() before.<br>
+		We can then read those arguments inside of the function by naming them.<br>
+
+		<button onclick="mySecondFunction('hello')">This button runs mySecondFunction('hello')</button>
+		<script>
+			function mySecondFunction(aRandomArgumentName) {
+				alert(aRandomArgumentName);
+			}
+		</script>
+		<br><br>
+
+		Unlike CSS classes, function names should NOT contain hyphens/dashes.<br>
+		Instead, function names should just contain text.<br>
+		One method for naming functions is using <strong><a href="https://en.wikipedia.org/wiki/Camel_case" target="_blank">camel case</a></strong>.<br>
+		This is when each word in the function name is capitalized, starting with the second word.<br>
+		For example: myFunctionName
+	</p>
+
+	<h2>2.2: variables</h2>
+	<p>
+		<strong><a href="" target="_blank">Variables</a></strong> let us store data, refer to it later, and change it when we want.<br>
+		There are three ways to create variables: var, let, and const.<br>
+		For our purposes let’s just use <strong><a href="https://www.w3schools.com/js/js_variables.asp" target="_blank">var</a></strong>.<br><br>
+		We create a variable by giving it a name and a value like this:<br>
+		<span style="font-family: monospace">var myFirstVariable = "Hi there!";</span><br><br>
+		And then we call a function with the variable name as its argument.<br>
+		(Notice that we don’t put quotes around the variable’s name)<br>
+		<span style="font-family: monospace">alert(myFirstVariable)</span><br><br>
+
+		<button onclick="alert(myFirstVariable)">Read value of myFirstVariable</button><br>
+		<button onclick="alert(myFirstVariable)">Read value of mySecondVariable</button>
+		<script>
+			var myFirstVariable = "I’m a variable!";
+			var mySecondVariable = 100;
+		</script>
+
+		<br><br>
+		Note that variable names should also use camel case conventions (no hyphens/dashes!)
+	</p>
+
+	<h2>2.3: changing variables</h2>
+	<p>
+		Variables can change over time to track new information.<br>
+		We only use var the first time we create a variable.<br>
+		When we redefine it, we refer to it just by name.<br><br>
+		For example, what if we wanted to track the number of times the user pressed a button?<br><br>
+
+		<button onclick="trackNumberOfClicks();">Click me!</button>
+		<script>
+			var numberOfClicks = 0;
+			function trackNumberOfClicks() {
+				numberOfClicks = numberOfClicks + 1;
+				alert("Total clicks: " + numberOfClicks);
+			}
+		</script>
+	</p>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Changing classes</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.grid {
+			display: grid;
+			width: 100vw;
+			height: 100vh;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+		.grid div {
+			border: 1px solid black;
+		}
+		.my-class {
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<p style="font-size: 24px;">You can use <code>classList.add('class-name')</code>, <code>classList.remove('class-name')</code>, and <code>classList.toggle('class-name')</code> to add/remove CSS classes from elements</p>
+
+	<div class="grid">
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+		<div onmouseenter="changeClass(this)"></div>
+	</div>
+	
+	<script>
+		function changeClass(element) {
+			element.classList.toggle('my-class');
+		}
+	</script>
+</body>
+</html>

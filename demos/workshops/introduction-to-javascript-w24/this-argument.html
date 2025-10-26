@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Functions using the this argument</title>
+</head>
+<body>
+	<h1>Instead of giving every element a unique id attribute, we can call the function directly on the element by passing the <em>this</em> argument.</h1>
+	<p>Notice that <em>this</em> isn’t a string, so it doesn’t use quotes.</p>
+
+	<div style="font-size: 7vw;">
+		<div onclick="changeColor(this)">Click me!</div>
+		<div onmousedown="changeColor(this)">Press the mouse on me!</div>
+		<div onmouseup="changeColor(this)">Release the mouse on me!</div>
+		<div onmouseenter="changeColor(this)">Hover over me!</div>
+		<div onmouseleave="changeColor(this)">Move the mouse off of me!</div>
+		<div onmousemove="changeColor(this)">Move the mouse over me!</div>
+		<div onwheel="changeColor(this)">Scroll on me!</div>
+	</div>
+
+	<script>
+		function changeColor(targetElement) {
+
+			var red = Math.floor(Math.random()*255);
+			var green = Math.floor(Math.random()*255);
+			var blue = Math.floor(Math.random()*255);
+
+			targetElement.style.color = `rgb(${red}, ${green}, ${blue})`;
+		}
+	</script>
+</body>
+</html>

@@ -1,19 +1,40 @@
 <h1>
-	<span>The Basics</span>
 	What is CSS?
 </h1>
 <p>
-	<strong>CSS (Cascading Style Sheets)</strong> is a programming language that lets you control the appearance (or “style”) of HTML elements. Its code looks a little different than HTML. These differences are called a programming language’s <strong>syntax</strong>.
+	<strong>CSS (Cascading Style Sheets)</strong> is a programming language that lets you control the appearance (or <strong>style</strong>) of HTML elements. Its code looks a little different than HTML. These differences are called a programming language’s <strong>syntax</strong>.
+</p>
+
+<hr>
+
+<h2>Coding in CSS</h2>
+<p>
+	We write CSS classes inside the <code>&lt;style&gt;</code> element, which we typically place at the top of our document. If our CSS is not inside of the <code>&lt;style&gt;</code> element, then the browser will interpret it as HTML and the website won’t render properly.
+</p>
+
+<hr>
+
+<h2>Properties, values, and classes</h2>
+<p>
+	CSS consists of <strong>properties</strong> with <strong>values</strong>. A property controls some aspect of what an element looks like, such as its font or color. We write the property name, followed by a <strong>colon <code>:</code></strong>. Then, we assign a value to that property, followed by a <strong>semi-colon <code>;</code></strong>.
+</p>
+	We organize these property-value pairs inside of <strong>classes</strong>. To create a class, we write a <strong>period <code>.</code></strong> and then a <strong>name</strong>, which cannot include any spaces.
 </p>
 <p>
-	CSS consists of <strong>properties</strong> with <strong>values</strong> organized into <strong>classes</strong>. We can then apply those classes to HTML elements.
+	We then apply these classes to HTML elements by adding a <strong>class attribute</strong> inside of the element’s opening tag. This follows the format <code>class=" "</code>, where the class name goes inside of the quotes.
 </p>
 <p>
-	We write CSS classes inside the <span class="info-code">&lt;style&gt;</span> element, which we typically place at the top of our document. If our CSS is not inside of the <span class="info-code">&lt;style&gt;</span> element, then the browser will interpret it as HTML and the website won’t render properly.
+	We can also apply CSS to a specific HTML element using <strong>inline CSS</strong>. This makes use of the <code>style=" "</code> attribute, which allows us to write CSS properties and styles directly within the HTML element.
+</p>
+
+<hr>
+
+<h2>
+	Adding more functionality
+</h2>
+<p>
+	There’s a lot more to learn about CSS than HTML, so head over to <a href="https://cheatsheet.gdwithgd.com/css/" target="_blank">Cheatsheet</a> for a (mostly) full list of CSS properties to play with!
 </p>
 <p>
-	Another way to write CSS is by writing <strong>inline CSS</strong>, which lives directly inside of HTML tags via the <span class="info-code">style="_"</span> <strong>attribute</strong>.
-</p>
-<p>
-	HTML handles content and CSS handles design. To make a site fully interactive, we’ll need to use <strong>JavaScript</strong>. Open the next demo to learn about JavaScript!
+	To add deeper interactivity and functionality to our website, we’ll need to use <strong>JavaScript</strong>. Open the next demo to learn about JavaScript!
 </p>

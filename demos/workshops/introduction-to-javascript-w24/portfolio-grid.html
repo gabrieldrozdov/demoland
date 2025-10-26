@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio Grid</title>
+
+	<style>
+		/* Override annoying default CSS styles */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: sans-serif;
+		}
+
+		/* Make images responsive */
+		img {
+			display: block;
+			width: 100%;
+		}
+
+		/* Grid container/parent */
+		.portfolio-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			padding: 20px;
+			gap: 20px;
+		}
+
+		/* Lower the number of columns on smaller screens */
+		@media only screen and (max-width: 1200px) {
+			.portfolio-grid {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+		@media only screen and (max-width: 1000px) {
+			.portfolio-grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+		@media only screen and (max-width: 800px) {
+			.portfolio-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		/* Grid links/children */
+		.portfolio-grid-link {
+			border: 1px solid black;
+			padding: 20px;
+			color: black;
+			text-decoration: none;
+			transition: .2s;
+		}
+		.portfolio-grid-link:hover {
+			transform: scale(1.02);
+		}
+		.portfolio-grid-link:active {
+			transform: scale(0.99);
+		}
+		.portfolio-grid-link h2 {
+			margin-top: 20px;
+			margin-bottom: 5px;
+			/* Add your own styling here! */
+
+		}
+		.portfolio-grid-link p {
+			/* Add your own styling here! */
+
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="portfolio-grid">
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+		<a href="" class="portfolio-grid-link">
+			<img src="https://placehold.co/600x400">
+			<h2>Name of portfolio item</h2>
+			<p>Some sort of description goes here</p>
+		</a>
+
+	</div>
+
+</body>
+</html>

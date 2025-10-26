@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio Header</title>
+
+	<style>
+		/* Override annoying default CSS styles */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: sans-serif;
+		}
+
+		.portfolio-header {
+			/* Make the header fill at least the height of the screen */
+			width: 100vw;
+			min-height: 100vh;
+			padding: 20px;
+
+			/* Center children using flexbox */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			/* Arrange children in a column instead of a row */
+			flex-direction: column;
+
+			/* Add spacing between children */
+			gap: 20px;
+		}
+
+		.portfolio-header-title {
+			/* Add your own styling here! */
+
+		}
+
+		.portfolio-header-subtitle {
+			/* Add your own styling here! */
+
+		}
+
+		/* Arrange links in a row */
+		.portfolio-header-links {
+			display: flex;
+			gap: 20px;
+		}
+		.portfolio-header-links a {
+			border: 1px solid black;
+			text-decoration: none;
+			color: black;
+			padding: 5px;
+			transition: .2s;
+		}
+		.portfolio-header-links a:hover {
+			background-color: black;
+			color: white;
+		}
+		.portfolio-header-links a:active {
+			opacity: .5;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="portfolio-header">
+		<h1 class="portfolio-header-title">Welcome to my site!</h1>
+		<p class="portfolio-header-subtitle">This is some kind of subtitle.</p>
+		<div class="portfolio-header-links">
+			<a href="">Link to a page</a>
+			<a href="">Link to a page</a>
+		</div>
+	</div>
+
+</body>
+</html>

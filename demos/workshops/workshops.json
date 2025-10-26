@@ -1,125 +1,136 @@
 {
-	"variable-fonts-workshop": {
-		"title": "Variable Fonts Workshop",
-		"subtitle": "RISD Fall 2024",
-		"desc": "Tutorials on importing, animating, and interacting with variable fonts. Featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!",
-		"color": "rainbow",
+	"variable-fonts-workshop-f24": {
+		"title": "Variable Fonts Workshop [RISD Fall 2024]",
+		"desc": "Tutorials on importing, animating, and interacting with variable fonts, featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!",
 		"demos": {
 			"importing-variable-fonts": {
-				"name": "Importing variable fonts",
-				"color": "var(--pink)"
+				"name": "Importing variable fonts"
 			},
 			"using-variable-fonts": {
-				"name": "Using variable fonts",
-				"color": "var(--pink)"
+				"name": "Using variable fonts"
 			},
 			"variable-font-weight": {
-				"name": "Variable font weight",
-				"color": "var(--pink)"
+				"name": "Variable font weight"
 			},
 			"animating-variable-fonts": {
-				"name": "Animating variable fonts",
-				"color": "var(--green)"
+				"name": "Animating variable fonts"
 			},
 			"interacting-with-variable-fonts": {
-				"name": "Interacting with variable fonts",
-				"color": "var(--green)"
+				"name": "Interacting with variable fonts"
 			},
 			"toggling-variable-states": {
-				"name": "Toggling variable states",
-				"color": "var(--blue)"
+				"name": "Toggling variable states"
 			},
 			"targeting-elements-using-this": {
-				"name": "Targeting elements using “this”",
-				"color": "var(--blue)"
+				"name": "Targeting elements using “this”"
 			},
 			"manually-setting-values": {
-				"name": "Manually setting values",
-				"color": "var(--blue)"
+				"name": "Manually setting values"
 			},
 			"using-css-variables-for-variable-axis-values": {
-				"name": "Using CSS variables for variable axis values",
-				"color": "var(--blue)"
+				"name": "Using CSS variables for variable axis values"
 			},
 			"swapping-out-content": {
-				"name": "Swapping out content",
-				"color": "var(--blue)"
+				"name": "Swapping out content"
 			},
 			"setting-values-using-sliders": {
-				"name": "Setting values using sliders",
-				"color": "var(--yellow)"
+				"name": "Setting values using sliders"
 			},
 			"randomizing-variable-axis-values": {
-				"name": "Randomizing variable axis values",
-				"color": "var(--yellow)"
+				"name": "Randomizing variable axis values"
 			},
 			"repeatedly-randomizing-variable-axis-values": {
-				"name": "Repeatedly randomizing variable axis values",
-				"color": "var(--yellow)"
+				"name": "Repeatedly randomizing variable axis values"
 			},
 			"tracking-variable-axis-values": {
-				"name": "Tracking variable axis values",
-				"color": "var(--yellow)"
+				"name": "Tracking variable axis values"
 			},
 			"tracking-the-cursor-position": {
-				"name": "Tracking the cursor position",
-				"color": "var(--purple)"
+				"name": "Tracking the cursor position"
 			},
 			"tracking-the-scroll-position": {
-				"name": "Tracking the scroll position",
-				"color": "var(--purple)"
+				"name": "Tracking the scroll position"
 			},
 			"randomizing-individual-letters": {
-				"name": "Randomizing individual letters",
-				"color": "var(--red)"
+				"name": "Randomizing individual letters"
 			},
 			"animating-individual-letters": {
-				"name": "Animating individual letters",
-				"color": "var(--red)"
+				"name": "Animating individual letters"
 			}
 		}
 	},
-	"workshop-motion-design-for-the-web": {
-		"title": "Workshop: Motion Design for the Web",
-		"subtitle": "Boston University Fall 2024",
+	"motion-design-for-the-web-f24": {
+		"title": "Motion Design for the Web [Boston University Fall 2024]",
 		"desc": "An introduction to animating using HTML and CSS!",
-		"color": "rainbow",
 		"demos": {
 			"introduction": {
-				"name": "Introduction",
-				"color": "var(--pink)"
+				"name": "Introduction"
 			},
 			"what-you-need-to-know": {
-				"name": "What you need to know",
-				"color": "var(--pink)"
+				"name": "What you need to know"
 			},
 			"styling-text": {
-				"name": "Styling text",
-				"color": "var(--green)"
+				"name": "Styling text"
 			},
 			"animating-text": {
-				"name": "Animating text",
-				"color": "var(--blue)"
+				"name": "Animating text"
 			},
 			"bringing-text-to-life": {
-				"name": "Bringing text to life",
-				"color": "var(--blue)"
+				"name": "Bringing text to life"
 			},
 			"a-story-of-a-square": {
-				"name": "A story of a square",
-				"color": "var(--yellow)"
+				"name": "A story of a square"
 			},
 			"the-humble-button": {
-				"name": "The humble button",
-				"color": "var(--purple)"
+				"name": "The humble button"
 			},
 			"how-does-that-make-you-feel": {
-				"name": "How does that make you feel?",
-				"color": "var(--purple)"
+				"name": "How does that make you feel?"
 			},
 			"the-end-for-now": {
-				"name": "The end (for now!)",
-				"color": "var(--red)"
+				"name": "The end (for now!)"
+			}
+		}
+	},
+	"introduction-to-javascript-w24": {
+		"title": "Introduction to JavaScript [RISD Wintersession 2024]",
+		"desc": "An introduction to coding in JavaScript!",
+		"demos": {
+			"lesson-1": {
+				"name": "onclick, alert(), strings, numbers"
+			},
+			"lesson-2": {
+				"name": "&lt;script&gt;, functions, variables"
+			},
+			"lesson-3": {
+				"name": "inspect panel, console.log()"
+			},
+			"lesson-4": {
+				"name": "Booleans, if/else statements, arrays, .length"
+			},
+			"exercise-a": {
+				"name": "Exercise: a short story"
+			},
+			"lesson-5": {
+				"name": "Math.random()"
+			},
+			"lesson-6": {
+				"name": "document.querySelector(), .innerText, .style, .classList"
+			},
+			"exercise-b": {
+				"name": "Exercise: a bit of generative art"
+			},
+			"lesson-7": {
+				"name": "document.querySelectorAll(), setInterval(), template strings"
+			},
+			"exercise-c": {
+				"name": "Exercise: a bit more generative art"
+			},
+			"lesson-8": {
+				"name": "while loops, for loops, .innerHTML"
+			},
+			"exercise-d": {
+				"name": "Exercise: let the computer code the page"
 			}
 		}
 	}

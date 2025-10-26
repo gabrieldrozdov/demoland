@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Changing CSS using random numbers</title>
+
+	<style>
+		.buttons {
+			position: relative;
+			z-index: 99999;
+		}
+	</style>
+</head>
+<body>
+	<h1>One more way of changing CSS with JS is by using a completely random number instead of reading from an array. We just need to make sure to add units to our random number.</h1>
+
+	<p>We did this before using random numbers for colors, but we can use this on any property.</p>
+
+	<p>The change in property will animate if the element has a transition property set.</p>
+
+	<div class="buttons">
+		<button onclick="changeStyle('#output1')">Change the first element</button>
+		<button onclick="changeStyle('#output2')">Change the second element</button>
+	</div>
+
+	<div id="output1">Hellooooooo</div>
+	<div id="output2">What's up????</div>
+
+	<script>
+		function changeStyle(id) {
+			var element = document.querySelector(id);
+
+			// Changing some random CSS properties
+			element.style.letterSpacing = Math.random()*100 + "px";
+			element.style.fontSize = Math.random()*100 + "px";
+			element.style.transition = Math.random()*2 + "s";
+
+			// Let’s try setting a more complicated property using a template string
+			// This requires the back tick symbol (`) instead of a quote mark (")
+			// The back tick is on the top-left of your keyboard
+
+			element.style.transform = `rotate(${Math.random()*360}deg)`;
+		}
+	</script>
+</body>
+</html>

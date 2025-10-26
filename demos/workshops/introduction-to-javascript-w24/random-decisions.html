@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random Decisions</title>
+</head>
+<body>
+	Inspired by https://www.sometimesredsometimesblue.com/
+	
+	<h1 id="heading">We can use a combination of random numbers and if statements to make random decisions.</h1>
+
+	<script>
+		// Options for font families
+		var fontOptions = [
+			"Arial",
+			"Comic Sans MS",
+			"Papyrus",
+			"Times New Roman",
+			"Impact"
+		]
+
+		// Select our elements
+		var body = document.querySelector('body');
+		var heading = document.querySelector('#heading');
+
+		// Generate a random number between 0 and 100
+		var randomNumber = Math.random()*100;
+		console.log(randomNumber);
+
+		// Run code based on what the number was
+		if (randomNumber < 20) {
+			body.style.backgroundColor = 'red';
+			heading.style.fontFamily = fontOptions[0];
+		} else if (randomNumber < 40) {
+			body.style.backgroundColor = 'blue';
+			heading.style.fontFamily = fontOptions[1];
+		} else if (randomNumber < 60) {
+			body.style.backgroundColor = 'yellow';
+			heading.style.fontFamily = fontOptions[2];
+		} else if (randomNumber < 80) {
+			body.style.backgroundColor = 'pink';
+			heading.style.fontFamily = fontOptions[3];
+		} else {
+			body.style.backgroundColor = 'green';
+			heading.style.fontFamily = fontOptions[4];
+		}
+	</script>
+</body>
+</html>
