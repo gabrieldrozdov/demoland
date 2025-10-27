@@ -911,4 +911,6 @@ previewDimensions();
 new ResizeObserver(previewDimensions).observe(document.querySelector(".preview-content"));
 
 // TODO
-// fix buttons on homepage to use svg icons
+// Make it clearer where you are in the chapter somehow (increase nav visibility)
+// Fix figure code for info panel
+// Add ability to hide comments in editor

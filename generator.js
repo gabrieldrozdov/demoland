@@ -92,7 +92,10 @@ function generateOverview() {
 						<p class="chapter-desc">
 							${chapter['desc']}
 						</p>
-						<a href="editor/?book=${bookKey}&chapter=${chapterKey}&demo=${Object.keys(chapter['demos'])[0]}" class="chapter-open">Open chapter &nbsp;&nearr;</a>
+						<a href="editor/?book=${bookKey}&chapter=${chapterKey}&demo=${Object.keys(chapter['demos'])[0]}" class="chapter-open">
+							<span>Open chapter</span>
+							<svg viewBox="0 0 100 100"><path d="M25,14.97v70.06l25-21.25,25,21.25V14.97H25ZM66,65.56l-16-13.6-16,13.6V23.97h32v41.59Z"/></svg>
+						</a>
 					</div>
 					<div class="chapter-demos">
 						${demos}
@@ -107,7 +110,7 @@ function generateOverview() {
 				<div class="book-content">
 					<header class="book-intro">
 						<button class="book-intro-return" onclick="openIntro();">
-							<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
+							<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"></path><rect x="38" y="25" width="27" height="10"></rect></svg>
 							<span>View all books</span>
 						</button>
 						<h2 class="book-intro-title">${book['title']}</h2>

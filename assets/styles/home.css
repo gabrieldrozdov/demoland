@@ -912,9 +912,8 @@ body[data-initialized="1"] .book {
 }
 .chapter-open {
 	margin-top: 12px;
-	background-color: rgba(var(--primary-rgb), .25);
-	border: 1px solid rgba(var(--primary-rgb), .25);
-	padding: calc(6px + .2em) 12px 6px 12px;
+	border: 1px solid rgba(var(--primary-rgb), .5);
+	padding: 6px 12px;
 	font-size: 18px;
 	line-height: 1.2em;
 	font-variation-settings: "wght" 600, "SRFF" 0;
@@ -922,19 +921,27 @@ body[data-initialized="1"] .book {
 	text-decoration: none;
 	color: var(--off-white);
 	fill: var(--primary);
+	background-color: rgba(var(--primary-rgb), .25);
 	border-radius: 4px;
-	min-height: 32px;
+	min-height: 40px;
 	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	gap: 6px;
 }
 .chapter-open svg {
-
+	width: 20px;
+	height: 20px;
 }
 .chapter-open span {
-
+	padding-top: .2em;
 }
 .chapter-open:hover {
 	background-color: var(--off-white);
 	color: var(--off-black);
+	fill: var(--off-black);
 }
 .chapter-open:active {
 	opacity: .5;
