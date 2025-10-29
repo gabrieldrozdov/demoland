@@ -27,13 +27,22 @@ const searchParams = new URLSearchParams(pageHref.substring(pageHref.indexOf('?'
 let resizers = document.querySelectorAll('.resizer');
 for (let resizer of resizers) {
 	resizer.addEventListener('mousedown', (e) => {startResize(e, resizer)});
+	resizer.addEventListener('touchstart', (e) => {startResize(e, resizer)});
 }
 function startResize(e1, resizer) {
+	e1.preventDefault();
 	document.addEventListener('mousemove', updateResize);
 	document.addEventListener('mouseup', endResize);
+	document.addEventListener('touchmove', updateResize);
+	document.addEventListener('touchend', endResize);
 	disableIframes();
 
-	let x1 = e1.clientX;
+	let x1;
+	if (e1.touches != null) {
+		x1 = e1.touches[0].clientX;
+	} else {
+		x1 = e1.clientX;
+	}
 	let col1, col2;
 
 	if (resizer.id == 'resizer1') {
@@ -56,7 +65,13 @@ function startResize(e1, resizer) {
 	let offset2 = parseFloat(col2.dataset.offset);
 
 	function updateResize(e2) {
-		let x2 = e2.clientX;
+		e2.preventDefault();
+		let x2;
+		if (e2.touches != null) {
+			x2 = e2.touches[0].clientX;
+		} else {
+			x2 = e2.clientX;
+		}
 		let delta = x2 - x1;
 		let defaultSize = (100/openPanelsLength);
 		if (delta > 0 && offset2+defaultSize < 15) {
@@ -77,6 +92,8 @@ function startResize(e1, resizer) {
 	function endResize() {
 		document.removeEventListener('mousemove', updateResize);
 		document.removeEventListener('mouseup', endResize);
+		document.removeEventListener('touchmove', updateResize);
+		document.removeEventListener('touchend', endResize);
 		enableIframes();
 		cm.refresh();
 	}
@@ -392,8 +409,11 @@ function populateInfo() {
 	navbarChapterLink.href = `../#${activeBook}`;
 	navbarChapterLink2.href = `../#${activeBook}`;
 
-	const navbarNumber = document.querySelector('#navbar-number');
-	navbarNumber.innerHTML = `${demoIndex+1} of ${Object.keys(bookData[activeChapter]['demos']).length}`;
+	// TODO
+	const navbarCurrent = document.querySelector('#navbar-current');
+	navbarCurrent.innerHTML = demoIndex+1;
+	const navbarTotal = document.querySelector('#navbar-total');
+	navbarTotal.innerHTML = Object.keys(bookData[activeChapter]['demos']).length;
 
 	const navbarDemo = document.querySelector('#navbar-demo');
 	navbarDemo.innerText = bookData[activeChapter]['demos'][activeDemo]['name'];
@@ -584,19 +604,20 @@ function updatePreview() {
 			console.log = function(...args) {
 				parent.document.querySelector('.editor-console-log').innerHTML +=
 				'<div class="editor-console-log-out">' + args.join(' ') + '</div>';
+				parent.document.querySelector('.editor-console-log').scrollTop = parent.document.querySelector('.editor-console-log').scrollHeight;
 				originalLog.apply(console, args);
 			}
 
 			console.error = function(...args) {
 				parent.document.querySelector('.editor-console-log').innerHTML +=
 				'<div class="editor-console-log-out">Error: ' + args.join(' ') + '</div>';
+				parent.document.querySelector('.editor-console-log').scrollTop = parent.document.querySelector('.editor-console-log').scrollHeight;
 				originalError.apply(console, args);
 			}
 
 			window.onerror = function(message, source, lineno, colno, error) {
-				const log = parent.document.querySelector('.editor-console-log');
-				log.innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + ' (line ' + (lineno-44) +': column ' + colno + ')</div>';
-				log.scrollTop = log.scrollHeight;
+				parent.document.querySelector('.editor-console-log').innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + ' (line ' + (lineno-45) +': column ' + colno + ')</div>';
+				parent.document.querySelector('.editor-console-log').scrollTop = parent.document.querySelector('.editor-console-log').scrollHeight;
 				return true; // prevent default browser alert
 			}
 			})();

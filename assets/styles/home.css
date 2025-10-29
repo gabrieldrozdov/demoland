@@ -189,7 +189,7 @@ body[data-initialized="1"] .intro {
 }
 .intro-subtitle a {
 	text-decoration-thickness: 1px;
-	text-underline-offset: .2em;
+	text-underline-offset: .15em;
 	color: var(--off-white);
 	font-variation-settings: "wght" 600, "SRFF" 0;
 	font-weight: 600;
@@ -749,7 +749,7 @@ body[data-initialized="1"] .book {
 .book-intro-desc a {
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
-	text-underline-offset: .2em;
+	text-underline-offset: .15em;
 	color: var(--off-white);
 }
 .book-intro-desc a:hover {
@@ -901,7 +901,7 @@ body[data-initialized="1"] .book {
 .chapter-desc a {
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
-	text-underline-offset: .2em;
+	text-underline-offset: .15em;
 	color: var(--off-white);
 }
 .chapter-desc a:hover {
@@ -1132,7 +1132,7 @@ body[data-initialized="1"] .book {
 	color: var(--off-white);
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
-	text-underline-offset: .2em;
+	text-underline-offset: .15em;
 }
 .info a:hover {
 	opacity: .8;

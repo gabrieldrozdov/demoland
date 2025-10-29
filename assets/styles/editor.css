@@ -14,7 +14,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	overscroll-behavior: none;
 	touch-action: manipulation;
 }
 body {
@@ -214,10 +213,12 @@ button {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 6px;
+	gap: 3px;
+	transform: translateY(-2px);
 }
 .navbar-header-info {
 	display: flex;
+	align-items: baseline;
 	gap: 12px;
 }
 .navbar-header-info-item {
@@ -247,9 +248,40 @@ button {
 .navbar-header-info-item:active {
 	opacity: .5;
 }
+.navbar-header-info-item-button {
+	background-color: unset;
+	border: unset;
+	border-radius: unset;
+	padding: unset;
+	cursor: pointer;
+	flex-shrink: 0;
+	color: var(--primary);
+	display: flex;
+	text-transform: uppercase;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	letter-spacing: 0.1em;
+	line-height: 1em;
+	font-size: 10px;
+	font-variation-settings: "wght" 700, "SRFF" 0;
+	font-weight: 700;
+	border-radius: 4px;
+	text-decoration: none;
+	border: 1px solid rgba(var(--primary-rgb), .5);
+	background-color: rgba(var(--primary-rgb), .25);
+	padding: calc(2px + .15em) 5px 2px 5px;
+}
+.navbar-header-info-item-button:hover {
+	background-color: var(--off-white);
+	color: var(--off-black);
+}
+.navbar-header-info-item-button:active {
+	opacity: .5;
+}
 .navbar-header-info-divider {
-	border-left: 1px solid var(--dark-gray);
-	transform: translateY(-.5px);
+	border-left: 1px solid rgba(var(--primary-rgb), .5);
+	align-self: stretch;
 }
 .navbar-header-demo {
 	padding-top: .1em;
@@ -260,6 +292,12 @@ button {
 	font-weight: 700;
 	color: var(--off-white);
 	margin-bottom: -.2em;
+}
+.navbar-header-demo:hover {
+	opacity: .8;
+}
+.navbar-header-demo:active {
+	opacity: .5;
 }
 
 /* Navbar controls */
@@ -295,8 +333,13 @@ button {
 	cursor: pointer;
 	gap: 6px;
 }
+#navbar-demos {
+	min-width: 160px;
+	text-align: center;
+}
 .navbar-controls-button[data-hidden="1"] {
-	display: none;
+	opacity: .25;
+	pointer-events: none;
 }
 .navbar-controls-button[data-active="1"] {
 	background-color: var(--primary);
@@ -307,7 +350,7 @@ button {
 	width: 20px;
 	height: 20px;
 }
-.navbar-controls-button span {
+.navbar-controls-button > span {
 	padding-top: .2em;
 }
 .navbar-controls-button:hover {
@@ -318,22 +361,18 @@ button {
 .navbar-controls-button:active {
 	opacity: .5;
 }
-@media only screen and (max-width: 1000px) {
-	.navbar-controls-button span {
-		display: none;
-	}
-}
 
 /* Navbar demos */
 .navbar-demos {
 	position: fixed;
-	top: 72px;
+	top: 80px;
 	right: 0;
-	bottom: 8px;
+	bottom: 0;
 	border: 1px solid var(--dark-gray);
 	border-right: unset;
+	border-bottom: unset;
 	background-color: var(--off-black);
-	border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 0;
 	display: flex;
 	flex-direction: column;
 	width: 480px;
@@ -835,8 +874,8 @@ button {
 	box-decoration-break: clone;
 }
 .info-content strong {
-	font-variation-settings: "wght" 700, "SRFF" 0;
-	font-weight: 700;
+	font-variation-settings: "wght" 600, "SRFF" 0;
+	font-weight: 600;
 	color: var(--off-white);
 	background-color: rgba(var(--primary-rgb), .25);
 	padding: .2em .2em .05em .202em;
@@ -845,14 +884,22 @@ button {
 }
 .info-content strong .info-code,
 .info-content strong code {
-	font-variation-settings: "wght" 700;
-	font-weight: 700;
+	font-variation-settings: "wght" 600;
+	font-weight: 600;
 	background-color: rgba(var(--primary-rgb), .25);
+}
+.info-content strong:has(code) {
+	background-color: unset;
+	padding: unset;
+}
+.info-content code:has(strong) {
+	background-color: unset;
+	padding: unset;
 }
 .info-content a {
 	color: var(--off-white);
 	text-decoration-thickness: 1px;
-	text-underline-offset: .2em;
+	text-underline-offset: .15em;
 }
 .info-content a:hover {
 	opacity: .8;
@@ -901,7 +948,7 @@ button {
 .info-content figure figcaption a {
 	color: var(--off-white);
 	text-decoration: 1px underline;
-	text-underline-offset: .2em;
+	text-underline-offset: .15em;
 }
 .info-content figure figcaption a:hover {
 	opacity: .8;
@@ -1020,7 +1067,7 @@ button {
 	height: 200px;
 	background-color: var(--off-black);
 	color: var(--off-white);
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 	display: flex;
 	flex-direction: column;
 }

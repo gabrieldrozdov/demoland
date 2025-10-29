@@ -50,35 +50,28 @@
 					<svg viewBox="0 0 100 100"><path d="m25,5c-5.52,0-10,4.48-10,10v70c0,5.52,4.48,10,10,10h60V5H25Zm50,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10Zm0-20H28V15h47v50Z"></path><rect x="38" y="25" width="27" height="10"></rect></svg>
 				</a>
 				<div class="navbar-header-content">
-					<div class="navbar-header-info">
-						<a href="../" class="navbar-header-info-item" style="--primary: var(--yellow);"><span style="opacity: .5;">Book</span> <span id="navbar-book">Loading</span></a>
+					<div class="navbar-header-info" style="--primary: var(--yellow); --primary-rgb: var(--yellow-rgb);">
+						<a href="../" class="navbar-header-info-item" ><span style="opacity: .5;">Book</span> <span id="navbar-book">Loading</span></a>
 						<div class="navbar-header-info-divider"></div>
-						<a href="../" class="navbar-header-info-item" id="navbar-chapter-link" style="--primary: var(--purple);"><span style="opacity: .5;">Chapter</span> <span id="navbar-chapter">Loading</span></a>
+						<a href="../" class="navbar-header-info-item" id="navbar-chapter-link" ><span style="opacity: .5;">Chapter</span> <span id="navbar-chapter">Loading</span></a>
 						<div class="navbar-header-info-divider"></div>
-						<button class="navbar-header-info-item" style="--primary: var(--red);" onclick="toggleNavbarDemos();"><span style="opacity: .5;">Demo</span> <span id="navbar-number">Loading</span></button>
+						<a href="../" class="navbar-header-info-item-button" id="navbar-chapter-link2" >Select Chapter</a>
 					</div>
-					<h1 class="navbar-header-demo" id="navbar-demo">
+					<h1 class="navbar-header-demo" id="navbar-demo" onclick="toggleNavbarDemos();">
 						DEMOLAND Editor
 					</h1>
 				</div>
 			</header>
 
-			<nav class="navbar-controls" style="--primary: var(--purple); --primary-rgb: var(--purple-rgb);">
+			<nav class="navbar-controls" style="--primary: var(--yellow); --primary-rgb: var(--yellow-rgb);">
 				<a href="" class="navbar-controls-button" id="navbar-prev">
-					<span>Previous Demo</span>
 					<svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg>
 				</a>
-				<a href="" class="navbar-controls-button" id="navbar-next">
-					<span>Next Demo</span>
-					<svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg>
-				</a>
-				<button class="navbar-controls-button" onclick="toggleNavbarDemos();" data-active="0" id="navbar-demos">
-					<span>Select Demo</span>
-					<svg viewBox="0 0 100 100"><rect x="22.5" y="24.5" width="55" height="10"/><rect x="22.5" y="45" width="55" height="10"/><rect x="22.5" y="65.5" width="55" height="10"/></svg>
+				<button class="navbar-controls-button" onclick="toggleNavbarDemos();" id="navbar-demos">
+					<span>Demo <span id="navbar-current">1</span> of <span id="navbar-total">10</span></span>
 				</button>
-				<a href="../" class="navbar-controls-button" id="navbar-chapter-link2">
-					<span>Select Chapter</span>
-					<svg viewBox="0 0 100 100"><path d="M25,14.97v70.06l25-21.25,25,21.25V14.97H25ZM66,65.56l-16-13.6-16,13.6V23.97h32v41.59Z"/></svg>
+				<a href="" class="navbar-controls-button" id="navbar-next">
+					<svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg>
 				</a>
 			</nav>
 		</div>
@@ -211,7 +204,7 @@
 
 		<!-- FOOTER -->
 		<footer class="footer">
-			<div class="footer-section" style="--primary: var(--yellow); --primary-rgb: var(--yellow-rgb);" id="footer-section-nav">
+			<div class="footer-section" style="--primary: var(--purple); --primary-rgb: var(--purple-rgb);" id="footer-section-nav">
 				<a class="footer-button" href="../">
 					<svg viewBox="0 0 100 100"><path d="m50,10L15,45v45h70v-45L50,10Zm-25,70v-30.858l25-25,25,25v30.858H25Z"/></svg>
 					<span>Home</span>
