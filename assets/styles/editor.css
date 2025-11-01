@@ -1204,7 +1204,7 @@ button {
 .cm-s-gdwithgd .CodeMirror-matchingbracket { background-color: var(--light-gray); color: var(--off-black) !important; }
 .cm-s-gdwithgd .CodeMirror-nonmatchingbracket { background-color: red !important; color: var(--off-black) !important; }
 
-.cm-s-gdwithgd div.CodeMirror-selected { background: rgba(255,255,255,.15); }
+.cm-s-gdwithgd div.CodeMirror-selected { background: #494b46; }
 
 .CodeMirror-hints {
 	border: 2px solid var(--off-white) !important;
