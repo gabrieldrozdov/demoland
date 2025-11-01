@@ -1,0 +1,74 @@
+<p>
+	We can use JavaScript to add/remove CSS classes:
+</p>
+
+<style>
+	.hidden {
+		display: none;
+	}
+</style>
+
+<button onclick="toggleSecret();">
+	Click me!
+</button>
+
+<!-- This element has two classes -->
+
+<div class="secret hidden">
+	A super secret hidden message
+</div>
+
+<!-- We write JavaScript inside of the script element -->
+
+<script>
+	// This is now JavaScript code!
+
+	function toggleSecret() {
+		let secretElement = document.querySelector('.secret');
+		secretElement.classList.toggle('hidden');
+	}
+</script>
+
+<p>
+	Here’s what we did:
+</p>
+
+<ul>
+	<li>Create a <strong>function</strong>. This is a reusable piece of JavaScript code.</li>
+	<li>In our function, <strong>target our element based on its class</strong> and <strong>assign it to a variable</strong>.</li>
+	<li>Manipulate the element’s classes and <strong>toggle</strong> a class to either add or remove it, depending on if the element has it already.</li>
+	<li>Lastly, add an <strong>onclick event handler</strong> to our button that runs our function.</li>
+</ul>
+
+<p>
+	We can also use JavaScript to change specific CSS styles:
+</p>
+
+<style>
+	.cool-button {
+		transition: 1s;
+	}
+</style>
+
+<button class="cool-button" onclick="randomizeStyles();">
+	Click me!
+</button>
+
+<script>
+	function randomizeStyles() {
+		let element = document.querySelector('.cool-button');
+		element.style.fontSize = Math.random()*200 + "px";
+	}
+</script>
+
+<p>
+	So, this is already a much more complicated syntax than what we’ve seen with HTML and CSS. Plus, this syntax is much easier to completely break, while HTML and CSS and pretty forgiving. But the good news is that you can make really useful layouts with just the concepts from this demo!
+</p>
+
+<p>
+	For example, the first function is the same method I would use to <strong>hide and show and site’s mobile menu</strong> for instance. (The second function is more just for fun.)
+</p>
+
+<p>
+	Speaking of fun, let’s have some more fun with JavaScript!
+</p>

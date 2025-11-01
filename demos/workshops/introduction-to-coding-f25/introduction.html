@@ -1,0 +1,239 @@
+<!-- The "style" element contains CSS (styling) code! -->
+<style>
+
+	body {
+		font-size: min(4vw, 40px);
+		max-width: 1000px;
+		padding: 20px 20px 50vh 20px;
+		margin: 0 auto;
+		font-family: sans-serif;
+		text-wrap: pretty;
+	}
+
+	a {
+		color: blue;
+	}
+
+	body * {
+		transition: .2s;
+	}
+
+	body *::selection {
+		background-color: yellow;
+		color: black;
+	}
+
+</style>
+
+<!-- The "body" element contains all of our visible HTML elements! -->
+<body>
+
+	<h1>
+		Hi! I’m Gabriel. This is an introductory workshop on coding!
+	</h1>
+
+	<hr>
+
+	<h2>
+		👋 WELCOME TO THE WORKSHOP
+	</h2>
+
+	<hr>
+
+	<p>
+		Today, I’m going to teach you as much about code as I can in just an hour or two. <strong>That’s obviously not enough time to learn how to code!</strong> <em>But it’s enough time to introduce you to some fundamental coding concepts and teach you how to start teaching yourself to code.</em>
+	</p>
+	
+	<p>
+		There isn’t one way of coding. In the design world, code usually revolves around one of three use cases:
+	</p>
+	
+	<ol>
+		<li><strong>Making digital experiences</strong>, like websites or apps.</li>
+		<br>
+		<li><strong>Making generative art</strong> by coding in Processing/p5.js, scripting in After Effects or Cavalry, etc.</li>
+		<br>
+		<li><strong>Making practical scripts</strong> to complete tedious tasks in our day-to-day workflows.</li>
+	</ol>
+
+	<p>
+		When learning about coding, there are tens (if not hundreds) of languages potentially worth learning. Here are a few you might have heard of:
+	</p>
+	
+	<ul>
+		<li>HTML (HyperText Markup Language)</li>
+		<li>CSS (Cascading Style Sheets)</li>
+		<li>JavaScript</li>
+		<li>Java (unrelated to JavaScript!)</li>
+		<li>Python</li>
+		<li>Swift (for iOS apps)</li>
+		<li>C++ (for game engines line Unity)</li>
+		<li>GDScript (for the Godot game engine)</li>
+		<li>R (for data viz)</li>
+	</ul>
+
+	<p>
+		Even as somehow who studied computer science and has coded for a while, I am frequently overwhelmed by how much there is to learn about code. <strong>That means that you might be overwhelmed too!</strong>
+	</p>
+	
+	<p>
+		One way to avoid being overwhelmed is to <em>specialize</em>. For example, I almost exclusively code websites. You can even specialize inside of a specialty, like only coding <strong>website user interfaces (front-end)</strong> instead of coding <strong>website data storage and manipulation (back-end)</strong>.
+	</p>
+
+	<p>
+		For the purposes of this workshop, we’re going to specialize by focusing only on web development using HTML, CSS, and JavaScript.
+	</p>
+
+	<hr>
+
+	<h2>
+		🌐 WHY WEBSITES?
+	</h2>
+
+	<hr>
+
+	<p>
+		I decided to specialize in web development because I grew up on the Internet and have a lifelong love for websites. Also, <em>because there’s a market of clients willing to pay me (and maybe you) to make websites!</em>
+	</p>
+
+	<p>
+		What makes websites special? Let’s look at my favorite website, <a href="https://www.sometimesredsometimesblue.com/" target="_blank">Sometimes Red, Sometimes Blue,</a> to answer this question.
+	</p>
+
+	<p>
+		Here’s what makes that site special:
+	</p>
+
+	<ul>
+		<li>
+			<strong>Accessibility</strong><br>
+			We can all access the site without needing to download any special software. And it works on any device!
+		</li>
+		<br>
+		<li>
+			<strong>Longevity</strong><br>
+			The site was originally published in 2007 and still functions despite how much technology has changed during that time. (The original iPhone came out in 2007!)
+		</li>
+		<br>
+		<li>
+			<strong>Ownership and independence</strong><br>
+			The site’s author, Damon Zucconi, was able to buy the URL and release the site without the need for a publisher. The cost to release a site with a unique URL can be as low as $10 or less.
+		</li>
+		<br>
+		<li>
+			<strong>Interactivity and mutability</strong><br>
+			The site has the ability to change and respond to user input.
+		</li>
+		<br>
+		<li>
+			<strong>Simplicity</strong><br>
+			The site only needs 1 line of code to function.
+		</li>
+	</ul>
+
+	<p>
+		Damon’s website is the simplest example of what makes a website (and the Internet) special. I find it inspiring because it shows that you can achieve interesting outputs with very little code. Furthermore, the resulting websites achieve things that other design mediums (like books or posters) are incapable of.
+	</p>
+
+	<p>
+		These statements are a little bold, especially because Damon’s website is only one line of code. Let me prove to you how websites offer unique possibilities that no other medium can.
+	</p>
+
+	<ul>
+		<li>
+			<strong>Websites are responsive.</strong> If you resize this browser window. notice how the text changes size and layout to fit your screen. And if there’s too much text on the screen, you can just scroll down the page!
+		</li>
+		<br>
+		<li>
+			<strong>Websites are interactive and alive.</strong> Try pressing the keyboard buttons 1, 2, and 3. (Press 4 to reset everything back to normal.)
+		</li>
+		<br>
+		<li>
+			<strong>Websites are scalable.</strong> You can make extremely simple websites like Somestimes Red, Sometimes Blue. Or, you can make more complicated websites, such as sites that can even let you code your own websites (like right here on DEMOLAND)! Let’s look at a few of <a href="https://index.noreplica.com/" target="_blank">my websites</a> to see what we can do with the medium.
+		</li>
+	</ul>
+
+	<hr>
+
+	<h2>
+		🎓 WHAT ARE WE GONNA LEARN?
+	</h2>
+
+	<hr>
+
+	<p>
+		Today, we’re going to focus on writing code in two programming languages:
+	</p>
+
+	<ul>
+		<li>
+			<strong>HTML (HyperText Markup Language)</strong><br>
+			HTML is used to organize <em>content</em> on a website (like text or images).
+		</li>
+		<br>
+		<li>
+			<strong>CSS (Cascading Style Sheets)</strong><br>
+			CSS is used to <em>style/design</em> this content.
+		</li>
+	</ul>
+
+	<p>
+		We’ll also take a look at <strong>JavaScript</strong>, but that’s a harder language to learn so I’ll mostly demonstrate how it works and show you where to learn more about it.
+	</p>
+
+	<p>
+		Our goal at the end of today will be to <strong>build a basic portfolio</strong>.
+	</p>
+
+	<p>
+		When you’re ready, get started by switching to the next demo in the top-right corner of this page!
+	</p>
+
+</body>
+
+<!-- The "script" element contains JavaScript code! -->
+<script>
+
+	// This is a function! It’s a snippet of reusable JavaScript code
+	// This function randomizes colors
+	function randomizeColors() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.color = `hsl(${Math.random()*360}deg, 100%, 50%)`;
+		}
+	}
+
+	// This function randomizes font sizes
+	function randomizeSizes() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.fontSize = `${Math.random()*4}vw`;
+		}
+	}
+
+	// This function randomizes rotations and scales
+	function randomizeTransforms() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.transform = `rotate(${Math.random()*360-180}deg)`;
+		}
+	}
+
+	// This function randomizes how long things take to animate
+	function resetStyles() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style = ``;
+		}
+	}
+
+	// Change the colors every time the page is clicked
+	window.addEventListener('keydown', (e) => {
+		if (e.key == "1") {
+			randomizeColors();
+		} else if (e.key == "2") {
+			randomizeSizes();
+		} else if (e.key == "3") {
+			randomizeTransforms();
+		} else if (e.key == "4") {
+			resetStyles();
+		}
+	})
+
+</script>

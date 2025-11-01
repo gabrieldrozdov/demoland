@@ -1,4 +1,85 @@
 {
+	"introduction-to-coding-f25": {
+		"title": "Introduction to Coding [RISD Fall 2025]",
+		"desc": "An overview of practices related to web programming, covering HTML, CSS, JavaScript, and JavaScript libraries!",
+		"demos": {
+			"introduction": {
+				"name": "Introduction"
+			},
+			"what-is-a-line-of-code": {
+				"name": "What is a line of code?"
+			},
+			"making-code-pretty": {
+				"name": "Making code pretty"
+			},
+			"reusing-code": {
+				"name": "Reusing code"
+			},
+			"document-flow": {
+				"name": "Document flow"
+			},
+			"css-self-portrait": {
+				"name": "CSS self-portrait"
+			},
+			"grouping-elements-together": {
+				"name": "Grouping elements together"
+			},
+			"weaving-digital-textiles": {
+				"name": "Weaving digital textiles"
+			},
+			"a-quick-css-sidenote": {
+				"name": "A quick CSS sidenote"
+			},
+			"typesetting-with-code": {
+				"name": "Typesetting with code"
+			},
+			"adding-interactivity": {
+				"name": "Adding interactivity"
+			},
+			"building-a-button": {
+				"name": "Building a button"
+			},
+			"animating-elements": {
+				"name": "Animating elements"
+			},
+			"styling-based-on-screen-size": {
+				"name": "Styling based on screen size"
+			},
+			"changing-the-pages-layout": {
+				"name": "Changing the page’s layout"
+			},
+			"fun-with-flexbox": {
+				"name": "Fun with flexbox"
+			},
+			"fun-with-grid": {
+				"name": "Fun with grid"
+			},
+			"building-a-portfolio": {
+				"name": "Building a portfolio"
+			},
+			"putting-it-together": {
+				"name": "Putting it together"
+			},
+			"but-what-about-javascript": {
+				"name": "But what about JavaScript?"
+			},
+			"manipulating-the-page": {
+				"name": "Manipulating the page"
+			},
+			"sometimes-pink-sometimes-green": {
+				"name": "Sometimes pink, sometimes green"
+			},
+			"one-long-realization": {
+				"name": "One long realization"
+			},
+			"please-dont-touch": {
+				"name": "Please don’t touch"
+			},
+			"conclusion": {
+				"name": "Conclusion"
+			}
+		}
+	},
 	"variable-fonts-workshop-f24": {
 		"title": "Variable Fonts Workshop [RISD Fall 2024]",
 		"desc": "Tutorials on importing, animating, and interacting with variable fonts, featuring fonts by <a href='https://toomuchtype.com/' target='_blank'>Too Much Type</a>!",

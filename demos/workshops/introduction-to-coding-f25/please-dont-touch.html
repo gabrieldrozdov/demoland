@@ -1,0 +1,25 @@
+<body>
+
+<h1>This is my ode to <a href="https://extendedwhanau.com/" target="_blank">Extended Whānau</a>.</h1>
+
+<style>
+	.tax-evader {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transition: 1s;
+	}
+</style>
+
+<p class="tax-evader">I REFUSE TO PAY</p>
+
+<script>
+	let element = document.querySelector('.tax-evader');
+	element.addEventListener('mouseenter', () => {
+		element.style.left = Math.random()*100 + "%";
+		element.style.top = Math.random()*100 + "%";
+		element.style.transform = `rotate(${Math.random()*720-360}deg)`;
+	})
+</script>
+
+</body>

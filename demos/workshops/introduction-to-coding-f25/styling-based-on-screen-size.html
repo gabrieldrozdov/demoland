@@ -1,0 +1,50 @@
+<body>
+<p>
+	Another way to achieve responsive design is based the browser’s width or height. We can achieve this using <strong>@media queries</strong>.
+</p>
+</body>
+
+<style>
+	body {
+		background-color: yellow;
+		color: black;
+		transition: .5s;
+	}
+	p {
+		font-size: 48px;
+		transition: 1s;
+	}
+
+	/* Only run this code below 800px */
+	@media (max-width: 800px) {
+		body {
+			background-color: red;
+			color: white;
+		}
+		p {
+			font-size: 24px;
+		}
+	}
+
+	/* Only run this code below 600px */
+	@media (max-width: 600px) {
+		body {
+			background-color: pink;
+			color: black;
+		}
+		p {
+			font-size: 18px;
+		}
+	}
+
+	/* Only run this code below 400px */
+	@media (max-width: 400px) {
+		body {
+			background-color: rebeccapurple;
+			color: white;
+		}
+		p {
+			font-size: 12px;
+		}
+	}
+</style>

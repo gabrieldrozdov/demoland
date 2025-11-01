@@ -1,0 +1,181 @@
+<!-- The "style" element contains CSS (styling) code! -->
+<style>
+
+	body {
+		font-size: min(4vw, 40px);
+		max-width: 1000px;
+		padding: 20px 20px 50vh 20px;
+		margin: 0 auto;
+		font-family: sans-serif;
+	}
+
+	body * {
+		transition: .2s;
+	}
+
+	body *::selection {
+		background-color: yellow;
+		color: black;
+	}
+
+</style>
+
+<!-- The "body" element contains all of our visible HTML elements! -->
+<body>
+
+	<h1>
+		The end!
+	</h1>
+
+	<hr>
+
+	<h2>
+		🔠 CODE AND TYPE
+	</h2>
+
+	<hr>
+
+	<p>
+		One thing we didn’t touch on that I personally love is how websites make it really easy to do interesting things with fonts. I have an entire <a href="https://demoland.gdwithgd.com/editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=introduction" target="_blank">separate DEMOLAND workshop</a> that goes over just type-related coding practices!
+	</p>
+
+	<hr>
+
+	<h2>
+		🤖 FINAL THOUGHTS: WHY CODE IN THE AGE OF AI?
+	</h2>
+
+	<hr>
+
+	<p>
+		AI tools are very powerful and scary. They will end up reducing the number of jobs in an already competitive field.
+	</p>
+
+	<p>
+		In better news, I have not felt that pressure as someone who works directly with small clients. These are organizations that need websites, want them to be unique, are aware of the tools that exist, sometimes try using said tools, <strong>but always end up in a situation where they get stuck and can’t move forward without the help of a professional.</strong> I’ll give you two examples:
+	</p>
+
+	<ol>
+		<li>
+			A client tried to make a website using AI, which worked up to 90% completion (which was not good enough to actually use the website). They brought me on to fix the site. After analyzing the code, I quickly realized that it was so needlessly complex that the entire site would need to be rewritten from scratch. <strong>What took them several weeks to create with AI took me 1 day to rebuild with handwritten code.</strong>
+		</li>
+		<br>
+		<li>
+			A client already had a website I made for them and wanted to add to it themselves, creating new pages in the style of old pages. They similarly spent weeks using AI to try to generate the code for new pages, which resulted in inconsistencies across the whole site. <strong>They brought me on to make the updates instead, which took me 1–2 days.</strong>
+		</li>
+	</ol>
+
+	<p>
+		So, how is AI going to change the industry? I don’t know, but here‘s what I think:
+	</p>
+
+	<ul>
+		<li>
+			There will be more <strong>broken websites</strong> on the Internet. (Which means you could be hired to fix them!)
+		</li>
+		<br>
+		<li>
+			There will be <strong>fewer entry-level jobs</strong> as experienced professionals (like design+dev studios) automate easier work.
+		</li>
+		<br>
+		<li>
+			And, you will be able to achieve more <strong>without having to learn as much</strong>. BUT, if you don’t have an understanding of how to code, then you’ll be in the same boat as my clients who got 90% of the way there but could never finish the projects on their own.
+		</li>
+	</ul>
+
+	<p>
+		So, to succeed as a designer/developer, here’s what you need to know:
+	</p>
+
+	<h3>
+		LEARN HOW TO WRITE CODE
+	</h3>
+
+	<p>
+		Obviously, learn the basics of how to code, even if it’s a slow and tedious process.
+	</p>
+
+	<h3>
+		LEARN HOW TO READ, DEBUG, AND EDIT CODE
+	</h3>
+
+	<p>
+		It’s becoming more important to know how to fix bad code, or rewrite it using better methods.
+	</p>
+
+	<h3>
+		LEARN HOW TO LEARN ABOUT CODE
+	</h3>
+
+	<p>
+		Find ways to learn about code without “cheating” your way through every task using AI. I use AI in my workflow when I need to trial something out quickly but am not sure if a client likes the idea yet. If we end up going with that concept, I’ll take the extra time to learn how to actually code it well by hand.
+	</p>
+
+	<h3>
+		STAY AS CREATIVE AS POSSIBLE
+	</h3>
+
+	<p>
+		Find ways to use code that are creative, interesting, and most importantly <em>clever</em>. A good challenge is to see what you can achieve with as little code as possible. Do things that are against the grain (or deliberately aren’t “best practices”), because that’s what AI is going to aim to achieve.
+	</p>
+
+	<hr>
+
+	<h2>
+		❓ QUESTIONS?
+	</h2>
+
+	<hr>
+
+	<p>
+		Email me! gdrozd01@risd.edu (NOT gdrozdov@risd.edu)
+	</p>
+
+</body>
+
+<!-- The "script" element contains JavaScript code! -->
+<script>
+
+	// This is a function! It’s a snippet of reusable JavaScript code
+	// This function randomizes colors
+	function randomizeColors() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.color = `hsl(${Math.random()*360}deg, 100%, 50%)`;
+		}
+	}
+
+	// This function randomizes font sizes
+	function randomizeSizes() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.fontSize = `${Math.random()*4}vw`;
+		}
+	}
+
+	// This function randomizes rotations and scales
+	function randomizeTransforms() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.transform = `rotate(${Math.random()*360-180}deg)`;
+		}
+	}
+
+	// This function randomizes how long things take to animate
+	function resetStyles() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style = ``;
+		}
+	}
+
+	// Change the colors every time the page is clicked
+	window.addEventListener('keydown', (e) => {
+		if (e.key == "1") {
+			randomizeColors();
+		} else if (e.key == "2") {
+			randomizeSizes();
+		} else if (e.key == "3") {
+			randomizeTransforms();
+		} else if (e.key == "4") {
+			resetStyles();
+		}
+	})
+
+</script>

@@ -1,0 +1,112 @@
+<!-- The "style" element contains CSS (styling) code! -->
+<style>
+
+	body {
+		font-size: min(4vw, 40px);
+		max-width: 1000px;
+		padding: 20px 20px 50vh 20px;
+		margin: 0 auto;
+		font-family: sans-serif;
+	}
+
+	body * {
+		transition: .2s;
+	}
+
+	body *::selection {
+		background-color: yellow;
+		color: black;
+	}
+
+</style>
+
+<!-- The "body" element contains all of our visible HTML elements! -->
+<body>
+
+	<h1>
+		But what about JavaScript? What does it do? Do we need it?
+	</h1>
+
+	<p>
+		Some coders will tell you that coding in HTML and CSS isn’t <strong>real code</strong>. And while they’re annoying and rude for saying that, here’s what they’re trying to say:
+	</p>
+
+	<p>
+		HTML and CSS languages designed for the web and really only applicable to websites. Meanwhile, JavaScript works like 99% of the programming languages that exist. <strong>If you learn JavaScript, you will easily be able to learn how to code in any language.</strong>
+	</p>
+
+	<p>
+		For example, <a href="https://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort" target="_blank">here’s a website</a> that shows how you can code the same <em>algorithm</em> into hundreds of different languages, including JavaScript. Notice that the site does not offer translations for HTML and CSS, because those languages cannot code algorithms.
+	</p>
+
+	<p>
+		So, I can teach you the gist of HTML and CSS in an hour or so, but I can really only teach you JavaScript over the course of a semester (or two). If you want to learn JavaScript, here’s what you should know:
+	</p>
+
+	<ul>
+		<li>How to create and modify <strong>variables</strong> of different <strong>data types</strong></li>
+		<li>How to use <strong>arithmetic, comparison, and logical operators</strong></li>
+		<li>How to use <strong>conditionals (if/else statements)</strong></li>
+		<li>How to work with <strong>randomization</strong></li>
+		<li>How to write and apply <strong>functions</strong></li>
+		<li>How to use <strong>“for” and “while” loops</strong></li>
+		<li>How to manipulate a website using the <strong>Document Object Model (DOM)</strong></li>
+		<li>How to add interactivity using <strong>event listeners</strong></li>
+	</ul>
+
+	<p>
+		Luckily for you, there’s a <a href="https://cheatsheet.gdwithgd.com/js/" target="_blank">Cheatsheet</a> page that links to resources for learning about all of these topics!
+	</p>
+
+	<p>
+		For now, let’s just have some fun and see what JavaScript can do!
+	</p>
+
+</body>
+
+<!-- The "script" element contains JavaScript code! -->
+<script>
+
+	// This is a function! It’s a snippet of reusable JavaScript code
+	// This function randomizes colors
+	function randomizeColors() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.color = `hsl(${Math.random()*360}deg, 100%, 50%)`;
+		}
+	}
+
+	// This function randomizes font sizes
+	function randomizeSizes() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.fontSize = `${Math.random()*4}vw`;
+		}
+	}
+
+	// This function randomizes rotations and scales
+	function randomizeTransforms() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style.transform = `rotate(${Math.random()*360-180}deg)`;
+		}
+	}
+
+	// This function randomizes how long things take to animate
+	function resetStyles() {
+		for (let element of document.querySelectorAll('body *')) {
+			element.style = ``;
+		}
+	}
+
+	// Change the colors every time the page is clicked
+	window.addEventListener('keydown', (e) => {
+		if (e.key == "1") {
+			randomizeColors();
+		} else if (e.key == "2") {
+			randomizeSizes();
+		} else if (e.key == "3") {
+			randomizeTransforms();
+		} else if (e.key == "4") {
+			resetStyles();
+		}
+	})
+
+</script>

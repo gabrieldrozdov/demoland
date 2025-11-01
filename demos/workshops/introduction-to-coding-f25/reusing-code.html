@@ -1,0 +1,39 @@
+<p>
+	The previous demo showed that code can get pretty messy pretty fast. Luckily, we can organize CSS separately from HTML so that it’s easier to tell the two apart.
+</p>
+
+<p>
+	To add CSS to our site, let’s use the <strong>style</strong> element. This lets us apply CSS to every element of a particular type (and also separate our code onto multiple lines).
+</p>
+
+<style>
+	p {
+		font-family: sans-serif;
+		font-size: 24px;
+		line-height: 140%;
+	}
+</style>
+
+<p class="my-first-class">
+	But what if we only want to apply CSS to a couple of paragraphs and not every single one? Then, we can use <strong>CSS classes!</strong>
+</p>
+
+<p class="my-first-class">
+	CSS class names start with a period and can’t have any spaces. If you use punctuation, you should only uses dashes/hyphens.
+</p>
+
+<style>
+	.my-first-class {
+		font-family: monospace;
+		padding: 5px;
+		border: 1px solid black;
+	}
+</style>
+
+<p>
+	Notice how we overrided the font-family property with our class. CSS will override other CSS if it’s more applied in a more <strong>specific</strong> way to an element. So, we applied CSS to ALL paragraph elements, and then applied a CSS class to <em>only a few</em> elements.
+</p>
+
+<p class="my-first-class" style="font-family: cursive;">
+	So in order of specificity, this paragraph gets its CSS from all paragraphs, and then from its class, and then from its inline CSS.
+</p>

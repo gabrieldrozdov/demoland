@@ -196,6 +196,9 @@ function disableIframes() {
 function enableIframes() {
 	for (let iframe of document.querySelectorAll('iframe')) {
 		iframe.style.pointerEvents = '';
+		iframe.style.display = 'none';
+		iframe.offsetHeight; // Force sync reflow
+		iframe.style.display = '';
 	}
 }
 
@@ -209,6 +212,13 @@ let update;
 let updateCount = 0;
 let override = false;
 let currentSettings = {
+	"console": false,
+	"linewrap": false,
+	"fontsize": 14,
+	"delay": false,
+	"paused": false
+};
+let defaultSettings = {
 	"console": false,
 	"linewrap": false,
 	"fontsize": 14,
@@ -446,14 +456,34 @@ function populateInfo() {
 	}
 
 	// Add current demo settings to all chapter links
-	for (let link of document.querySelectorAll('.info-nav a')) {
+	for (let link of document.querySelectorAll('.navbar-controls a')) {
 		link.addEventListener('click', (e) => {
 			e.preventDefault();
 
 			// Format settings
 			let formattedSettings = "";
 			for (let setting of Object.keys(currentSettings)) {
-				if (currentSettings[setting] != undefined) {
+				if (currentSettings[setting] != defaultSettings[setting]) {
+					formattedSettings += `&${setting}=${currentSettings[setting]}`;
+				}
+			}
+
+			// Open link with current settings
+			if (link.target == "_blank") {
+				window.open(`${link.href}${formattedSettings}`, "_blank");
+			} else {
+				window.open(`${link.href}${formattedSettings}`, "_self");
+			}
+		})
+	}
+	for (let link of document.querySelectorAll('.navbar-demos a')) {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			// Format settings
+			let formattedSettings = "";
+			for (let setting of Object.keys(currentSettings)) {
+				if (currentSettings[setting] != defaultSettings[setting]) {
 					formattedSettings += `&${setting}=${currentSettings[setting]}`;
 				}
 			}
@@ -932,6 +962,6 @@ previewDimensions();
 new ResizeObserver(previewDimensions).observe(document.querySelector(".preview-content"));
 
 // TODO
-// Make it clearer where you are in the chapter somehow (increase nav visibility)
 // Fix figure code for info panel
 // Add ability to hide comments in editor
+// Fix anchor links in preview

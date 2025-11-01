@@ -1,0 +1,59 @@
+<p>
+	In the default flow of content, every new element stacks below the previous element (like paragraphs), or flows inside another element (like <strong>strong</strong> elements). We can set this behavior using the <strong>display</strong> property.
+</p>
+
+<p>
+	For example, these paragraphs will appear side-by-side instead of below each other:
+</p>
+
+<p style="display: inline;">
+	hi
+</p>
+<p style="display: inline;">
+	hi
+</p>
+<p style="display: inline;">
+	hi
+</p>
+
+<p>
+	And these strong elements will appear below each other instead of side by side: <strong style="display: block;">hey</strong> <strong style="display: block;">hey</strong> <strong style="display: block;">hey</strong>
+</p>
+
+<p>
+	We can also use the display property to hide elements, like <span style="display: none;">this</span>
+</p>
+
+<p>
+	One additional way to break elements out of the flow of the page is to use <strong>absolute positioning</strong>. This completely removes an element from the flow of the page and puts it whereever we want it to go.
+</p>
+
+<style>
+	.weird-circle {
+		position: absolute;
+		bottom: 30px;
+		right: 30px;
+		width: 100px;
+		height: 100px;
+		background-color: blue;
+	}
+</style>
+
+<div class="weird-circle"></div>
+
+<p>
+	Whenever we position elements on the page, we need to think about the <a href="https://cheatsheet.gdwithgd.com/css/#box-model" target="_blank"><strong>CSS box model</strong></a>. This indicates that every HTML element gets rendered as a box with some standard properties, like margin, padding, border, background, etc.
+</p>
+
+<style>
+	.box-example {
+		padding: 40px;
+		margin: 40px;
+		border: 1px solid black;
+		border-radius: 40px;
+		background-color: yellow;
+		box-shadow: 5px 5px black;
+	}
+</style>
+
+<p class="box-example">Here’s an example of some of the major box-model properties!</p>

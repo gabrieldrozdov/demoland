@@ -1,0 +1,54 @@
+<p>
+	The last demo showcased how to add animated interactions. We can create more complicated interactions than that using the <strong>@keyframes</strong> rule!
+</p>
+
+<p>
+	This lets us create animations and then apply them to different classes.
+</p>
+
+<style>
+	.example1 {
+		height: 100px;
+		animation-name: test-animation;
+		animation-duration: 5s;
+		animation-direction: alternate;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+	}
+	.example2 {
+		height: 100px;
+		animation-name: test-animation;
+		animation-duration: 5s;
+		animation-direction: reverse;
+		animation-timing-function: steps(20);
+		animation-iteration-count: infinite;
+	}
+
+	@keyframes test-animation {
+		0% {
+			width: 10px;
+			background-color: black;
+			border-radius: 0%;
+		}
+		25% {
+			width: 50px;
+			background-color: green;
+			border-radius: 50%;
+		}
+		50% {
+			width: 200px;
+			background-color: orange;
+			border-radius: 0%;
+		}
+		100% {
+			width: 500px;
+			background-color: red;
+			border-radius: 50%;
+			transform: rotate(500deg);
+		}
+	}
+</style>
+
+<div class="example1"></div>
+
+<div class="example2"></div>

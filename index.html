@@ -23,11 +23,19 @@
 				<div class="toggles">
 					<button onclick="toggleInfo()">
 						<svg viewBox="0 0 100 100"><rect x="45" y="40" width="10" height="50"/><circle cx="50" cy="20" r="10"/></svg>
+						<span>Info</span>
 					</button>
-					<a href="https://github.com/gabrieldrozdov/demoland" target="_blank">
-						<svg viewBox="0 0 1024 1024">
-							<path class="cls-1" d="M512,0C229.12,0,0,229.12,0,512,0,738.56,146.56,929.92,350.08,997.76c25.6,4.48,35.2-10.88,35.2-24.32,0-12.16-.64-52.48-.64-95.36-128.64,23.68-161.92-31.36-172.16-60.16-5.76-14.72-30.72-60.16-52.48-72.32-17.92-9.6-43.52-33.28-.64-33.92,40.32-.64,69.12,37.12,78.72,52.48,46.08,77.44,119.68,55.68,149.12,42.24,4.48-33.28,17.92-55.68,32.64-68.48-113.92-12.8-232.96-56.96-232.96-252.8,0-55.68,19.84-101.76,52.48-137.6-5.12-12.8-23.04-65.28,5.12-135.68,0,0,42.88-13.44,140.8,52.48,40.96-11.52,84.48-17.28,128-17.28s87.04,5.76,128,17.28c97.92-66.56,140.8-52.48,140.8-52.48,28.16,70.4,10.24,122.88,5.12,135.68,32.64,35.84,52.48,81.28,52.48,137.6,0,196.48-119.68,240-233.6,252.8,18.56,16,34.56,46.72,34.56,94.72,0,68.48-.64,123.52-.64,140.8,0,13.44,9.6,29.44,35.2,24.32,202.24-67.84,348.8-259.84,348.8-485.76C1024,229.12,794.88,0,512,0Z"/>
-						</svg>
+					<a href="editor/?book=tutorial&chapter=tutorial&demo=welcome">
+						<svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>
+						<span>Tutorial</span>
+					</a>
+					<a href="editor/">
+						<svg viewBox="0 0 100 100"><polygon points="90 45 55 45 55 10 45 10 45 45 10 45 10 55 45 55 45 90 55 90 55 55 90 55 90 45"/></svg>
+						<span>Blank Demo</span>
+					</a>
+					<a href="https://cheatsheet.gdwithgd.com/" target="_blank">
+						<svg viewBox="0 0 100 100"><path d="M59.07,12.65L16.64,55.08v28.27h28.29l42.43-42.42-28.29-28.28ZM40.79,73.36l-14.15-14.14L59.07,26.78l14.14,14.15-32.42,32.43Z"/></svg>
+						<span>Cheatsheet</span>
 					</a>
 				</div>
 				<div class="info" data-active="0">
@@ -39,11 +47,11 @@
 		Hi there! I’m Gabriel, and I made <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> and DEMOLAND. I created this site because I needed a website to easily share code demos with my students. There are products out there that let you do this, but this one’s entirely open-source, which means that it’s free to run and you can launch your own DEMOLAND if you’d like!
 	</p>
 	<p>
-		The site’s still a work-in-progress, but in a future version I’ll include instructions on how to launch your own version. In the meantime, you can check out the <a href="https://github.com/gabrieldrozdov/demoland-template" target="_blank">GitHub repository</a> to see this site’s code!
+		The site’s still a work-in-progress, but in a future version I’ll include instructions on how to launch your own version. In the meantime, you can check out the <a href="https://github.com/gabrieldrozdov/demoland" target="_blank">GitHub repository</a> to see this site’s code!
 	</p>
 	<div class="info-divider"></div>
 	<p class="info-credits">
-		<strong>CREDITS</strong>
+		<strong>Credits</strong>
 	</p>
 	<p class="info-credits">
 		DEMOLAND was developed by <a href="https://gdwithgd.com/" target="_blank">GD with GD</a> / <a href="https://gabrieldrozdov.com/" target="_blank">Gabriel Drozdov</a>. The site uses <a href="https://toomuchtype.com/" target="_blank">Limkin by Too Much Type</a> and <a href="https://vercel.com/font" target="_blank">Geist Mono</a>. Code editors are built using <a href='https://codemirror.net/5/' target="_blank">CodeMirror 5</a>.
@@ -58,7 +66,14 @@
 					<div class="intro-content">
 						<header class="intro-header">
 							<h1 class="intro-title">Welcome to <span>DEMOLAND</span>, a bookstore that runs on code and teaches it too!</h1>
-							<div class="intro-subtitle"><p>Learn how to code websites using HTML, CSS, and JavaScript right in your web browser! Open a book to read chapters full of interactive demos you can edit and test without leaving this site.</p><p>Interested in diving deeper into learning design and development? Visit <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> for more resources!</p></div>
+							<div class="intro-subtitle">
+	<p>
+		Learn how to code websites using HTML, CSS, and JavaScript right in your web browser! Open a book to read chapters full of interactive demos you can edit and test without leaving this site.
+	</p>
+	<p>
+		Interested in diving deeper into learning design and development? Visit <a href="https://gdwithgd.com/" target="_blank">GD&nbsp;with&nbsp;GD</a> for more resources!
+	</p>
+</div>
 						</header>
 						<nav class="intro-index">
 							<h2 class="intro-index-title">
@@ -80,11 +95,11 @@
 			<a href="#workshops" class="intro-index-link" onclick="openBook('workshops');">
 				<div class="intro-index-link-main">
 					<h3 class="intro-index-link-title">🛠️&nbsp;&nbsp;Workshops</h3>
-					<p class="intro-index-link-shortdesc">Standalone chapters for in-person lessons!</p>
+					<p class="intro-index-link-shortdesc">One-off chapters for coding workshops I’ve led!</p>
 				</div>
 				<div class="intro-index-link-info">
-					<div>3 Chapters</div>
-					<div>39 Demos</div>
+					<div>4 Chapters</div>
+					<div>60 Demos</div>
 				</div>
 			</a>
 		
@@ -96,17 +111,6 @@
 				<div class="intro-index-link-info">
 					<div>2 Chapters</div>
 					<div>12 Demos</div>
-				</div>
-			</a>
-		
-			<a href="#introduction-to-computation-v1" class="intro-index-link" onclick="openBook('introduction-to-computation-v1');">
-				<div class="intro-index-link-main">
-					<h3 class="intro-index-link-title">🤖&nbsp;&nbsp;Introduction to Computation <span style='opacity: .5;'>v1</span></h3>
-					<p class="intro-index-link-shortdesc">A beginner’s guide on how to code! Taught during RISD’s Spring 2025 semester.</p>
-				</div>
-				<div class="intro-index-link-info">
-					<div>12 Chapters</div>
-					<div>124 Demos</div>
 				</div>
 			</a>
 		
@@ -196,11 +200,139 @@
 					</header>
 					<div class="chapter-grid">
 						
+				<section class="chapter" id="workshops-introduction-to-coding-f25">
+					<div class="chapter-header">
+						<a class="chapter-link" href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=introduction">
+							<div class="chapter-subtitle">
+								Chapter 1
+							</div>
+							<h3 class="chapter-title">
+								Introduction to Coding [RISD Fall 2025]
+							</h3>
+						</a>
+						<p class="chapter-desc">
+							An overview of practices related to web programming, covering HTML, CSS, JavaScript, and JavaScript libraries!
+						</p>
+						<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=introduction" class="chapter-open">
+							<span>Open chapter</span>
+							<svg viewBox="0 0 100 100"><path d="M25,14.97v70.06l25-21.25,25,21.25V14.97H25ZM66,65.56l-16-13.6-16,13.6V23.97h32v41.59Z"/></svg>
+						</a>
+					</div>
+					<div class="chapter-demos">
+						
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=introduction" class="chapter-demo">
+						<div class="chapter-demo-number">1</div>
+						<div class="chapter-demo-name">Introduction</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=what-is-a-line-of-code" class="chapter-demo">
+						<div class="chapter-demo-number">2</div>
+						<div class="chapter-demo-name">What is a line of code?</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=making-code-pretty" class="chapter-demo">
+						<div class="chapter-demo-number">3</div>
+						<div class="chapter-demo-name">Making code pretty</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=reusing-code" class="chapter-demo">
+						<div class="chapter-demo-number">4</div>
+						<div class="chapter-demo-name">Reusing code</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=document-flow" class="chapter-demo">
+						<div class="chapter-demo-number">5</div>
+						<div class="chapter-demo-name">Document flow</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=css-self-portrait" class="chapter-demo">
+						<div class="chapter-demo-number">6</div>
+						<div class="chapter-demo-name">CSS self-portrait</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=grouping-elements-together" class="chapter-demo">
+						<div class="chapter-demo-number">7</div>
+						<div class="chapter-demo-name">Grouping elements together</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=weaving-digital-textiles" class="chapter-demo">
+						<div class="chapter-demo-number">8</div>
+						<div class="chapter-demo-name">Weaving digital textiles</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=a-quick-css-sidenote" class="chapter-demo">
+						<div class="chapter-demo-number">9</div>
+						<div class="chapter-demo-name">A quick CSS sidenote</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=typesetting-with-code" class="chapter-demo">
+						<div class="chapter-demo-number">10</div>
+						<div class="chapter-demo-name">Typesetting with code</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=adding-interactivity" class="chapter-demo">
+						<div class="chapter-demo-number">11</div>
+						<div class="chapter-demo-name">Adding interactivity</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=building-a-button" class="chapter-demo">
+						<div class="chapter-demo-number">12</div>
+						<div class="chapter-demo-name">Building a button</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=animating-elements" class="chapter-demo">
+						<div class="chapter-demo-number">13</div>
+						<div class="chapter-demo-name">Animating elements</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=styling-based-on-screen-size" class="chapter-demo">
+						<div class="chapter-demo-number">14</div>
+						<div class="chapter-demo-name">Styling based on screen size</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=changing-the-pages-layout" class="chapter-demo">
+						<div class="chapter-demo-number">15</div>
+						<div class="chapter-demo-name">Changing the page’s layout</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=fun-with-flexbox" class="chapter-demo">
+						<div class="chapter-demo-number">16</div>
+						<div class="chapter-demo-name">Fun with flexbox</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=fun-with-grid" class="chapter-demo">
+						<div class="chapter-demo-number">17</div>
+						<div class="chapter-demo-name">Fun with grid</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=building-a-portfolio" class="chapter-demo">
+						<div class="chapter-demo-number">18</div>
+						<div class="chapter-demo-name">Building a portfolio</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=but-what-about-javascript" class="chapter-demo">
+						<div class="chapter-demo-number">19</div>
+						<div class="chapter-demo-name">But what about JavaScript?</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=manipulating-the-page" class="chapter-demo">
+						<div class="chapter-demo-number">20</div>
+						<div class="chapter-demo-name">Manipulating the page</div>
+					</a>
+				
+					<a href="editor/?book=workshops&chapter=introduction-to-coding-f25&demo=conclusion" class="chapter-demo">
+						<div class="chapter-demo-number">21</div>
+						<div class="chapter-demo-name">Conclusion</div>
+					</a>
+				
+					</div>
+				</section>
+			
 				<section class="chapter" id="workshops-variable-fonts-workshop-f24">
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=workshops&chapter=variable-fonts-workshop-f24&demo=importing-variable-fonts">
 							<div class="chapter-subtitle">
-								Chapter 1
+								Chapter 2
 							</div>
 							<h3 class="chapter-title">
 								Variable Fonts Workshop [RISD Fall 2024]
@@ -313,7 +445,7 @@
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=workshops&chapter=motion-design-for-the-web-f24&demo=introduction">
 							<div class="chapter-subtitle">
-								Chapter 2
+								Chapter 3
 							</div>
 							<h3 class="chapter-title">
 								Motion Design for the Web [Boston University Fall 2024]
@@ -381,7 +513,7 @@
 					<div class="chapter-header">
 						<a class="chapter-link" href="editor/?book=workshops&chapter=introduction-to-javascript-w24&demo=lesson-1">
 							<div class="chapter-subtitle">
-								Chapter 3
+								Chapter 4
 							</div>
 							<h3 class="chapter-title">
 								Introduction to JavaScript [RISD Wintersession 2024]

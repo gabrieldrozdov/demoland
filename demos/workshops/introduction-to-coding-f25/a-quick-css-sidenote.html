@@ -1,0 +1,35 @@
+<style>
+	* {
+		box-sizing: border-box;
+	}
+</style>
+
+<p>
+	We can apply CSS to ALL of our elements using the * selector.
+</p>
+
+<p>
+	Because HTML and CSS are old, they are some standardizations that don’t make much sense now but used to make more sense. One of those is the <strong>box-sizing</strong> property.
+</p>
+
+<p>
+	On every website I make, I always set box-sizing to border-box for every element. If you’re curious why I do this, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-sizing" target="_blank">read this article</a>.
+</p>
+
+<style>
+	.without-box-sizing {
+		box-sizing: content-box;
+		width: 100px;
+		padding: 20px;
+		border: 1px solid black;
+	}
+	.with-box-sizing {
+		box-sizing: border-box;
+		width: 100px;
+		padding: 20px;
+		border: 1px solid black;
+	}
+</style>
+
+<div class="without-box-sizing"></div>
+<div class="with-box-sizing"></div>

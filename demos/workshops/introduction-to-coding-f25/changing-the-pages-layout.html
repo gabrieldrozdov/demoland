@@ -1,0 +1,78 @@
+<p>
+	Every now and then, programming languages change to add new features. CSS has evolved to have two really powerful ways of laying out content: <strong>flexbox</strong> and <strong>grid</strong>.
+</p>
+
+<p>
+	Remember the <strong>display</strong> property? It lets us make elements inline or block-level elements:
+</p>
+
+<p style="display: inline;">
+	hi
+</p>
+<p style="display: inline;">
+	hi
+</p>
+<p style="display: inline;">
+	hi
+</p>
+
+<p>
+	And these strong elements will appear below each other instead of side by side: <strong style="display: block;">hey</strong> <strong style="display: block;">hey</strong> <strong style="display: block;">hey</strong>
+</p>
+
+<p>
+	In these cases, the display property affects the element itself. But in the case of flexbox and grid, the property will affect the element’s <strong>children</strong>.
+</p>
+
+<h1>
+	Flexbox Example
+</h1>
+
+<style>
+	.flex-parent {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: row;
+	}
+	.flex-child {
+		border: 20px solid blue;
+		border-radius: 50%;
+		padding: 20px;
+	}
+</style>
+
+<div class="flex-parent">
+	<div class="flex-child"></div>
+	<div class="flex-child"></div>
+	<div class="flex-child"></div>
+	<div class="flex-child"></div>
+	<div class="flex-child"></div>
+	<div class="flex-child"></div>
+	<div class="flex-child"></div>
+</div>
+
+<h1>
+	Grid Example
+</h1>
+
+<style>
+	.grid-parent {
+		display: grid;
+		grid-template-columns: 1fr 1fr 2fr;
+	}
+	.grid-child {
+		border: 20px solid red;
+		border-radius: 50%;
+		padding: 20px;
+	}
+</style>
+
+<div class="grid-parent">
+	<div class="grid-child"></div>
+	<div class="grid-child"></div>
+	<div class="grid-child"></div>
+	<div class="grid-child"></div>
+	<div class="grid-child"></div>
+	<div class="grid-child"></div>
+</div>

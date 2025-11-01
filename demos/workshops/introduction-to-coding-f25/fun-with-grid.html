@@ -1,0 +1,50 @@
+<p>
+	Here’s a design inspired by my site <a href="https://pixelweaver.noreplica.com/" target="_blank">Pixel Weaver</a>.
+</p>
+
+<style>
+	body {
+		margin: 0;
+	}
+	.weaver {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr;
+		height: 100vh;
+		animation: weaver-anim 1s infinite ease-in-out alternate;
+	}
+	.weaver div {
+		background-color: black;
+		border-radius: 50%;
+	}
+
+	@keyframes weaver-anim {
+		0% {
+			grid-template-columns: 1fr 2fr 3fr 4fr;
+			grid-template-rows: 1fr 2fr 3fr 4fr;
+		}
+		100% {
+			grid-template-columns: 4fr 3fr 2fr 1fr;
+			grid-template-rows: 4fr 3fr 2fr 1fr;
+		}
+	}
+</style>
+
+<div class="weaver">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>

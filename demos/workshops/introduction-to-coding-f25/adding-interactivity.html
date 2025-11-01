@@ -1,0 +1,68 @@
+<p>
+	The previous demo was <strong>responsive</strong>, which means that it worked at multiple screen sizes. We can also make websites <strong>interactive</strong> with only a few lines of code!
+</p>
+
+<p>
+	Here’s the default button element. Trying hovering over it and clicking it.
+</p>
+
+<button>
+	oh hi there fellas
+</button>
+
+<p>
+	Let’s make our own button:
+</p>
+
+<style>
+	.my-button {
+		border: 5px outset blue;
+		padding: 10px;
+		color: white;
+		font-size: 24px;
+		background-color: blue;
+		cursor: pointer;
+	}
+
+	/* Hover state */
+	.my-button:hover {
+		background-color: #ddd;
+		border-color: #ddd;
+		color: black;
+	}
+
+	/* Pressed state */
+	.my-button:active {
+		border-style: inset;
+	}
+</style>
+
+<button class="my-button">
+	oh hi again there lads
+</button>
+
+<p>
+	Any HTML element can be made interactive! If we add the <strong>transition</strong> property to our base class, our element will even animate as it switches state.
+</p>
+
+<style>
+	.totally-not-a-button {
+		transition: font-size .5s, color 2s, transform 1s;
+		font-size: 24px;
+		color: black;
+		transform: unset;
+		background-color: white;
+	}
+	.totally-not-a-button:hover {
+		font-size: 100px;
+		color: red;
+		background-color: yellow;
+	}
+	.totally-not-a-button:active {
+		transform: rotate(360deg);
+	}
+</style>
+
+<div class="totally-not-a-button">
+	mmhmm im totally not a button dont mind me *whistles*
+</div>

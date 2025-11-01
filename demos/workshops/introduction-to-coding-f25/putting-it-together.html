@@ -1,0 +1,158 @@
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	body {
+		margin: 0;
+	}
+
+	/* Navbar */
+	.navbar {
+		display: flex;
+		background-color: blue;
+		padding: 5px;
+		gap: 5px;
+		position: sticky;
+		top: 0;
+		z-index: 9;
+	}
+	.navbar-spacer {
+		flex-grow: 1;
+	}
+	.navbar a {
+		color: white;
+	}
+
+	/* Header */
+	.header {
+		min-height: 50vh;
+		background-color: yellow;
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.header h1 {
+		animation: header-title 1s infinite ease-in-out alternate;
+	}
+	@keyframes header-title {
+		0% {
+			transform: translateY(-10px);
+		}
+		100% {
+			transform: translateY(0px);
+		}
+	}
+	.header-links {
+		display: flex;
+		gap: 5px;
+	}
+	.header-links a {
+		background-color: blue;
+		color: white;
+		padding: 5px;
+	}
+
+	/* Portfolio grid */
+	.portfolio {
+		padding: 20px;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 20px;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	img {
+		display: block;
+		width: 100%;
+	}
+	.portfolio-item {
+		display: flex;
+		flex-direction: column;
+		padding: 40px;
+		background-color: lightblue;
+		box-shadow: 0 0 10px transparent;
+		transition: .2s;
+	}
+	.portfolio-item:hover {
+		box-shadow: 0 0 10px blue;
+		transform: scale(1.05);
+	}
+	.portfolio-item a {
+		background-color: blue;
+		color: white;
+		padding: 5px;
+	}
+	@media (max-width: 800px) {
+		.portfolio {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@media (max-width: 500px) {
+		.portfolio {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<body>
+
+<nav class="navbar">
+	<a href="">Logo</a>
+	<div class="navbar-spacer"></div>
+	<a href="">Nav Link 1</a>
+	<a href="">Nav Link 2</a>
+	<a href="">Nav Link 3</a>
+</nav>
+
+<!-- Same as the nav element, the header element is just like a div but used for the page’s header -->
+
+<header class="header">
+	<h1>Hi y’all wassup</h1>
+	<p>I’m like a designer or something</p>
+	<div class="header-links">
+		<a href="">Hire me</a>
+		<a href="">Fire me</a>
+	</div>
+</header>
+
+<main class="portfolio">
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+	<div class="portfolio-item">
+		<img src="https://cdn.britannica.com/34/240534-050-B8C4B11E/Porcupine-fish-Diodon-hystox.jpg">
+		<h2>Cool project</h2>
+		<a href="">See it</a>
+	</div>
+</main>
+
+</body>

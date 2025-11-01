@@ -141,17 +141,17 @@ body[data-initialized="1"] .intro {
 	min-height: calc(100dvh - calc(128px + 240px));
 	position: sticky;
 	top: 128px;
-	animation: intro-header 2s .25s forwards cubic-bezier(0.25, 1, 0.5, 1);
-	transform: translateY(-200px);
+	animation: intro-header 2s forwards cubic-bezier(0.25, 1, 0.5, 1);
+	transform: translateX(-400px);
 	opacity: 0;
 }
 @keyframes intro-header {
 	from {
-		transform: translateY(-200px);
+		transform: translateX(-400px);
 		opacity: 0;
 	}
 	to {
-		transform: translateY(0px);
+		transform: translateX(0px);
 		opacity: 1;
 	}
 }
@@ -209,10 +209,20 @@ body[data-initialized="1"] .intro {
 	justify-content: center;
 	gap: 16px;
 	border-radius: 4px;
-	animation: intro-header 2s .35s forwards cubic-bezier(0.25, 1, 0.5, 1);
-	transform: translateY(-200px);
+	animation: intro-index 2s .35s forwards cubic-bezier(0.25, 1, 0.5, 1);
+	transform: translateX(-200px);
 	opacity: 0;
 	min-height: calc(100dvh - calc(128px + 240px));
+}
+@keyframes intro-index {
+	from {
+		transform: translateX(-200px);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0px);
+		opacity: 1;
+	}
 }
 .intro-index-title {
 	flex-shrink: 0;
@@ -566,14 +576,14 @@ body[data-intro="0"] .home-books-background2-container {
 @media only screen and (max-width: 1600px) {
 	.intro-content {
 		gap: 64px;
-		padding: 64px 64px 240px 64px;
+		padding: 128px 64px 240px 64px;
 	}
 	.intro-header {
-		top: 64px;
-		min-height: calc(100dvh - calc(64px + 240px));
+		top: 128px;
+		min-height: calc(100dvh - calc(128px + 240px));
 	}
 	.intro-index {
-		min-height: calc(100dvh - calc(64px + 240px));
+		min-height: calc(100dvh - calc(128px + 240px));
 	}
 }
 @media only screen and (max-width: 1400px) {
@@ -1056,33 +1066,43 @@ body[data-initialized="1"] .book {
 /* Info */
 .toggles {
 	position: fixed;
-	top: 16px;
-	right: 16px;
+	top: 12px;
+	right: 12px;
 	display: flex;
 	gap: 8px;
 	z-index: 998;
 }
 .toggles button, .toggles a {
-	width: 32px;
-	height: 32px;
-	border: unset;
-	border-radius: 4px;
-	background-color: var(--off-black);
 	border: 1px solid var(--dark-gray);
-	cursor: pointer;
-	fill: var(--off-white);
-	padding: 4px;
+	padding: 6px 12px;
+	font-size: 18px;
+	line-height: 1.2em;
+	font-variation-settings: "wght" 600, "SRFF" 0;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--off-white);
+	fill: var(--primary);
+	background-color: var(--off-black);
+	border-radius: 4px;
+	min-height: 40px;
+	flex-shrink: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
+	gap: 6px;
 }
 .toggles button svg, .toggles a svg {
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
+}
+.toggles button span, .toggles a span {
+	padding-top: .2em;
 }
 .toggles button:hover, .toggles a:hover {
 	background-color: var(--off-white);
-	fill: var(--dark-gray);
+	fill: var(--off-black);
+	color: var(--off-black);
 }
 .toggles button:active, .toggles a:active {
 	opacity: .5;
@@ -1167,4 +1187,9 @@ body[data-initialized="1"] .book {
 }
 .info-close:active {
 	opacity: .5;
+}
+@media only screen and (max-width: 600px) {
+	.toggles span {
+		display: none;
+	}
 }
