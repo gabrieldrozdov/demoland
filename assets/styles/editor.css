@@ -1006,7 +1006,7 @@ button {
 	flex-shrink: 1;
 	background-color: rgba(var(--primary-rgb), .05);
 	overflow: scroll;
-	--font-size: 14px;
+	--font-size: 16px;
 }
 .editor-controls {
 	display: flex;

@@ -214,14 +214,14 @@ let override = false;
 let currentSettings = {
 	"console": false,
 	"linewrap": false,
-	"fontsize": 14,
+	"fontsize": 16,
 	"delay": false,
 	"paused": false
 };
 let defaultSettings = {
 	"console": false,
 	"linewrap": false,
-	"fontsize": 14,
+	"fontsize": 16,
 	"delay": false,
 	"paused": false
 };
@@ -243,7 +243,7 @@ function generateEditor(blank) {
 		if (parseInt(searchParams.get('fontsize')) != undefined ) {
 			currentSettings['fontsize'] = parseInt(searchParams.get('fontsize'));
 			if (isNaN(currentSettings['fontsize'])) {
-				currentSettings['fontsize'] = 14;
+				currentSettings['fontsize'] = 16;
 			}
 			editorRefreshFontsize();
 			currentSettings['fontsize'] = currentSettings['fontsize'];
@@ -762,8 +762,8 @@ function editorFontsizeDown() {
 	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
 	const toggleFontsizeUp = document.querySelector("#toggle-fontsize-up");
 	currentSettings['fontsize'] -= 2;
-	if (currentSettings['fontsize'] <= 8) {
-		currentSettings['fontsize'] = 8;
+	if (currentSettings['fontsize'] <= 6) {
+		currentSettings['fontsize'] = 6;
 		toggleFontsizeDown.dataset.disabled = 1;
 		toggleFontsizeUp.dataset.disabled = 0;
 	} else {
@@ -785,8 +785,8 @@ function editorFontsizeUp() {
 	const toggleFontsizeDown = document.querySelector("#toggle-fontsize-down");
 	const toggleFontsizeUp = document.querySelector("#toggle-fontsize-up");
 	currentSettings['fontsize'] += 2;
-	if (currentSettings['fontsize'] >= 24) {
-		currentSettings['fontsize'] = 24;
+	if (currentSettings['fontsize'] >= 30) {
+		currentSettings['fontsize'] = 30;
 		toggleFontsizeDown.dataset.disabled = 0;
 		toggleFontsizeUp.dataset.disabled = 1;
 	} else {

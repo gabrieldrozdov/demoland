@@ -230,7 +230,7 @@ function generateOverview() {
 		</html>
 	`;
 
-	// Create work file
+	// Create homepage file
 	fs.writeFile(`index.html`, overviewContent, err => {
 		if (err) {
 			console.error(err);
