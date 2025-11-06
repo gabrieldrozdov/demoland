@@ -1,0 +1,48 @@
+<h1>
+	Hello world!
+</h1>
+
+<p class="some-class">
+	Bonjour monsieur!
+</p>
+
+<p id="some-unique-id">
+	Who are you???????
+</p>
+
+<p class="another-class">
+	hey hey now
+</p>
+
+<p id="your-turn">
+	hiiiiiiiii
+</p>
+
+<script>
+	// Targeting via tag and changing text content
+	document.querySelector("h1").textContent = "Goodbye world!";
+
+	// Targeting via class and changing HTML content
+	document.querySelector(".some-class").innerHTML = "<em>Mon dieu!</em>";
+
+	// Targeting via ID and changing content with multiple lines
+	document.querySelector('#some-unique-id').innerHTML = `
+		asdoifbaposdbf<br>
+		asdfouibasodifubfdf<br>
+		asdofubasdopfiub
+	`;
+
+	// Attaching an element to a variable
+	let myElement = document.querySelector('.another-class');
+	myElement.textContent = "mmhmm";
+
+	// Changing CSS
+	myElement.style.fontSize = "25px";
+	myElement.style.fontFamily = "sans-serif";
+	myElement.style.color = "red";
+
+	// A different notation
+	myElement.style.setProperty('letter-spacing', "20px");
+
+	// Try targeting the #your-turn element, changing its content, and changing 3 CSS properties!
+</script>

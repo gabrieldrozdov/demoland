@@ -1,0 +1,52 @@
+<style>
+	/* Overrides (include this on every file) */
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* Edit this code! */
+	.splashscreen {
+		/* Remove from the flow of the page */
+		position: fixed;
+
+		/* Put on top of everything else */
+		z-index: 9;
+
+		/* Size to fill up the screen */
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+
+		/* Center content */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+
+		/* Basic styling */
+		background-color: black;
+		color: white;
+
+		/* Animation */
+		animation-name: move-out;
+		animation-duration: 1s;
+		animation-delay: 1s;
+		animation-timing-function: ease-out;
+		animation-fill-mode: forwards;
+	}
+	@keyframes move-out {
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+</style>
+
+<div class="splashscreen">
+	oh hey there i’m like a loading screen or something
+</div>

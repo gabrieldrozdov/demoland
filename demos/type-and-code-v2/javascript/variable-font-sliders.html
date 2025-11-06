@@ -1,0 +1,39 @@
+<style>
+	@font-face {
+		font-family: "Limkin";
+		src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+	}
+	#text {
+		font-family: "Limkin";
+		font-variation-settings: "SRFF" 0, "wght" 100;
+		font-size: 48px;
+	}
+</style>
+
+<label>serif</label>
+<input type="range" value="0" min="0" max="100" oninput="changeSerif(this.value);">
+
+<label>weight</label>
+<input type="range" value="100" min="100" max="900" oninput="changeWeight(this.value);">
+
+<div id="text">wowowowowowow</div>
+
+<script>
+	let serif = 0;
+	let weight = 100;
+
+	function changeSerif(newValue) {
+		serif = newValue;
+		applySettings();
+	}
+
+	function changeWeight(newValue) {
+		weight = newValue;
+		applySettings();
+	}
+
+	function applySettings() {
+		let text = document.querySelector("#text");
+		text.style.fontVariationSettings = `"SRFF" ${serif}, "wght" ${weight}`;
+	}
+</script>

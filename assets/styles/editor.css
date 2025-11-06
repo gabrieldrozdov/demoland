@@ -293,6 +293,7 @@ button {
 	font-weight: 700;
 	color: var(--off-white);
 	margin-bottom: -.2em;
+	cursor: pointer;
 }
 .navbar-header-demo:hover {
 	opacity: .8;
@@ -924,7 +925,7 @@ button {
 	font-weight: 500;
 }
 .info-content figure {
-	margin: 48px 0;
+	margin: 24px 0;
 }
 .info-content figure img,
 .info-content figure video,
@@ -932,10 +933,10 @@ button {
 .info-content figure iframe {
 	display: block;
 	width: 100%;
-	padding: 4px;
-	background-color: var(--off-black);
-	border-radius: 2px;
-	border: 1px solid var(--dark-gray);
+	max-height: 540px;
+	object-fit: contain;
+	background-color: rgba(var(--primary-rgb), .25);
+	border: 1px solid rgba(var(--primary-rgb), .5);
 }
 .info-content figure figcaption {
 	text-align: center;

@@ -1,0 +1,17 @@
+<input type="range" value="0" min="0" max="100" oninput="changeFontSize(this.value);">
+
+<div id="output"></div>
+
+<div id="text">wowowowowowow</div>
+
+<script>
+	function changeFontSize(newSize) {
+		let text = document.querySelector("#text");
+		text.style.fontSize = newSize + "px";
+
+		let output = document.querySelector("#output");
+		output.textContent = newSize;
+	}
+
+	// Let’s add sliders for other CSS properties!
+</script>

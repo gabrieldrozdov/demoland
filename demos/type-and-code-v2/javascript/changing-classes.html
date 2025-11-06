@@ -1,0 +1,27 @@
+<style>
+	.hidden {
+		display: none;
+	}
+</style>
+
+<button onclick="showElement('#message');">
+	There’s a secret message on this page
+</button>
+
+<p id="message" class="hidden">
+	omg i am such a secret message but there is an even <span onclick="showElement('#more-secret');">MORE</span> secret hidden message on this page
+</p>
+
+<p id="more-secret" class="hidden">
+	wow im so impressed you found that secret but ur never gonna find the next oooooooooooo<span onclick="showElement('#biggest-secret');">o</span>ne
+</p>
+
+<h1 id="biggest-secret" class="hidden">OK you win</h1>
+
+<script>
+	function showElement(id) {
+		let element = document.querySelector(id);
+		element.classList.toggle('hidden');
+		// can also do .remove
+	}
+</script>

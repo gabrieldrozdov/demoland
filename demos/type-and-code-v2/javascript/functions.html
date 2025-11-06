@@ -1,0 +1,27 @@
+<button onclick="setFontSize('20px')">small</button>
+<button onclick="setFontSize('40px')">medium</button>
+<button onclick="setFontSize('60px')">large</button>
+
+<br>
+
+<button onclick="setFontFamily('sans-serif')">sans</button>
+<button onclick="setFontFamily('serif')">serif</button>
+<button onclick="setFontFamily('monospace')">monospace</button>
+
+<div id="text-display" contenteditable="plaintext-only">hey kids</div>
+
+<script>
+	function setFontSize(newSize) {
+		let text = document.querySelector('#text-display');
+		text.style.fontSize = newSize;
+	}
+
+	function setFontFamily(newFamily) {
+		let text = document.querySelector('#text-display');
+		text.style.fontFamily = newFamily;
+	}
+
+	// NOTE FOR GABRIEL: talk about scoping
+
+	// Try adding a function and buttons to change color!
+</script>

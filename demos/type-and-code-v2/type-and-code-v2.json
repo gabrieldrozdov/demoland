@@ -46,5 +46,59 @@
 				"name": "Building Your Foundry"
 			}
 		}
+	},
+	"testing-your-knowledge": {
+		"title": "Testing Your Knowledge",
+		"desc": "",
+		"demos": {
+			"card": {
+				"name": "Challenge 1: Card"
+			},
+			"navbar": {
+				"name": "Challenge 2: Navbar"
+			},
+			"anchor-links": {
+				"name": "Challenge 3: Linking to Sections"
+			},
+			"header": {
+				"name": "Challenge 4: Header"
+			},
+			"portfolio-grid": {
+				"name": "Challenge 5: Portfolio Grid"
+			},
+			"splash-screen": {
+				"name": "Bonus Challenge: Splash Screen"
+			}
+		}
+	},
+	"javascript": {
+		"title": "JavaScript!",
+		"desc": "",
+		"demos": {
+			"getting-started": {
+				"name": "Getting Started"
+			},
+			"changing-things": {
+				"name": "Changing Things"
+			},
+			"functions": {
+				"name": "Functions"
+			},
+			"randomization": {
+				"name": "Randomization"
+			},
+			"sliders": {
+				"name": "Sliders"
+			},
+			"variable-font-sliders": {
+				"name": "Variable Font Sliders"
+			},
+			"changing-classes": {
+				"name": "Changing Classes"
+			},
+			"tell-a-story": {
+				"name": "Tell a Story"
+			}
+		}
 	}
 }

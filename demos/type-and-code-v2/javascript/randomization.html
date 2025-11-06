@@ -1,0 +1,41 @@
+<style>
+	#text {
+		transition: .2s;
+	}
+</style>
+
+<button onclick="randomizeSize(); randomizeColor();">go rando</button>
+
+<p id="text">
+	hehehehehe
+</p>
+
+<script>
+	console.log(Math.random())
+
+	function randomizeSize() {
+		// Generates random number between 0–1
+		let randomNumber = Math.random();
+		// alert(randomNumber);
+		
+		// Converts number to range 0–100
+		let biggerRandom = randomNumber*100;
+		// alert(biggerRandom);
+
+		let text = document.querySelector('#text');
+		text.style.fontSize = biggerRandom + "px";
+	}
+	
+	function randomizeColor() {
+		let red = Math.round(Math.random()*255);
+		let green = Math.round(Math.random()*255);
+		let blue = Math.round(Math.random()*255);
+		let colorCode = `rgb(${red}, ${green}, ${blue})`;
+		// alert(colorCode)
+
+		let text = document.querySelector('#text');
+		text.style.color = colorCode;
+	}
+
+	// Let’s add a function to randomize another CSS property!
+</script>

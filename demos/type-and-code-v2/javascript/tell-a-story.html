@@ -1,0 +1,16 @@
+<style>
+	.hidden {
+		display: none;
+	}
+</style>
+
+<button onclick="showElement('#');">
+	The story begins
+</button>
+
+<script>
+	function showElement(id) {
+		let element = document.querySelector(id);
+		element.classList.toggle('hidden');
+	}
+</script>

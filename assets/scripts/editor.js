@@ -646,11 +646,29 @@ function updatePreview() {
 			}
 
 			window.onerror = function(message, source, lineno, colno, error) {
-				parent.document.querySelector('.editor-console-log').innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + ' (line ' + (lineno-45) +': column ' + colno + ')</div>';
+				parent.document.querySelector('.editor-console-log').innerHTML += '<div class="editor-console-log-out">Uncaught Error: ' + message + ' (line ' + (lineno-63) +': column ' + colno + ')</div>';
 				parent.document.querySelector('.editor-console-log').scrollTop = parent.document.querySelector('.editor-console-log').scrollHeight;
 				return true; // prevent default browser alert
 			}
 			})();
+
+			document.addEventListener("DOMContentLoaded", function() {
+				for (let link of document.querySelectorAll('a')) {
+					let linkURL = link.getAttribute('href');
+					if (linkURL.includes('#')) {
+						link.addEventListener('click', (e) => {
+							e.preventDefault();
+							if (linkURL.trim() == "#") {
+								return
+							}
+							let target = document.querySelector(linkURL);
+							if (target != undefined) {
+								target.scrollIntoView();
+							}
+						})
+					}
+				}
+			});
 		</script>
 	`;
 	let previewCode = consoleCode + preventInfiniteLoops(cm.getValue());

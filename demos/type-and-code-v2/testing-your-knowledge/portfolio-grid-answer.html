@@ -1,0 +1,84 @@
+<style>
+	/* Overrides (include this on every file) */
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* Edit this code! */
+	.portfolio {
+		width: 100%;
+		max-width: 600px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 20px;
+		padding: 20px;
+	}
+	.portfolio-item {
+		border: 1px solid black;
+		padding: 20px;
+		background-color: pink;
+	}
+	@media (max-width: 500px) {
+		.portfolio {
+			grid-template-columns: 1fr 1fr;
+		}
+		.portfolio-item {
+			background-color: yellow;
+		}
+	}
+	@media (max-width: 400px) {
+		.portfolio {
+			grid-template-columns: 1fr;
+		}
+		.portfolio-item {
+			background-color: cyan;
+		}
+	}
+</style>
+
+<div class="portfolio">
+
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+	
+	<div class="portfolio-item">
+		Hi there!
+	</div>
+
+</div>
