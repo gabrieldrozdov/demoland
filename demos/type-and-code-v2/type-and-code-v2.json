@@ -68,6 +68,24 @@
 			},
 			"splash-screen": {
 				"name": "Bonus Challenge: Splash Screen"
+			},
+			"card-answer": {
+				"name": "Challenge 1 Answer"
+			},
+			"navbar-answer": {
+				"name": "Challenge 2 Answer"
+			},
+			"anchor-links-answer": {
+				"name": "Challenge 3 Answer"
+			},
+			"header-answer": {
+				"name": "Challenge 4 Answer"
+			},
+			"portfolio-grid-answer": {
+				"name": "Challenge 5 Answer"
+			},
+			"splash-screen-answer": {
+				"name": "Bonus Challenge Answer"
 			}
 		}
 	},

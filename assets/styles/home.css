@@ -796,6 +796,8 @@ body[data-initialized="1"] .book {
 }
 .chapter {
 	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
 	opacity: 1;
 	border: 1px solid rgba(var(--primary-rgb), .25);
 	background-color: rgba(var(--primary-rgb), .25);
@@ -852,6 +854,7 @@ body[data-initialized="1"] .book {
 	flex-direction: column;
 	align-items: start;
 	min-height: 280px;
+	flex-shrink: 0;
 }
 .chapter-link {
 	color: var(--off-white);
@@ -961,7 +964,7 @@ body[data-initialized="1"] .book {
 	display: flex;
 	flex-direction: column;
 	opacity: .25;
-	background-color: var(--off-black);
+	background-color: rgba(0,0,0,.25);
 }
 .chapter:hover {
 	transform: scale(1.02);

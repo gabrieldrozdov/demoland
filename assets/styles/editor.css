@@ -214,6 +214,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: start;
 	gap: 3px;
 	transform: translateY(-2px);
 }
@@ -282,7 +283,7 @@ button {
 }
 .navbar-header-info-divider {
 	border-left: 1px solid rgba(var(--primary-rgb), .5);
-	align-self: stretch;
+	height: 10px;
 }
 .navbar-header-demo {
 	padding-top: .1em;
