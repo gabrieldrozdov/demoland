@@ -118,5 +118,125 @@
 				"name": "Tell a Story"
 			}
 		}
+	},
+	"javascript-challenges": {
+		"title": "JavaScript Challenges!",
+		"desc": "",
+		"demos": {
+			"changing-styles": {
+				"name": "Changing Styles"
+			},
+			"changing-styles-solution": {
+				"name": "Changing Styles Solution"
+			},
+			"changing-content": {
+				"name": "Changing Content"
+			},
+			"changing-content-solution": {
+				"name": "Changing Content Solution"
+			},
+			"toggling-visibility": {
+				"name": "Toggling Visibility"
+			},
+			"toggling-visibility-solution": {
+				"name": "Toggling Visibility Solution"
+			},
+			"keeping-track-of-numbers": {
+				"name": "Keeping Track of Numbers"
+			},
+			"keeping-track-of-numbers-solution": {
+				"name": "Keeping Track of Numbers Solution"
+			},
+			"cycling-through-content": {
+				"name": "Cycling Through Content"
+			},
+			"cycling-through-content-solution": {
+				"name": "Cycling Through Content Solution"
+			},
+			"random-number": {
+				"name": "INFO: How to generate a random number"
+			},
+			"random-array-entry": {
+				"name": "INFO: How to get a random entry from an array"
+			},
+			"randomizing-styles": {
+				"name": "Randomizing Styles"
+			},
+			"randomizing-styles-solution": {
+				"name": "Randomizing Styles Solution"
+			},
+			"designing-by-chance": {
+				"name": "Designing By Chance"
+			},
+			"designing-by-chance-solution": {
+				"name": "Designing By Chance Solution"
+			}
+		}
+	},
+	"snippets": {
+		"title": "Snippets",
+		"desc": "Use this code for your type specimens!",
+		"demos": {
+			"css-variables": {
+				"name": "CSS Variables"
+			},
+			"marquees": {
+				"name": "Marquees"
+			},
+			"importing-variable-fonts": {
+				"name": "Importing variable fonts"
+			},
+			"using-variable-fonts": {
+				"name": "Using variable fonts"
+			},
+			"variable-font-weight": {
+				"name": "Variable font weight"
+			},
+			"animating-variable-fonts": {
+				"name": "Animating variable fonts"
+			},
+			"interacting-with-variable-fonts": {
+				"name": "Interacting with variable fonts"
+			},
+			"toggling-variable-states": {
+				"name": "Toggling variable states"
+			},
+			"targeting-elements-using-this": {
+				"name": "Targeting elements using “this”"
+			},
+			"manually-setting-values": {
+				"name": "Manually setting values"
+			},
+			"using-css-variables-for-variable-axis-values": {
+				"name": "Using CSS variables for variable axis values"
+			},
+			"swapping-out-content": {
+				"name": "Swapping out content"
+			},
+			"setting-values-using-sliders": {
+				"name": "Setting values using sliders"
+			},
+			"randomizing-variable-axis-values": {
+				"name": "Randomizing variable axis values"
+			},
+			"repeatedly-randomizing-variable-axis-values": {
+				"name": "Repeatedly randomizing variable axis values"
+			},
+			"tracking-variable-axis-values": {
+				"name": "Tracking variable axis values"
+			},
+			"tracking-the-cursor-position": {
+				"name": "Tracking the cursor position"
+			},
+			"tracking-the-scroll-position": {
+				"name": "Tracking the scroll position"
+			},
+			"randomizing-individual-letters": {
+				"name": "Randomizing individual letters"
+			},
+			"animating-individual-letters": {
+				"name": "Animating individual letters"
+			}
+		}
 	}
 }

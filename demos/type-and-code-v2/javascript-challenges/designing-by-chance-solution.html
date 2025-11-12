@@ -1,0 +1,28 @@
+<button onclick="rando();">Go rando</button>
+
+<p id="preview">
+	oh hi there
+</p>
+
+<script>
+	let previewOptions = [
+		"oh bye there",
+		"oh bonjourno there",
+		"oh hola there",
+		"oh aloha there"
+	]
+	
+	function rando() {
+		let preview = document.querySelector("#preview");
+		if (Math.random() < .5) {
+			let red = Math.random()*255;
+			let green = Math.random()*255;
+			let blue = Math.random()*255;
+			preview.style.color = `rgb(${red}, ${green}, ${blue})`;
+		} else {
+			let randomIndex = Math.floor(Math.random()*previewOptions.length);
+			let randomEntry = previewOptions[randomIndex];
+			preview.textContent = randomEntry;
+		}
+	}
+</script>

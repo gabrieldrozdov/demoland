@@ -831,6 +831,17 @@ button {
 	margin-top: 32px;
 	color: var(--off-white);
 }
+.info-content h1 span {
+	display: block;
+	color: var(--primary);
+	font-size: 18px;
+	margin-bottom: 8px;
+	line-height: 1.2em;
+	font-variation-settings: "wght" 700, "SRFF" 0;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}
 .info-content h2 {
 	font-size: 24px;
 	line-height: 1.2em;

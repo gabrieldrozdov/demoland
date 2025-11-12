@@ -1,0 +1,19 @@
+<p>
+	So far, we’ve looked at using CSS to control the look of our variable fonts. We can also use JavaScript to dynamically set CSS values.
+</p>
+<p>
+	In this demo, we have a button that uses the <code>onclick="_"</code> attribute. This lets us run a JavaScript function when user clicks the button. In this case, that function is called “toggleMyVariableClass”.
+</p>
+<p>
+	Our function does two things:
+</p>
+<ol>
+	<li>Create a variable using <code>var="_"</code> that corresponds to the HTML element with <code>id="my-element"</code>. We can do this using <code>document.querySelector("_")</code>.</li>
+	<li>Add or remove a class from the element we just targeted. This is accomplished via <code>_.classList.toggle("_")</code>. In this case, we’re toggling the class “serif”. That means that if the element doesn’t have the class, the class is added. And, if the element does already have the class, then the class is removed.</li>
+</ol>
+<p>
+	If we want to add or remove a class manually, we can also use <code>_.classList.add("_")</code> and <code>_.classList.remove("_")</code>.
+</p>
+<p>
+	This is also a good time to introduce two ways of finding and fixing bugs in your code: the <code>alert(_)</code> and <code>console.log(_)</code> functions. <code>alert(_)</code> creates a popup dialog in your web browser, which the user is able to see. <code>console.log(_)</code> outputs an invisible log in your browser’s console, which is visible via the inspect window (Mac: COMMAND+OPTION+I). You can access a light version of the browser console via the button in the bottom-left corner of the Editor panel.
+</p>

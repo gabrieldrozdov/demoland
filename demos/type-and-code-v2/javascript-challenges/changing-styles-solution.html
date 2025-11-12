@@ -1,0 +1,29 @@
+<div>
+	<label>Change Font</label>
+	<button onclick="changeFont('sans-serif');">Sans Serif</button>
+	<button onclick="changeFont('serif');">Serif</button>
+	<button onclick="changeFont('monospace');">Monospace</button>
+	<button onclick="changeFont('cursive');">Cursive</button>
+</div>
+
+<div>
+	<label>Change Color</label>
+	<button onclick="changeColor('black');">Black</button>
+	<button onclick="changeColor('red');">Red</button>
+	<button onclick="changeColor('blue');">Blue</button>
+	<button onclick="changeColor('yellow');">Yellow</button>
+</div>
+
+<p id="tester" contenteditable="plaintext-only">Hey cool person, I’m cooler than you.</p>
+
+<script>
+	function changeFont(value) {
+		let tester = document.querySelector('#tester');
+		tester.style.fontFamily = value;
+	}
+
+	function changeColor(value) {
+		let tester = document.querySelector('#tester');
+		tester.style.color = value;
+	}
+</script>

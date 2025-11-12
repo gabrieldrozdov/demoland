@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Variable Font Weight</title>
+
+	<style>
+		/* Fonts that ONLY have a weight (wght) axis */
+		@font-face {
+			font-family: "Limkin Pixel";
+			src: url("https://toomuchtype.com/fonts/limkin-pixel/variable/TMT-LimkinPixelVF.ttf");
+			font-weight: 100 900; /* only needed for fonts with a weight axis */
+		}
+		.limkin-pixel {
+			font-family: "Limkin Pixel", sans-serif;
+			font-weight: 500; /* specify weight using the font-weight property */
+			font-size: 32px;
+		}
+
+		/* Fonts with a weight (wght) axis AND other variable axes */
+		@font-face {
+			font-family: "Limkin";
+			src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinPixelVF.ttf");
+			font-weight: 100 900; /* this is still required */
+		}
+		.limkin {
+			font-family: "Limkin", sans-serif;
+			font-variation-settings: "wght" 500, "SRFF" 0; /* specify weight using font-variation-settings */
+			font-size: 32px;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="limkin-pixel">
+		<span style="font-weight: 100;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 200;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 300;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 400;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 500;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 600;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 700;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 800;">What weight am I?</span>
+		<br>
+		<span style="font-weight: 900;">What weight am I?</span>
+	</p>
+
+	<p class="limkin">
+		<span style="font-variation-settings: 'wght' 100, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 200, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 300, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 400, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 500, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 600, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 700, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 800, 'SRFF' 0;">What weight am I?</span>
+		<br>
+		<span style="font-variation-settings: 'wght' 900, 'SRFF' 0;">What weight am I?</span>
+	</p>
+</body>
+</html>

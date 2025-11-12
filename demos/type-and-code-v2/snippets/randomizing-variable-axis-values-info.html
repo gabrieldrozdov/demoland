@@ -1,0 +1,20 @@
+<p>
+	With a little bit of math, we can get ourselves a random number for our variable axes!
+</p>
+<p>
+	This process starts by using the <code>Math.random()</code> function. This gets us a number between 0–1 (as a decimal).
+</p>
+<p>
+	Then, we need to convert that number to the proper range of variable axis values. If our minimum is 0, then we just need to multiply this number by the maximum value, like 100 in this case.
+</p>
+<p>
+	Finally, we need the appropriate amount of decimal units for our variable axis. We can round to the nearest integer by using the <code>Math.round(_)</code> function.
+</p>
+<p>
+	A few more tips:
+</p>
+<ul>
+	<li>If you always want to round down, use <code>Math.floor(_)</code>.</li>
+	<li>If you always want to round up, use <code>Math.ceil(_)</code>.</li>
+	<li>If you want to truncate to a specific number of decimal points, use <code>_.toFixed(2)</code>, where you can change 2 to the number of digits after the decimal you want to keep. For example, <code>(0.9876).toFixed(2) = 0.98</code>.</li>
+</ul>

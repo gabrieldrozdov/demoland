@@ -1,0 +1,15 @@
+<h1>
+	<span>Info</span>
+	How to generate a random number
+</h1>
+
+<p>
+	(This isn’t a challenge, but you’ll need to know how to do this later on!) Here’s how you generate a random number in a given range. Let’s use the range of -43 to 229 as an example.
+</p>
+
+<ol>
+	<li>Create a random number using <code>Math.random()</code>. This number will be a decimal (or to use a technical term, a <strong>float</strong>) number between 0–1.</li>
+	<li>Multiply this number by full range of numbers you want. To get the range, we subtract the minimum by the maximum, so <code>229-(-43)=272</code>. This will give us a number between 0 and 272.</li>
+	<li>Then, add the minimum value to this result. So, if we got 0 in Step 2, our number will now be <code>0+(-43)=-43</code>. If we got 272 in Step number, our number will be <code>272+(-43)=229</code>. That means we can only get numbers within the correct range!</li>
+	<li>If you want to, round your number.<br>You can round using <code>Math.round()</code>.<br>If you want to always round down, use <code>Math.floor()</code>.<br>If you want to always round up, use <code>Math.ceil()</code>.</li>
+</ol>

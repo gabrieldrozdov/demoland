@@ -1,0 +1,36 @@
+<button onclick="prevSentence();">Previous Sentence</button>
+<button onclick="nextSentence();">Next Sentence</button>
+
+<p id="preview">
+	Oh hi there
+</p>
+
+<script>
+	let index = 0;
+	let sentences = [
+		"Oh hi there",
+		"How are you?",
+		"Oh, how am I?",
+		"Thank you so much for asking!",
+		"I’m just a fish.",
+		"Nothing else to say.",
+		"Glub glub glub."
+	];
+
+	function prevSentence() {
+		// STEP 3: Write this function!
+		
+	}
+
+	function nextSentence() {
+		index = index + 1;
+
+		// STEP 2: Finish this code!
+		// if (index == /*TODO*/) {
+		// 	index = /*TODO*/;
+		// }
+
+		let preview = document.querySelector("#preview");
+		preview.textContent = sentences[index];
+	}
+</script>

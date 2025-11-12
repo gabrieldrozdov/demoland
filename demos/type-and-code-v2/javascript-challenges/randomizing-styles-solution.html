@@ -1,0 +1,38 @@
+<button onclick="randomizeSize();">Randomize font size</button>
+<button onclick="randomizeLetterSpacing();">Randomize letter spacing</button>
+<button onclick="randomizeColor();">Randomize font color</button>
+
+<p id="tester" contenteditable="plaintext-only">What font size should I be, huh????????</p>
+
+<script>
+	function randomizeSize() {
+		let randomNumber = generateNumber(5, 200);
+
+		// STEP 1: Finish this function!
+		let tester = document.querySelector("#tester");
+		tester.style.fontSize = randomNumber + "px";
+	}
+
+	function randomizeLetterSpacing() {
+		// STEP 2: Write this function!
+		let randomNumber = generateNumber(0, 10);
+		let tester = document.querySelector("#tester");
+		tester.style.letterSpacing = randomNumber + "px";
+	}
+
+	function randomizeColor() {
+		let red = generateNumber(0, 255);
+		let green = generateNumber(0, 255);
+		let blue = generateNumber(0, 255);
+
+		// STEP 3: Finish this function!
+		let tester = document.querySelector("#tester");
+		tester.style.color = `rgb(${red}, ${green}, ${blue})`;
+	}
+
+	// Outputs a random number when run
+	function generateNumber(min, max) {
+		let range = max - min;
+		return Math.round((Math.random()*range) + min);
+	}
+</script>

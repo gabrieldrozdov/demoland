@@ -1,0 +1,17 @@
+<div>
+	<label>Change Font</label>
+	<button onclick="changeFont('sans-serif');">Sans Serif</button>
+	<button onclick="">Serif</button>
+	<button>Monospace</button>
+	<button>Cursive</button>
+</div>
+
+<p id="tester" contenteditable="plaintext-only">Hey cool person, I’m cooler than you.</p>
+
+<script>
+	// This function is already finished
+	function changeFont(value) {
+		let tester = document.querySelector('#tester');
+		tester.style.fontFamily = value;
+	}
+</script>

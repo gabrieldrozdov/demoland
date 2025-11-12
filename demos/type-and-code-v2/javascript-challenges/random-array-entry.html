@@ -1,0 +1,32 @@
+<button onclick="randomEntry();">Click me!</button>
+<button onclick="randomEntrySimple();">Or click me!</button>
+
+<script>
+	let myArray = [
+		"yo",
+		'wassup',
+		'hello'
+	]
+	
+	function randomEntry() {
+		// Step 1
+		let step1 = Math.random();
+		console.log("Step 1: " + step1);
+
+		// Step 2
+		let randomIndex = Math.random()*myArray.length;
+
+		// Step 3
+		let roundedIndex = Math.floor(randomIndex);
+
+		// Step 4
+		let randomEntry = myArray[roundedIndex];
+
+		alert(randomEntry);
+	}
+
+	function randomEntrySimple() {
+		let randomEntry = myArray[Math.floor(Math.random()*myArray.length)];
+		alert(randomEntry);
+	}
+</script>

@@ -1,0 +1,54 @@
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	.menu {
+		/* Make it fullscreen and on top of everything else */
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		z-index: 9999;
+
+		/* Basic styling */
+		background-color: black;
+		color: white;
+
+		/* Center content and stack in a column */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.menu-close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}
+	.menu a {
+		color: yellow;
+	}
+	.hidden {
+		display: none;
+	}
+</style>
+
+<button onclick="openMenu();">Open menu</button>
+
+<div class="menu hidden" id="menu">
+	<button class="menu-close" onclick="closeMenu();">Close menu</button>
+	<h1>cool site bro</h1>
+	<a href="#">a link</a>
+	<a href="#">another link</a>
+	<a href="#">etc</a>
+</div>
+
+<script>
+	function openMenu() {
+		let menu = document.querySelector("#menu");
+		menu.classList.remove('hidden');
+	}
+</script>

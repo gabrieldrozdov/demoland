@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tracking the Cursor Position</title>
+
+	<style>
+		:root {
+			--xaxi: 0;
+			--yaxi: 0;
+		}
+		@font-face {
+			font-family: "AUTHENTIC Remixed";
+			src: url("https://toomuchtype.com/fonts/authentic-remixed/variable/TMT-AUTHENTICRemixedVF.ttf");
+		}
+		body {
+			margin: 0;
+		}
+		.container {
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.authentic-remixed {
+			font-family: "AUTHENTIC Remixed", sans-serif;
+			font-variation-settings: "XAXI" var(--xaxi), "YAXI" var(--yaxi);
+			font-size: 64px;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container" onmousemove="setAxes(event)">
+		<p class="authentic-remixed" contenteditable="plaintext-only">Type here!</p>
+	</div>
+
+	<script>
+		var root = document.querySelector('html');
+		var container = document.querySelector('.container');
+		
+		function setAxes(event) {
+			// Mouse X and Y position
+			console.log("Mouse position:", event.clientX, event.clientY);
+
+			// Convert values to percentages (0–1)
+			var percentX = event.clientX / container.offsetWidth;
+			var percentY = event.clientY / container.offsetHeight;
+			console.log("Percentages:", percentX, percentY);
+
+			// Convert percentages to variable axis ranges
+			// For this font, that range is -100 to 100
+			var xAxis = Math.round(percentX*200 - 100);
+			var yAxis = Math.round(percentY*-200 + 100);
+			console.log("Fixed values:", xAxis, yAxis);
+
+			root.style.setProperty('--xaxi', xAxis);
+			root.style.setProperty('--yaxi', yAxis);
+		}
+	</script>
+</body>
+</html>

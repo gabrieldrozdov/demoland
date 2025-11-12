@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animating Variable Fonts</title>
+
+	<style>
+		@font-face {
+			font-family: "Dreidel";
+			src: url("https://toomuchtype.com/fonts/dreidel/variable/TMT-DreidelVF.ttf");
+		}
+		.dreidel {
+			font-family: "Dreidel", sans-serif;
+			font-variation-settings: "SPIN" 0;
+			font-size: 64px;
+			animation-name: dreidel-animation;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+		@keyframes dreidel-animation {
+			0% {
+				font-variation-settings: "SPIN" 0;
+			}
+			100% {
+				font-variation-settings: "SPIN" 360;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<p class="dreidel" contenteditable="plaintext-only">Type here</p>
+
+	<p><strong>Challenge: try adding adding a 50% state to the animation!</strong></p>
+	<p><strong>Challenge: try changing the timing function of the animation!</strong></p>
+</body>
+</html>

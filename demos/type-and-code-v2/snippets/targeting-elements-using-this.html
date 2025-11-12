@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Using the “this” Argument</title>
+
+	<style>
+		@font-face {
+			font-family: "Bashful";
+			src: url("https://toomuchtype.com/fonts/bashful/variable/TMT-BashfulVF.ttf");
+		}
+		.bashful {
+			font-family: "Bashful", sans-serif;
+			font-variation-settings: "BASH" 0;
+			font-size: 64px;
+			line-height: .75em;
+			word-break: break-all; /* force line wrapping */
+		}
+		.bashful span {
+			transition: font-variation-settings .5s, opacity .5s;
+		}
+		.hidden {
+			opacity: .25;
+			font-variation-settings: "BASH" 100;
+		}
+	</style>
+</head>
+
+<body>
+	<p><strong>Challenge: try creating a new class and toggling that class too!</strong></p>
+
+	<p class="bashful"><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span><span onmouseenter="toggleMyVariableClass(this)">Too</span><span onmouseenter="toggleMyVariableClass(this)">Much</span><span onmouseenter="toggleMyVariableClass(this)">Type</span></p>
+
+	<!-- JavaScript goes in the <script> element -->
+	<script>
+		function toggleMyVariableClass(myElement) {
+			myElement.classList.toggle('hidden');
+		}
+	</script>
+</body>
+</html>

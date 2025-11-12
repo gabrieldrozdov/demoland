@@ -1,0 +1,36 @@
+<div>
+	<label>Change Size</label>
+	<button onclick="changeSize(-2);">Decrease</button>
+	<button onclick="changeSize(2);">Increase</button>
+	<output id="size">16</output>
+</div>
+
+<p id="tester" contenteditable="plaintext-only">Trying to change my size, are you now?? Am I not tall enough for you?????</p>
+
+<script>
+	// This is a variable to track the current font size
+	let currentSize = 16;
+
+	function changeSize(value) {
+		// STEP 1
+		currentSize = currentSize + value;
+
+		// STEP 2
+		if (currentSize < 2) {
+			currentSize = 2;
+		}
+
+		// STEP 3
+		if (currentSize >= 30) {
+			currentSize = 30;
+		}
+
+		// Already finished: update the font size
+		let tester = document.querySelector('#tester');
+		tester.style.fontSize = currentSize + "px";
+
+		// Already finished: display the font size
+		let output = document.querySelector("#size");
+		output.textContent = currentSize;
+	}
+</script>

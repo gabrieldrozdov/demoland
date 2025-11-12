@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Using Variable Fonts</title>
+
+	<style>
+		@font-face {
+			font-family: "Mini Mochi";
+			src: url("https://toomuchtype.com/fonts/mini-mochi/variable/TMT-MiniMochiVF.ttf");
+		}
+		.mini-mochi {
+			font-family: "Mini Mochi", sans-serif;
+			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+			font-size: 64px;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="mini-mochi">
+		<span style="font-variation-settings: 'STCH' 0, 'FLAV' 0, 'SLCE' 0;" contenteditable="plaintext-only">Type here!</span>
+		<br>
+		<span style="font-variation-settings: 'STCH' 50, 'FLAV' 100, 'SLCE' 0;"contenteditable="plaintext-only">Type here!</span>
+		<br>
+		<span style="font-variation-settings: 'STCH' 100, 'FLAV' 0, 'SLCE' 100;"contenteditable="plaintext-only">Type here!</span>
+		<br>
+	</p>
+
+	<p><strong>Challenge: try creating a new span with different variable axis values!</strong></p>
+</body>
+</html>

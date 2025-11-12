@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Swapping Out Content</title>
+
+	<style>
+		@font-face {
+			font-family: "Dreidel";
+			src: url("https://toomuchtype.com/fonts/dreidel/variable/TMT-DreidelVF.ttf");
+		}
+		.dreidel {
+			font-family: "Dreidel", sans-serif;
+			font-variation-settings: "SPIN" 0;
+			font-size: 100px;
+			animation-name: dreidel-animation;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+		@keyframes dreidel-animation {
+			0% {
+				font-variation-settings: "SPIN" 0;
+			}
+			100% {
+				font-variation-settings: "SPIN" 360;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<p class="dreidel" id="my-element">A</p>
+
+	<div>
+		<button onmouseenter="swapLetter('A')">A</button>
+		<button onmouseenter="swapLetter('B')">B</button>
+		<button onmouseenter="swapLetter('C')">C</button>
+		<button onmouseenter="swapLetter('D')">D</button>
+		<button onmouseenter="swapLetter('E')">E</button>
+		<button onmouseenter="swapLetter('F')">F</button>
+		<button onmouseenter="swapLetter('G')">G</button>
+		<button onmouseenter="swapLetter('H')">H</button>
+		<button onmouseenter="swapLetter('I')">I</button>
+		<button onmouseenter="swapLetter('J')">J</button>
+		<button onmouseenter="swapLetter('K')">K</button>
+		<button onmouseenter="swapLetter('L')">L</button>
+		<button onmouseenter="swapLetter('M')">M</button>
+		<button onmouseenter="swapLetter('N')">N</button>
+		<button onmouseenter="swapLetter('O')">O</button>
+		<button onmouseenter="swapLetter('P')">P</button>
+		<button onmouseenter="swapLetter('Q')">Q</button>
+		<button onmouseenter="swapLetter('R')">R</button>
+		<button onmouseenter="swapLetter('S')">S</button>
+		<button onmouseenter="swapLetter('T')">T</button>
+		<button onmouseenter="swapLetter('U')">U</button>
+		<button onmouseenter="swapLetter('V')">V</button>
+		<button onmouseenter="swapLetter('W')">W</button>
+		<button onmouseenter="swapLetter('X')">X</button>
+		<button onmouseenter="swapLetter('Y')">Y</button>
+		<button onmouseenter="swapLetter('Z')">Z</button>
+	</div>
+	
+	<script>
+		function swapLetter(newLetter) {
+			var myElement = document.querySelector("#my-element");
+			myElement.innerText = newLetter;
+		}
+	</script>
+</body>
+</html>

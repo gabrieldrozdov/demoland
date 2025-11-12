@@ -1,0 +1,26 @@
+<h1>
+	Open the console to see the random numbers generated!
+</h1>
+
+<button onclick="generateNumber(-43, 229);">Click me to generate a random number!</button>
+
+<script>
+	function generateNumber(min, max) {
+		// Step 1
+		let step1 = Math.random();
+		console.log("Step 1: " + step1);
+
+		// Step 2
+		let range = max - min;
+		let step2 = step1 * range;
+		console.log("Step 2: " + step2);
+
+		// Step 3
+		let step3 = step2 + min;
+		console.log("Step 3: " + step3);
+
+		// Step 4
+		let step4 = Math.round(step3);
+		console.log("Step 4: " + step4);
+	}
+</script>

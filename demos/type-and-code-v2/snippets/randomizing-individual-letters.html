@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Randomizing Individual Letters</title>
+
+	<style>
+		@font-face {
+			font-family: "Mini Mochi";
+			src: url("https://toomuchtype.com/fonts/mini-mochi/variable/TMT-MiniMochiVF.ttf");
+		}
+		.mini-mochi {
+			font-family: "Mini Mochi", sans-serif;
+			font-variation-settings: "STCH" 50, "FLAV" 0, "SLCE" 0;
+			font-size: 64px;
+			line-height: .75em;
+			word-break: break-all;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="mini-mochi" id="my-element">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+
+	<script>
+		var myElement = document.querySelector('#my-element');
+		var newHTML = "";
+		for (let letter of myElement.innerText) {
+			var stretch = Math.round(Math.random()*100);
+			var flavor = Math.round(Math.random()*100);
+			var slice = Math.round(Math.random()*100);
+			newHTML += `<span style="font-variation-settings: 'STCH' ${stretch}, 'FLAV' ${flavor}, 'SLCE' ${slice};">${letter}</span>`;
+		}
+		myElement.innerHTML = newHTML;
+	</script>
+</body>
+</html>

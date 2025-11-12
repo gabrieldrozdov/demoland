@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tracking Variable Axis Values</title>
+
+	<style>
+		@font-face {
+			font-family: "Music Box";
+			src: url("https://toomuchtype.com/fonts/music-box/variable/TMT-MusicBoxVF.ttf");
+		}
+		.music-box {
+			font-family: "Music Box", sans-serif;
+			font-variation-settings: "FREQ" 0, "AMPL" 100;
+			font-size: 100px;
+			transition: font-variation-settings .2s;
+		}
+	</style>
+</head>
+
+<body>
+	<p class="music-box" id="my-element" contenteditable="plaintext-only">BOOM BAP</p>
+
+	<div>
+		<p>Current frequency: <span id="current-frequency">0</span></p>
+		<button onclick="changeFrequency(-50)">Decrease Frequency</button>
+		<button onclick="changeFrequency(50)">Increase Frequency</button>
+	</div>
+
+	<div>
+		<p>Current amplitude: <span id="current-amplitude">100</span></p>
+		<button onclick="changeAmplitude(-25)">Decrease Amplitude</button>
+		<button onclick="changeAmplitude(25)">Increase Amplitude</button>
+	</div>
+
+	<script>
+		// Prepare all of our variables
+		var frequency = 0;
+		var amplitude = 100;
+		var myElement = document.querySelector("#my-element");
+		var currentFrequency = document.querySelector('#current-frequency');
+		var currentAmplitude = document.querySelector('#current-amplitude');
+
+		// Function for changing frequency (FREQ)
+		function changeFrequency(value) {
+			// Change stored value
+			frequency = frequency + value;
+
+			// Prevent invalid values
+			if (frequency > 100) {
+				frequency = 100;
+			}
+			if (frequency < -100) {
+				frequency = -100;
+			}
+
+			// Showcase current value
+			currentFrequency.innerText = frequency;
+
+			// Set CSS font-variation-settings
+			myElement.style.fontVariationSettings = `"FREQ" ${frequency}, "AMPL" ${amplitude}`;
+		}
+
+		// Function for changing amplitude (AMPL)
+		function changeAmplitude(value) {
+			// Change stored value
+			amplitude = amplitude + value;
+
+			// Prevent invalid values
+			if (amplitude > 100) {
+				amplitude = 100;
+			}
+			if (amplitude < 0) {
+				amplitude = 0;
+			}
+
+			// Showcase current value
+			currentAmplitude.innerText = amplitude;
+
+			// Set CSS font-variation-settings
+			myElement.style.fontVariationSettings = `"FREQ" ${frequency}, "AMPL" ${amplitude}`;
+		}
+	</script>
+</body>
+</html>
