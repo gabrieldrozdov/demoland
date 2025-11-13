@@ -156,20 +156,44 @@
 			"random-number": {
 				"name": "INFO: How to generate a random number"
 			},
-			"random-array-entry": {
-				"name": "INFO: How to get a random entry from an array"
-			},
 			"randomizing-styles": {
 				"name": "Randomizing Styles"
 			},
 			"randomizing-styles-solution": {
 				"name": "Randomizing Styles Solution"
 			},
-			"designing-by-chance": {
-				"name": "Designing By Chance"
+			"random-array-entry": {
+				"name": "INFO: How to get a random entry from an array"
 			},
-			"designing-by-chance-solution": {
-				"name": "Designing By Chance Solution"
+			"random-content": {
+				"name": "Random Content"
+			},
+			"random-content-solution": {
+				"name": "Random Content Solution"
+			},
+			"random-content-bonus-solution": {
+				"name": "Random Content Bonus Solution"
+			},
+			"sliders": {
+				"name": "Sliders"
+			},
+			"sliders-solution": {
+				"name": "Sliders Solution"
+			},
+			"css-variables": {
+				"name": "CSS Variables"
+			},
+			"variable-axis-sliders": {
+				"name": "Variable Axis Sliders"
+			},
+			"variable-axis-sliders-solution": {
+				"name": "Variable Axis Sliders Solution"
+			},
+			"randomizing-variable-axis-values": {
+				"name": "Randomizing Variable Axis Values"
+			},
+			"randomizing-variable-axis-values-solution": {
+				"name": "Randomizing Variable Axis Values Solution"
 			}
 		}
 	},

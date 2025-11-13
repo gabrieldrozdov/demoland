@@ -1,0 +1,129 @@
+<style>
+	/* Importing my font */
+	@font-face {
+		font-family: "Limkin";
+		src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+	}
+
+	/* Overriding default styles */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	/* Container element */
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+
+		/* CSS variables */
+		--tester-weight: 500;
+		--tester-serif: 100;
+	}
+
+	/* Letter picker */
+	.glyphs {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		gap: 1px;
+		padding: 1px;
+	}
+	.glyphs button {
+		background-color: #eee;
+		color: black;
+		border: unset;
+		border-radius: unset;
+		padding: 5px;
+		aspect-ratio: 1/1;
+		font-family: "Limkin";
+		font-variation-settings: "wght" var(--tester-weight), "SRFF" var(--tester-serif);
+	}
+	.glyphs button:hover {
+		background-color: black;
+		color: white;
+	}
+
+	/* Slider controls */
+	.controls {
+		display: flex;
+	}
+
+	/* Font preview */
+	.preview {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20vw;
+		font-family: "Limkin";
+		font-variation-settings: "wght" var(--tester-weight), "SRFF" var(--tester-serif);
+	}
+</style>
+
+<div class="container">
+	<div class="glyphs">
+		<button onmouseenter="changeLetter('A')">A</button>
+		<button onmouseenter="changeLetter('B')">B</button>
+		<button onmouseenter="changeLetter('C')">C</button>
+		<button onmouseenter="changeLetter('D')">D</button>
+		<button onmouseenter="changeLetter('E')">E</button>
+		<button onmouseenter="changeLetter('F')">F</button>
+		<button onmouseenter="changeLetter('G')">G</button>
+		<button onmouseenter="changeLetter('H')">H</button>
+		<button onmouseenter="changeLetter('I')">I</button>
+		<button onmouseenter="changeLetter('J')">J</button>
+		<button onmouseenter="changeLetter('K')">K</button>
+		<button onmouseenter="changeLetter('L')">L</button>
+		<button onmouseenter="changeLetter('M')">M</button>
+		<button onmouseenter="changeLetter('N')">N</button>
+		<button onmouseenter="changeLetter('O')">O</button>
+		<button onmouseenter="changeLetter('P')">P</button>
+		<button onmouseenter="changeLetter('Q')">Q</button>
+		<button onmouseenter="changeLetter('R')">R</button>
+		<button onmouseenter="changeLetter('S')">S</button>
+		<button onmouseenter="changeLetter('T')">T</button>
+		<button onmouseenter="changeLetter('U')">U</button>
+		<button onmouseenter="changeLetter('V')">V</button>
+		<button onmouseenter="changeLetter('W')">W</button>
+		<button onmouseenter="changeLetter('X')">X</button>
+		<button onmouseenter="changeLetter('Y')">Y</button>
+		<button onmouseenter="changeLetter('Z')">Z</button>
+		<button onmouseenter="changeLetter('0')">0</button>
+		<button onmouseenter="changeLetter('1')">1</button>
+		<button onmouseenter="changeLetter('2')">2</button>
+		<button onmouseenter="changeLetter('3')">3</button>
+		<button onmouseenter="changeLetter('4')">4</button>
+		<button onmouseenter="changeLetter('5')">5</button>
+		<button onmouseenter="changeLetter('6')">6</button>
+		<button onmouseenter="changeLetter('7')">7</button>
+		<button onmouseenter="changeLetter('8')">8</button>
+		<button onmouseenter="changeLetter('9')">9</button>
+	</div>
+	<div class="preview">
+		A
+	</div>
+	<div class="controls">
+		<div class="controls-group">
+			<label>Weight</label>
+			<input type="range" min="100" max="900" value="500" oninput="updateCSSVariable('.container', '--tester-weight', this.value)">
+			<output id="tester-weight-output">500</output>
+		</div>
+		<div class="controls-group">
+			<label>Serif</label>
+			<input type="range" min="0" max="100" value="100" oninput="updateCSSVariable('.container', '--tester-serif', this.value)">
+			<output id="tester-weight-output">100</output>
+		</div>
+	</div>
+</div>
+
+<script>
+	function changeLetter(letter) {
+		let preview = document.querySelector(".preview");
+		preview.textContent = letter;
+	}
+
+	function updateCSSVariable(selector, axis, value) {
+		let element = document.querySelector(selector);
+		element.style.setProperty(axis, value);
+	}
+</script>

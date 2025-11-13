@@ -1,0 +1,38 @@
+<style>
+	/* Importing my font */
+	@font-face {
+		font-family: "Limkin";
+		src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+	}
+
+	/* Font preview */
+	.preview {
+		text-align: center;
+		font-size: 5vw;
+		font-family: "Limkin";
+		--tester-weight: 500;
+		--tester-serif: 100;
+		font-variation-settings: "wght" var(--tester-weight), "SRFF" var(--tester-serif);
+	}
+</style>
+
+
+<button onclick="randomizeVariableAxes();">Go rando!</button>
+
+<div class="preview" contenteditable="plaintext-only">hey hey hellooooooo</div>
+
+<script>
+	function randomizeVariableAxes() {
+		let preview = document.querySelector(".preview");
+
+		// Randomize weight (between 100 and 900)
+		let randomWeight = Math.random()*800+100;
+		let roundedWeight = Math.round(randomWeight);
+		preview.style.setProperty("--tester-weight", roundedWeight);
+
+		// Randomize serif (between 0 and 100)
+		let randomSerif = Math.random()*100;
+		let roundedSerif = Math.round(randomSerif);
+		preview.style.setProperty("--tester-serif", roundedSerif);
+	}
+</script>

@@ -284,6 +284,7 @@ button {
 .navbar-header-info-divider {
 	border-left: 1px solid rgba(var(--primary-rgb), .5);
 	height: 10px;
+	transform: translateY(1px);
 }
 .navbar-header-demo {
 	padding-top: .1em;

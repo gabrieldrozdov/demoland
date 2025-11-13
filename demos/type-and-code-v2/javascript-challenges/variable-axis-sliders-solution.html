@@ -1,0 +1,53 @@
+<style>
+	/* Importing my font */
+	@font-face {
+		font-family: "Limkin";
+		src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf");
+	}
+
+	/* Font preview */
+	.preview {
+		text-align: center;
+		font-size: 10vw;
+		font-family: "Limkin";
+		--tester-weight: 500;
+		--tester-serif: 100;
+		font-variation-settings: "wght" var(--tester-weight), "SRFF" var(--tester-serif);
+	}
+
+	/* Slider controls */
+	.controls {
+		text-align: center;
+		padding: 5px;
+	}
+</style>
+
+<div id="preview1" class="preview" contenteditable="plaintext-only">Preview 1!</div>
+<div id="preview2" class="preview" contenteditable="plaintext-only">Preview 2!</div>
+
+<div class="controls">
+	<h2>Preview 1 controls</h2>
+
+	<label>Weight</label>
+	<input type="range" min="100" max="900" value="500" oninput="updateCSSVariable('#preview1', '--tester-weight', this.value)">
+	
+	<label>Serif</label>
+	<input type="range" min="0" max="100" value="100" oninput="updateCSSVariable('#preview1', '--tester-serif', this.value)">
+</div>
+
+<div class="controls">
+	<h2>Preview 2 controls</h2>
+
+	<label>Weight</label>
+	<input type="range" min="100" max="900" value="500" oninput="updateCSSVariable('#preview2', '--tester-weight', this.value)">
+	
+	<label>Serif</label>
+	<input type="range" min="0" max="100" value="100" oninput="updateCSSVariable('#preview2', '--tester-serif', this.value)">
+</div>
+
+<script>
+	function updateCSSVariable(selector, variable, value) {
+		let element = document.querySelector(selector);
+		element.style.setProperty(variable, value);
+	}
+</script>

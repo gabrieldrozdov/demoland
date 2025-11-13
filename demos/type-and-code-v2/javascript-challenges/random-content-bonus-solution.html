@@ -1,0 +1,25 @@
+<!-- BONUS STEP SOLUTION -->
+
+<p id="output"></p>
+
+<script>
+	let presetText = [
+		"HEY ",
+		"HI ",
+		"HELLO "
+	]
+
+	function addText() {
+		let randomIndex = Math.floor(Math.random()*presetText.length);
+		let entry = presetText[randomIndex];
+
+		let red = Math.random()*255;
+		let green = Math.random()*255;
+		let blue = Math.random()*255;
+
+		let output = document.querySelector('#output');
+		output.innerHTML += `<span style="color: rgb(${red}, ${green}, ${blue});">${entry}</span>`;
+	}
+
+	setInterval(addText, 100);
+</script>

@@ -1,0 +1,17 @@
+<p id="output"></p>
+
+<script>
+	let presetText = [
+		"<span style='color: red;'>HEY</span> ",
+		"HI ",
+		"HELLO "
+	]
+
+	function addText() {
+		let entry = presetText[0];
+		let output = document.querySelector('#output');
+		output.innerHTML += entry;
+	}
+
+	setInterval(addText, 100);
+</script>

@@ -1,0 +1,9 @@
+<input type="range" min="0" max="100" value="0" oninput="updateSlider(this.value)">
+<p id="output"></p>
+
+<script>
+	function updateSlider(value) {
+		let output = document.querySelector("#output");
+		output.textContent = value;
+	}
+</script>

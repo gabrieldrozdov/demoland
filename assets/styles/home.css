@@ -55,6 +55,7 @@ button {
 	opacity: .5;
 	backdrop-filter: blur(20px) brightness(50%);
 	-webkit-backdrop-filter: blur(20px) brightness(50%);
+	display: none;
 }
 
 /* Animations */
@@ -461,7 +462,7 @@ body[data-intro="0"] .home-books-container {
 	transition: filter 1s;
 }
 body[data-intro="0"] .home-books-background-container {
-	filter: blur(10px) brightness(40%);
+	filter: blur(10px) brightness(20%);
 }
 .home-books-background {
 	position: absolute;

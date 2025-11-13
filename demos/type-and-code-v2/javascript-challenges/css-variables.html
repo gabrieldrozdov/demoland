@@ -1,0 +1,29 @@
+<style>
+	.container {
+		/* Try changing these values! */
+		--my-var: red;
+		--another-var: 20px;
+	}
+	.child {
+		border: var(--another-var) solid var(--my-var);
+		color: var(--my-var);
+		padding: var(--another-var);
+		letter-spacing: var(--another-var);
+	}
+	.not-a-child {
+		border: var(--another-var) solid var(--my-var);
+		color: var(--my-var);
+		padding: var(--another-var);
+		letter-spacing: var(--another-var);
+	}
+</style>
+
+<div class="container">
+	<p class="child">Oh hi there!</p>
+	<p class="child">Who are you?</p>
+	<p class="child">Who am I????</p>
+</div>
+
+<p class="not-a-child">
+	Am I part of the family?
+</p>
