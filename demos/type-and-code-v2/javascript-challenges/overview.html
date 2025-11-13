@@ -1,0 +1,81 @@
+<style>
+	.some-class {
+		background-color: yellow;
+	}
+</style>
+
+<p id="rhinoceros">Yo</p>
+
+<script>
+	// Creating variables
+	let someNumber = 20; // number
+	let someString = "Hello!"; // string
+	let someBoolean = true; // boolean
+	let anotherBoolean = false; // boolean
+	let anotherVar = 1 < 2; // evaluates to false
+
+	// Redefining variables
+	someNumber = someNumber + 20; // now it’s 40
+	someNumber += 20; // now it’s 60
+
+	someString = "Hello " + "world!" // Hello world!
+
+	// Targeting elements
+	let element = document.querySelector("#rhinoceros");
+
+	// Changing CSS
+	element.style.color = "red";
+	element.style.setProperty("font-size", "40px");
+
+	// Changing content
+	element.textContent = "Bonjourno";
+	element.innerHTML = "<em>Aloha</em>";
+
+	// Modifying classes
+	element.classList.add('some-class');
+	// element.classList.remove('some-class');
+	// element.classList.toggle('some-class');
+
+	// Outputting to the console
+	console.log("Hi there!");
+
+	// Random numbers
+	let randomNumber = Math.random(); // random number between 0 and 1
+
+	// If statements
+	if (randomNumber < 0.5) {
+		console.log("Heads!");
+	} else {
+		console.log("Tails!");
+	}
+
+	// Arrays
+	let someArray = [
+		"Hi",
+		"Hello",
+		"What’s up?"
+	]
+	console.log(someArray[0]); // first entry
+	console.log(someArray[1]); // second entry
+	console.log(someArray[2]); // third entry
+	console.log(someArray.length); // array length
+	console.log(seomArray[someArray.length-1]); // final entry
+
+	// Functions
+	function isHigher(num1, num2) {
+		if (num1 < num2) {
+			return false
+		} else {
+			return true
+		}
+	}
+	console.log(isHigher(1, 2)); // false
+	console.log(isHigher(2, 1)); // true
+
+	// Repeating code
+	function addToElement() {
+		let element = document.querySelector("#rhinoceros");
+		element.innerHTML += "he he he ";
+	}
+	setInterval(addToElement, 2000); // repeats every 2000ms or 2s
+</script>

@@ -123,6 +123,9 @@
 		"title": "JavaScript Challenges!",
 		"desc": "",
 		"demos": {
+			"overview": {
+				"name": "Overview"
+			},
 			"changing-styles": {
 				"name": "Changing Styles"
 			},
