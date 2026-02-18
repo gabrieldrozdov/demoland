@@ -1,1 +1,64 @@
 <h1>Positioning</h1>
+<p>
+	By default, every new element will appear below the previous element. The only exception are inline elements (like italicized or bolded text) that appears inside other elements.
+</p>
+<p>
+	To break out of this flow, we can use the <code>position</code> property. This property has five possible values:
+</p>
+<ul>
+	<li><code>static</code></li>
+	<li><code>relative</code></li>
+	<li><code>sticky</code></li>
+	<li><code>absolute</code></li>
+	<li><code>fixed</code></li>
+</ul>
+<p>
+	We typically use <code>position</code> property in conjunction with the following properties:
+</p>
+<ul>
+	<li><code>top</code></li>
+	<li><code>right</code></li>
+	<li><code>bottom</code></li>
+	<li><code>left</code></li>
+</ul>
+
+<hr>
+
+<h2><code>position: static;</code></h2>
+<p>
+	This is the default position value. Elements will flow as per usual.
+</p>
+
+<hr>
+
+<h2><code>position: relative;</code></h2>
+<p>
+	The element will occupy its usual position, but you can visually move it using the <code>top</code> and <code>left</code> properties.
+</p>
+
+<hr>
+
+<h2><code>position: sticky;</code></h2>
+<p>
+	The element will flow just like a static element, but once it reached a certain position will stick to its location on the screen. That position is usually defined by the <code>top</code> property.
+</p>
+
+<hr>
+
+<h2><code>position: absolute;</code></h2>
+<p>
+	The element breaks the flow of the page entirely and can be positioned manually using the <code>top</code>, <code>left</code>, <code>right</code>, and <code>bottom</code> properties.
+</p>
+<p>
+	For example, the <code>top</code> property indicates the position relative to the top of the page.
+</p>
+<p>
+	You can also position an element inside of another one using <code>absolute</code> positioning. This works if the parent has its position set to either <code>relative</code> or <code>absolute</code>.
+</p>
+
+<hr>
+
+<h2><code>position: fixed;</code></h2>
+<p>
+	The element breaks the flow of the page entirely and can be positioned manually just like with the <code>absolute</code> value. Except, this element will stay in the exact same location no matter how the page scrolls.
+</p>

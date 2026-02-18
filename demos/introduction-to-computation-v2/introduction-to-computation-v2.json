@@ -36,15 +36,23 @@
 			"box-model-practice": {
 				"name": "Practice: Coding box model patterns"
 			},
-			"responsive-layouts": {
-				"name": "Responsive layouts"
-			},
 			"positioning": {
 				"name": "Positioning elements"
 			},
 			"self-portrait": {
 				"name": "Practice: CSS self-portraits"
 			}
-		}
+		},
+		"active": true
+	},
+	"week-2": {
+		"title": "Week 2",
+		"desc": "TBD",
+		"demos": {
+			"responsive-layouts": {
+				"name": "Responsive layouts"
+			}
+		},
+		"active": false
 	}
 }

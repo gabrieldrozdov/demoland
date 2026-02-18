@@ -3,6 +3,15 @@
 		height: 4000px;
 		background: linear-gradient(to bottom, white, cyan);
 	}
+	div {
+		padding: 20px;
+	}
+	.pos-relative {
+		position: relative;
+		left: 100px;
+		top: -25px;
+		background-color: greenyellow;
+	}
 	.pos-sticky {
 		position: sticky;
 		top: 0;
@@ -24,6 +33,7 @@
 
 <body>
 	<div>Normal positioning</div>
+	<div class="pos-relative">Relative positioning</div>
 	<div class="pos-sticky">Sticky positioning</div>
 	<div class="pos-absolute">Absolute positioning</div>
 	<div class="pos-fixed">Fixed positioning</div>

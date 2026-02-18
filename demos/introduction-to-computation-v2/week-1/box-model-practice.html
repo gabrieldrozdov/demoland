@@ -1,20 +1,29 @@
 <style>
+	/* every element */
 	* {
 		border: 10px solid black;
 	}
+	/* the page itself */
 	body {
 		margin: 40px;
 		background-color: red;
 	}
+	/* every div */
 	div {
 		background-color: yellow;
 		padding: 40px;
 	}
-	div div {
+	/* every child div of a parent div */
+	div > div {
 		background-color: blue;
 		padding: 40px;
 	}
-	div:nth-child(even) div {
+	/* every other div sibling */
+	div:nth-child(even) {
+		background-color: green;
+	}
+	/* every other div sibling’s child div */
+	div:nth-child(even) > div {
 		background-color: cyan;
 	}
 </style>
