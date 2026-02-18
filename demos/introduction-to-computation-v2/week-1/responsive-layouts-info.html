@@ -1,0 +1,22 @@
+<h1>Responsive layouts</h1>
+<p>
+	The size of a website depends on the browser window and the user’s device. This means that our websites need to be <strong>responsive</strong> and change according to screen size.
+</p>
+<p>
+	With the box model, we can specify an element’s width using the <code>width</code> property. But, we want that width to change depending on the screen size. Here’s how we can do that:
+</p>
+<ol>
+	<li>Set the element’s <code>width</code> value to <code>100%</code>. This means it will take up the full width of its parent element.</li>
+	<li>Set the element’s <code>max-width</code> to a pixel value like <code>600px</code>. This means that the element will be <em>no wider</em> than 600px across.</li>
+	<li>Set the element’s left and right margins to <code>auto</code>. This pushes the element to the middle of the screen.</li>
+</ol>
+
+<hr>
+
+<h2>The <code>box-sizing</code> property</h2>
+<p>
+	By default, the <code>width</code> property doesn’t include <code>padding</code> in its calculation. That means that an element may be too big for its parent. We can fix this by writing <code>box-sizing: border-box;</code>
+</p>
+<p>
+	Learn more <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-sizing" target="_blank">at MDN</a>.
+</p>

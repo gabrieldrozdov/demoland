@@ -866,7 +866,7 @@ button {
 	letter-spacing: .1em;
 	justify-self: start;
 	margin: 32px 0 18px 0;
-	color: var(--off-white);
+	color: var(--primary);
 }
 .info-content p {
 	margin-bottom: 18px;
@@ -887,6 +887,7 @@ button {
 	color: var(--off-white);
 	-webkit-box-decoration-break: clone;
 	box-decoration-break: clone;
+	font-variant-ligatures: none !important;
 }
 .info-content strong {
 	font-variation-settings: "wght" 600, "SRFF" 0;

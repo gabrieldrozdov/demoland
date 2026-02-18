@@ -52,6 +52,9 @@ function generateOverview() {
 		let totalDemos = 0;
 		for (let chapterKey of Object.keys(bookData)) {
 			let chapter = bookData[chapterKey];
+			if (chapter["active"] == false) {
+				continue
+			}
 			totalChapters++;
 			
 			// Generate demos

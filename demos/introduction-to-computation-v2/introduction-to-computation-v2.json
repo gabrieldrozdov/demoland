@@ -1,0 +1,50 @@
+{
+	"week-1": {
+		"title": "Week 1",
+		"desc": "Introducing the two web programming languages: HTML (content) and CSS (styling).",
+		"demos": {
+			"plaintext": {
+				"name": "Plaintext files"
+			},
+			"html-tags": {
+				"name": "Organizing content using HTML tags"
+			},
+			"html-typography": {
+				"name": "HTML elements for typography"
+			},
+			"html-typography-practice": {
+				"name": "Practice: Typesetting a poem"
+			},
+			"inline-css": {
+				"name": "Styling content using CSS properties"
+			},
+			"css-classes": {
+				"name": "Organizing styles using CSS classes"
+			},
+			"css-classes-practice": {
+				"name": "Practice: Styling a poem"
+			},
+			"inheritance": {
+				"name": "CSS inheritance"
+			},
+			"specificity": {
+				"name": "CSS specificity"
+			},
+			"box-model": {
+				"name": "CSS box model"
+			},
+			"box-model-practice": {
+				"name": "Practice: Coding box model patterns"
+			},
+			"responsive-layouts": {
+				"name": "Responsive layouts"
+			},
+			"positioning": {
+				"name": "Positioning elements"
+			},
+			"self-portrait": {
+				"name": "Practice: CSS self-portraits"
+			}
+		}
+	}
+}

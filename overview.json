@@ -1,27 +1,34 @@
 {
 	"tutorial": {
-		"title": "🎓&nbsp;&nbsp;Tutorial",
+		"title": "🎓 Tutorial",
 		"title-plaintext": "Tutorial",
 		"shortdesc": "Learn how to use this website!",
 		"desc": "<p>DEMOLAND lets you books full of web demos that you can read, edit, and test right in your browser! Start here to learn how to use the site’s interface.</p>",
 		"unlisted": false
 	},
 	"workshops": {
-		"title": "🛠️&nbsp;&nbsp;Workshops",
+		"title": "🛠️ Workshops",
 		"title-plaintext": "Workshops",
 		"shortdesc": "One-off chapters for coding workshops I’ve led!",
 		"desc": "<p>Every now and then, I’m asked to run a coding workshop introducing web programming or a topic related to websites. Each of these chapters represents one workshop.</p>",
 		"unlisted": false
 	},
+	"introduction-to-computation-v2": {
+		"title": "🤖 Introduction to Computation <span style='opacity: .5;'>v2</span>",
+		"title-plaintext": "Introduction to Computation [v2]",
+		"shortdesc": "A beginner’s guide on how to code! Taught during RISD’s Spring 2026 semester.",
+		"desc": "<p>This book is an introduction to web programming using the languages HTML, CSS, and JavaScript.</p>",
+		"unlisted": false
+	},
 	"type-and-code-v2": {
-		"title": "🔠&nbsp;&nbsp;Type+Code <span style='opacity: .5;'>v2</span>",
+		"title": "🔠 Type+Code <span style='opacity: .5;'>v2</span>",
 		"title-plaintext": "Type+Code [v2]",
 		"shortdesc": "Creating experimental type specimens in the form of websites! Taught during RISD’s Fall 2025 semester.",
 		"desc": "<p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p>",
 		"unlisted": false
 	},
 	"introduction-to-computation-v1": {
-		"title": "🤖&nbsp;&nbsp;Introduction to Computation <span style='opacity: .5;'>v1</span>",
+		"title": "🤖 Introduction to Computation <span style='opacity: .5;'>v1</span>",
 		"title-plaintext": "Introduction to Computation [v2]",
 		"shortdesc": "A beginner’s guide on how to code! Taught during RISD’s Spring 2025 semester.",
 		"desc": "<p>What is code? What can we use it for? This book is an introduction to coding through the lens of web programming. We’ll cover object-oriented programming using JavaScript, and use HTML and CSS to create visual and interactive outputs.</p>",

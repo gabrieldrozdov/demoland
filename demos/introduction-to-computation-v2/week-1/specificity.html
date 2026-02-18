@@ -1,0 +1,45 @@
+<style>
+	/* most generic because inherited */
+	body {
+		color: red;
+	}
+
+	/* still generic because applied to all paragraphs */
+	p {
+		color: blue;
+	}
+
+	/* more specific because only paragraphs with class */
+	.some-stanzas {
+		color: green;
+	}
+
+	/* most specific because only applies to a single element */
+	#special-stanza {
+		color: purple;
+	}
+</style>
+
+<body>
+	the red wheelbarrow
+
+	<p>
+		so much depends<br>
+		upon
+	</p>
+	
+	<p class="some-stanzas">
+		a red wheel<br>
+		barrow
+	</p>
+	
+	<p class="some-stanzas" id="special-stanza">
+		glazed with rain<br>
+		water
+	</p>
+	
+	<p class="some-stanzas" style="color: pink;">
+		beside the white<br>
+		chickens
+	</p>
+</body>
