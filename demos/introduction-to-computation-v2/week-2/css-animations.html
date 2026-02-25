@@ -1,0 +1,33 @@
+<style>
+	@keyframes cool-animation {
+		0% {
+			font-size: 20px;
+			background-color: blue;
+		}
+		50% {
+			font-size: 50px;
+			text-transform: uppercase;
+			background-color: yellow;
+		}
+		100% {
+			font-size: 10px;
+			color: white;
+			background-color: purple;
+		}
+	}
+
+	.animated-element {
+		animation-name: cool-animation;
+		animation-duration: 2s;
+		animation-timing-function: ease; /* https://easings.net/ */
+		animation-direction: forwards;
+		animation-iteration-count: infinite;
+		animation-direction: normal; /* alternate, reverse */
+	}
+</style>
+
+<body>
+	<div class="animated-element">
+		hi everyone i am ANIMATED
+	</div>
+</body>

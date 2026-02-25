@@ -47,12 +47,48 @@
 	},
 	"week-2": {
 		"title": "Week 2",
-		"desc": "TBD",
+		"desc": "Making our websites interactive, animated, and responsive.",
 		"demos": {
+			"recap-html-elements": {
+				"name": "Recap: HTML elements"
+			},
+			"recap-inline-css": {
+				"name": "Recap: inline CSS"
+			},
+			"recap-css-classes": {
+				"name": "Recap: CSS classes"
+			},
+			"recap-css-box-model": {
+				"name": "Recap: CSS box model"
+			},
+			"hover-and-active-states": {
+				"name": "Hover and active states"
+			},
+			"hover-and-active-states-practice": {
+				"name": "Practice: Designing buttons"
+			},
+			"revealing-content": {
+				"name": "Revealing content with hover states"
+			},
+			"css-animations": {
+				"name": "CSS animations"
+			},
+			"css-animations-practice": {
+				"name": "Practice: Animating a square"
+			},
+			"default-typesetting": {
+				"name": "Default typesetting"
+			},
+			"responsive-typesetting": {
+				"name": "Responsive typesetting"
+			},
 			"responsive-layouts": {
 				"name": "Responsive layouts"
+			},
+			"week-2-homework": {
+				"name": "Week 2 homework"
 			}
 		},
-		"active": false
+		"active": true
 	}
 }
