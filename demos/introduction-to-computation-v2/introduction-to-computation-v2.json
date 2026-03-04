@@ -95,9 +95,6 @@
 		"title": "Week 3",
 		"desc": "Incorporating modern CSS layout properties.",
 		"demos": {
-			"warmup": {
-				"name": "Warmup exercise!"
-			},
 			"display": {
 				"name": "The display property"
 			},
@@ -123,7 +120,7 @@
 				"name": "Combining grid and media queries"
 			},
 			"practice": {
-				"name": "Practice: Putting it together!"
+				"name": "Practice: Putting flexbox and grid to use"
 			}
 		},
 		"active": true
