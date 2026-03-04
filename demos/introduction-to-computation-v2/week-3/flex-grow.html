@@ -1,0 +1,25 @@
+<style>
+	.parent {
+		display: flex;
+		gap: 10px;
+	}
+	.child-red {
+		background-color: red;
+		padding: 20px;
+		flex-grow: 1;
+	}
+	.child-blue {
+		background-color: blue;
+		padding: 20px;
+		flex-grow: 0;
+		transition: flex-grow 1s;
+	}
+	.child-blue:hover {
+		flex-grow: 10;
+	}
+</style>
+
+<div class="parent">
+	<div class="child-red"></div>
+	<div class="child-blue"></div>
+</div>

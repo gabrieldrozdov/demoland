@@ -90,5 +90,42 @@
 			}
 		},
 		"active": true
+	},
+	"week-3": {
+		"title": "Week 3",
+		"desc": "Incorporating modern CSS layout properties.",
+		"demos": {
+			"warmup": {
+				"name": "Warmup exercise!"
+			},
+			"display": {
+				"name": "The display property"
+			},
+			"flex": {
+				"name": "Creating a flex parent"
+			},
+			"flex-centering": {
+				"name": "Centering content using flexbox"
+			},
+			"flex-grow": {
+				"name": "Dynamically sizing flex children"
+			},
+			"flex-nav": {
+				"name": "Using flexbox to design a navbar"
+			},
+			"media-queries": {
+				"name": "Using media queries to change CSS based on screen size"
+			},
+			"grid": {
+				"name": "Creating a grid parent"
+			},
+			"grid-breakpoints": {
+				"name": "Combining grid and media queries"
+			},
+			"practice": {
+				"name": "Practice: Putting it together!"
+			}
+		},
+		"active": true
 	}
 }
