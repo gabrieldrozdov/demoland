@@ -1,0 +1,32 @@
+<body>
+	<p id="rhino">
+		I’m a big font!
+	</p>
+
+	<p class="hippo">
+		I’m a colorful font!
+	</p>
+
+	<script>
+		let rhino = document.querySelector("#rhino");
+		let rhinoSize = "50px";
+		rhino.style.fontSize = rhinoSize;
+
+		let hippo = document.querySelector(".hippo");
+		let hippoRed = 255;
+		let hippoGreen = 0;
+		let hippoBlue = 0;
+		hippo.style.color = "rgb(" + hippoRed + "," + hippoGreen + "," + hippoBlue + ")";
+
+		// Once a variable is defined, we can redefine it to be anything else
+		// Only say “let” the first time
+
+		rhinoSize = "100px";
+		rhino.style.fontSize = rhinoSize;
+
+		hippoRed = 0;
+		hippoGreen = 100;
+		hippoBlue = 255;
+		hippo.style.color = "rgb(" + hippoRed + "," + hippoGreen + "," + hippoBlue + ")";
+	</script>
+</body>

@@ -124,5 +124,45 @@
 			}
 		},
 		"active": true
+	},
+	"week-5": {
+		"title": "Week 5",
+		"desc": "Introducing JavaScript!",
+		"demos": {
+			"basics": {
+				"name": "Inline event handlers, alert(), operations, data types"
+			},
+			"console": {
+				"name": "The console and console.log()"
+			},
+			"changing-css": {
+				"name": "Changing CSS"
+			},
+			"variables": {
+				"name": "Variables"
+			},
+			"conditionals": {
+				"name": "Conditionals (if/else statements)"
+			},
+			"bugfixing": {
+				"name": "Bugfixing"
+			},
+			"functions": {
+				"name": "Functions"
+			},
+			"random-css": {
+				"name": "Randomizing CSS"
+			},
+			"repeating-code": {
+				"name": "Repeating code"
+			},
+			"delaying-code": {
+				"name": "Delaying code"
+			},
+			"challenge": {
+				"name": "Weekly challenge"
+			}
+		},
+		"active": true
 	}
 }

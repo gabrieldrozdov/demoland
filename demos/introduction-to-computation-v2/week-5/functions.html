@@ -1,0 +1,27 @@
+<body>
+	<script>
+		// A random number between 0 and 1
+		let randomNumber = Math.random();
+
+		// A random number in a set range between -50 and 200
+		let min = -50;
+		let max = 200;
+		let range = max-min;
+		let randomNumberInRange = (Math.random() * range) + min;
+
+		// A reusable function that does all of this
+		function getRandomNumber(min, max) {
+			let range = max-min;
+			return (Math.random() * range) + min
+		}
+
+		// A similar function that gives us a rounded number (always rounding down)
+		function getRoundedRandomNumber(min, max) {
+			let range = max-min;
+			return Math.floor( (Math.random() * range) + min )
+		}
+
+		console.log( getRandomNumber(-50, 100) );
+		console.log( getRoundedRandomNumber(-50, 100) );
+	</script>
+</body>

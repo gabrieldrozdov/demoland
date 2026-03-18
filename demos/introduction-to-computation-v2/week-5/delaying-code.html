@@ -1,0 +1,27 @@
+<body>
+	<p id="rhino"></p>
+
+	<script>
+		let rhino = document.querySelector("#rhino");
+
+		setTimeout(function() {
+			rhino.innerHTML = "Hello";
+			rhino.style.fontSize = "40px";
+		}, 500);
+
+		setTimeout(function() {
+			rhino.innerHTML = "How are you?";
+			rhino.style.fontSize = "30px";
+		}, 2000);
+
+		setTimeout(function() {
+			rhino.innerHTML = "I AM <em>GOOD</em>";
+			rhino.style.fontSize = "100px";
+
+			setInterval(function() {
+				rhino.innerHTML += " YAY!";
+			}, 500);
+
+		}, 3000);
+	</script>
+</body>

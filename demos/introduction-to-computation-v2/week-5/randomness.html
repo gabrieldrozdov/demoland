@@ -1,0 +1,30 @@
+<body>
+	<p id="rhino">
+		We’re going full rando!!
+	</p>
+
+	<p class="hippo">
+		I’m a randomly colored font!
+	</p>
+
+	<script>
+		function getRandomNumber(min, max) {
+			let range = max-min;
+			return (Math.random() * range) + min
+		}
+
+		function getRoundedRandomNumber(min, max) {
+			let range = max-min;
+			return Math.floor( (Math.random() * range) + min )
+		}
+		
+		let rhino = document.querySelector("#rhino");
+		let rhinoSize = getRandomNumber(10, 100) + "px";
+		let hippoRed = getRoundedRandomNumber(0, 255);
+		let hippoGreen = getRoundedRandomNumber(0, 255);
+		let hippoBlue = getRoundedRandomNumber(0, 255);
+		
+		rhino.style.fontSize = rhinoSize;
+		hippo.style.color = "rgb(" + hippoRed + "," + hippoGreen + "," + hippoBlue + ")";
+	</script>
+</body>
