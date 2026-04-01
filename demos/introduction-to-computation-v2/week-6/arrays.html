@@ -1,0 +1,45 @@
+<body>
+	<script>
+		// An array is a series of values separated by commas
+		let greetings = [
+			"Hello!",
+			"Howdy!",
+			"Bonjour!",
+			"Hola!",
+			"Aloha!"
+		];
+
+		// The first item of an array is the 0th item
+		console.log( greetings[0] );
+
+		// The last item of the array is the array’s length minus 1
+		console.log( greetings[greetings.length - 1] );
+
+		// A helper function to get a random item from an array
+		function randomItem(array) {
+			let randomIndex = Math.floor(Math.random()*array.length);
+			return array[randomIndex];
+		}
+
+		// Using the randomItem function
+		console.log( randomItem(greetings) );
+
+		// ————————————————————————————————
+		// EXAMPLE
+		let stuff = [42, "monkey", 1<20, ["hi", "yo"], false];
+
+		// CHALLENGE A
+		// How do I get "monkey" from this array?
+
+
+		// CHALLENGE B
+		// How do I get the final item of this array?
+		// Hint: there are 2 answers to this!
+
+
+		// CHALLENGE C
+		// How do I get "hi" from this array?
+		
+
+	</script>
+</body>

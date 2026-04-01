@@ -1,0 +1,28 @@
+<body>
+	<h1 id="output">what am i doing today?</h1>
+
+	<button onclick="getSchedule('saturday');">saturday</button>
+	<button onclick="getSchedule('sunday');">sunday</button>
+	<button onclick="getSchedule('monday');">monday</button>
+	<button onclick="getSchedule('tuesday');">tuesday</button>
+	<button onclick="getSchedule('wednesday');">wednesday</button>
+	<button onclick="getSchedule('thursday');">thursday</button>
+	<button onclick="getSchedule('friday');">friday</button>
+
+	<script>
+		let utahPlan = {
+			"saturday": "fly in",
+			"sunday": "arches",
+			"monday": "canyonlands",
+			"tuesday": "capital reef",
+			"wednesday": "bryce canyon",
+			"thursday": "zion",
+			"friday": "zion"
+		}
+
+		function getSchedule(day) {
+			let output = document.querySelector("#output");
+			output.innerHTML = utahPlan[day];
+		}
+	</script>
+</body>

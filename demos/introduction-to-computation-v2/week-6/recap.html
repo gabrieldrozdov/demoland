@@ -1,0 +1,25 @@
+<head>
+	<style>
+		body {
+			margin: 0;
+			height: 100vh;
+		}
+	</style>
+</head>
+<body onclick="goRando();">
+
+	<script>
+		let body = document.querySelector('body');
+
+		function goRando() {
+			let randomNumber = Math.random();
+			if (randomNumber < 0.3) {
+				body.style.backgroundColor = 'blue';
+			} else if (randomNumber < 0.6) {
+				body.style.backgroundColor = 'red';
+			} else {
+				body.style.backgroundColor = 'yellow';
+			}
+		}
+	</script>
+</body>

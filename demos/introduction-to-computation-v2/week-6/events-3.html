@@ -1,0 +1,26 @@
+<style>
+	body {
+		margin: 0;
+		height: 100vh;
+	}
+	.custom-mouse {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		border: 1px solid black;
+		transform: translate(-50%, -50%);
+	}
+</style>
+<body>
+	<div class="custom-mouse"></div>
+
+	<script>
+		let body = document.querySelector('body');
+		let customMouse = document.querySelector('.custom-mouse');
+
+		body.addEventListener('mousemove', function(event) {
+			customMouse.style.left = event.x + "px";
+			customMouse.style.top = event.y + "px";
+		})
+	</script>
+</body>

@@ -1,0 +1,29 @@
+<body>
+	<h1 id="rhino">Hello world!</h1>
+
+	<script>
+		// Target an element as per usual
+		let rhino = document.querySelector('#rhino');
+
+		// Every element is actually an object!
+		console.log( rhino );
+
+		// Object.keys doesn’t work here because elements are special objects
+		console.log( Object.keys(rhino) );
+
+		// Instead, we need to use console.dir to see all of the key-value pairs
+		// Open up your browser’s console to see this
+		console.dir( rhino );
+
+		// Let’s try logging some of these properties
+
+		// console.log( rhino.nodeName );
+		// console.log( rhino.style );
+		// console.log( Object.keys(rhino.style) );
+
+		// These properties also include the functions we’ve been using!
+		// This will say "native code" in the console because the function runs code native to the web browser, not just to the javascript you’re writing. In other words, this code is deeper than anything you’re likely to ever write.
+
+		// console.log( rhino.querySelector );
+	</script>
+</body>

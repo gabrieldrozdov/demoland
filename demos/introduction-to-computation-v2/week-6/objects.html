@@ -1,0 +1,30 @@
+<body>
+	<script>
+		// Objects look like arrays but use curly brackets {} instead of square brackets []
+		// Objects use key-value pairs to store data
+		let utahPlan = {
+			"saturday": "fly in",
+			"sunday": "arches",
+			"monday": "canyonlands",
+			"tuesday": "capital reef",
+			"wednesday": "bryce canyon",
+			"thursday": "zion",
+			"friday": "zion"
+		}
+
+		// Fetch values by using the associated key
+		// *Every key must be unique!*
+		console.log( utahPlan["saturday"] );
+
+		// Get all the keys as an array
+		console.log (Object.keys(utahPlan) );
+
+		// Get a random value from an object using this helper function
+		function randomObjectItem(obj) {
+			let keys = Object.keys(obj);
+			let randomKey = keys[Math.floor(Math.random()*keys.length)];
+			return obj[randomKey];
+		}
+		console.log( randomObjectItem(utahPlan) );
+	</script>
+</body>

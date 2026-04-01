@@ -1,0 +1,62 @@
+<body>
+	<button id="buttonPrev">Previous fortune</button>
+	<button id="buttonNext">Next fortune</button>
+	<button id="buttonRandom">Random fortune</button>
+	<div id="output">You will have a <span style='font-size: 40px; color: blue;'>GLORIOUS</span> day.</div>
+
+	<script>
+		// Target all of our elements
+		let buttonPrev = document.querySelector("#buttonPrev");
+		let buttonNext = document.querySelector("#buttonNext");
+		let buttonRandom = document.querySelector("#buttonRandom");
+		let output = document.querySelector('#output');
+
+		// Add event listeners to all of our elements (like inline event handlers)
+		buttonPrev.addEventListener('click', prevFortune);
+		buttonNext.addEventListener('click', nextFortune);
+		buttonRandom.addEventListener('click', randomFortune);
+
+		// Store all of our fortunes as HTML strings in an array
+		let fortunes = [
+			"You will have a <span style='font-size: 40px; color: blue;'>GLORIOUS</span> day.",
+			"You will consume much <span style='letter-spacing: 1em; color: orange;'>cheese</span>.",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+			"TODO",
+		]
+
+		// Variable to track our current index in the array
+		let index = 0;
+
+		function nextFortune() {
+			index = index + 1; // same as index++;
+			if (index == fortunes.length) {
+				// TODO
+			}
+			output.innerHTML = fortunes[index];
+		}
+
+		function prevFortune() {
+			// TODO
+		}
+
+		function randomFortune() {
+			// TODO
+		}
+
+		// Helper function to get a random item from an array
+		function randomItem(array) {
+			let randomIndex = Math.floor(Math.random()*array.length);
+			return array[randomIndex];
+		}
+	</script>
+	
+</body>
+</html>

@@ -14,8 +14,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	overscroll-behavior: none;
-	touch-action: manipulation;
 }
 body {
 	font-family: 'Limkin', sans-serif;
@@ -24,6 +22,7 @@ body {
 	color: var(--off-white);
 	background: #191919;
 	overscroll-behavior: none;
+	touch-action: manipulation;
 }
 button {
 	font-family: inherit;
@@ -1093,6 +1092,7 @@ button {
 .editor-console-log {
 	flex-grow: 1;
 	overflow-y: scroll;
+	min-height: 0;
 	font-family: "Geist Mono", monospace;
 	font-variation-settings: "wght" 350;
 	font-weight: 350;
@@ -1100,6 +1100,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	background-color: rgba(var(--primary-rgb), .05);
+	overflow-wrap: break-word;
 }
 .editor-console-log-in {
 	flex-shrink: 0;

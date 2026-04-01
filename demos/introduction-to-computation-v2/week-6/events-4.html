@@ -1,0 +1,38 @@
+<style>
+	body {
+		margin: 0;
+		height: 100vh;
+	}
+	.custom-mouse {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		border: 1px solid black;
+		transform: translate(-50%, -50%);
+	}
+</style>
+<body>
+	<div class="custom-mouse"></div>
+
+	<script>
+		let body = document.querySelector('body');
+		let customMouse = document.querySelector('.custom-mouse');
+
+		body.addEventListener('mousemove', function(event) {
+			customMouse.style.left = event.x + "px";
+			customMouse.style.top = event.y + "px";
+
+			// These calculations give us values between 0 and 1
+			let percentX = event.x / window.innerWidth;
+			let percentY = event.y / window.innerHeight;
+
+			console.log(percentX, percentY);
+
+			// We can use those values to modify numbers in other ranges
+
+			customMouse.style.borderRadius = percentX*100 + "%";
+
+			customMouse.style.border = percentY*20 + "px solid black";
+		})
+	</script>
+</body>

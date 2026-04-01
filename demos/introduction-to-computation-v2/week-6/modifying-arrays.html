@@ -1,0 +1,60 @@
+<body>
+	<script>
+		let greetings = [
+			"Hello!",
+			"Howdy!",
+			"Bonjour!",
+			"Hola!",
+			"Aloha!"
+		];
+
+		let body = document.querySelector('body');
+
+		// Sorting
+		greetings.sort();
+		console.log("sort: " + greetings);
+
+		// Adding an item to the end
+		greetings.push("Buongiorno!");
+		console.log("push: " + greetings);
+
+		// Adding an item to the beginning
+		greetings.unshift("HEY!!");
+		console.log("unshift: " + greetings);
+
+		// Changing an existing item
+		greetings[2] = "yoooooooo";
+		console.log("change by index: " + greetings);
+
+		// Adding an item by index
+		greetings[9] = "hihihihi";
+		console.log("add by index: " + greetings);
+
+		// Removing the last item
+		greetings.pop();
+		console.log("pop: " + greetings);
+
+		// Removing the first item
+		greetings.shift();
+		console.log("shift: " + greetings);
+
+		// Getting an item’s index
+		let i1 = greetings.indexOf("Hola!");
+		let i2 = greetings.indexOf("heyooo");
+		console.log("index of item: " + i1);
+		console.log("index of non-existing item: " + i2);
+
+		// Removing items based on a function
+		// If the function returns false, the item is removed
+		// This doesn’t modify the original array
+		function checkItem(item) {
+			if (item.length > 8) {
+				return true
+			} else {
+				return false
+			}
+		}
+		let filteredArray = greetings.filter(checkItem);
+		console.log("filter: " + filteredArray);
+	</script>
+</body>

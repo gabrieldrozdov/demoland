@@ -164,5 +164,51 @@
 			}
 		},
 		"active": true
+	},
+	"week-6": {
+		"title": "Week 6",
+		"desc": "More JavaScript!",
+		"demos": {
+			"recap": {
+				"name": "Recap of Week 5"
+			},
+			"recap-commented": {
+				"name": "Recap (with comments)"
+			},
+			"arrays": {
+				"name": "Arrays"
+			},
+			"using-arrays": {
+				"name": "Using arrays"
+			},
+			"modifying-arrays": {
+				"name": "Modifying arrays"
+			},
+			"objects": {
+				"name": "Objects"
+			},
+			"using-objects": {
+				"name": "Using objects"
+			},
+			"dom": {
+				"name": "The Document Object Model (DOM)"
+			},
+			"events": {
+				"name": "Event listeners"
+			},
+			"events-2": {
+				"name": "Event properties"
+			},
+			"events-3": {
+				"name": "Using event properties"
+			},
+			"events-4": {
+				"name": "Getting percentages from event properties"
+			},
+			"challenge": {
+				"name": "Weekly Challenge"
+			}
+		},
+		"active": true
 	}
 }
