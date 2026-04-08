@@ -957,7 +957,7 @@ consoleInput.addEventListener('keydown', (e) => {
 // Cap console at 100 enttires
 function checkConsoleLength() {
 	const consoleLog = document.querySelector('.editor-console-log');
-	if (consoleLog.children.length > 100) {
+	if (consoleLog.children.length > 300) {
 		consoleLog.children[0].remove();
 		checkConsoleLength();
 	}
