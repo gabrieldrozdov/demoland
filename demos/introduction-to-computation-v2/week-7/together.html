@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: end;
+		}
+		.container div {
+			border: 5px solid black;
+			transition: .5s;
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+
+	<script>
+		let container = document.querySelector('.container');
+
+		let i=0;
+		while (/* TODO: loop condition */) {
+
+			// FINISHED CODE
+			let randomWidth = Math.random()*100;
+			let randomHeight = Math.random()*100;
+			let newDiv = `<div style="width: ${randomWidth}px; height: ${randomHeight}px;"></div>`;
+			container.innerHTML += newDiv;
+			
+			// TODO: increase i each loop
+
+		}
+
+		function changeSizes() {
+			let allChildren = document.querySelectorAll('.container div');
+
+			for (let i=0; /* TODO: loop condition */; i++) {
+				let child = /* TODO */;
+				let randomWidth = Math.random()*100;
+				let randomHeight = Math.random()*100;
+				child.style.width = randomWidth + "px";
+				child.style.height = randomHeight + "px";
+			}
+		}
+
+		setInterval(changeSizes, 500);
+	</script>
+</body>
+</html>

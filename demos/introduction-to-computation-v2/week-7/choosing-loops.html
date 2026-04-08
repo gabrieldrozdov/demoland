@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<script>
+		// ——————————————————————————————————
+
+		// This loop will run a random number of times!
+
+		function whileLoopExample() {
+			let runLoop = true;
+			let i = 0;
+			while (runLoop == true) {
+				console.log(i);
+				i++;
+				if (Math.random() < 0.1) {
+					runLoop = false;
+				}
+			}
+		}
+
+		// whileLoopExample();
+
+		// ——————————————————————————————————
+
+		// This loop will skip every other number
+
+		function forLoopExample() {
+			for (let i=0; i<20; i+=2) {
+				console.log(i);
+			}
+		}
+
+		// forLoopExample();
+
+		// ——————————————————————————————————
+		
+		// This loop will run through every item in the array
+
+		let randoNumbers = [123,847,320,673,999];
+		function forEachLoopExample() {
+			randoNumbers.forEach(function(item) {
+				console.log(item);
+			})
+		}
+
+		// forEachLoopExample();
+	</script>
+</body>
+</html>

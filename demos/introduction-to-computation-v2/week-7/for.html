@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="greeting">Yo</div>
+	<div class="greeting">Hello</div>
+	<div class="greeting">What’s up</div>
+	<div class="greeting">How’s it going</div>
+	<div class="greeting">Howdy</div>
+	<div class="greeting">Bonjour</div>
+	<div class="greeting">Aloha</div>
+	<div class="greeting">Hola</div>
+
+	<script>
+		let allGreetings = document.querySelectorAll('.greeting');
+
+		for (let index=0; index<allGreetings.length; index++) {
+			let currentGreeting = allGreetings[index];
+			currentGreeting.style.fontSize = Math.random()*100 + "px";
+		}
+
+		// A “for” loop is just like a “while” loop
+		// Except, the loop counter and condition are contained in the first line
+
+		// We can also do a “for..of” loop!
+		// This goes through every item in the array once
+
+		for (let item of allGreetings) {
+			item.style.letterSpacing = Math.random()*5 + "px";
+		}
+	</script>
+</body>
+</html>

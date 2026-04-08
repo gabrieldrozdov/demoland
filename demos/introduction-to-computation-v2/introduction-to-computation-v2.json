@@ -210,5 +210,78 @@
 			}
 		},
 		"active": true
+	},
+	"week-7": {
+		"title": "Week 7",
+		"desc": "Loops!",
+		"demos": {
+			"recap": {
+				"name": "Recap of Week 6"
+			},
+			"counters-note": {
+				"name": "A note on index counters"
+			},
+			"functions-note": {
+				"name": "A note on functions"
+			},
+			"scope-note": {
+				"name": "A note on scope"
+			},
+			"strings-note": {
+				"name": "A note on strings"
+			},
+			"setinterval-note": {
+				"name": "A note on setInterval and setTimeout"
+			},
+			"queryselectorall": {
+				"name": "Selecting multiple elements at once"
+			},
+			"iterating": {
+				"name": "Iterating through an array"
+			},
+			"while": {
+				"name": "Running a “while” loop"
+			},
+			"while-broken": {
+				"name": "Broken loop, example 1"
+			},
+			"while-broken2": {
+				"name": "Broken loop, example 2"
+			},
+			"while-broken3": {
+				"name": "Broken loop, example 3"
+			},
+			"for": {
+				"name": "Running a “for” loop"
+			},
+			"foreach": {
+				"name": "Running a “forEach” loop"
+			},
+			"foreach2": {
+				"name": "Another “forEach” example"
+			},
+			"choosing-loops": {
+				"name": "What kind of loop should I use?"
+			},
+			"fun": {
+				"name": "Fun with loops!"
+			},
+			"writing-html": {
+				"name": "Writing HTML inside a loop"
+			},
+			"more-fun": {
+				"name": "Even more loop fun!"
+			},
+			"together": {
+				"name": "Let’s solve something together"
+			},
+			"together-answer": {
+				"name": "Let’s solve something together [answer]"
+			},
+			"challenge": {
+				"name": "Weekly challenge"
+			}
+		},
+		"active": true
 	}
 }

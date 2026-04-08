@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="greeting">Yo</div>
+	<div class="greeting">Hello</div>
+	<div class="greeting">What’s up</div>
+	<div class="greeting">How’s it going</div>
+	<div class="greeting">Howdy</div>
+	<div class="greeting">Bonjour</div>
+	<div class="greeting">Aloha</div>
+	<div class="greeting">Hola</div>
+
+	<script>
+		let allGreetings = document.querySelectorAll('.greeting');
+
+		let index=0;
+		while (index > allGreetings.length) {
+			let currentGreeting = allGreetings[index];
+			currentGreeting.style.fontSize = Math.random()*100 + "px";
+			index++;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<script>
+		let r = 255;
+		let g = 255;
+		let b = 255;
+
+		// We can combine strings with +
+		let rgb1 = "rgb(" + r + ", " + g + ", " + b + ")";
+
+		console.log(rgb1);
+
+		// This is called a TEMPLATE LITERAL
+		// Or, a STRING TEMPLATE
+		// We use the back tick symbol (top-left of your keyboard) instead of quotes ` `
+		// Then, we can insert variables using ${}
+		// Inside of the brackets gets interpreted as raw code
+		
+		let rgb2 = `rgb(${r}, ${g}, ${b})`;
+		
+		console.log(rgb2);
+		
+	</script>
+</body>
+</html>

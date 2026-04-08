@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="greeting">Yo</div>
+	<div class="greeting">Hello</div>
+	<div class="greeting">What’s up</div>
+	<div class="greeting">How’s it going</div>
+	<div class="greeting">Howdy</div>
+	<div class="greeting">Bonjour</div>
+	<div class="greeting">Aloha</div>
+	<div class="greeting">Hola</div>
+
+	<script>
+		let allGreetings = document.querySelectorAll('.greeting');
+
+		allGreetings.forEach(function(item) {
+			item.style.fontSize = Math.random()*100 + "px";
+		})
+
+		// A “forEach” loop is just like the previous loops
+		// Except, it runs through every item of the array in order exactly once
+		// It takes an anonymous function, where the arguments/input are the item in the array
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="greeting">Yo</div>
+	<div class="greeting">Hello</div>
+	<div class="greeting">What’s up</div>
+	<div class="greeting">How’s it going</div>
+	<div class="greeting">Howdy</div>
+	<div class="greeting">Bonjour</div>
+	<div class="greeting">Aloha</div>
+	<div class="greeting">Hola</div>
+
+	<script>
+		let allGreetings = document.querySelectorAll('.greeting');
+
+		let index=0;
+		while (index < allGreetings.length) {
+			let currentGreeting = allGreetings[index];
+			currentGreeting.style.fontSize = Math.random()*100 + "px";
+			index++;
+		}
+
+		// When does this loop end?
+		// - The LOOP CONDITION determines when a loop stops.
+		// - If the condition is true, the loop keeps on running.
+		// - If it changes to false, the loop stops.
+
+		// What happens if we have an infinite loop?
+		// - Your code breaks!
+		// - We need to make sure that the loop ends at some point.
+	</script>
+</body>
+</html>

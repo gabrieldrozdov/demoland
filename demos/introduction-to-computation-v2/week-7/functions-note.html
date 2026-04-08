@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<script>
+		// Normal function notation
+		function doSomething() {
+			console.log('Hello world!');
+		}
+
+		// Run a function by saying its name with parentheses after it
+		doSomething();
+
+		// THIS IS WRONG
+		// This is just saying the function’s name, NOT running it
+		doSomething
+
+		// Function that returns a value
+		function randoBasic() {
+			let rando = Math.random();
+			return rando*100
+		}
+
+		let rando1 = randoBasic();
+		console.log( rando1 );
+
+		// Function that takes inputs/arguments
+		function randoRange(min, max) {
+			let range = max - min;
+			return Math.random()*range + min
+		}
+
+		let rando2 = randoRange(-10, 10);
+		console.log( rando2 );
+
+		// Arrow notation
+		let randoRounded = (min, max) => {
+			let range = max - min;
+			return Math.round(Math.random()*range + min)
+		}
+
+		let rando3 = randoRounded(-20, 500);
+		console.log( rando3 );
+
+		// When to use arrow notation?
+		// When you’re lazy! (sort of)
+		// This is an anonymous (unnamed) arrow function
+		setTimeout(() => { console.log('hi') }, 1000)
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: end;
+		}
+		.container div {
+			border: 5px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+	</div>
+
+	<script>
+		let container = document.querySelector('.container');
+
+		for (let i=0; i<100; i++) {
+			let randomWidth = Math.random()*100;
+			let randomHeight = Math.random()*100;
+			let newDiv = `<div style="width: ${randomWidth}px; height: ${randomHeight}px;"></div>`;
+			container.innerHTML += newDiv;
+		}
+	</script>
+</body>
+</html>

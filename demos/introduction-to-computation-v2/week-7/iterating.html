@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="greeting">Yo</div>
+	<div class="greeting">Hello</div>
+	<div class="greeting">What’s up</div>
+	<div class="greeting">How’s it going</div>
+	<div class="greeting">Howdy</div>
+	<div class="greeting">Bonjour</div>
+	<div class="greeting">Aloha</div>
+	<div class="greeting">Hola</div>
+
+	<script>
+		// Target all the elements with the class ".greeting"
+		let allGreetings = document.querySelectorAll('.greeting');
+
+		// Iterate through all the elements
+		let index=0;
+		setInterval(function() {
+			let currentGreeting = allGreetings[index];
+			currentGreeting.style.fontSize = Math.random()*100 + "px";
+
+			// Go to the next item, but restart if at the end of the array
+			index++;
+			if (index == allGreetings.length) {
+				index = 0;
+			}
+		}, 1000)
+
+		// THIS IS MESSY
+		// Also, it’s not instantaneous!
+		// We have a better method in our next demo
+	</script>
+</body>
+</html>

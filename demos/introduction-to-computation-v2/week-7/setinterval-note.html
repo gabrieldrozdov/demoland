@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="greeting">Yo</div>
+	<div class="greeting">Hello</div>
+	<div class="greeting">What’s up</div>
+	<div class="greeting">How’s it going</div>
+	<div class="greeting">Howdy</div>
+	<div class="greeting">Bonjour</div>
+	<div class="greeting">Aloha</div>
+	<div class="greeting">Hola</div>
+
+	<script>
+		// ————————————————————————————
+		// METHOD 1: Named function
+		function doSomething() {
+			console.log("I’m doing something!");
+		}
+
+		// REPEATING CODE
+		setInterval(doSomething, 500);
+
+		// DELAYING CODE
+		setTimeout(doSomething, 500);
+
+		// ————————————————————————————
+		// METHOD 2: Anonymous function
+
+		// REPEATING CODE
+		setInterval(function() {
+			console.log("I’m doing something!");
+		}, 500)
+
+		// DELAYING CODE
+		setTimeout(function() {
+			console.log("I’m doing something!");
+		}, 500)
+
+		// ————————————————————————————
+		// METHOD 3: Passing arguments
+		// - We can’t use method 1
+		// - We need to use method 2 with the named function inside of the anonymouse function
+
+		function iNeedArguments(val) {
+			console.log(val);
+		}
+
+		// REPEATING CODE
+		setInterval(function() {
+			iNeedArguments("Success!");
+		}, 500)
+
+		// DELAYING CODE
+		setTimeout(function() {
+			iNeedArguments("Success!");
+		}, 500)
+	</script>
+</body>
+</html>
