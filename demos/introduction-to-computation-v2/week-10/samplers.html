@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			padding: 20px;
+		}
+		button {
+			font-size: 40px;
+			padding: 20px;
+		}
+	</style>
+
+	<!-- import tone at the end of the head element -->
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<button onclick="playSampler()">Play a sound!</button>
+	</div>
+
+	<script>
+		let sampler = new Tone.Sampler({
+			urls: {
+				C4: "/demos/introduction-to-computation-v2/week-10/hello.m4a"
+			}
+		}).toDestination();
+
+		function playSampler() {
+			let randomNote = Math.round(Math.random()*400+200);
+			sampler.triggerAttackRelease(randomNote, "2n");
+		}
+	</script>
+</body>
+</html>

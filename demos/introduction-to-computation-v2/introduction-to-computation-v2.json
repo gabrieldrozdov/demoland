@@ -283,5 +283,45 @@
 			}
 		},
 		"active": true
+	},
+	"week-10": {
+		"title": "Week 10",
+		"desc": "Tone.js!",
+		"demos": {
+			"making-sound": {
+				"name": "Making sound"
+			},
+			"playing-random-sounds": {
+				"name": "Playing random sounds"
+			},
+			"handshake": {
+				"name": "Adding a handshake"
+			},
+			"musical-buttons": {
+				"name": "Making the full page interactive"
+			},
+			"instrument": {
+				"name": "Turning our code into a proper instrument"
+			},
+			"artsy-instrument": {
+				"name": "Using JavaScript to make that instrument artsy"
+			},
+			"synths": {
+				"name": "Synth settings"
+			},
+			"samplers": {
+				"name": "Samplers"
+			},
+			"keyboard": {
+				"name": "Play sounds when typing keys"
+			},
+			"keyboard-easier": {
+				"name": "An easier way to handle the keyboard"
+			},
+			"challenge": {
+				"name": "Weekly challenge"
+			}
+		},
+		"active": true
 	}
 }

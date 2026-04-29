@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<!-- import tone at the end of the head element -->
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<h1>
+		Try typing letters from A to L on your keyboard!
+	</h1>
+
+	<script>
+		let synth = new Tone.PolySynth().toDestination();
+
+		let keyMapping = {
+			"a": "C4",
+			"s": "D4",
+			"d": "E4",
+			"f": "F4",
+			"g": "G4",
+			"h": "A5",
+			"j": "B5",
+			"k": "C5",
+			"l": "D5"
+		}
+
+		document.addEventListener('keypress', (e) => {
+			let note = keyMapping[e.key];
+			synth.triggerAttackRelease(note, "8n");
+		})
+	</script>
+</body>
+</html>

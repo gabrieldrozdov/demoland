@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<!-- import tone at the end of the head element -->
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<h1>
+		Try typing letters from A to L on your keyboard!
+	</h1>
+
+	<script>
+		let synth = new Tone.PolySynth().toDestination();
+
+		document.addEventListener('keypress', (e) => {
+			console.log(e.key);
+
+			if (e.key == "a") {
+				synth.triggerAttackRelease("C4", "8n");
+			} else if (e.key == "s") {
+				synth.triggerAttackRelease("D4", "8n");
+			} else if (e.key == "d") {
+				synth.triggerAttackRelease("E4", "8n");
+			} else if (e.key == "f") {
+				synth.triggerAttackRelease("F4", "8n");
+			} else if (e.key == "g") {
+				synth.triggerAttackRelease("G4", "8n");
+			} else if (e.key == "h") {
+				synth.triggerAttackRelease("A5", "8n");
+			} else if (e.key == "j") {
+				synth.triggerAttackRelease("B5", "8n");
+			} else if (e.key == "i") {
+				synth.triggerAttackRelease("C5", "8n");
+			} else if (e.key == "k") {
+				synth.triggerAttackRelease("D5", "8n");
+			} else if (e.key == "l") {
+				synth.triggerAttackRelease("E5", "8n");
+			}
+		})
+	</script>
+</body>
+</html>

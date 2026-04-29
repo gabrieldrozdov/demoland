@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<style>
+		#handshake {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: black;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			font-family: sans-serif;
+			cursor: pointer;
+			z-index: 99999;
+		}
+	</style>
+
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<!-- our “handshake” div that obscures all other content -->
+	<div id="handshake">
+		CLICK ANYWHERE TO CONTINUE
+	</div>
+
+	<button id="myButton">Click me!</button>
+
+	<script>
+		// wait until the user clicks on the screen before showing content
+		let handshake = document.querySelector("#handshake");
+		handshake.addEventListener('click', function() {
+			Tone.start();
+			handshake.style.display = 'none';
+		});
+		
+		let synth = new Tone.Synth().toDestination();
+
+		let button = document.querySelector('#myButton');
+
+		// run a function when the button is moving over the button (i.e. not on click!!)
+		button.addEventListener('mousemove', playNote);
+
+		let notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
+
+		function playNote() {
+			let randomNote = notes[Math.floor(Math.random()*notes.length)];
+			let randomOctave = Math.round(Math.random()*2+1);
+			let note = randomNote + randomOctave
+			synth.triggerAttackRelease(note, "8n");
+		}
+	</script>
+</body>
+</html>

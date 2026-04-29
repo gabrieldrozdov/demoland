@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<!-- import tone at the end of the head element -->
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<!-- create a button -->
+	<button id="myButton">Click me!</button>
+
+	<script>
+		// create a synth using tone.js
+		let synth = new Tone.Synth().toDestination();
+
+		// target a button
+		let button = document.querySelector('#myButton');
+
+		// make the button run a function when you click it
+		button.addEventListener('click', playNote);
+
+		// play a note using our synth/tone.js!
+		function playNote() {
+			synth.triggerAttackRelease("C4", "8n");
+		}
+	</script>
+</body>
+</html>

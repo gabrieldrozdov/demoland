@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			padding: 20px;
+		}
+		button {
+			font-size: 40px;
+			padding: 20px;
+		}
+	</style>
+
+	<!-- import tone at the end of the head element -->
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<button onclick="playDefault()">Default synth</button>
+		<button onclick="playPoly()">Poly synth</button>
+		<button onclick="playMono()">Mono synth</button>
+		<button onclick="playWaveforms()">Waveforms</button>
+		<button onclick="playADSR()">ADSR envelope</button>
+	</div>
+
+	<script>
+
+		// —————————————————————————————————
+		// DEFAULT SYNTH
+		// can only play one note at a time
+
+		let defaultSynth = new Tone.Synth().toDestination();
+
+		function playDefault() {
+			let randomNote = Math.round(Math.random()*400+200);
+			defaultSynth.triggerAttackRelease(randomNote, "2n");
+		}
+
+		// —————————————————————————————————
+		// POLY SYNTH
+		// can play multiple notes at once
+
+		let polySynth = new Tone.PolySynth().toDestination();
+
+		function playPoly() {
+			let randomNote = Math.round(Math.random()*400+200);
+			polySynth.triggerAttackRelease(randomNote, "2n");
+		}
+
+		// —————————————————————————————————
+		// MONO SYNTH
+		// notes can sliiiiiide
+
+		let monoSynth = new Tone.MonoSynth().toDestination();
+
+		// the portamento property controls the length of the slide in seconds
+		// use the .set({}) function to change the properties of a synth
+
+		monoSynth.set({
+			portamento: .25
+		});
+
+		function playMono() {
+			let randomNote = Math.round(Math.random()*400+200);
+			monoSynth.triggerAttackRelease(randomNote, "2n");
+		}
+
+		// —————————————————————————————————
+		// WAVEFORMS
+
+		let waveformSynth = new Tone.PolySynth().toDestination();
+
+		// possible options:
+		// sine, square, triangle, sawtooth, pwm, pulse
+		// also: add a number at the end to get unique sounds
+
+		waveformSynth.set({
+			oscillator: {
+				type: "square"
+			}
+		});
+
+		function playWaveforms() {
+			let randomNote = Math.round(Math.random()*400+200);
+			waveformSynth.triggerAttackRelease(randomNote, "2n");
+		}
+
+		// —————————————————————————————————
+		// ADSR ENVELOPE
+		// these allow you to adjust how the sound occurs over time:
+		// https://blog.landr.com/adsr-envelopes-infographic/
+
+		// A = ATTACK: how long until the max volume is reached
+		// D = DECAY: how long that volume is held for
+		// S = SUSTAIN: the volume the note is held at until release
+		// R = RELEASE: how long it takes for the note to stop
+
+		let adsrSynth = new Tone.PolySynth().toDestination();
+		
+		adsrSynth.set({
+			envelope: {
+				attack : 1,
+				decay : 0.5,
+				sustain : 0.5,
+				release : 4
+			}
+		});
+
+		function playADSR() {
+			let randomNote = Math.round(Math.random()*400+200);
+			adsrSynth.triggerAttackRelease(randomNote, "1n");
+		}
+	</script>
+</body>
+</html>

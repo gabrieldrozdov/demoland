@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		#handshake {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: black;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			font-family: sans-serif;
+			cursor: pointer;
+			z-index: 99999;
+		}
+		.container {
+			height: 100vh;
+			display: grid;
+			grid-template-columns: repeat(10, 1fr);
+		}
+		button {
+			border: unset;
+			background-color: unset;
+			border-radius: unset;
+			transition: 1.5s;
+		}
+		button:hover {
+			background-color: black;
+			transition: 0s;
+		}
+	</style>
+
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+	
+	<div id="handshake">
+		CLICK ANYWHERE TO CONTINUE
+	</div>
+	
+	<div class="container">
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+		<button class="playButton"></button>
+	</div>
+
+	<script>
+		// wait until the user clicks on the screen before showing content
+		let handshake = document.querySelector("#handshake");
+		handshake.addEventListener('click', function() {
+			Tone.start();
+			handshake.style.display = 'none';
+		});
+
+		// create a synth using tone.js
+		let synth = new Tone.Synth().toDestination();
+
+		// target all buttons
+		let buttons = document.querySelectorAll('.playButton');
+
+		// the note we’re going to start from
+		let currentNote = 100;
+
+		// do something to all the buttons
+		buttons.forEach(function(button) {
+
+			// store the note in this scope
+			// (otherwise, it’ll just play the final value of currentNote and all the buttons will make the same sound)
+			let storedNote = currentNote;
+
+			// when the buttons are hovered, play that note
+			button.addEventListener('mouseenter', function() {
+				synth.triggerAttackRelease(storedNote, "8n");
+			});
+
+			// go up by one note (or octave if needed)
+			currentNote += 10;
+
+		})
+	</script>
+</body>
+</html>

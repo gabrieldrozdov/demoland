@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tone.js Demos!</title>
+
+	<script src="http://unpkg.com/tone"></script>
+</head>
+<body>
+
+	<button id="myButton">Click me!</button>
+
+	<script>
+		let synth = new Tone.Synth().toDestination();
+
+		let button = document.querySelector('#myButton');
+
+		button.addEventListener('click', playNote);
+
+		// an array of all possible notes
+		let notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'];
+
+		function playNote() {
+
+			// select a random note letter
+			let randomNote = notes[Math.floor(Math.random()*notes.length)];
+
+			// select a random octave
+			let randomOctave = Math.round(Math.random()*2+1);
+
+			// combine the two to create a note name
+			let note = randomNote + randomOctave
+
+			// play that note
+			synth.triggerAttackRelease(note, "8n");
+		}
+	</script>
+</body>
+</html>
