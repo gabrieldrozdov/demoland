@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Leaflet!</title>
+
+	<!-- Leaflet’s custom CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	crossorigin=""/>
+
+	<!-- Leaflet’s custom JS -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+	crossorigin=""></script>
+
+	<style>
+		/* START CSS */
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		#map {
+			height: 100dvh;
+		}
+
+		/* END CSS */
+	</style>
+
+</head>
+<body>
+	
+	<!-- The map container element -->
+	<div id="map"></div>
+
+	<script>
+		// START JS
+
+		// Initialize a map with two values:
+		// - An array with lat/long coordinates
+		// - Number for zoom level
+		var map = L.map('map').setView([51.505, -0.09], 13);
+
+		// Load in data from openstreetmap.org
+		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+
+		var marker = L.marker([51.5, -0.09]).addTo(map);
+
+		var circle = L.circle([51.508, -0.11], {
+			color: 'red',
+			fillColor: '#f03',
+			fillOpacity: 0.5,
+			radius: 500
+		}).addTo(map);
+
+		var polygon = L.polygon([
+			[51.509, -0.08],
+			[51.503, -0.06],
+			[51.51, -0.047]
+		]).addTo(map);
+
+		// NEW CODE!
+
+		// Bind popups to the shapes from before
+		marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+		circle.bindPopup("I am a circle.");
+		polygon.bindPopup("I am a polygon.");
+
+		// Create a popup variable attached to our map from before
+		var popup = L.popup();
+
+		// Function to show coordinates when somewhere is clicked
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("You clicked the map at " + e.latlng.toString())
+				.openOn(map);
+		}
+
+		// Run function when map is clicked
+		map.on('click', onMapClick);
+
+		// END JS
+	</script>
+
+</body>
+</html>

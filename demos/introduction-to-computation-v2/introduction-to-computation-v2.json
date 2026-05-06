@@ -206,7 +206,7 @@
 				"name": "Getting percentages from event properties"
 			},
 			"challenge": {
-				"name": "Weekly Challenge"
+				"name": "Weekly challenge"
 			}
 		},
 		"active": true
@@ -317,6 +317,34 @@
 			},
 			"keyboard-easier": {
 				"name": "An easier way to handle the keyboard"
+			},
+			"challenge": {
+				"name": "Weekly challenge"
+			}
+		},
+		"active": true
+	},
+	"week-11": {
+		"title": "Week 11",
+		"desc": "Using Leaflet for maps!",
+		"demos": {
+			"loading-the-library": {
+				"name": "Loading the library"
+			},
+			"drawing-markers": {
+				"name": "Drawing markers"
+			},
+			"random-markers": {
+				"name": "Random markers"
+			},
+			"random-shapes": {
+				"name": "Random shapes"
+			},
+			"interactivity": {
+				"name": "Adding interactivity"
+			},
+			"styling-popups": {
+				"name": "Styling popups"
 			},
 			"challenge": {
 				"name": "Weekly challenge"

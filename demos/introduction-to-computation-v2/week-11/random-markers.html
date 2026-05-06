@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Leaflet!</title>
+
+	<!-- Leaflet’s custom CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	crossorigin=""/>
+
+	<!-- Leaflet’s custom JS -->
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+	crossorigin=""></script>
+
+	<style>
+		/* START CSS */
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		#map {
+			height: 100dvh;
+		}
+
+		/* END CSS */
+	</style>
+
+</head>
+<body>
+	
+	<!-- The map container element -->
+	<div id="map"></div>
+
+	<script>
+		// START JS
+
+		// Initialize a map with two values:
+		// - An array with lat/long coordinates
+		// - Number for zoom level
+		var map = L.map('map').setView([0, 0], 1);
+
+		// Load in data from openstreetmap.org
+		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+
+		// NEW CODE!
+
+		// Helper function to get random number in range
+		function randomFloat(min, max) {
+			let range = max-min;
+			return Math.random()*range + min
+		}
+
+		// Create 100 markers at random locations
+		for (let i=0; i<100; i++) {
+
+			// random position
+			let lat = randomFloat(-80, 80);
+			let long = randomFloat(-80, 80);
+
+			// add to map!
+			var marker = L.marker([lat, long]).addTo(map);
+		}
+
+		// END JS
+	</script>
+
+</body>
+</html>
