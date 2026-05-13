@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js!</title>
+	<style>
+		/* Some basic CSS to fill up the screen */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		#canvas-wrap {
+			display: block;
+			width: 100vw;
+			height: 100dvh;
+		}
+		canvas {
+			display: block;
+			width: 100vw;
+			height: 100dvh;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Our Three.js canvas container -->
+	<div id="canvas-wrap"></div>
+
+	<!-- Importing Three.js -->
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+	<script>
+		// Target our container
+		let canvasWrap = document.querySelector('#canvas-wrap');
+		let W = canvasWrap.clientWidth;
+		let H = canvasWrap.clientHeight;
+
+		// 1. Scene
+		let scene = new THREE.Scene();
+
+		// 2. Camera
+		let camera = new THREE.PerspectiveCamera(75, W / H, 0.1, 1000);
+		camera.position.z = 50;
+
+		// 3. Renderer
+		let renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(W, H);
+		renderer.setClearColor(0x111111); // background color
+		canvasWrap.appendChild(renderer.domElement);
+
+		// 4. Add a shape
+		let geometry = new THREE.SphereGeometry( 15, 32, 16 ); // radius, widthSegments, heightSegments
+		let material = new THREE.MeshStandardMaterial({ color: 0x000000 }); // shape color
+		let sphere = new THREE.Mesh( geometry, material );
+		scene.add( sphere );
+
+		// 5. Add lights
+		function addLights() {
+
+			// (Claude code help - remove all existing lights)
+			let lights = scene.children.filter(child => child instanceof THREE.Light);
+			lights.forEach(light => scene.remove(light));
+
+			// Add a whole bunch more lights with randomized values
+			for (let i=0; i<10; i++) {
+				let colorR = Math.round(Math.random()*255);
+				let colorG = Math.round(Math.random()*255);
+				let colorB = Math.round(Math.random()*255);
+				let color = new THREE.Color(`rgb(${colorR}, ${colorG}, ${colorB})`);
+
+				let intensity = Math.random()*100;
+				
+				let posX = Math.random()*20-10;
+				let posY = Math.random()*20-10;
+				let posZ = Math.random()*20-10;
+
+				let light = new THREE.DirectionalLight(color, intensity);
+				light.position.set(posX, posY, posZ);
+				scene.add(light);
+
+				// (Claude code help - storing the position data for each light)
+				light.userData.radius = Math.random() * 20 + 5;
+				light.userData.speed  = Math.random() * 2 + 0.5;
+				light.userData.offset = Math.random() * Math.PI * 2;
+				light.userData.yOffset = Math.random() * 10 - 5;
+			}
+		}
+		addLights();
+
+		// 6. Render the scene repeatedly and move the lights around!
+		const clock = new THREE.Clock();
+		function animate() {
+			requestAnimationFrame(animate);
+
+			const t = clock.getElapsedTime();
+    
+			let lights = scene.children.filter(child => child instanceof THREE.Light);
+			lights.forEach(light => {
+				light.position.x = Math.cos(t * light.userData.speed + light.userData.offset) * light.userData.radius;
+				light.position.z = Math.sin(t * light.userData.speed + light.userData.offset) * light.userData.radius;
+				light.position.y = Math.sin(t * 0.5 + light.userData.offset) * 5 + light.userData.yOffset;
+			});
+
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		// 7. Randomize lights on click
+		window.addEventListener('click', addLights);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js – 00d: The Animation Loop</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #111;
+			color: #ddd;
+			font-family: monospace;
+			display: flex;
+			height: 100vh;
+		}
+
+		#panel {
+			width: 380px;
+			min-width: 380px;
+			padding: 28px 24px;
+			overflow-y: auto;
+			border-right: 1px solid #333;
+			font-size: 13px;
+			line-height: 1.8;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 16px;
+			margin-bottom: 18px;
+		}
+
+		h2 {
+			color: #fbbf24;
+			font-size: 13px;
+			margin: 20px 0 6px;
+		}
+
+		p {
+			color: #bbb;
+			margin-bottom: 8px;
+		}
+
+		pre {
+			background: #1e1e1e;
+			padding: 10px 12px;
+			border-radius: 4px;
+			white-space: pre-wrap;
+			color: #7dd3fc;
+			font-size: 12px;
+			border-left: 3px solid #3b82f6;
+			margin-bottom: 8px;
+		}
+
+		.comment {
+			color: #6b7280;
+		}
+
+		.hi {
+			color: #f472b6;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid #2a2a2a;
+			margin: 20px 0;
+		}
+
+		.stat {
+			color: #6ee7b7;
+		}
+
+		button {
+			background: #1d4ed8;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			padding: 7px 14px;
+			font-family: monospace;
+			font-size: 12px;
+			cursor: pointer;
+			margin-right: 8px;
+			margin-top: 12px;
+		}
+
+		button:hover {
+			background: #2563eb;
+		}
+
+		button.stop {
+			background: #b91c1c;
+		}
+
+		button.stop:hover {
+			background: #dc2626;
+		}
+
+		#canvas-wrap {
+			flex: 1;
+			position: relative;
+		}
+
+		#counter {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+			color: #6ee7b7;
+			font-size: 13px;
+			line-height: 1.8;
+			background: rgba(0, 0, 0, 0.6);
+			padding: 10px 14px;
+			border-radius: 6px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="panel">
+		<h1>The Animation Loop</h1>
+
+		<p>A single <code>renderer.render()</code> draws one still frame. To animate, you need to call it repeatedly — once per frame, ~60 times per second.</p>
+
+		<h2>requestAnimationFrame</h2>
+		<p>The browser provides <code>requestAnimationFrame</code> (rAF) for this. It calls your function before the next screen repaint, perfectly in sync with the display's refresh rate.</p>
+
+		<pre><span class="comment">// The loop calls itself recursively:</span>
+function animate() {
+  <span class="hi">requestAnimationFrame(animate);</span> <span class="comment">// schedule next frame</span>
+
+  <span class="comment">// Update your scene here:</span>
+  cube.rotation.y += 0.01;
+
+  <span class="comment">// Draw the frame:</span>
+  renderer.render(scene, camera);
+}
+
+animate(); <span class="comment">// kick it off once</span></pre>
+
+		<hr>
+
+		<h2>Why not setInterval?</h2>
+		<p><code>setInterval</code> fires on a fixed clock, even when the tab is hidden or the GPU is busy. rAF pauses when the tab isn't visible (saving battery) and syncs to the actual display framerate.</p>
+
+		<hr>
+
+		<h2>The Clock</h2>
+		<p>For smooth, framerate-independent movement, use <code>THREE.Clock</code> instead of counting frames. It gives you elapsed time in seconds.</p>
+
+		<pre>const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime(); <span class="comment">// seconds since start</span>
+
+  <span class="comment">// Smooth sine wave regardless of framerate:</span>
+  cube.position.y = Math.sin(t * 2);
+
+  renderer.render(scene, camera);
+}</pre>
+
+		<hr>
+
+		<h2>Controls</h2>
+		<button id="btnStop">⏸ Pause loop</button>
+		<button id="btnStep">⏭ Step one frame</button>
+
+		<p style="margin-top:12px;">Watch the frame counter →<br>
+			Pausing shows that without the loop, nothing moves.</p>
+	</div>
+
+	<div id="canvas-wrap">
+		<div id="counter">
+			Frame: <span id="frameNum" class="stat">0</span><br>
+			Elapsed: <span id="elapsed" class="stat">0.00</span>s<br>
+			Loop: <span id="loopState" class="stat">running</span>
+		</div>
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		const wrap = document.getElementById('canvas-wrap');
+		const scene = new THREE.Scene();
+		scene.background = new THREE.Color(0x111111);
+
+		const camera = new THREE.PerspectiveCamera(60, wrap.clientWidth / wrap.clientHeight, 0.1, 100);
+		camera.position.set(0, 0, 5);
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+		wrap.appendChild(renderer.domElement);
+
+		// Lights
+		scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+		const dl = new THREE.DirectionalLight(0xffffff, 2);
+		dl.position.set(3, 4, 5);
+		scene.add(dl);
+
+		// Object
+		const cube = new THREE.Mesh(
+			new THREE.BoxGeometry(1.5, 1.5, 1.5),
+			new THREE.MeshStandardMaterial({ color: 0x3b82f6 })
+		);
+		scene.add(cube);
+
+		// A second object to show independent motion
+		const torus = new THREE.Mesh(
+			new THREE.TorusGeometry(2.2, 0.08, 8, 60),
+			new THREE.MeshBasicMaterial({ color: 0x6ee7b7, wireframe: false })
+		);
+		scene.add(torus);
+
+		const clock = new THREE.Clock();
+		let running = true;
+		let frameCount = 0;
+
+		const frameEl = document.getElementById('frameNum');
+		const elapsedEl = document.getElementById('elapsed');
+		const stateEl = document.getElementById('loopState');
+
+		function drawFrame() {
+			const t = clock.getElapsedTime();
+
+			// Rotation uses elapsed time — stays smooth at any fps
+			cube.rotation.y = t * 1.0;
+			cube.rotation.x = t * 0.4;
+			cube.position.y = Math.sin(t * 1.5) * 0.5;
+			torus.rotation.z = t * 0.3;
+
+			renderer.render(scene, camera);
+
+			frameCount++;
+			frameEl.textContent = frameCount;
+			elapsedEl.textContent = t.toFixed(2);
+		}
+
+		function animate() {
+			if (!running) return;
+			requestAnimationFrame(animate);
+			drawFrame();
+		}
+		animate();
+
+		document.getElementById('btnStop').addEventListener('click', function () {
+			running = !running;
+			if (running) {
+				clock.start();
+				animate();
+				this.textContent = '⏸ Pause loop';
+				this.classList.remove('stop');
+				stateEl.textContent = 'running';
+			} else {
+				this.textContent = '▶ Resume loop';
+				this.classList.add('stop');
+				stateEl.textContent = 'paused';
+			}
+		});
+
+		document.getElementById('btnStep').addEventListener('click', () => {
+			drawFrame(); // one frame manually
+		});
+
+		window.addEventListener('resize', () => {
+			camera.aspect = wrap.clientWidth / wrap.clientHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(wrap.clientWidth, wrap.clientHeight);
+		});
+	</script>
+
+</body>
+
+</html>

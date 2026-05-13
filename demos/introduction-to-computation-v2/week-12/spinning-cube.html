@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js Demo 1 – Spinning Cube</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #0a0a0f;
+			overflow: hidden;
+			font-family: monospace;
+		}
+
+		canvas {
+			display: block;
+		}
+
+		#info {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			color: #7fefbd;
+			font-size: 13px;
+			line-height: 1.8;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 12px 16px;
+			border-radius: 8px;
+			border: 1px solid #7fefbd44;
+		}
+
+		#info h2 {
+			color: #fff;
+			margin-bottom: 6px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<h2>Demo 1 – Spinning Cube</h2>
+		Try changing the variables!<br>
+		↑ CUBE_COLOR, CUBE_SIZE<br>
+		↑ SPIN_X, SPIN_Y, SPIN_Z<br>
+		↑ WIREFRAME
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		// ============================================================
+		//  🎛️  TWEAK THESE VARIABLES!
+		// ============================================================
+		const CUBE_SIZE = 2;          // How big is the cube?
+		const CUBE_COLOR = 0xff6b35;   // Hex color (try 0x00ffcc or 0xff0000)
+		const WIREFRAME = false;      // true = show edges only
+
+		const SPIN_X = 0.005;           // Rotation speed around X axis
+		const SPIN_Y = 0.01;            // Rotation speed around Y axis
+		const SPIN_Z = 0.002;           // Rotation speed around Z axis
+
+		const BG_COLOR = 0x0a0a0f;   // Background color
+		const FOG_DENSITY = 0.05;       // Fog thickness (0 = none)
+		// ============================================================
+
+		const scene = new THREE.Scene();
+		scene.background = new THREE.Color(BG_COLOR);
+		scene.fog = new THREE.FogExp2(BG_COLOR, FOG_DENSITY);
+
+		const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 100);
+		camera.position.set(0, 0, 6);
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(innerWidth, innerHeight);
+		renderer.setPixelRatio(devicePixelRatio);
+		document.body.appendChild(renderer.domElement);
+
+		// Geometry + Material + Mesh
+		const geometry = new THREE.BoxGeometry(CUBE_SIZE, CUBE_SIZE, CUBE_SIZE);
+		const material = new THREE.MeshStandardMaterial({ color: CUBE_COLOR, wireframe: WIREFRAME });
+		const cube = new THREE.Mesh(geometry, material);
+		scene.add(cube);
+
+		// Lights
+		const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+		scene.add(ambient);
+
+		const point = new THREE.PointLight(0xffffff, 80);
+		point.position.set(5, 5, 5);
+		scene.add(point);
+
+		// Animation loop
+		function animate() {
+			requestAnimationFrame(animate);
+			cube.rotation.x += SPIN_X;
+			cube.rotation.y += SPIN_Y;
+			cube.rotation.z += SPIN_Z;
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			camera.aspect = innerWidth / innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(innerWidth, innerHeight);
+		});
+	</script>
+</body>
+
+</html>

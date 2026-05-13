@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js!</title>
+	<style>
+		/* Some basic CSS to fill up the screen */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		#canvas-wrap {
+			display: block;
+			width: 100vw;
+			height: 100dvh;
+		}
+		canvas {
+			display: block;
+			width: 100vw;
+			height: 100dvh;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- Our Three.js canvas container -->
+	<div id="canvas-wrap"></div>
+
+	<!-- Importing Three.js -->
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+	<script>
+		// Target our container
+		let canvasWrap = document.querySelector('#canvas-wrap');
+		let W = canvasWrap.clientWidth;
+		let H = canvasWrap.clientHeight;
+
+		// 1. Scene
+		let scene = new THREE.Scene();
+
+		// 2. Camera
+		let camera = new THREE.PerspectiveCamera(75, W / H, 0.1, 1000);
+		camera.position.z = 50;
+
+		// 3. Renderer
+		let renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(W, H);
+		renderer.setClearColor(0x111111); // background color
+		canvasWrap.appendChild(renderer.domElement);
+
+		// 4. Add a shape
+		let geometry = new THREE.SphereGeometry( 15, 32, 16 ); // radius, widthSegments, heightSegments
+		let material = new THREE.MeshStandardMaterial({ color: 0xffff00 }); // shape color
+		let sphere = new THREE.Mesh( geometry, material );
+		scene.add( sphere );
+
+		// 5. Add lights (try changing this to a PointLight!)
+		let light = new THREE.DirectionalLight(0xffffff, 10); // color and intensity
+		light.position.set(20, 2, 5); // position (x, y, z)
+		scene.add(light);
+
+		let ambientLight = new THREE.AmbientLight(0xff00ff, 0.5); // color and intensity
+		scene.add(ambientLight);
+
+		// 6. Render the scene
+		renderer.render(scene, camera);
+	</script>
+
+</body>
+</html>

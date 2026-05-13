@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js Demo 3 – Orbiting Spheres</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #060612;
+			overflow: hidden;
+			font-family: monospace;
+		}
+
+		canvas {
+			display: block;
+		}
+
+		#info {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			color: #fbbf24;
+			font-size: 13px;
+			line-height: 1.8;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 12px 16px;
+			border-radius: 8px;
+			border: 1px solid #fbbf2444;
+		}
+
+		#info h2 {
+			color: #fff;
+			margin-bottom: 6px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<h2>Demo 3 – Orbiting Spheres</h2>
+		Try changing the variables!<br>
+		↑ PLANETS array – add more!<br>
+		↑ SUN_SIZE, ORBIT_TILT<br>
+		↑ SHOW_ORBIT_RINGS
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		// ============================================================
+		//  🎛️  TWEAK THESE VARIABLES!
+		// ============================================================
+		const SUN_SIZE = 1.5;    // Radius of the central sun
+		const SUN_COLOR = 0xffdd44; // Sun color
+		const ORBIT_TILT = 0.3;   // Overall tilt of the system (radians)
+		const SHOW_ORBIT_RINGS = true;  // Draw circle guides for orbits?
+
+		// Each planet: { name, radius, distance, speed, color }
+		// distance = orbit radius from center
+		// speed    = how fast it orbits (radians per frame)
+		const PLANETS = [
+			{ name: 'Mercury', radius: 0.2, distance: 3, speed: 0.04, color: 0xaaaaaa },
+			{ name: 'Venus', radius: 0.45, distance: 5, speed: 0.025, color: 0xe8a263 },
+			{ name: 'Earth', radius: 0.5, distance: 7.5, speed: 0.018, color: 0x3fa7d6 },
+			{ name: 'Mars', radius: 0.3, distance: 10, speed: 0.012, color: 0xdd4a2f },
+		];
+		// ============================================================
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 500);
+		camera.position.set(0, 10, 20);
+		camera.lookAt(0, 0, 0);
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(innerWidth, innerHeight);
+		renderer.setPixelRatio(devicePixelRatio);
+		document.body.appendChild(renderer.domElement);
+
+		// Background stars
+		const starGeo = new THREE.BufferGeometry();
+		const starPos = new Float32Array(6000);
+		for (let i = 0; i < 6000; i++) starPos[i] = (Math.random() - 0.5) * 400;
+		starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+		scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.3 })));
+
+		// Sun
+		const sunMesh = new THREE.Mesh(
+			new THREE.SphereGeometry(SUN_SIZE, 32, 32),
+			new THREE.MeshStandardMaterial({ color: SUN_COLOR, emissive: SUN_COLOR, emissiveIntensity: 1 })
+		);
+		scene.add(sunMesh);
+
+		// Sun light
+		scene.add(new THREE.PointLight(0xffffff, 200, 200));
+		scene.add(new THREE.AmbientLight(0xffffff, 0.05));
+
+		// System pivot for orbit tilt
+		const system = new THREE.Group();
+		system.rotation.x = ORBIT_TILT;
+		scene.add(system);
+
+		// Create planets + optional orbit rings
+		const planetMeshes = PLANETS.map(p => {
+			const mesh = new THREE.Mesh(
+				new THREE.SphereGeometry(p.radius, 24, 24),
+				new THREE.MeshStandardMaterial({ color: p.color })
+			);
+			mesh.position.x = p.distance;
+
+			const pivot = new THREE.Group(); // each planet orbits via its own pivot
+			pivot.add(mesh);
+			system.add(pivot);
+
+			if (SHOW_ORBIT_RINGS) {
+				const ring = new THREE.LineLoop(
+					new THREE.BufferGeometry().setFromPoints(
+						Array.from({ length: 64 }, (_, i) => {
+							const a = (i / 64) * Math.PI * 2;
+							return new THREE.Vector3(Math.cos(a) * p.distance, 0, Math.sin(a) * p.distance);
+						})
+					),
+					new THREE.LineBasicMaterial({ color: 0xffffff, opacity: 0.5, transparent: true })
+				);
+				system.add(ring);
+			}
+
+			return { mesh, pivot, speed: p.speed, angle: Math.random() * Math.PI * 2 };
+		});
+
+		function animate() {
+			requestAnimationFrame(animate);
+			sunMesh.rotation.y += 0.003;
+			planetMeshes.forEach(p => {
+				p.angle += p.speed;
+				p.pivot.rotation.y = p.angle;
+				p.mesh.rotation.y += 0.02; // spin on own axis
+			});
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			camera.aspect = innerWidth / innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(innerWidth, innerHeight);
+		});
+	</script>
+</body>
+
+</html>

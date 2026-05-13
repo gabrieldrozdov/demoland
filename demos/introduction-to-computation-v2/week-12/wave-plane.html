@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js Demo 4 – Wave Plane</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #020c1b;
+			overflow: hidden;
+			font-family: monospace;
+		}
+
+		canvas {
+			display: block;
+		}
+
+		#info {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			color: #38bdf8;
+			font-size: 13px;
+			line-height: 1.8;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 12px 16px;
+			border-radius: 8px;
+			border: 1px solid #38bdf844;
+		}
+
+		#info h2 {
+			color: #fff;
+			margin-bottom: 6px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<h2>Demo 4 – Wave Plane</h2>
+		Try changing the variables!<br>
+		↑ WAVE_HEIGHT, WAVE_SPEED<br>
+		↑ GRID_SIZE, SEGMENTS<br>
+		↑ WAVE_FREQUENCY, COLOR
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		// ============================================================
+		//  🎛️  TWEAK THESE VARIABLES!
+		// ============================================================
+		const GRID_SIZE = 20;      // Width and depth of the plane
+		const SEGMENTS = 60;      // Vertex resolution (more = smoother waves)
+		const WAVE_HEIGHT = 1.2;     // Maximum height of a wave crest
+		const WAVE_FREQUENCY = 2.0;     // How many waves fit across the plane
+		const WAVE_SPEED = 1.5;     // How fast the waves travel
+
+		const WIREFRAME = true;    // Show mesh wireframe?
+		const PLANE_COLOR = 0x38bdf8; // Color of the plane
+		// ============================================================
+
+		const scene = new THREE.Scene();
+		scene.fog = new THREE.Fog(0x020c1b, 20, 60);
+
+		const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 200);
+		camera.position.set(0, 8, 14);
+		camera.lookAt(0, 0, 0);
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(innerWidth, innerHeight);
+		renderer.setPixelRatio(devicePixelRatio);
+		renderer.setClearColor(0x020c1b);
+		document.body.appendChild(renderer.domElement);
+
+		// The plane geometry — we'll animate its vertices every frame
+		const geometry = new THREE.PlaneGeometry(GRID_SIZE, GRID_SIZE, SEGMENTS, SEGMENTS);
+		geometry.rotateX(-Math.PI / 2); // Lay it flat
+
+		const material = new THREE.MeshStandardMaterial({
+			color: PLANE_COLOR,
+			wireframe: WIREFRAME,
+			side: THREE.DoubleSide,
+		});
+
+		const plane = new THREE.Mesh(geometry, material);
+		scene.add(plane);
+
+		// Lights
+		scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+		const dirLight = new THREE.DirectionalLight(0x88ccff, 2);
+		dirLight.position.set(5, 10, 5);
+		scene.add(dirLight);
+
+		// Store original vertex positions (before wave deformation)
+		const posAttr = geometry.attributes.position;
+		const origPositions = new Float32Array(posAttr.array);
+		let clock = 0;
+
+		function animate() {
+			requestAnimationFrame(animate);
+			clock += 0.016; // ~60fps time step
+
+			// Move each vertex up/down using a sine wave based on X+Z distance
+			for (let i = 0; i < posAttr.count; i++) {
+				const x = origPositions[i * 3];
+				const z = origPositions[i * 3 + 2];
+				const dist = Math.sqrt(x * x + z * z);
+				posAttr.setY(i, Math.sin(dist * WAVE_FREQUENCY - clock * WAVE_SPEED) * WAVE_HEIGHT);
+			}
+			posAttr.needsUpdate = true;
+			geometry.computeVertexNormals();
+
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			camera.aspect = innerWidth / innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(innerWidth, innerHeight);
+		});
+	</script>
+</body>
+
+</html>

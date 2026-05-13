@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js Demo 5 – Mouse Interaction</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #0d0d0d;
+			overflow: hidden;
+			font-family: monospace;
+			cursor: crosshair;
+		}
+
+		canvas {
+			display: block;
+		}
+
+		#info {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			color: #f472b6;
+			font-size: 13px;
+			line-height: 1.8;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 12px 16px;
+			border-radius: 8px;
+			border: 1px solid #f472b644;
+		}
+
+		#info h2 {
+			color: #fff;
+			margin-bottom: 6px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<h2>Demo 5 – Mouse Interaction</h2>
+		Move your mouse! Click to burst!<br>
+		↑ SHAPE_COUNT, BURST_FORCE<br>
+		↑ FLOAT_SPEED, COLORS<br>
+		↑ Shape types in SHAPE_GEO
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		// ============================================================
+		//  🎛️  TWEAK THESE VARIABLES!
+		// ============================================================
+		const SHAPE_COUNT = 30;         // How many floating objects?
+		const SPREAD = 10;         // How spread out are they?
+		const FLOAT_SPEED = 0.004;      // How fast do they drift up/down?
+		const MOUSE_FORCE = 0.04;       // How strongly does the mouse pull?
+		const BURST_FORCE = 0.3;        // Click explosion force
+		const COLORS = [                 // Pick from these colors randomly
+			0xf472b6, 0xfbbf24, 0x34d399, 0x60a5fa, 0xa78bfa, 0xfb7185
+		];
+		// ============================================================
+
+		const scene = new THREE.Scene();
+		scene.fog = new THREE.FogExp2(0x0d0d0d, 0.04);
+
+		const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+		camera.position.z = 18;
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(innerWidth, innerHeight);
+		renderer.setPixelRatio(devicePixelRatio);
+		document.body.appendChild(renderer.domElement);
+
+		scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+		const pt = new THREE.PointLight(0xffffff, 100);
+		pt.position.set(0, 10, 10);
+		scene.add(pt);
+
+		// Available geometries — students can add more!
+		const SHAPE_GEO = [
+			() => new THREE.IcosahedronGeometry(0.6, 0),
+			() => new THREE.OctahedronGeometry(0.7, 0),
+			() => new THREE.TetrahedronGeometry(0.7, 0),
+			() => new THREE.BoxGeometry(0.9, 0.9, 0.9),
+			() => new THREE.TorusGeometry(0.5, 0.2, 8, 16),
+		];
+
+		// Create shapes with random positions and velocities
+		const shapes = Array.from({ length: SHAPE_COUNT }, () => {
+			const geo = SHAPE_GEO[Math.floor(Math.random() * SHAPE_GEO.length)]();
+			const mat = new THREE.MeshStandardMaterial({
+				color: COLORS[Math.floor(Math.random() * COLORS.length)],
+				flatShading: true,
+			});
+			const mesh = new THREE.Mesh(geo, mat);
+			mesh.position.set(
+				(Math.random() - 0.5) * SPREAD * 2,
+				(Math.random() - 0.5) * SPREAD * 1.5,
+				(Math.random() - 0.5) * SPREAD
+			);
+			mesh.userData.vel = new THREE.Vector3(0, (Math.random() - 0.5) * FLOAT_SPEED * 2, 0);
+			mesh.userData.spin = new THREE.Vector3(
+				(Math.random() - 0.5) * 0.02,
+				(Math.random() - 0.5) * 0.02,
+				0
+			);
+			mesh.userData.origin = mesh.position.clone();
+			scene.add(mesh);
+			return mesh;
+		});
+
+		// Convert mouse screen coords → 3D world point on z=0 plane
+		const mouse3D = new THREE.Vector3();
+		const raycaster = new THREE.Raycaster();
+		const mouseNDC = new THREE.Vector2();
+
+		function toWorld(e) {
+			mouseNDC.set(
+				(e.clientX / innerWidth) * 2 - 1,
+				(e.clientY / innerHeight) * -2 + 1
+			);
+			raycaster.setFromCamera(mouseNDC, camera);
+			const t = -camera.position.z / raycaster.ray.direction.z;
+			mouse3D.copy(raycaster.ray.direction).multiplyScalar(t).add(camera.position);
+		}
+
+		window.addEventListener('mousemove', toWorld);
+
+		window.addEventListener('click', e => {
+			toWorld(e);
+			shapes.forEach(s => {
+				const dir = s.position.clone().sub(mouse3D).normalize();
+				s.userData.vel.addScaledVector(dir, BURST_FORCE);
+			});
+		});
+
+		let t = 0;
+		function animate() {
+			requestAnimationFrame(animate);
+			t += 0.016;
+
+			shapes.forEach(s => {
+				// Float: gentle bobbing + drift toward mouse
+				const toMouse = mouse3D.clone().sub(s.position);
+				s.userData.vel.addScaledVector(toMouse, MOUSE_FORCE * 0.001);
+				s.userData.vel.y += Math.sin(t + s.position.x) * FLOAT_SPEED * 0.5;
+				s.userData.vel.multiplyScalar(0.95); // damping
+
+				s.position.add(s.userData.vel);
+				s.rotation.x += s.userData.spin.x;
+				s.rotation.y += s.userData.spin.y;
+
+				// Gentle pull back to origin so they don't fly off forever
+				s.position.lerp(s.userData.origin, 0.002);
+			});
+
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			camera.aspect = innerWidth / innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(innerWidth, innerHeight);
+		});
+	</script>
+</body>
+
+</html>

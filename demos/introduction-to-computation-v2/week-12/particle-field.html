@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js Demo 2 – Particle Field</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background: #000;
+			overflow: hidden;
+			font-family: monospace;
+		}
+
+		canvas {
+			display: block;
+		}
+
+		#info {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			color: #a78bfa;
+			font-size: 13px;
+			line-height: 1.8;
+			background: rgba(0, 0, 0, 0.5);
+			padding: 12px 16px;
+			border-radius: 8px;
+			border: 1px solid #a78bfa44;
+		}
+
+		#info h2 {
+			color: #fff;
+			margin-bottom: 6px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+		<h2>Demo 2 – Particle Field</h2>
+		Try changing the variables!<br>
+		↑ PARTICLE_COUNT, SPREAD<br>
+		↑ PARTICLE_SIZE, PARTICLE_COLOR<br>
+		↑ DRIFT_SPEED
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		// ============================================================
+		//  🎛️  TWEAK THESE VARIABLES!
+		// ============================================================
+		const PARTICLE_COUNT = 5000;    // How many particles? (try 500 or 20000)
+		const SPREAD = 30;      // How spread out are they? (radius)
+		const PARTICLE_SIZE = 0.08;    // How big is each dot?
+		const PARTICLE_COLOR = 0xa78bfa; // Color (try 0xffffff or 0x00ffff)
+
+		const DRIFT_SPEED = 0.001;   // How fast does the whole cloud rotate?
+		const MOUSE_PULL = 0.00005; // How much does the mouse tilt the view?
+		// ============================================================
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 200);
+		camera.position.z = 20;
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(innerWidth, innerHeight);
+		renderer.setPixelRatio(devicePixelRatio);
+		document.body.appendChild(renderer.domElement);
+
+		// Build particle positions randomly in a sphere
+		const positions = new Float32Array(PARTICLE_COUNT * 3);
+		for (let i = 0; i < PARTICLE_COUNT; i++) {
+			const theta = Math.random() * Math.PI * 2;
+			const phi = Math.acos(2 * Math.random() - 1);
+			const r = SPREAD * Math.cbrt(Math.random()); // cube root for uniform volume fill
+			positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+			positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+			positions[i * 3 + 2] = r * Math.cos(phi);
+		}
+
+		const geometry = new THREE.BufferGeometry();
+		geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+		const material = new THREE.PointsMaterial({
+			color: PARTICLE_COLOR,
+			size: PARTICLE_SIZE,
+			sizeAttenuation: true,   // farther = smaller
+		});
+
+		const particles = new THREE.Points(geometry, material);
+		scene.add(particles);
+
+		// Track mouse for subtle tilt
+		let mouseX = 0, mouseY = 0;
+		window.addEventListener('mousemove', e => {
+			mouseX = (e.clientX - innerWidth / 2);
+			mouseY = (e.clientY - innerHeight / 2);
+		});
+
+		function animate() {
+			requestAnimationFrame(animate);
+			particles.rotation.y += DRIFT_SPEED;
+			particles.rotation.x += DRIFT_SPEED * 0.4;
+
+			// Gentle mouse tilt
+			camera.rotation.y += (mouseX * MOUSE_PULL - camera.rotation.y) * 0.05;
+			camera.rotation.x += (mouseY * MOUSE_PULL - camera.rotation.x) * 0.05;
+
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			camera.aspect = innerWidth / innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(innerWidth, innerHeight);
+		});
+	</script>
+</body>
+
+</html>

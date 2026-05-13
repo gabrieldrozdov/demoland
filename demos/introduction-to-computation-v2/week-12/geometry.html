@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js – 00c: Geometry + Material = Mesh</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #111;
+			color: #ddd;
+			font-family: monospace;
+			display: flex;
+			height: 100vh;
+		}
+
+		#panel {
+			width: 380px;
+			min-width: 380px;
+			padding: 28px 24px;
+			overflow-y: auto;
+			border-right: 1px solid #333;
+			font-size: 13px;
+			line-height: 1.8;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 16px;
+			margin-bottom: 18px;
+		}
+
+		h2 {
+			color: #fbbf24;
+			font-size: 13px;
+			margin: 20px 0 6px;
+		}
+
+		p {
+			color: #bbb;
+			margin-bottom: 8px;
+		}
+
+		pre {
+			background: #1e1e1e;
+			padding: 10px 12px;
+			border-radius: 4px;
+			white-space: pre-wrap;
+			color: #7dd3fc;
+			font-size: 12px;
+			border-left: 3px solid #3b82f6;
+			margin-bottom: 8px;
+		}
+
+		.comment {
+			color: #6b7280;
+		}
+
+		.highlight {
+			color: #f472b6;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid #2a2a2a;
+			margin: 20px 0;
+		}
+
+		/* Controls */
+		#controls {
+			padding: 0 24px 24px;
+			width: 380px;
+			min-width: 380px;
+			border-right: 1px solid #333;
+			font-size: 12px;
+		}
+
+		label {
+			display: block;
+			margin: 10px 0 3px;
+			color: #aaa;
+		}
+
+		select,
+		input[type=color] {
+			background: #222;
+			border: 1px solid #444;
+			color: #eee;
+			padding: 4px 8px;
+			border-radius: 4px;
+			font-family: monospace;
+		}
+
+		#canvas-wrap {
+			flex: 1;
+		}
+
+		canvas {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div style="display:flex; flex-direction:column; width:380px; min-width:380px; border-right:1px solid #333; overflow-y:auto;">
+		<div style="padding:28px 24px; font-size:13px; line-height:1.8;">
+			<h1>Geometry + Material = Mesh</h1>
+
+			<p>To put a visible object in the scene, you need three things combined:</p>
+
+			<h2>Geometry</h2>
+			<p>The <em>shape</em> — a mathematical description of vertices and faces.</p>
+			<pre>const geo = new THREE.BoxGeometry(
+  1, <span class="comment">// width</span>
+  1, <span class="comment">// height</span>
+  1  <span class="comment">// depth</span>
+);</pre>
+
+			<h2>Material</h2>
+			<p>The <em>surface</em> — how the shape looks (color, shininess, etc.).<br>
+				<code>MeshBasicMaterial</code> ignores lights. <code>MeshStandardMaterial</code> reacts to them.
+			</p>
+			<pre>const mat = new THREE.MeshStandardMaterial({
+  color: 0xff6b35 <span class="comment">// hex color</span>
+});</pre>
+
+			<h2>Mesh</h2>
+			<p>Combining geometry + material into an object you can place in the scene.</p>
+			<pre>const cube = new THREE.Mesh(geo, mat);
+scene.add(cube); <span class="comment">// ← don't forget this!</span></pre>
+
+			<hr>
+
+			<h2>Lights</h2>
+			<p><code>MeshStandardMaterial</code> needs at least one light or the object will appear black.</p>
+			<pre>const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(2, 4, 3);
+scene.add(light);
+
+<span class="comment">// AmbientLight fills in shadows so nothing goes pitch black:</span>
+scene.add(new THREE.AmbientLight(0xffffff, 0.4));</pre>
+
+			<hr>
+
+			<h2>Try the controls →</h2>
+			<p>Change the geometry and material type to see the difference.</p>
+
+			<label>Geometry</label>
+			<select id="geoSelect">
+				<option value="box">BoxGeometry</option>
+				<option value="sphere">SphereGeometry</option>
+				<option value="torus">TorusGeometry</option>
+				<option value="cone">ConeGeometry</option>
+				<option value="cylinder">CylinderGeometry</option>
+			</select>
+
+			<label style="margin-top:14px;">Material type</label>
+			<select id="matSelect">
+				<option value="standard">MeshStandardMaterial (reacts to light)</option>
+				<option value="basic">MeshBasicMaterial (ignores light)</option>
+				<option value="normal">MeshNormalMaterial (shows normals)</option>
+				<option value="wireframe">Wireframe</option>
+			</select>
+
+			<label style="margin-top:14px;">Color</label>
+			<input type="color" id="colorPicker" value="#ff6b35">
+		</div>
+	</div>
+
+	<div id="canvas-wrap" style="flex:1;"></div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		const wrap = document.getElementById('canvas-wrap');
+		const W = () => wrap.clientWidth;
+		const H = () => wrap.clientHeight;
+
+		const scene = new THREE.Scene();
+		scene.background = new THREE.Color(0x111111);
+
+		const camera = new THREE.PerspectiveCamera(60, W() / H(), 0.1, 100);
+		camera.position.set(0, 0.5, 3.5);
+
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(W(), H());
+		wrap.appendChild(renderer.domElement);
+
+		// Lights
+		const dirLight = new THREE.DirectionalLight(0xffffff, 2);
+		dirLight.position.set(2, 4, 3);
+		scene.add(dirLight);
+		scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+		// Current mesh
+		let mesh;
+
+		function buildGeo(type) {
+			switch (type) {
+				case 'box': return new THREE.BoxGeometry(1.5, 1.5, 1.5);
+				case 'sphere': return new THREE.SphereGeometry(1, 32, 32);
+				case 'torus': return new THREE.TorusGeometry(0.8, 0.35, 16, 40);
+				case 'cone': return new THREE.ConeGeometry(1, 1.8, 32);
+				case 'cylinder': return new THREE.CylinderGeometry(0.7, 0.7, 1.8, 32);
+			}
+		}
+
+		function buildMat(type, color) {
+			switch (type) {
+				case 'standard': return new THREE.MeshStandardMaterial({ color });
+				case 'basic': return new THREE.MeshBasicMaterial({ color });
+				case 'normal': return new THREE.MeshNormalMaterial();
+				case 'wireframe': return new THREE.MeshStandardMaterial({ color, wireframe: true });
+			}
+		}
+
+		function rebuild() {
+			if (mesh) scene.remove(mesh);
+			const geo = buildGeo(document.getElementById('geoSelect').value);
+			const hex = parseInt(document.getElementById('colorPicker').value.replace('#', ''), 16);
+			const mat = buildMat(document.getElementById('matSelect').value, hex);
+			mesh = new THREE.Mesh(geo, mat);
+			scene.add(mesh);
+		}
+
+		rebuild();
+		document.getElementById('geoSelect').addEventListener('change', rebuild);
+		document.getElementById('matSelect').addEventListener('change', rebuild);
+		document.getElementById('colorPicker').addEventListener('input', rebuild);
+
+		function animate() {
+			requestAnimationFrame(animate);
+			if (mesh) { mesh.rotation.y += 0.008; mesh.rotation.x += 0.003; }
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			camera.aspect = W() / H();
+			camera.updateProjectionMatrix();
+			renderer.setSize(W(), H());
+		});
+	</script>
+
+</body>
+
+</html>

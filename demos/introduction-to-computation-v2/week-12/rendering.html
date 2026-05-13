@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Three.js – 00b: Scene, Camera, Renderer</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #111;
+			color: #ddd;
+			font-family: monospace;
+			display: flex;
+			height: 100vh;
+		}
+
+		/* Left panel: explanations */
+		#panel {
+			width: 380px;
+			min-width: 380px;
+			padding: 28px 24px;
+			overflow-y: auto;
+			border-right: 1px solid #333;
+			font-size: 13px;
+			line-height: 1.8;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 16px;
+			margin-bottom: 18px;
+		}
+
+		h2 {
+			color: #fbbf24;
+			font-size: 13px;
+			margin: 20px 0 6px;
+		}
+
+		p {
+			color: #bbb;
+			margin-bottom: 8px;
+		}
+
+		pre {
+			background: #1e1e1e;
+			padding: 10px 12px;
+			border-radius: 4px;
+			white-space: pre-wrap;
+			color: #7dd3fc;
+			font-size: 12px;
+			border-left: 3px solid #3b82f6;
+			margin-bottom: 8px;
+		}
+
+		.comment {
+			color: #6b7280;
+		}
+
+		.tag {
+			color: #f472b6;
+		}
+
+		hr {
+			border: none;
+			border-top: 1px solid #2a2a2a;
+			margin: 20px 0;
+		}
+
+		/* Right panel: the canvas */
+		#canvas-wrap {
+			flex: 1;
+			position: relative;
+		}
+
+		canvas {
+			display: block;
+		}
+
+		#label {
+			position: absolute;
+			bottom: 16px;
+			left: 16px;
+			color: #6b7280;
+			font-family: monospace;
+			font-size: 12px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="panel">
+		<h1>The 3 things every Three.js page needs</h1>
+
+		<h2>1. Scene</h2>
+		<p>The scene is the "world" — an empty container you add objects to.</p>
+		<pre>const scene = new THREE.Scene();</pre>
+
+		<h2>2. Camera</h2>
+		<p>The camera defines your viewpoint. <code>PerspectiveCamera</code> is the most common — it mimics a real camera with a field of view and perspective.</p>
+		<pre>const camera = new THREE.PerspectiveCamera(
+  75,           <span class="comment">// field of view (degrees)</span>
+  width/height, <span class="comment">// aspect ratio</span>
+  0.1,          <span class="comment">// near clipping plane</span>
+  1000          <span class="comment">// far clipping plane</span>
+);
+camera.position.z = 5; <span class="comment">// move back so we can see</span></pre>
+
+		<h2>3. Renderer</h2>
+		<p>The renderer draws the scene using WebGL. You give it a canvas element (or let it create one) and call <code>render()</code>.</p>
+		<pre>const renderer = new THREE.WebGLRenderer();
+renderer.setSize(width, height);
+document.body.appendChild(renderer.domElement);
+
+<span class="comment">// Draw one frame:</span>
+renderer.render(scene, camera);</pre>
+
+		<hr>
+
+		<h2>Right now, the canvas shows…</h2>
+		<p>Nothing! The scene is empty. That's expected. We have the three pieces working — next step is adding an object.</p>
+
+		<h2>The full code</h2>
+		<pre><span class="tag">&lt;script src="three.min.js"&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+const scene    = new THREE.Scene();
+const camera   = new THREE.PerspectiveCamera(75,
+  innerWidth/innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+camera.position.z = 5;
+renderer.render(scene, camera);
+<span class="tag">&lt;/script&gt;</span></pre>
+	</div>
+
+	<div id="canvas-wrap">
+		<div id="label">← empty scene (that's correct!)</div>
+	</div>
+
+	<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+	<script>
+		const canvasWrap = document.getElementById('canvas-wrap');
+		const W = canvasWrap.clientWidth;
+		const H = canvasWrap.clientHeight;
+
+		// 1. Scene
+		const scene = new THREE.Scene();
+
+		// 2. Camera
+		const camera = new THREE.PerspectiveCamera(75, W / H, 0.1, 1000);
+		camera.position.z = 5;
+
+		// 3. Renderer
+		const renderer = new THREE.WebGLRenderer({ antialias: true });
+		renderer.setSize(W, H);
+		renderer.setClearColor(0x111111); // background color
+		canvasWrap.appendChild(renderer.domElement);
+
+		// Render one frame — scene is empty so you'll just see the background
+		renderer.render(scene, camera);
+	</script>
+
+</body>
+
+</html>

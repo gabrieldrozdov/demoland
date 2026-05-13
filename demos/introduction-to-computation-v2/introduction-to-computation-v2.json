@@ -351,5 +351,54 @@
 			}
 		},
 		"active": true
+	},
+	"week-12": {
+		"title": "Week 12",
+		"desc": "Using Three.js for 3D!",
+		"demos": {
+			"loading-the-library": {
+				"name": "Loading the library"
+			},
+			"rendering-a-scene": {
+				"name": "Rendering a scene"
+			},
+			"rendering-a-scene-random": {
+				"name": "Introducing randomness"
+			},
+			"rendering-a-scene-motion": {
+				"name": "Introducing motion"
+			},
+			"rendering": {
+				"name": "The basics: rendering"
+			},
+			"geometry": {
+				"name": "The basics: geometry"
+			},
+			"animation": {
+				"name": "The basics: animation"
+			},
+			"position": {
+				"name": "The basics: position"
+			},
+			"spinning-cube": {
+				"name": "DEMO 1: Spinning Cube"
+			},
+			"particle-field": {
+				"name": "DEMO 2: Particle Field"
+			},
+			"orbiting-spheres": {
+				"name": "DEMO 3: Orbiting Spheres"
+			},
+			"wave-plane": {
+				"name": "DEMO 4: Wave Plane"
+			},
+			"mouse-interaction": {
+				"name": "DEMO 5: Mouse Interaction"
+			},
+			"weekly-challenge": {
+				"name": "Weekly challenge"
+			}
+		},
+		"active": true
 	}
 }
