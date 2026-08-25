@@ -1,0 +1,107 @@
+=== HTML ===
+<style>
+	/* No download at all: the reader's own system font */
+	.system {
+		font-family: system-ui, sans-serif;
+	}
+
+	/* Loading a font file you host yourself.
+	   Drag a .woff2 into this editor, then uncomment this block. */
+	/* @font-face {
+		font-family: "My Font";
+		src: url("myfont.woff2") format("woff2");
+		font-weight: 100 900;
+		font-display: swap;
+	}
+	h1 {
+		font-family: "My Font", system-ui, sans-serif;
+	} */
+
+	body {
+		margin: 16px;
+		line-height: 1.5;
+		font-family: Georgia, serif;
+	}
+	h1 {
+		font-family: system-ui, sans-serif;
+	}
+</style>
+
+<h1>A heading, waiting for a font</h1>
+
+<p class="system">
+	This paragraph uses system-ui, which is whatever font your device already
+	uses for its own interface. It loads instantly, because there is nothing
+	to load.
+</p>
+
+<p>
+	This one falls back to Georgia. Drag a <strong>.woff2</strong> file into
+	this editor, uncomment the block above, and change the filename to try
+	your own!
+</p>
+=== NOTES ===
+[
+	{
+		"line": 5,
+		"file": "index.html",
+		"text": "The cheapest font on the web: the one the reader’s device already has. Zero download, zero layout shift, and it always looks at home."
+	},
+	{
+		"line": 10,
+		"file": "index.html",
+		"text": "<code>@font-face</code> describes a font file to the browser. The <code>font-family</code> here is a name <em>you</em> invent ~ it’s how you refer to the font afterwards."
+	},
+	{
+		"line": 13,
+		"file": "index.html",
+		"text": "A range rather than one number means this is a <strong>variable font</strong> ~ a single file covering every weight from thin to black, instead of one file per weight."
+	},
+	{
+		"line": 14,
+		"file": "index.html",
+		"text": "Without this, some browsers hide your text for up to three seconds while the font downloads. <code>swap</code> shows the fallback straight away and swaps when the font lands."
+	}
+]
+=== INFO ===
+# Importing fonts
+
+There are three ways to get a font onto a page, and they trade convenience against speed and privacy.
+
+## 1. Host the file yourself
+
+```
+@font-face {
+	font-family: "My Font";
+	src: url("myfont.woff2") format("woff2");
+	font-display: swap;
+}
+```
+
+Then use `font-family: "My Font"` as normal. The name in `@font-face` is one you invent.
+
+This is what I do. It’s the fastest, it doesn’t hand your visitors’ data to anybody, and the font can’t vanish because someone else changed their service.
+
+Use `.woff2` ~ it’s the smallest format and every browser supports it.
+
+## 2. A hosted service
+
+Google Fonts and friends give you a `<link>` to paste in. Easy, and completely fine to start with. It does mean an extra connection to somebody else’s server before your text can render.
+
+## 3. System fonts
+
+```
+font-family: system-ui, sans-serif;
+```
+
+No download at all ~ you get whatever the reader’s device already uses. Instant, and it always feels native. Underrated!
+
+## Two things that will bite you
+
+**Always list a fallback.** `font-family: "My Font", system-ui, sans-serif` ~ if the file fails to load, you still have text.
+
+**Always set `font-display: swap`.** Otherwise browsers may hide your text entirely while the font downloads, and blank text is worse than the wrong font.
+
+## Try it here
+
+Drag a `.woff2` file straight onto this editor, uncomment the `@font-face` block, and change the filename to match.

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" style="--accent:var(--off-white)">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Structure \ Cheatsheet \ DEMOLAND</title>
+<meta name="description" content="Learn how to code HTML, CSS, and JavaScript to make fun websites!">
+<link rel="canonical" href="https://demoland.gdwithgd.com/cheatsheet/html/document-structure.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Document Structure \ Cheatsheet \ DEMOLAND">
+<meta property="og:description" content="Learn how to code HTML, CSS, and JavaScript to make fun websites!">
+<meta property="og:url" content="https://demoland.gdwithgd.com/cheatsheet/html/document-structure.html">
+<meta property="og:site_name" content="DEMOLAND, by GD with GD">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Document Structure \ Cheatsheet \ DEMOLAND">
+<meta name="twitter:description" content="Learn how to code HTML, CSS, and JavaScript to make fun websites!">
+<meta property="og:image" content="https://demoland.gdwithgd.com/assets/meta/opengraph.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://demoland.gdwithgd.com/assets/meta/opengraph.png">
+<link rel="icon" type="png" href="/assets/meta/favicon.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+<meta name="generator" content="No Replica teaching editor">
+<link rel="stylesheet" href="../../style.min.css?v=2a18d900">
+</head>
+<body>
+<script>try{
+    var _sp=new URLSearchParams(location.search), _em=_sp.get("embed");
+    document.body.classList.toggle("embed", !!_em);
+    var _scOs = localStorage.getItem("lp-sc-os") || (/Win/i.test(navigator.platform||navigator.userAgent||"") ? "win" : "mac");
+    document.body.classList.toggle("sc-win", _scOs === "win");
+    document.body.classList.toggle("sc-collapsed", localStorage.getItem("lp-sc-collapse")==="1");
+  }catch(e){}</script>
+<div id="shell">
+<div id="topbar">
+<div id="tb-crumbs">
+<a class="tb-seg tb-site" id="tb-site" data-nav-href="../../" title="All demos"><span class="tb-kind"><span class="tb-kind-text">GD with GD</span></span><span class="tb-name">DEMOLAND</span></a>
+<span class="tb-sep"></span>
+<a class="tb-seg" id="tb-book" data-nav-href="../../cheatsheet/"><svg viewBox="0 0 100 100"><path d="M25,10c-5.52,0-10,4.48-10,10v60c0,5.52,4.48,10,10,10h60V10H25ZM75,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10ZM75,60H28V20h47v40Z"/><rect x="38" y="30" width="27" height="10"/></svg><span class="tb-kind"><span class="tb-kind-text">Book</span></span><span class="tb-name">Cheatsheet</span></a>
+<span class="tb-sep"></span>
+<a class="tb-seg" id="tb-chapter" data-nav-href="../../cheatsheet/html/"><svg viewBox="0 0 100 100"><path d="M25,14.97v70.06l25-21.25,25,21.25V14.97H25ZM66,65.56l-16-13.6-16,13.6V23.97h32v41.59Z"/></svg><span class="tb-kind"><span class="tb-kind-text">Chapter 1 of 3</span></span><span class="tb-name">HTML</span></a>
+<span class="tb-sep"></span>
+<a class="tb-seg" id="tb-demo" data-nav-open><svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg><span class="tb-kind"><span class="tb-kind-text">Demo <span class="tb-demo-full">10 of 10</span><span class="tb-demo-mini">1.10</span></span></span><span class="tb-name">Document Structure</span></a>
+</div>
+<div id="tb-right">
+<a class="tb-arrow" id="tb-prev" data-nav-href="../../cheatsheet/html/forms.html" title="Previous demo" data-tooltip="Previous demo"><svg viewBox="0 0 100 100"><polygon points="78.85 55 40.3 55 56.55 71.25 49.48 78.32 21.15 50 49.48 21.68 56.55 28.75 40.3 45 78.85 45 78.85 55"/></svg></a>
+<a class="tb-arrow" id="tb-next" data-nav-href="../../cheatsheet/css/" title="Next demo" data-tooltip="Next demo"><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></a>
+<button class="tb-arrow" id="tb-menu" data-nav-open title="Menu" data-tooltip="All demos in current book"><svg viewBox="0 0 100 100"><rect x="22.5" y="24.5" width="55" height="10"/><rect x="22.5" y="45" width="55" height="10"/><rect x="22.5" y="65.5" width="55" height="10"/></svg></button>
+<button class="tb-action" id="tb-new" hidden title="Start a new demo from the blank template" data-tooltip="Start a new demo from the blank template"><svg viewBox="0 0 100 100"><polygon points="90 45 55 45 55 10 45 10 45 45 10 45 10 55 45 55 45 90 55 90 55 55 90 55 90 45"/></svg><span>New Demo</span></button>
+<button class="tb-action" id="tb-save" hidden title="Save this demo in your browser" data-tooltip="Save this demo in your browser"><svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg><span>Save Demo</span></button>
+<button class="tb-action" id="tb-load" hidden title="Open a demo you saved earlier" data-tooltip="Open a demo you saved earlier"><svg viewBox="0 0 100 100"><path d="m60,30V10H10v80h80V30h-30Zm-40-10h30v10h-30v-10Zm0,60v-40h60v40H20Z"/></svg><span>Load Demo</span></button>
+<button class="tb-action" id="tb-download" hidden title="Download this demo as a .zip file" data-tooltip="Download this demo as a .zip file"><svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg><span>Download Demo</span></button>
+<input type="file" id="tb-file" accept=".html,.htm,text/html" hidden>
+</div>
+</div>
+<div id="embed-bar">
+<button class="ctrl" id="eb-reset"><svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg><span>Reset</span></button>
+<button class="ctrl" id="eb-rerun"><svg viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg><span>Rerun</span></button>
+<span class="eb-spacer"></span>
+<a class="ctrl" id="eb-open" title="Open the original demo in a new tab"><span>Open original</span><svg viewBox="0 0 100 100"><polygon points="26.06 66.86 53.32 39.61 30.34 39.61 30.34 29.61 70.4 29.6 70.39 69.66 60.39 69.66 60.39 46.68 33.14 73.94 26.06 66.86"/></svg></a>
+</div>
+<div id="mobile-tabs">
+<button class="m-tab" data-tab="info">Info</button>
+<button class="m-tab" data-tab="code">Code</button>
+<button class="m-tab" data-tab="preview">Preview</button>
+</div>
+<div id="main">
+<div id="info-panel">
+<div class="panel-spine" data-panel="info" title="Click to expand the panel"><span>Info</span></div>
+<div id="info-scroll">
+<div id="info-inner">
+<div id="info-body"><div class="info-demo-head" data-nav-open role="button" tabindex="0" title="Open the menu"><span class="info-demo-num"><svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg><span>Demo 1.10</span></span><h1 class="info-demo-title">Document Structure</h1></div><p>Every HTML file has the same skeleton. Once you’ve typed it a few times you’ll stop thinking about it, but it’s worth knowing what each part is for.</p>
+<h2><code>&lt;head&gt;</code> vs <code>&lt;body&gt;</code></h2>
+<p>The <code>&lt;head&gt;</code> holds information <em>about</em> the page: its title, its character set, links to CSS files. None of it is visible.</p>
+<p>The <code>&lt;body&gt;</code> holds everything you can actually see.</p>
+<h2>The lines that are always there</h2>
+<ul class="md-ul"><li><span class="md-ul-bullet"><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></span><span class="md-li"><code>&lt;!DOCTYPE html&gt;</code> ~ first line, always. It says “this is modern HTML”.</span></li><li><span class="md-ul-bullet"><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></span><span class="md-li"><code>&lt;html lang=&quot;en&quot;&gt;</code> ~ tells assistive tech what language the page is in.</span></li><li><span class="md-ul-bullet"><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></span><span class="md-li"><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> ~ makes emoji, accents and other alphabets render properly instead of turning into garbage.</span></li><li><span class="md-ul-bullet"><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></span><span class="md-li"><code>&lt;meta name=&quot;viewport&quot; ...&gt;</code> ~ without it, phones pretend to be a desktop and shrink your page to nothing.</span></li><li><span class="md-ul-bullet"><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></span><span class="md-li"><code>&lt;title&gt;</code> ~ the browser tab, and the headline in search results.</span></li></ul>
+<h2>Sectioning elements</h2>
+<p><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> and <code>&lt;footer&gt;</code> behave exactly like <code>&lt;div&gt;</code>, but they say what part of the page they are. That’s not decoration ~ it’s what lets someone using a screen reader skip your navigation and go straight to the content.</p>
+<p>You don’t have to memorise this. In the DEMOLAND editor, or in VS Code, typing <code>!</code> and pressing Tab drops the whole skeleton in for you.</p>
+<a class="info-next" href="../../cheatsheet/css/"><span class="info-next-label">Next chapter</span><span class="info-next-title">CSS</span><svg viewBox="0 0 100 100"><polygon points="21.15 45 59.7 45 43.45 28.75 50.52 21.68 78.85 50 50.52 78.32 43.45 71.25 59.7 55 21.15 55 21.15 45"/></svg></a></div>
+<div id="info-shortcuts">
+<div class="sc-head">
+<span class="sc-title"><svg viewBox="0 0 100 100"><path d="M72.74,55.47h-7.22v-10.94h7.22c9.52,0,17.26-7.75,17.26-17.26s-7.74-17.26-17.26-17.26-17.26,7.74-17.26,17.26v7.22h-10.94v-7.22c0-9.52-7.74-17.26-17.26-17.26s-17.26,7.74-17.26,17.26,7.74,17.26,17.26,17.26h7.22v10.94h-7.22c-9.52,0-17.26,7.75-17.26,17.26s7.74,17.26,17.26,17.26,17.26-7.74,17.26-17.26v-7.22h10.94v7.22c0,9.52,7.74,17.26,17.26,17.26s17.26-7.74,17.26-17.26-7.74-17.26-17.26-17.26ZM79.96,72.74c0,3.98-3.24,7.22-7.22,7.22s-7.22-3.24-7.22-7.22v-7.22h7.22c3.98,0,7.22,3.24,7.22,7.22ZM65.51,34.48v-7.22c0-3.98,3.24-7.22,7.22-7.22s7.22,3.24,7.22,7.22-3.24,7.22-7.22,7.22h-7.22ZM55.47,44.53v11.41h-10.94v-11.41h10.94ZM34.49,27.26v7.22h-7.22c-3.98,0-7.22-3.24-7.22-7.22s3.24-7.22,7.22-7.22,7.22,3.24,7.22,7.22ZM34.49,65.52v7.22c0,3.98-3.24,7.22-7.22,7.22s-7.22-3.24-7.22-7.22,3.24-7.22,7.22-7.22h7.22Z"/></svg><span>Keyboard Shortcuts</span></span>
+<div class="sc-toggle">
+<button class="sc-os" data-os="mac">Mac</button>
+<button class="sc-os" data-os="win">Windows</button>
+</div>
+</div>
+<div class="sc-list">
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">&#8984;&nbsp;Z</span><span class="sc-sep"> / </span><span class="sc-combo">&#8984;&nbsp;&#8679;&nbsp;Z</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;Z</span><span class="sc-sep"> / </span><span class="sc-combo">Ctrl&nbsp;&#8679;&nbsp;Z</span></span></span>
+<span class="sc-desc">Undo / redo</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">Tab</span><span class="sc-sep"> / </span><span class="sc-combo">&#8679;&nbsp;Tab</span></span><span class="sc-win"><span class="sc-combo">Tab</span><span class="sc-sep"> / </span><span class="sc-combo">&#8679;&nbsp;Tab</span></span></span>
+<span class="sc-desc">Indent / unindent selection</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">&#8984;&nbsp;]</span><span class="sc-sep"> / </span><span class="sc-combo">&#8984;&nbsp;[</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;]</span><span class="sc-sep"> / </span><span class="sc-combo">Ctrl&nbsp;[</span></span></span>
+<span class="sc-desc">Indent / unindent lines</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">&#8984;&nbsp;A</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;A</span></span></span>
+<span class="sc-desc">Select all</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">&#8984;&nbsp;D</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;D</span></span></span>
+<span class="sc-desc">Select next occurrence of selection</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">&#8984;&nbsp;/</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;/</span></span></span>
+<span class="sc-desc">Comment / uncomment lines</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">Ctrl&nbsp;Space</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;Space</span></span></span>
+<span class="sc-desc">Autocomplete</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">Ctrl&nbsp;Enter</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;Enter</span></span></span>
+<span class="sc-desc">Reset layout</span>
+</div>
+<div class="sc-row">
+<span class="sc-keys"><span class="sc-mac"><span class="sc-combo">&#8984;&nbsp;&#8997;&nbsp;[</span><span class="sc-sep"> / </span><span class="sc-combo">&#8984;&nbsp;&#8997;&nbsp;]</span></span><span class="sc-win"><span class="sc-combo">Ctrl&nbsp;&#8679;&nbsp;[</span><span class="sc-sep"> / </span><span class="sc-combo">Ctrl&nbsp;&#8679;&nbsp;]</span></span></span>
+<span class="sc-desc">Fold / unfold block</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="resizer-left"></div>
+<div id="code-panel">
+<div class="panel-spine" data-panel="code" title="Click to expand the panel"><span>Code</span></div>
+<div id="code-main">
+<div id="file-tabs" hidden></div>
+<div id="code-scroll">
+<div id="code-wrap">
+<div id="boot-error">
+The editor didn't load &mdash; try refreshing the page. Navigation,
+shortcuts and the info panel still work in the meantime.
+</div>
+</div>
+</div>
+<div id="lint-bar" hidden></div>
+<div id="code-toggles">
+<div id="cursor-pos" aria-hidden="true"></div>
+<button class="ctrl" id="ed-notes" title="Show / hide all notes"><svg viewBox="0 0 100 100"><path d="M64.14,90l25.86-25.86V10H10v80h54.14ZM60,80v-20h20l-20,20ZM20,80V20h60v30h-30v30h-30Z"/></svg><span>Show notes</span></button>
+<button class="ctrl" id="ed-notes-del" title="Delete every note in this file" hidden disabled><svg viewBox="0 0 100 100"><polygon points="79.92 10 78.67 20 71.17 80 28.83 80 22.48 29.23 20.08 10 10 10 20 90 80 90 90 10 79.92 10"/><polygon points="67.34 30 68.59 20 31.41 20 32.66 30 67.34 30"/><polygon points="62.34 70 63.59 60 36.41 60 37.66 70 62.34 70"/><polygon points="66.09 40 33.91 40 35.16 50 64.84 50 66.09 40"/></svg><span>Delete notes</span></button>
+<button class="ctrl" id="ed-settings" title="View all settings"><svg viewBox="0 0 100 100"><path d="M50,36.35c-7.53,0-13.65,6.12-13.65,13.65s6.12,13.65,13.65,13.65,13.65-6.12,13.65-13.65-6.12-13.65-13.65-13.65Z"/><path d="M90,56.34v-12.68c-6.44-2.29-9.04-2.61-10.41-5.91-1.36-3.29.25-5.39,3.17-11.55l-8.96-8.96c-5.86,2.78-8.22,4.56-11.56,3.17-3.29-1.36-3.64-4.02-5.91-10.41h-12.67c-2.31,6.46-2.61,9.04-5.92,10.41-3.33,1.37-5.75-.42-11.55-3.18l-8.96,8.96c2.94,6.18,4.55,8.25,3.18,11.55-1.37,3.3-4.06,3.65-10.41,5.91v12.68c6.44,2.29,9.04,2.61,10.41,5.91,1.38,3.33-.27,5.43-3.18,11.55l8.96,8.96c5.78-2.73,8.2-4.57,11.55-3.17,3.29,1.37,3.64,4.02,5.91,10.41h12.68c2.35-6.6,2.66-9.05,5.95-10.42,3.3-1.38,5.76.45,11.52,3.18l8.96-8.96c-3.03-6.34-4.52-8.3-3.18-11.55,1.37-3.3,4.06-3.65,10.41-5.91ZM50,72.65c-12.51,0-22.65-10.14-22.65-22.65s10.14-22.65,22.65-22.65,22.65,10.14,22.65,22.65-10.14,22.65-22.65,22.65Z"/></svg><span>Settings</span></button>
+<button class="ctrl" id="t-undo" title="Undo" disabled><svg viewBox="0 0 100 100"><path d="M58.75,90h-18.75v-10h18.75c11.73,0,21.24-9.51,21.24-21.24s-9.51-21.26-21.24-21.26l-29.61.03,10.43,10.4-7.07,7.07-22.5-22.5,22.5-22.5,7.07,7.07-10.43,10.43h29.61c17.26,0,31.25,13.99,31.25,31.25s-13.99,31.25-31.25,31.25Z"/></svg><span>Undo</span></button>
+<button class="ctrl" id="t-redo" title="Redo" disabled><svg viewBox="0 0 100 100"><path d="M41.25,90h18.75v-10h-18.75c-11.73,0-21.24-9.51-21.24-21.24s9.51-21.26,21.24-21.26l29.61.03-10.43,10.4,7.07,7.07,22.5-22.5-22.5-22.5-7.07,7.07,10.43,10.43h-29.61c-17.26,0-31.25,13.99-31.25,31.25s13.99,31.25,31.25,31.25Z"/></svg><span>Redo</span></button>
+</div>
+</div>
+<div id="settings-popup" hidden>
+<div class="sp-head"><svg viewBox="0 0 100 100"><path d="M50,36.35c-7.53,0-13.65,6.12-13.65,13.65s6.12,13.65,13.65,13.65,13.65-6.12,13.65-13.65-6.12-13.65-13.65-13.65Z"/><path d="M90,56.34v-12.68c-6.44-2.29-9.04-2.61-10.41-5.91-1.36-3.29.25-5.39,3.17-11.55l-8.96-8.96c-5.86,2.78-8.22,4.56-11.56,3.17-3.29-1.36-3.64-4.02-5.91-10.41h-12.67c-2.31,6.46-2.61,9.04-5.92,10.41-3.33,1.37-5.75-.42-11.55-3.18l-8.96,8.96c2.94,6.18,4.55,8.25,3.18,11.55-1.37,3.3-4.06,3.65-10.41,5.91v12.68c6.44,2.29,9.04,2.61,10.41,5.91,1.38,3.33-.27,5.43-3.18,11.55l8.96,8.96c5.78-2.73,8.2-4.57,11.55-3.17,3.29,1.37,3.64,4.02,5.91,10.41h12.68c2.35-6.6,2.66-9.05,5.95-10.42,3.3-1.38,5.76.45,11.52,3.18l8.96-8.96c-3.03-6.34-4.52-8.3-3.18-11.55,1.37-3.3,4.06-3.65,10.41-5.91ZM50,72.65c-12.51,0-22.65-10.14-22.65-22.65s10.14-22.65,22.65-22.65,22.65,10.14,22.65,22.65-10.14,22.65-22.65,22.65Z"/></svg><span>Settings</span><button id="sp-close" title="Close"><svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg></button></div>
+<div class="sp-body">
+<div class="ctrl-sec">
+<div class="ctrl-sec-title"><svg viewBox="0 0 100 100"><path d="M50,30c12.78,0,25.6,11.64,32.79,20-7.19,8.37-20.01,20-32.79,20s-25.6-11.64-32.79-20c7.19-8.37,20.01-20,32.79-20M50,20c-25.09,0-45.44,30-45.44,30,0,0,20.34,30,45.44,30s45.44-30,45.44-30c0,0-20.34-30-45.44-30h0Z"/><circle cx="50" cy="50" r="12.13"/></svg><span>View</span></div>
+<div class="ctrl-sec-controls">
+<button class="ctrl on" id="t-wrap" title="Fit long lines to the panel instead of scrolling sideways" data-tooltip="Fit long lines to the panel instead of scrolling sideways"><svg viewBox="0 0 100 100"><path d="M58.75,15H24.14v10h34.61c11.73,0,21.24,9.51,21.24,21.24s-9.51,21.26-21.24,21.26l-29.61-.03,10.43-10.4-7.07-7.07-22.5,22.5,22.5,22.5,7.07-7.07-10.43-10.43h29.61c17.26,0,31.25-13.99,31.25-31.25s-13.99-31.25-31.25-31.25Z"/></svg><span>Wrap text</span></button>
+<button class="ctrl on" id="t-highlight" title="Color-code your code so it’s easier to read" data-tooltip="Color-code your code so it’s easier to read"><svg viewBox="0 0 100 100"><path d="M50,10c-22.09,0-40,17.91-40,40s17.91,40,40,40,40-17.91,40-40S72.09,10,50,10ZM50,80V20c16.57,0,30,13.43,30,30s-13.43,30-30,30Z"/></svg><span>Show syntax</span></button>
+<span class="ctrl-field">
+<span class="lbl"><svg viewBox="0 0 100 100"><path d="M40.5,20h-10L5.5,80h10l7.5-18h25l7.5,18h10l-25-60ZM27.167,52l8.333-20,8.333,20h-16.667ZM94.5,52h-10v10h-10v-10h-10v-10h10v-10h10v10h10v10Z"/></svg><span>Font size</span></span>
+<input type="range" id="fs-range" class="ctrl-range" min="9" max="28" step="1" value="14">
+<span class="fs-readout" id="fs-readout">14</span>
+</span>
+</div>
+</div>
+<div class="ctrl-sec">
+<div class="ctrl-sec-title"><svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg><span>Code</span></div>
+<div class="ctrl-sec-controls">
+<button class="ctrl on" id="t-autoclose" title="Finish your brackets and quotes for you" data-tooltip="Finish your brackets and quotes for you"><svg viewBox="0 0 100 100"><polygon points="65 20 80 20 80 80 65 80 65 90 90 90 90 10 65 10 65 20"/><polygon points="35 80 20 80 20 20 35 20 35 10 10 10 10 90 35 90 35 80"/></svg><span>Auto-close</span></button>
+<button class="ctrl on" id="t-autocomplete" title="Suggest code as you type" data-tooltip="Suggest code as you type"><svg viewBox="0 0 100 100"><circle cx="20.68" cy="50" r="10"/><circle cx="50" cy="50" r="10"/><circle cx="80" cy="50" r="10"/></svg><span>Autocomplete</span></button>
+<button class="ctrl on" id="t-warnings" title="Flag HTML, CSS &amp; JS mistakes as you type" data-tooltip="Flag HTML, CSS &amp; JS mistakes as you type"><svg viewBox="0 0 100 100"><path d="M59,81c0,4.97-4.03,9-9,9s-9-4.03-9-9,4.03-9,9-9,9,4.03,9,9ZM60,10h-20l5,55h10l5-55Z"/></svg><span>Warnings</span></button>
+<button class="ctrl" id="t-reformat" title="Tidy up your code" data-tooltip="Tidy up your code"><svg viewBox="0 0 100 100"><polygon points="57.07 27.5 79.57 50 57.07 72.5 50 65.43 60.43 55 10 55 10 45 60.43 45 50 34.57 57.07 27.5"/><rect x="80" y="27.5" width="10" height="45"/></svg><span>Prettify</span></button>
+</div>
+</div>
+<div class="ctrl-sec">
+<div class="ctrl-sec-title"><svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg><span>Preview</span></div>
+<div class="ctrl-sec-controls">
+<button class="ctrl" id="t-pause" title="Stop the preview updating while you type" data-tooltip="Stop the preview updating while you type"><svg viewBox="0 0 100 100"><path d="M40,85.23h-10V14.77h10v70.46ZM70,14.77h-10v70.46h10V14.77Z"/></svg><span>Pause</span></button>
+<button class="ctrl" id="t-rerun" title="Reload the preview from scratch" data-tooltip="Reload the preview from scratch"><svg viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg><span>Rerun</span></button>
+<span class="ctrl-field" title="How long to wait after you stop typing before the preview updates" data-tooltip="How long to wait after you stop typing before the preview updates">
+<span class="lbl"><svg viewBox="0 0 100 100"><path d="M85.36,26.72l-7.07-7.07-7.32,7.32c-3.26-2.44-6.96-4.32-10.96-5.51v-11.46h-20v11.46c-4,1.19-7.7,3.07-10.96,5.51l-7.32-7.32-7.07,7.07,7.32,7.32c-4.38,5.84-6.97,13.1-6.97,20.96,0,19.33,15.67,35,35,35s35-15.67,35-35c0-7.86-2.59-15.12-6.97-20.96l7.32-7.32ZM50,80c-13.81,0-25-11.19-25-25s11.19-25,25-25,25,11.19,25,25-11.19,25-25,25Z"/><polygon points="55 35 45 35 45 60 70 60 70 50 55 50 55 35"/></svg><span>Delay</span></span>
+<span class="dsel">
+<select class="ctrl" id="delay">
+<option value="0">0ms</option>
+<option value="150" selected>150ms</option>
+<option value="400">400ms</option>
+<option value="800">800ms</option>
+<option value="1500">1500ms</option>
+</select>
+<span class="dsel-val" aria-hidden="true">150ms</span>
+</span>
+</span>
+<span class="ctrl-field" title="Test the preview at a different zoom level" data-tooltip="Test the preview at a different zoom level">
+<span class="lbl"><svg viewBox="0 0 100 100"><polygon points="50 30 40 30 40 40 30 40 30 50 40 50 40 60 50 60 50 50 60 50 60 40 50 40 50 30"/><path d="M73.03,65.96c4.38-5.84,6.97-13.1,6.97-20.96,0-19.33-15.67-35-35-35S10,25.67,10,45s15.67,35,35,35c7.86,0,15.12-2.59,20.96-6.97l16.97,16.97,7.07-7.07-16.97-16.97ZM45,70c-13.81,0-25-11.19-25-25s11.19-25,25-25,25,11.19,25,25-11.19,25-25,25Z"/></svg><span>Zoom</span></span>
+<div class="zoom-toggle">
+<button class="zoom-opt" data-scale="0.5">0.5&times;</button>
+<button class="zoom-opt on" data-scale="1">1.0&times;</button>
+<button class="zoom-opt" data-scale="2">2.0&times;</button>
+</div>
+</span>
+</div>
+</div>
+<div class="ctrl-sec">
+<div class="ctrl-sec-title"><svg viewBox="0 0 100 100"><path d="M41.25,90v-10c-11.73,0-21.24-9.51-21.24-21.24s9.51-21.26,21.24-21.26l29.61.03-10.43,10.4,7.07,7.07,22.5-22.5-22.5-22.5-7.07,7.07,10.43,10.43h-29.61c-17.26,0-31.25,13.99-31.25,31.25s13.99,31.25,31.25,31.25Z"/></svg><span>Share</span></div>
+<div class="ctrl-sec-controls">
+<button class="ctrl" id="t-embed" title="Get a code snippet to put this demo on your own site" data-tooltip="Get a code snippet to put this demo on your own site"><svg viewBox="0 0 100 100"><polygon points="65 50 65 60 75 60 75 80 25 80 25 60 35 60 35 50 15 50 15 90 85 90 85 50 65 50"/><polygon points="45 29.14 45 70 55 70 55 29.14 65.43 39.57 72.5 32.5 50 10 27.5 32.5 34.57 39.57 45 29.14"/></svg><span>Embed</span></button>
+<button class="ctrl" id="t-download" title="Download this demo as a .zip file" data-tooltip="Download this demo as a .zip file"><svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg><span>Download</span></button>
+</div>
+</div>
+<div class="ctrl-sec">
+<div class="ctrl-sec-title"><svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg><span>Reset</span></div>
+<div class="ctrl-sec-controls">
+<button class="ctrl" id="t-reset-layout" title="Restore the panels to their default sizes" data-tooltip="Restore the panels to their default sizes"><svg viewBox="0 0 100 100"><rect x="35" y="45" width="80" height="10" transform="translate(125 -25) rotate(90)"/><rect x="10" y="45" width="80" height="10" transform="translate(100 0) rotate(90)"/><rect x="-15" y="45" width="80" height="10" transform="translate(75 25) rotate(90)"/></svg><span>Layout</span></button>
+<button class="ctrl" id="t-reset-settings" title="Restore all settings to their defaults" data-tooltip="Restore all settings to their defaults"><svg viewBox="0 0 100 100"><path d="M50,36.35c-7.53,0-13.65,6.12-13.65,13.65s6.12,13.65,13.65,13.65,13.65-6.12,13.65-13.65-6.12-13.65-13.65-13.65Z"/><path d="M90,56.34v-12.68c-6.44-2.29-9.04-2.61-10.41-5.91-1.36-3.29.25-5.39,3.17-11.55l-8.96-8.96c-5.86,2.78-8.22,4.56-11.56,3.17-3.29-1.36-3.64-4.02-5.91-10.41h-12.67c-2.31,6.46-2.61,9.04-5.92,10.41-3.33,1.37-5.75-.42-11.55-3.18l-8.96,8.96c2.94,6.18,4.55,8.25,3.18,11.55-1.37,3.3-4.06,3.65-10.41,5.91v12.68c6.44,2.29,9.04,2.61,10.41,5.91,1.38,3.33-.27,5.43-3.18,11.55l8.96,8.96c5.78-2.73,8.2-4.57,11.55-3.17,3.29,1.37,3.64,4.02,5.91,10.41h12.68c2.35-6.6,2.66-9.05,5.95-10.42,3.3-1.38,5.76.45,11.52,3.18l8.96-8.96c-3.03-6.34-4.52-8.3-3.18-11.55,1.37-3.3,4.06-3.65,10.41-5.91ZM50,72.65c-12.51,0-22.65-10.14-22.65-22.65s10.14-22.65,22.65-22.65,22.65,10.14,22.65,22.65-10.14,22.65-22.65,22.65Z"/></svg><span>Settings</span></button>
+<button class="ctrl" id="t-reset" title="Discard edits and restore the original demo" data-tooltip="Discard edits and restore the original demo"><svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg><span>Code</span></button>
+<button class="ctrl" id="t-reset-demo" title="Discard every change and restore the demo’s original files" data-tooltip="Discard every change and restore the demo’s original files"><svg viewBox="0 0 100 100"><path d="m80,35.858l-25.858-25.858H20v80h60v-54.142Zm-10,4.142h-20v-20l20,20Zm0,40H30V20h10v30h30v30Z"/></svg><span>Demo</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="resizer-right"></div>
+<div id="preview-panel">
+<div class="panel-spine" data-panel="preview" title="Click to expand the preview panel"><span>Preview</span></div>
+<div id="preview-scroll">
+<div id="preview-inner">
+<div id="preview-now" hidden><svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg><span class="pn-label">Currently previewing:</span> <span id="preview-now-file"></span></div>
+<div id="preview-head">
+<div class="ph-left">
+<span id="preview-dims" title="The size of your preview area, in pixels" data-tooltip="The size of your preview area, in pixels"><span>Dimensions</span><span>0 &times; 0</span></span>
+<div class="zoom-toggle">
+<button class="zoom-opt" data-scale="0.5" title="Shrink the preview to half size" data-tooltip="Shrink the preview to half size">0.5&times;</button>
+<button class="zoom-opt on" data-scale="1" title="Show the preview at actual size" data-tooltip="Show the preview at actual size">1.0&times;</button>
+<button class="zoom-opt" data-scale="2" title="Blow the preview up to double size" data-tooltip="Blow the preview up to double size">2.0&times;</button>
+</div>
+</div>
+<div class="ph-right">
+<span class="ph-field" title="How long to wait after you stop typing before the preview updates" data-tooltip="How long to wait after you stop typing before the preview updates">
+<span class="ph-lbl"><svg viewBox="0 0 100 100"><path d="M85.36,26.72l-7.07-7.07-7.32,7.32c-3.26-2.44-6.96-4.32-10.96-5.51v-11.46h-20v11.46c-4,1.19-7.7,3.07-10.96,5.51l-7.32-7.32-7.07,7.07,7.32,7.32c-4.38,5.84-6.97,13.1-6.97,20.96,0,19.33,15.67,35,35,35s35-15.67,35-35c0-7.86-2.59-15.12-6.97-20.96l7.32-7.32ZM50,80c-13.81,0-25-11.19-25-25s11.19-25,25-25,25,11.19,25,25-11.19,25-25,25Z"/><polygon points="55 35 45 35 45 60 70 60 70 50 55 50 55 35"/></svg><span>Delay</span></span>
+<span class="dsel">
+<select class="ph-ctrl" id="ph-delay">
+<option value="0">0ms</option>
+<option value="150" selected>150ms</option>
+<option value="400">400ms</option>
+<option value="800">800ms</option>
+<option value="1500">1500ms</option>
+</select>
+<span class="dsel-val" aria-hidden="true">150ms</span>
+</span>
+</span>
+<button class="ph-ctrl" id="ph-rerun" title="Reload the preview from scratch" data-tooltip="Reload the preview from scratch"><svg viewBox="0 0 100 100"><path d="M50.9,85.23h-.32v-8.96c.11.01.21.01.32.01,14.83,0,26.86-12.03,26.86-26.86,0-7.23-2.87-13.8-7.53-18.63v12.26h-10V14.77h28.29v9.99h-11.67c6.1,6.43,9.86,15.11,9.86,24.66,0,19.78-16.04,35.81-35.81,35.81ZM14.45,50.58c0,9.55,3.76,18.23,9.86,24.66h-11.67v9.99h28.29v-28.28h-10v12.26c-4.66-4.83-7.53-11.4-7.53-18.63,0-14.83,12.03-26.86,26.86-26.86.11,0,.21,0,.32.01v-8.96h-.32c-19.77,0-35.81,16.03-35.81,35.81ZM50,50"/></svg><span>Rerun</span></button>
+<button class="ph-ctrl" id="ph-pause" title="Stop the preview updating while you type" data-tooltip="Stop the preview updating while you type"><svg viewBox="0 0 100 100"><path d="M40,85.23h-10V14.77h10v70.46ZM70,14.77h-10v70.46h10V14.77Z"/></svg><span>Pause</span></button>
+</div>
+</div>
+<div id="preview-frame-wrap">
+<iframe id="preview-frame" sandbox="allow-scripts"></iframe>
+<div id="preview-paused" hidden><span><strong>Preview paused</strong><br>Click to resume</span></div>
+<div id="preview-disabled" hidden><span><strong>The preview is disabled for this demo.</strong><br>Use the console below.</span></div>
+</div>
+<div id="console-resizer"></div>
+<div id="console">
+<div id="console-head"><span class="console-title"><svg viewBox="0 0 100 100"><polygon points="10 28.749 31.251 50 10 71.251 17.071 78.322 45.393 50 17.071 21.678 10 28.749"/><rect x="40" y="80" width="50" height="10"/></svg>Console</span><button id="console-clear"><svg viewBox="0 0 100 100"><polygon points="79.92 10 78.67 20 71.17 80 28.83 80 22.48 29.23 20.08 10 10 10 20 90 80 90 90 10 79.92 10"/><polygon points="67.34 30 68.59 20 31.41 20 32.66 30 67.34 30"/><polygon points="62.34 70 63.59 60 36.41 60 37.66 70 62.34 70"/><polygon points="66.09 40 33.91 40 35.16 50 64.84 50 66.09 40"/></svg><span>Clear</span></button></div>
+<div id="console-log"></div>
+<div id="console-input-row">
+<span class="prompt">&rsaquo;</span>
+<input id="console-input" type="text" spellcheck="false" placeholder="Type JavaScript here!">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer id="site-footer">
+<a class="footer-link" href="../../"><svg viewBox="0 0 100 100"><path d="M25,10c-5.52,0-10,4.48-10,10v60c0,5.52,4.48,10,10,10h60V10H25ZM75,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10ZM75,60H28V20h47v40Z"/><rect x="38" y="30" width="27" height="10"/></svg>All Books</a>
+<div class="footer-link-divider"></div>
+<a class="footer-link" href="../../info/"><svg viewBox="0 0 100 100"><rect x="45" y="40" width="10" height="50"/><circle cx="50" cy="20" r="10"/></svg>What Is DEMOLAND?</a>
+<div class="footer-link-divider"></div>
+<a class="footer-link" href="../../tutorial/"><svg viewBox="0 0 100 100"><path d="M59,81c0,4.971-4.029,9-9,9s-9-4.029-9-9,4.029-9,9-9,9,4.029,9,9ZM50,10c-13.81,0-25,11.19-25,25h10c0-8.28,6.72-15,15-15s15,6.72,15,15-6.72,15-15,15h-5v15h10v-5.501c11.413-2.316,20-12.402,20-24.499,0-13.81-11.19-25-25-25Z"/></svg>Tutorial</a>
+<div class="footer-link-divider"></div>
+<a class="footer-link" href="../../cheatsheet/" rel="noopener"><svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>Coding Cheatsheet</a>
+<div class="footer-link-divider"></div>
+<a class="footer-link" href="../../editor/"><svg viewBox="0 0 100 100"><polygon points="90 45 55 45 55 10 45 10 45 45 10 45 10 55 45 55 45 90 55 90 55 55 90 55 90 45"/></svg>Start a new file</a>
+<div class="footer-link-divider"></div>
+<button class="footer-link" id="footer-embed"><svg viewBox="0 0 100 100"><polygon points="65 50 65 60 75 60 75 80 25 80 25 60 35 60 35 50 15 50 15 90 85 90 85 50 65 50"/><polygon points="45 29.14 45 70 55 70 55 29.14 65.43 39.57 72.5 32.5 50 10 27.5 32.5 34.57 39.57 45 29.14"/></svg>Embed this demo</button>
+<div class="footer-link-divider"></div>
+<button class="footer-link footer-confetti" data-confetti="../../lib/confetti.js"><svg viewBox="0 0 100 100"><rect x="12.28" y="56.48" width="20" height="10" transform="translate(-21.83 13.21) rotate(-22.5)"/><rect x="28.52" y="72.72" width="20" height="10" transform="translate(-48.02 83.56) rotate(-67.5)"/><rect x="56.48" y="67.72" width="10" height="20" transform="translate(-25.06 29.44) rotate(-22.5)"/><rect x="72.72" y="51.48" width="10" height="20" transform="translate(-8.82 109.75) rotate(-67.5)"/><rect x="67.72" y="33.52" width="20" height="10" transform="translate(-8.82 32.67) rotate(-22.5)"/><rect x="51.48" y="17.28" width="20" height="10" transform="translate(17.37 70.56) rotate(-67.5)"/><rect x="33.52" y="12.28" width="10" height="20" transform="translate(-5.6 16.44) rotate(-22.5)"/><rect x="17.28" y="28.52" width="10" height="20" transform="translate(-21.83 44.37) rotate(-67.5)"/><circle cx="50" cy="50" r="10" transform="translate(-15.31 22.89) rotate(-22.46)"/></svg>Celebrate</button>
+<div class="footer-link-divider"></div>
+<a class="footer-link" href="https://gdwithgd.com/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100"><path d="M58.18,10h31.82v31.82h-9.999v-14.75l-28.892,28.892-7.071-7.071,28.892-28.892h-14.75v-9.999ZM80,51.82v28.18H20V20h28.18v-10H10v80h80v-38.18h-10Z"/></svg>More from GD with GD</a>
+</footer>
+</div>
+<div id="nav-overlay" hidden>
+<div id="nav-dialog" role="dialog" aria-modal="true" aria-label="Navigate" tabindex="-1">
+<div class="nav-sticky"><span><a href="../../cheatsheet/"><span class="nav-sticky-label">Current book</span>Cheatsheet</a></span></div><button id="nav-close" title="Close"><svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg></button>
+<div id="nav-body"><a class="nav-allbooks" href="../../"><svg viewBox="0 0 100 100"><path d="M25,10c-5.52,0-10,4.48-10,10v60c0,5.52,4.48,10,10,10h60V10H25ZM75,80H28c-2.76,0-5-2.24-5-5s2.24-5,5-5h47v10ZM75,60H28V20h47v40Z"/><rect x="38" y="30" width="27" height="10"/></svg><span>All books</span></a><div class="nav-header"><a class="nav-heading" href="../../cheatsheet/"><span class="nav-subtitle">Web Documentation</span><span class="nav-title">Cheatsheet</span></a><div class="nav-desc">Websites are made of three programming languages: HTML, CSS, and JavaScript. Let’s break down what makes each language special!</div></div><div class="nav-chapter" style="--accent:var(--pink);"><a class="nc-heading nav-link" href="../../cheatsheet/html/"><div class="nc-subtitle">Chapter 1</div><div class="nc-title">HTML</div></a><div class="nc-desc">HTML (HyperText Markup Language) organizes a website’s content.</div><div class="nc-demos"><a class="nc-demo-item" href="../../cheatsheet/html/elements.html"><span class="nc-demo-item-num">1.1</span><span class="nc-demo-item-name">Elements</span></a><a class="nc-demo-item" href="../../cheatsheet/html/attributes.html"><span class="nc-demo-item-num">1.2</span><span class="nc-demo-item-name">Attributes</span></a><a class="nc-demo-item" href="../../cheatsheet/html/block-vs-inline.html"><span class="nc-demo-item-num">1.3</span><span class="nc-demo-item-name">Block vs. Inline Elements</span></a><a class="nc-demo-item" href="../../cheatsheet/html/typography.html"><span class="nc-demo-item-num">1.4</span><span class="nc-demo-item-name">Typography</span></a><a class="nc-demo-item" href="../../cheatsheet/html/hyperlinks.html"><span class="nc-demo-item-num">1.5</span><span class="nc-demo-item-name">Hyperlinks</span></a><a class="nc-demo-item" href="../../cheatsheet/html/anchor-links.html"><span class="nc-demo-item-num">1.6</span><span class="nc-demo-item-name">Anchor Links</span></a><a class="nc-demo-item" href="../../cheatsheet/html/media.html"><span class="nc-demo-item-num">1.7</span><span class="nc-demo-item-name">Media</span></a><a class="nc-demo-item" href="../../cheatsheet/html/tables.html"><span class="nc-demo-item-num">1.8</span><span class="nc-demo-item-name">Tables</span></a><a class="nc-demo-item" href="../../cheatsheet/html/forms.html"><span class="nc-demo-item-num">1.9</span><span class="nc-demo-item-name">Forms</span></a><a class="nc-demo-item active" href="../../cheatsheet/html/document-structure.html"><span class="nc-demo-item-num">1.10</span><span class="nc-demo-item-name">Document Structure</span></a></div></div><div class="nav-chapter" style="--accent:var(--green);"><a class="nc-heading nav-link" href="../../cheatsheet/css/"><div class="nc-subtitle">Chapter 2</div><div class="nc-title">CSS</div></a><div class="nc-desc">CSS (Cascading Style Sheets) styles websites to make them pretty.</div><div class="nc-demos"><a class="nc-demo-item" href="../../cheatsheet/css/adding-css.html"><span class="nc-demo-item-num">2.1</span><span class="nc-demo-item-name">Adding CSS to a file using the <code>&lt;style&gt;</code> element</span></a><a class="nc-demo-item" href="../../cheatsheet/css/coding-in-css.html"><span class="nc-demo-item-num">2.2</span><span class="nc-demo-item-name">CSS classes</span></a><a class="nc-demo-item" href="../../cheatsheet/css/inline-css.html"><span class="nc-demo-item-num">2.3</span><span class="nc-demo-item-name">Inline CSS using <code>style=&quot;&quot;</code></span></a><a class="nc-demo-item" href="../../cheatsheet/css/inheritence.html"><span class="nc-demo-item-num">2.4</span><span class="nc-demo-item-name">Inheritence and specificity</span></a><a class="nc-demo-item" href="../../cheatsheet/css/box-model.html"><span class="nc-demo-item-num">2.5</span><span class="nc-demo-item-name">The box model</span></a><a class="nc-demo-item" href="../../cheatsheet/css/position.html"><span class="nc-demo-item-num">2.6</span><span class="nc-demo-item-name">The <code>position</code> property</span></a><a class="nc-demo-item" href="../../cheatsheet/css/units.html"><span class="nc-demo-item-num">2.7</span><span class="nc-demo-item-name">Units</span></a><a class="nc-demo-item" href="../../cheatsheet/css/colors.html"><span class="nc-demo-item-num">2.8</span><span class="nc-demo-item-name">Colors</span></a><a class="nc-demo-item" href="../../cheatsheet/css/styling-text.html"><span class="nc-demo-item-num">2.9</span><span class="nc-demo-item-name">Styling text</span></a><a class="nc-demo-item" href="../../cheatsheet/css/importing-fonts.html"><span class="nc-demo-item-num">2.10</span><span class="nc-demo-item-name">Importing fonts</span></a><a class="nc-demo-item" href="../../cheatsheet/css/basic-interactivity.html"><span class="nc-demo-item-num">2.11</span><span class="nc-demo-item-name">Basic interactivity using <code>:hover</code> and <code>:active</code> states</span></a><a class="nc-demo-item" href="../../cheatsheet/css/animation.html"><span class="nc-demo-item-num">2.12</span><span class="nc-demo-item-name">Animation using <code>@keyframes</code></span></a><a class="nc-demo-item" href="../../cheatsheet/css/flexbox.html"><span class="nc-demo-item-num">2.13</span><span class="nc-demo-item-name">Flexbox</span></a><a class="nc-demo-item" href="../../cheatsheet/css/grid.html"><span class="nc-demo-item-num">2.14</span><span class="nc-demo-item-name">Grid</span></a><a class="nc-demo-item" href="../../cheatsheet/css/responsive-design.html"><span class="nc-demo-item-num">2.15</span><span class="nc-demo-item-name">Responsive design using <code>@media</code> queries</span></a></div></div><div class="nav-chapter" style="--accent:var(--blue);"><a class="nc-heading nav-link" href="../../cheatsheet/js/"><div class="nc-subtitle">Chapter 3</div><div class="nc-title">JavaScript</div></a><div class="nc-desc">JavaScript (JS) empowers websites with deeper functionality.</div><div class="nc-demos"><a class="nc-demo-item" href="../../cheatsheet/js/adding-js.html"><span class="nc-demo-item-num">3.1</span><span class="nc-demo-item-name">Adding JavaScript to a file using the <code>&lt;script&gt;</code> element</span></a><a class="nc-demo-item" href="../../cheatsheet/js/variables.html"><span class="nc-demo-item-num">3.2</span><span class="nc-demo-item-name">Defining variables with <code>let</code> and <code>const</code></span></a><a class="nc-demo-item" href="../../cheatsheet/js/operations.html"><span class="nc-demo-item-num">3.3</span><span class="nc-demo-item-name">Operations (+, -, <, >, and more)</span></a><a class="nc-demo-item" href="../../cheatsheet/js/logic.html"><span class="nc-demo-item-num">3.4</span><span class="nc-demo-item-name">Conditional logic using <code>if...then</code> statements</span></a><a class="nc-demo-item" href="../../cheatsheet/js/randomization.html"><span class="nc-demo-item-num">3.5</span><span class="nc-demo-item-name">Randomization using <code>Math.random()</code></span></a><a class="nc-demo-item" href="../../cheatsheet/js/functions.html"><span class="nc-demo-item-num">3.6</span><span class="nc-demo-item-name">Functions</span></a><a class="nc-demo-item" href="../../cheatsheet/js/loops.html"><span class="nc-demo-item-num">3.7</span><span class="nc-demo-item-name">Loops</span></a><a class="nc-demo-item" href="../../cheatsheet/js/document-object-model.html"><span class="nc-demo-item-num">3.8</span><span class="nc-demo-item-name">The Document Object Model (DOM)</span></a><a class="nc-demo-item" href="../../cheatsheet/js/events.html"><span class="nc-demo-item-num">3.9</span><span class="nc-demo-item-name">Events</span></a></div></div></div>
+</div>
+</div>
+<div id="embed-overlay" hidden>
+<div id="embed-dialog" role="dialog" aria-modal="true" aria-label="Embed this demo">
+<div class="dlg-head"><svg viewBox="0 0 100 100"><polygon points="65 50 65 60 75 60 75 80 25 80 25 60 35 60 35 50 15 50 15 90 85 90 85 50 65 50"/><polygon points="45 29.14 45 70 55 70 55 29.14 65.43 39.57 72.5 32.5 50 10 27.5 32.5 34.57 39.57 45 29.14"/></svg><span>Embed this demo</span><button id="embed-close" title="Close"><svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg></button></div>
+<div class="dlg-body">
+<div class="dlg-field">
+<span class="dlg-label"><svg viewBox="0 0 100 100"><rect x="35" y="45" width="80" height="10" transform="translate(125 -25) rotate(90)"/><rect x="10" y="45" width="80" height="10" transform="translate(100 0) rotate(90)"/><rect x="-15" y="45" width="80" height="10" transform="translate(75 25) rotate(90)"/></svg><span>Panels</span></span>
+<div>
+<label class="dlg-opt"><input type="checkbox" class="dlg-check" id="dlg-info"><span class="dlg-mark"></span> Info</label>
+<label class="dlg-opt"><input type="checkbox" class="dlg-check" id="dlg-code" checked><span class="dlg-mark"></span> Code</label>
+<label class="dlg-opt"><input type="checkbox" class="dlg-check" id="dlg-preview" checked><span class="dlg-mark"></span> Preview</label>
+<label class="dlg-opt" id="dlg-console-l"><input type="checkbox" class="dlg-check" id="dlg-console" checked><span class="dlg-mark"></span> Console</label>
+</div>
+</div>
+<div class="dlg-field">
+<span class="dlg-label"><svg viewBox="0 0 100 100"><path d="M64.14,90l25.86-25.86V10H10v80h54.14ZM60,80v-20h20l-20,20ZM20,80V20h60v30h-30v30h-30Z"/></svg><span>Notes</span></span>
+<div>
+<label class="dlg-opt" id="dlg-notes-l"><input type="checkbox" class="dlg-check" id="dlg-notes" checked><span class="dlg-mark"></span> Include</label>
+<label class="dlg-opt" id="dlg-notesexp-l"><input type="checkbox" class="dlg-check" id="dlg-notes-exp"><span class="dlg-mark"></span> Expanded by default</label>
+</div>
+</div>
+<div class="dlg-field">
+<span class="dlg-label"><svg viewBox="0 0 100 100"><path d="M50,36.35c-7.53,0-13.65,6.12-13.65,13.65s6.12,13.65,13.65,13.65,13.65-6.12,13.65-13.65-6.12-13.65-13.65-13.65Z"/><path d="M90,56.34v-12.68c-6.44-2.29-9.04-2.61-10.41-5.91-1.36-3.29.25-5.39,3.17-11.55l-8.96-8.96c-5.86,2.78-8.22,4.56-11.56,3.17-3.29-1.36-3.64-4.02-5.91-10.41h-12.67c-2.31,6.46-2.61,9.04-5.92,10.41-3.33,1.37-5.75-.42-11.55-3.18l-8.96,8.96c2.94,6.18,4.55,8.25,3.18,11.55-1.37,3.3-4.06,3.65-10.41,5.91v12.68c6.44,2.29,9.04,2.61,10.41,5.91,1.38,3.33-.27,5.43-3.18,11.55l8.96,8.96c5.78-2.73,8.2-4.57,11.55-3.17,3.29,1.37,3.64,4.02,5.91,10.41h12.68c2.35-6.6,2.66-9.05,5.95-10.42,3.3-1.38,5.76.45,11.52,3.18l8.96-8.96c-3.03-6.34-4.52-8.3-3.18-11.55,1.37-3.3,4.06-3.65,10.41-5.91ZM50,72.65c-12.51,0-22.65-10.14-22.65-22.65s10.14-22.65,22.65-22.65,22.65,10.14,22.65,22.65-10.14,22.65-22.65,22.65Z"/></svg><span>Options</span></span>
+<div>
+<label class="dlg-opt"><input type="checkbox" class="dlg-check" id="dlg-readonly"><span class="dlg-mark"></span> Read-only (no editing)</label>
+<label class="dlg-opt" id="dlg-dim-l"><input type="checkbox" class="dlg-check" id="dlg-dim" checked><span class="dlg-mark"></span> Show dimensions</label>
+</div>
+</div>
+<div class="dlg-field">
+<span class="dlg-label"><svg viewBox="0 0 100 100"><path d="M84.14,15.86c-1.95-1.96-4.2-3.42-6.61-4.4-2.41-.97-4.97-1.46-7.53-1.46-5.12,0-10.24,1.95-14.14,5.86l-12.34,12.33c1.16-.17,2.35-.25,3.54-.25,3.18,0,6.26.59,9.13,1.72l6.74-6.73c1.89-1.89,4.4-2.93,7.07-2.93s5.18,1.04,7.07,2.93,2.93,4.4,2.93,7.07-1.04,5.18-2.93,7.07l-17.05,17.06c-1.03,1.03-2.25,1.81-3.58,2.31-1.11.41-2.29.62-3.5.62-.89,0-1.76-.11-2.59-.34-1.68-.45-3.22-1.33-4.48-2.59-1.29-1.29-2.15-2.84-2.59-4.48l-7.57,7.57c.84,1.42,1.87,2.76,3.09,3.98,1.22,1.22,2.56,2.25,3.98,3.09.86.5,1.74.94,2.64,1.3.77.31,1.56.58,2.35.79,1.69.45,3.43.68,5.17.68,3.79,0,7.59-1.08,10.89-3.23l20.31-19.69c7.81-7.81,7.81-20.47,0-28.28Z"/><path d="M43.81,70.34l-6.74,6.73c-1.89,1.89-4.4,2.93-7.07,2.93s-5.18-1.04-7.07-2.93c-3.9-3.9-3.9-10.24,0-14.14l17.05-17.06c1.04-1.04,2.26-1.82,3.59-2.31,1.1-.41,2.28-.62,3.49-.62.89,0,1.76.11,2.59.34,1.68.45,3.22,1.33,4.48,2.59s2.14,2.8,2.59,4.48l7.57-7.57c-.84-1.42-1.87-2.76-3.09-3.98-1.22-1.22-2.56-2.25-3.98-3.09-.86-.5-1.74-.94-2.64-1.3-.77-.31-1.56-.58-2.35-.79-1.69-.45-3.43-.68-5.17-.68-3.79,0-7.59,1.08-10.89,3.23-1.16.74-2.25,1.62-3.26,2.63l-4.69,4.7-12.36,12.36c-7.81,7.81-7.81,20.47,0,28.28,1.95,1.96,4.2,3.42,6.61,4.4,2.41.97,4.97,1.46,7.53,1.46,5.12,0,10.24-1.95,14.14-5.86l12.34-12.33c-1.16.17-2.35.25-3.54.25-3.18,0-6.26-.59-9.13-1.72Z"/></svg><span>Embed URL</span></span>
+<div class="mf-final" id="embed-url"></div>
+</div>
+<textarea id="embed-code" readonly spellcheck="false"></textarea>
+<div class="dlg-actions"><button class="ctrl" id="embed-copy"><svg viewBox="0 0 100 100"><path d="M40,10v30H10v50h50v-30h30V10h-50ZM50,80h-30v-30h30v30ZM80,50h-20v-10h-10v-20h30v30Z"/></svg><span>Copy embed code</span></button></div>
+</div>
+</div>
+</div>
+<!-- this demo's files: the build bakes one <textarea class="demo-file"> per file, html-escaped so a file containing </textarea>or </script> can't break out (reading .value decodes it back); data-entry is the file the preview runs, and single-file demos have exactly one file (index.html) -->
+<div id="demo-files" data-entry="index.html" data-multi="0" data-allow-add="0"><textarea class="demo-file" data-name="index.html" data-lang="html" hidden>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;UTF-8&quot;&gt;
+		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+		&lt;title&gt;Page Title&lt;/title&gt;
+		&lt;meta name=&quot;description&quot; content=&quot;One sentence about this page.&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;header&gt;
+			&lt;h1&gt;Page Title&lt;/h1&gt;
+			&lt;nav&gt;
+				&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+				&lt;a href=&quot;/about/&quot;&gt;About&lt;/a&gt;
+			&lt;/nav&gt;
+		&lt;/header&gt;
+
+		&lt;main&gt;
+			&lt;p&gt;The actual content of the page goes here.&lt;/p&gt;
+		&lt;/main&gt;
+
+		&lt;footer&gt;
+			&lt;p&gt;© Me, forever.&lt;/p&gt;
+		&lt;/footer&gt;
+
+		&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</textarea></div>
+<script type="application/json" id="demo-notes">[{"line":1,"file":"index.html","text":"This has to be the very first line of every HTML file. Leave it out and browsers switch into a bizarre backwards-compatibility mode that will waste an afternoon of your life."},{"line":2,"file":"index.html","text":"\u003ccode>lang\u003c/code> tells screen readers which language to pronounce the page in, and browsers whether to offer a translation. One attribute, real impact."},{"line":6,"file":"index.html","text":"The \u003ccode>&lt;title&gt;\u003c/code> is the browser tab, the bookmark name, and the big blue line in search results. It’s the most-read sentence you’ll write."},{"line":19,"file":"index.html","text":"\u003ccode>&lt;header&gt;\u003c/code>, \u003ccode>&lt;nav&gt;\u003c/code>, \u003ccode>&lt;main&gt;\u003c/code> and \u003ccode>&lt;footer&gt;\u003c/code> are just \u003ccode>&lt;div&gt;\u003c/code>s with meaning attached. Screen reader users can jump straight to \u003ccode>&lt;main&gt;\u003c/code> and skip your navigation entirely."}]</script>
+<script type="application/json" id="demo-config">{"panels":null,"settings":{},"lock":[],"notesExpanded":false}</script>
+<script>
+    window.__cmReady = false;
+    function __bootFailed() {
+      var be = document.getElementById("boot-error");
+      if (be) be.style.display = "block";
+      document.body.classList.add("boot-failed");
+      document.body.classList.add("ready");   // lift the embed loading fade so the chrome shows
+    }
+    setTimeout(function () { if (!window.__cmReady) __bootFailed(); }, 2500);
+    window.addEventListener("error", function (e) {
+      // only a failure BEFORE the editor signals ready means it "didn't load"; a later
+      // transient error shouldn't wipe a working editor with the boot message.
+      if (!window.__cmReady && e.filename && /codemirror|editor\.js/i.test(e.filename)) __bootFailed();
+    });
+  </script>
+<script src="../../chrome.js?v=8ec3c671"></script>
+<script type="module" src="../../editor.js?v=509e1422"></script>
+</body>
+</html>

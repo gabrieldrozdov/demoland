@@ -1,0 +1,111 @@
+=== HTML ===
+<style>
+	* { box-sizing: border-box; }
+	body { font-family: system-ui, sans-serif; margin: 0; }
+
+	/* Write the small-screen version first, with no query */
+	.layout {
+		display: grid;
+		gap: 12px;
+		padding: 12px;
+	}
+	.panel { background: #d6e9ff; padding: 16px; }
+	.note::after { content: " (narrow layout)"; }
+
+	/* Then add columns once there is room */
+	@media (min-width: 600px) {
+		.layout {
+			grid-template-columns: 200px 1fr;
+		}
+		.note::after { content: " (wide layout)"; }
+	}
+
+	/* Queries can ask about more than width */
+	@media (prefers-color-scheme: dark) {
+		body { background: #1a1a1a; color: #fafafa; }
+		.panel { background: #333; }
+	}
+
+	/* Often you don’t need a query at all */
+	.cards {
+		display: grid;
+		gap: 12px;
+		padding: 12px;
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	}
+	.cards > * { background: #ffd9a0; padding: 16px; }
+</style>
+
+<div class="layout">
+	<div class="panel note">Sidebar</div>
+	<div class="panel">Main content. Drag the divider between the code and preview panels to resize me!</div>
+</div>
+
+<div class="cards">
+	<div>no media query</div><div>needed</div><div>at all</div><div>for this</div>
+</div>
+=== NOTES ===
+[
+	{
+		"line": 7,
+		"file": "index.html",
+		"text": "Style the narrow layout first, outside any query. Phones then get the simplest version with the least work, and wider screens add to it."
+	},
+	{
+		"line": 16,
+		"file": "index.html",
+		"text": "Everything inside applies only when the window is at least 600px wide. Use <code>min-width</code> and build upwards ~ mixing <code>min-</code> and <code>max-</code> queries gets confusing fast."
+	},
+	{
+		"line": 24,
+		"file": "index.html",
+		"text": "Media queries aren’t only about width. This one asks whether the reader’s device is set to dark mode."
+	},
+	{
+		"line": 34,
+		"file": "index.html",
+		"text": "A reminder that the best media query is often no media query. This grid reflows on its own."
+	}
+]
+=== INFO ===
+# Responsive design using `@media` queries
+
+A **media query** applies a block of CSS only under certain conditions ~ usually a screen width.
+
+```
+@media (min-width: 600px) {
+	.layout {
+		grid-template-columns: 200px 1fr;
+	}
+}
+```
+
+## Mobile first
+
+Write the narrow layout **first**, outside any query. Then add to it as the screen gets bigger, using `min-width`.
+
+Doing it the other way ~ desktop first, then stripping things away with `max-width` ~ works, but you end up undoing your own CSS, and phones (the slower devices) do the most work. Pick one direction and stay in it.
+
+## Pick breakpoints from your content
+
+There are no correct numbers. Widen the preview until your layout looks bad, and put a breakpoint there. That’s the whole method. Chasing specific device sizes is a losing game ~ there are too many, and they change every year.
+
+## Other things you can ask about
+
+- `@media (prefers-color-scheme: dark)` ~ the reader has dark mode on.
+- `@media (prefers-reduced-motion: reduce)` ~ they’ve asked for less animation.
+- `@media print` ~ styles for printing the page.
+
+## And one thing that isn’t CSS
+
+Responsive design needs this line in your HTML `<head>`:
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+Without it phones pretend to be a desktop and shrink the whole page. All the media queries in the world won’t save you.
+
+## The best media query is no media query
+
+`clamp()`, `minmax()` and `auto-fit` handle a lot of what people reach for breakpoints to do. Try those first.

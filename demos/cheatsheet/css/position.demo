@@ -1,0 +1,97 @@
+=== HTML ===
+<style>
+	* { box-sizing: border-box; }
+	body { font-family: sans-serif; margin: 0; padding: 16px 16px 120px; }
+	.box { padding: 12px; margin-bottom: 12px; background: #ddd; }
+
+	/* static: the default. Top/left/right/bottom do nothing. */
+	.static { position: static; }
+
+	/* relative: nudged from where it would have been, but its space is kept */
+	.relative {
+		position: relative;
+		left: 40px;
+		background: #ffd9a0;
+	}
+
+	/* absolute: positioned against the nearest positioned ancestor */
+	.parent {
+		position: relative;
+		height: 120px;
+		background: #d6e9ff;
+	}
+	.absolute {
+		position: absolute;
+		bottom: 8px;
+		right: 8px;
+		margin: 0;
+		background: #a0c4ff;
+	}
+
+	/* fixed: pinned to the window, ignores scrolling entirely */
+	.fixed {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: 0;
+		background: crimson;
+		color: white;
+	}
+</style>
+
+<div class="box static">static ~ normal flow</div>
+<div class="box relative">relative ~ shoved 40px right, but its old space is still reserved</div>
+
+<div class="box parent">
+	relative parent
+	<div class="box absolute">absolute ~ bottom right of the parent</div>
+</div>
+
+<div class="box">Another normal box.</div>
+<div class="box fixed">fixed ~ pinned to the window, try scrolling</div>
+=== NOTES ===
+[
+	{
+		"line": 8,
+		"file": "index.html",
+		"text": "<code>static</code> is the default. An element sits wherever the normal flow puts it, and <code>top</code>/<code>left</code> are ignored completely."
+	},
+	{
+		"line": 13,
+		"file": "index.html",
+		"text": "<code>relative</code> moves an element from where it <em>would</em> have been, but the gap it left behind stays reserved. Nothing else shifts."
+	},
+	{
+		"line": 24,
+		"file": "index.html",
+		"text": "<code>absolute</code> lifts the element out of the flow and positions it against the nearest ancestor that isn’t <code>static</code>. That’s why the parent has <code>position: relative</code> ~ it’s there purely to be the anchor."
+	},
+	{
+		"line": 33,
+		"file": "index.html",
+		"text": "<code>fixed</code> pins to the browser window and ignores scrolling. This is how sticky headers and cookie banners work."
+	}
+]
+=== INFO ===
+# The `position` property
+
+`position` decides what an element’s `top`, `right`, `bottom` and `left` actually mean ~ and whether it stays in the page’s normal flow at all.
+
+## The five values
+
+- **`static`** ~ the default. Normal flow. `top`/`left` do nothing.
+- **`relative`** ~ nudged from where it would have been. Its original space is still reserved, so nothing else moves.
+- **`absolute`** ~ removed from the flow, positioned against the nearest ancestor that isn’t `static`.
+- **`fixed`** ~ removed from the flow, pinned to the browser window. Doesn’t scroll.
+- **`sticky`** ~ normal until you scroll past it, then it sticks. Needs a `top` value to work.
+
+## The trick that makes `absolute` make sense
+
+`absolute` positions against the nearest **positioned** ancestor ~ meaning the nearest one with a `position` other than `static`. If there isn’t one, it goes all the way up to the page itself, which is rarely what you wanted.
+
+So the pattern is: `position: relative` on the parent (with no `top`/`left`, so it doesn’t actually move), `position: absolute` on the child. The parent exists purely to be the thing the child measures from.
+
+## A warning
+
+If you’re positioning things to build a layout, stop ~ you want Flexbox or Grid. `position` is for the exceptions: a badge in a corner, a dropdown, a sticky header.

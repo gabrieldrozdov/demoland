@@ -1,0 +1,127 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Loops</title>
+	</head>
+	<body>
+		<h1>Loops</h1>
+		<ul id="list"></ul>
+		<p>Open the console too.</p>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+const cats = ["Moonbug", "Minnow", "Future Cat"];
+
+// for...of: go through every item. Start here.
+for (const cat of cats) {
+	console.log("cat:", cat);
+}
+
+// A classic for loop, when you need the position
+for (let i = 0; i < cats.length; i++) {
+	console.log(i + ": " + cats[i]);
+}
+
+// forEach: the same idea, as a method
+cats.forEach(function (cat, i) {
+	console.log(`#${i + 1} is ${cat}`);
+});
+
+// while: repeat until a condition stops being true
+let countdown = 3;
+while (countdown > 0) {
+	console.log(countdown);
+	countdown = countdown - 1;
+}
+
+// Building HTML with a loop
+const list = document.querySelector("#list");
+for (const cat of cats) {
+	const item = document.createElement("li");
+	item.textContent = cat;
+	list.append(item);
+}
+
+// map: make a NEW list out of an old one
+const shouted = cats.map((cat) => cat.toUpperCase());
+console.log(shouted);
+=== NOTES ===
+[
+	{
+		"line": 13,
+		"file": "index.html",
+		"text": "The list above starts with one item. The rest are added by the loop on the <strong>script.js</strong> tab."
+	},
+	{
+		"line": 20,
+		"file": "script.js",
+		"text": "<code>for...of</code> hands you each item in turn. Readable, hard to get wrong, and what you want almost every time."
+	},
+	{
+		"line": 25,
+		"file": "script.js",
+		"text": "Three parts: start at 0, keep going while <code>i</code> is under the length, add one each time. Reach for this only when you actually need the position ~ <code>for...of</code> is easier to read."
+	},
+	{
+		"line": 36,
+		"file": "script.js",
+		"text": "A <code>while</code> loop repeats until its condition goes false. Forget to change the condition inside and it runs forever ~ the editor will catch it and tell you off."
+	},
+	{
+		"line": 50,
+		"file": "script.js",
+		"text": "<code>map</code> builds a <em>new</em> list by transforming each item. Along with <code>filter</code>, it replaces a lot of loops once you get used to it."
+	}
+]
+=== INFO ===
+# Loops
+
+A **loop** repeats code once per item, or until something stops being true.
+
+## `for...of` ~ start here
+
+```
+for (const cat of cats) {
+	console.log(cat);
+}
+```
+
+Readable, hard to get wrong, and it’s what you want the vast majority of the time.
+
+## The classic `for` loop
+
+```
+for (let i = 0; i < cats.length; i++) {
+	console.log(i, cats[i]);
+}
+```
+
+Three parts, separated by semicolons: where to start, how long to keep going, what to do each time round.
+
+Use it when you need the **position** as well as the item. Note `i < length`, not `i <= length` ~ arrays count from zero, so the last position is one less than the length. Getting this wrong is so common it has a name: an off-by-one error.
+
+## `forEach`, `map` and `filter`
+
+```
+cats.forEach((cat) => console.log(cat));
+const shouted = cats.map((cat) => cat.toUpperCase());
+const short = cats.filter((cat) => cat.length < 8);
+```
+
+`forEach` does something with each item. `map` builds a **new** list by transforming each one. `filter` builds a new list of the ones that pass a test.
+
+Once these click you’ll write far fewer `for` loops.
+
+## `while`
+
+```
+while (countdown > 0) {
+	countdown = countdown - 1;
+}
+```
+
+Repeats until the condition goes false. If nothing inside ever changes the condition, it runs forever and freezes the page ~ though in this editor the loop guard will stop it and tell you.

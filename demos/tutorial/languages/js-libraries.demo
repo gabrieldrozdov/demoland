@@ -1,0 +1,47 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JavaScript Libaries</title>
+	</head>
+	<body>
+		<h1>Hello, I am this website.</h1>
+		<p>
+			I am a website. I am beautiful. I have value.
+			<strong>I love you.</strong>
+		</p>
+		<button id="celebrate">Celebrate our love.</button>
+
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// JavaScript
+const button = document.getElementById("celebrate");
+button.addEventListener("click", function () {
+	confetti();
+});
+=== NOTES ===
+[
+	{
+		"line": 27,
+		"title": "Loading a library",
+		"text": "This script tag loads the canvas-confetti library from a CDN — a public address on the web. Once it loads, everything the library offers is ready to use."
+	},
+	{
+		"line": 31,
+		"title": "Using the library",
+		"text": "Just one line! The library does all the hard work of animating the confetti. Writing this effect from scratch would take hundreds of lines."
+	}
+]
+=== INFO ===
+# JavaScript libraries make your life easier
+
+Animating a burst of confetti from scratch would take a *lot* of code. Luckily, you don’t have to write it ~ a **library** is a bundle of pre-written code that someone else has shared for anyone to use.
+
+To use one, you load it with a `<script>` tag that points to its address on the web (often a *CDN*). After it loads, you can call its features from your own code. This entire celebration is a single line: `confetti()`.
+
+There are libraries for almost everything ~ animation, sound, maps, 3D graphics, and more. You’ll find some in action in the other collections.

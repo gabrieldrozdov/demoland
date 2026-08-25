@@ -1,0 +1,30 @@
+=== HTML ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>HTML</title>
+	</head>
+	<body>
+		<h1>Hello, I am this website.</h1>
+		<p>
+			I am a website. I am beautiful. I have value.
+			<strong>I love you.</strong>
+		</p>
+	</body>
+</html>
+=== INFO ===
+# HTML is for content
+
+Every website is built from three languages working together: `HTML`, `CSS`, and `JavaScript`. This chapter introduces what each one does, starting with HTML.
+
+HTML (short for **H**yper**T**ext **M**arkup **L**anguage) holds the *content* of a page, namely its text and media.
+
+## HTML elements
+
+You write HTML using **elements**, which indicate the kind of content you’re adding. Elements start with an opening tag, like `<p>` for paragraphs. End an element by writing its closing tag, which is its opening tag with an additional forward slash, like `</p>`.
+
+## Designing a website
+
+This page is just plain HTML, which means there’s not much we can do to change how it looks. To give it some flair, we’ll need another programming language: CSS!

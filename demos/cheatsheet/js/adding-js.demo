@@ -1,0 +1,79 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Adding JavaScript</title>
+	</head>
+	<body>
+		<h1>Open the console below!</h1>
+		<p>Everything interesting in this demo is happening down there.</p>
+
+		<!-- A script written straight into the page -->
+		<script>
+			console.log("Hello from the script element inside index.html!");
+		</script>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// This file is loaded by the <script> tag at the bottom of index.html.
+console.log("Hello from script.js!");
+
+// Anything you can do in a <script> element, you can do here.
+document.querySelector("h1").style.color = "crimson";
+=== NOTES ===
+[
+	{
+		"line": 14,
+		"file": "index.html",
+		"text": "You can also write JavaScript straight into the page. Fine for a quick test; a separate file is better for anything real."
+	},
+	{
+		"line": 17,
+		"file": "index.html",
+		"text": "This is the one that matters. <code>src</code> points at a separate file, and it goes at the <em>bottom</em> of the body so the HTML above it already exists by the time the script runs."
+	},
+	{
+		"line": 25,
+		"file": "script.js",
+		"text": "Because the script tag is at the bottom, the <code>&lt;h1&gt;</code> already exists and this works. Move that tag into the <code>&lt;head&gt;</code> and it breaks."
+	}
+]
+=== INFO ===
+# Adding JavaScript to a file using the `<script>` element
+
+**JavaScript** is the third language of the web. HTML is the content, CSS is the look, and JavaScript is the behaviour ~ anything that reacts, changes, or calculates.
+
+You attach it with `<script>`, and there are two ways.
+
+## A separate file
+
+```
+<script src="script.js"></script>
+```
+
+This is what you want. Your JavaScript lives in its own file, and every page can share it.
+
+## Straight into the page
+
+```
+<script>
+	console.log("hi");
+</script>
+```
+
+Handy for a quick test. Fine to start with.
+
+## Where the tag goes matters
+
+Put `<script>` **at the bottom of the `<body>`**, just before `</body>`.
+
+If it goes in the `<head>`, the script runs before the page’s HTML exists ~ so any attempt to find an element on the page comes back empty and you get an error. It is a genuinely confusing bug the first time.
+
+(The other fix is `<script src="script.js" defer></script>` in the head, which tells the browser to wait. Either is fine. Bottom of the body is easier to remember.)
+
+## The console
+
+Open the **console** panel at the bottom right. `console.log()` prints to it, and it’s where errors show up. It’s the single most useful tool you have while learning ~ keep it open.

@@ -1,0 +1,81 @@
+=== HTML ===
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	.box {
+		width: 250px;
+		padding: 20px;
+		border: 5px solid crimson;
+		margin: 16px;
+		background: #eee;
+		font-family: sans-serif;
+	}
+
+	/* The old behaviour, for comparison */
+	.content-box {
+		box-sizing: content-box;
+		border-color: navy;
+	}
+</style>
+
+<div class="box">
+	border-box: 250px wide including padding and border.
+</div>
+
+<div class="box content-box">
+	content-box: 250px of content, PLUS padding and border, so 300px on screen.
+</div>
+=== NOTES ===
+[
+	{
+		"line": 4,
+		"file": "index.html",
+		"text": "Put this at the top of every stylesheet you ever write. It makes <code>width</code> mean what you think it means."
+	},
+	{
+		"line": 9,
+		"file": "index.html",
+		"text": "<strong>Padding</strong> is space inside the border ~ between the box’s edge and its content. It takes the background colour."
+	},
+	{
+		"line": 11,
+		"file": "index.html",
+		"text": "<strong>Margin</strong> is space outside the border, pushing other elements away. It’s always transparent."
+	},
+	{
+		"line": 18,
+		"file": "index.html",
+		"text": "The browser default. Here <code>width: 250px</code> describes the content only, so the box lands at 300px once padding and border are added on. Compare the two on the right!"
+	}
+]
+=== INFO ===
+# The box model
+
+Every element is a rectangle, and that rectangle is built out of four layers, from the inside out:
+
+1. **Content** ~ the text or image itself.
+2. **Padding** ~ space inside the border. Takes the background colour.
+3. **Border** ~ the line around it.
+4. **Margin** ~ space outside the border, pushing other elements away. Always transparent.
+
+Padding pushes the box’s own edges outwards. Margin pushes *other things* away. That’s the whole distinction, and it’s the one people mix up.
+
+## The one line that fixes everything
+
+By default, `width: 250px` sets the width of the **content**, and then padding and border get added on top ~ so a 250px box with 20px padding and a 5px border is actually 300px wide on screen. This is genuinely how CSS was designed and it has annoyed people for twenty-five years.
+
+```
+* {
+	box-sizing: border-box;
+}
+```
+
+With this, `width: 250px` means the box is 250px wide, full stop. Padding and border fit inside.
+
+Put it at the top of every stylesheet. I have never once regretted it.
+
+## Shorthand
+
+`padding: 20px` is all four sides. `padding: 10px 20px` is top/bottom then left/right. `padding: 5px 10px 15px 20px` goes clockwise from the top. Same for `margin` and `border-width`.

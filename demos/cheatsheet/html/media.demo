@@ -1,0 +1,72 @@
+=== HTML ===
+<!-- Images -->
+<img src="https://placehold.co/300x150" alt="A grey placeholder box" width="300">
+
+<!-- The same image, but the browser waits until it’s nearly on screen -->
+<img src="https://placehold.co/300x150" alt="Another placeholder" width="300" loading="lazy">
+
+<!-- Video -->
+<video width="320" controls>
+	<source src="video.mp4" type="video/mp4">
+	Your browser can’t play this video.
+</video>
+
+<!-- Audio -->
+<audio controls>
+	<source src="song.mp3" type="audio/mpeg">
+	Your browser can’t play this audio.
+</audio>
+
+<!-- Another site, embedded inside yours -->
+<iframe src="https://example.com" width="320" height="200" title="An embedded page"></iframe>
+
+<!-- An image with a caption attached to it -->
+<figure>
+	<img src="https://placehold.co/300x150" alt="A third placeholder" width="300">
+	<figcaption>Moonbug, photographed at her best angle.</figcaption>
+</figure>
+=== NOTES ===
+[
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "<code>&lt;img&gt;</code> has no closing tag. <code>src</code> is the file, <code>alt</code> describes it, and setting <code>width</code> stops the page jumping around while the image loads."
+	},
+	{
+		"line": 6,
+		"file": "index.html",
+		"text": "<code>loading=&quot;lazy&quot;</code> tells the browser not to download the image until it’s nearly on screen. Free performance ~ put it on every image below the fold."
+	},
+	{
+		"line": 11,
+		"file": "index.html",
+		"text": "Anything between the <code>&lt;video&gt;</code> tags shows only if the video can’t play. It’s a fallback, not a caption."
+	},
+	{
+		"line": 26,
+		"file": "index.html",
+		"text": "<code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> tie a caption to an image properly, instead of just putting a paragraph underneath and hoping."
+	}
+]
+=== INFO ===
+# Media
+
+Text is most of the web, but it isn’t all of it. Here’s how you get pictures, video, sound and other people’s pages onto yours.
+
+## Images
+
+`<img>` needs two attributes: `src` (where the file is) and `alt` (what it shows). It has no closing tag.
+
+Please write real `alt` text. If the image is decorative and says nothing, use `alt=""` so screen readers skip it ~ but if it carries meaning, describe it.
+
+## Video and audio
+
+`<video>` and `<audio>` both need `controls`, or your visitor gets a player with no buttons. The `<source>` inside points at the file, and anything after it is the message shown when playback fails.
+
+## Iframes
+
+`<iframe>` puts somebody else’s page inside yours. This is how embedded maps, videos and, yes, DEMOLAND demos work. Give it a `title` so screen readers can announce what it is.
+
+## Where files live
+
+`src="cat.jpg"` looks for `cat.jpg` next to your HTML file. In the editor here, drag a file straight in and it becomes part of the demo.

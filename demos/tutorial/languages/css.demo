@@ -1,0 +1,50 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>CSS</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>Hello, I am this website.</h1>
+		<p>
+			I am a website. I am beautiful. I have value.
+			<strong>I love you.</strong>
+		</p>
+	</body>
+</html>
+=== FILE style.css ===
+/* CSS */
+body {
+	font-family: sans-serif;
+	background: blue;
+	color: white;
+	max-width: 400px;
+	margin: 40px auto;
+	padding: 20px;
+}
+h1 {
+	font-size: 48px;
+}
+p {
+	font-size: 24px;
+}
+=== INFO ===
+# CSS is for design
+
+The page from the last demo had all the right content, but it looked pretty plain. **CSS** (**C**ascading **S**tyle **S**heets) is the language that makes a page look good.
+
+## Adding CSS to a page
+
+In this demo, CSS lives inside a `<style>` element at the top of the code. We can also put our CSS inside a separate file. All demos on Demoland are a single file, though, so you’ll be seeing the `<style>` element a bunch.
+
+## Applying CSS to elements
+
+Here’s how we style elements:
+1. Choose a **selector** to target specific elements.
+2. Define a **property** of the element’s design that you want to change.
+3. Give that property a **value**.
+
+Property-value pairs use the formatting `property: value;`. Try changing some of the values in this demo and see how the preview updates!

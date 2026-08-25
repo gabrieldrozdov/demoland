@@ -1,0 +1,102 @@
+=== HTML ===
+<style>
+	body {
+		font-family: Georgia, serif;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #222;
+		max-width: 60ch;
+		margin: 16px;
+	}
+
+	h1 {
+		font-family: system-ui, sans-serif;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		text-wrap: balance;
+	}
+
+	.small-caps {
+		font-variant: small-caps;
+		letter-spacing: 0.08em;
+	}
+
+	.centred { text-align: center; }
+	.underlined {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		text-decoration-thickness: 1px;
+	}
+	.shouty { text-transform: uppercase; }
+</style>
+
+<h1>A heading that is long enough to wrap onto two lines</h1>
+
+<p>
+	Body text at a comfortable measure. Sixty characters per line is roughly
+	where reading stops being work.
+</p>
+
+<p class="small-caps">Small caps, with a little extra letter spacing.</p>
+<p class="centred">Centred text.</p>
+<p class="underlined">A nicer underline than the default.</p>
+<p class="shouty">Uppercased by css, not by typing</p>
+=== NOTES ===
+[
+	{
+		"line": 6,
+		"file": "index.html",
+		"text": "Use a plain number, not <code>1.6em</code>. A unitless line height multiplies each element’s own font size; a unit-based one gets inherited as a fixed value and breaks on anything bigger."
+	},
+	{
+		"line": 8,
+		"file": "index.html",
+		"text": "<code>ch</code> is roughly the width of a “0”. Around 60–75 characters per line is where long text stops being tiring to read ~ this one line does more for readability than any font choice."
+	},
+	{
+		"line": 18,
+		"file": "index.html",
+		"text": "Newish and lovely: it evens out the lines of a heading so you don’t get five words then one orphan. Use it on headings, not body text."
+	},
+	{
+		"line": 32,
+		"file": "index.html",
+		"text": "Uppercasing in CSS rather than in your HTML means screen readers still read the original words, and you can change your mind later without retyping anything."
+	}
+]
+=== INFO ===
+# Styling text
+
+Most of a website is words, so most of design is typography.
+
+## Choosing a font
+
+`font-family` takes a list, and the browser uses the first one it has:
+
+```
+font-family: Georgia, serif;
+```
+
+Always end with a generic (`serif`, `sans-serif`, `monospace`) as a fallback. `system-ui` uses whatever the reader’s operating system uses, which loads instantly and always looks native.
+
+## Size and spacing
+
+- `font-size` ~ use `rem` so it respects the reader’s settings.
+- `line-height` ~ **use a unitless number**, like `1.5`. With a unit it gets inherited as a fixed value and wrecks anything with a different font size.
+- `letter-spacing` ~ tighten big headings slightly (`-0.02em`), loosen small caps.
+
+## The single most useful line
+
+```
+max-width: 60ch;
+```
+
+Long lines of text are exhausting to read. Capping your measure at around 60–75 characters does more for a page than any font ever will.
+
+## Extras worth knowing
+
+- `text-wrap: balance` evens out the lines of a heading.
+- `text-transform: uppercase` shouts in CSS instead of in your HTML ~ so screen readers still read real words.
+- `text-underline-offset` and `text-decoration-thickness` turn the default underline into something you’d actually choose.

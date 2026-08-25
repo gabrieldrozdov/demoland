@@ -1,0 +1,62 @@
+=== HTML ===
+<h1>Hello world!</h1>
+
+<p>
+	Did you know there are over 100 elements to choose from? <strong>THAT’S SO MANY!</strong>
+</p>
+
+<p>
+	You only need a handful of them to build a real website, though. Most of the
+	ones I use every day are somewhere on this page.
+</p>
+
+<hr>
+
+<p>Here are a few more, just so you can see the shape of them:</p>
+
+<blockquote>
+	A blockquote, for when you’re quoting somebody.
+</blockquote>
+
+<ul>
+	<li>A list item</li>
+	<li>Another list item</li>
+</ul>
+
+<button>A button that doesn’t do anything yet</button>
+=== NOTES ===
+[
+	{
+		"line": 2,
+		"file": "index.html",
+		"text": "An element is an opening tag, the content, then a closing tag. Here that’s <code>&lt;h1&gt;</code>, “Hello world!”, and <code>&lt;/h1&gt;</code>."
+	},
+	{
+		"line": 13,
+		"file": "index.html",
+		"text": "A few elements have no content, so they don’t get a closing tag either. <code>&lt;hr&gt;</code> (a horizontal rule) is one. So is <code>&lt;br&gt;</code>."
+	},
+	{
+		"line": 26,
+		"file": "index.html",
+		"text": "This button works! It just has nothing to do. Giving it a job is a JavaScript problem, which is the third chapter of this book."
+	}
+]
+=== INFO ===
+# Elements
+
+HTML is made of **elements**. An element is a piece of content plus a label saying what kind of content it is: a heading, a paragraph, an image, a list.
+
+You write one as an **opening tag**, then the content, then a **closing tag**:
+
+```
+<p>This is a paragraph.</p>
+```
+
+The closing tag is the opening tag with a forward slash added. Forgetting it is the most common HTML mistake there is, and it’s the first thing I check when a page looks broken.
+
+## There are a lot of them
+
+There are over 100 elements in HTML. You will never need most of them! I’ve been building websites for years and I use maybe twenty on a regular basis.
+
+The rest of this chapter covers the ones that actually earn their place.

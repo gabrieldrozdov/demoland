@@ -1,0 +1,96 @@
+=== HTML ===
+<form>
+	<!-- Every input should have a label attached to it -->
+	<p>
+		<label for="name">Your name</label><br>
+		<input type="text" id="name" name="name" placeholder="Gabriel">
+	</p>
+
+	<p>
+		<label for="email">Your email</label><br>
+		<input type="email" id="email" name="email" required>
+	</p>
+
+	<!-- Different types get different keyboards and different validation -->
+	<p>
+		<label for="cats">How many cats do you have?</label><br>
+		<input type="number" id="cats" name="cats" min="0" max="99" value="2">
+	</p>
+
+	<!-- Radio buttons: pick one. They share a name. -->
+	<fieldset>
+		<legend>Best cat</legend>
+		<label><input type="radio" name="best" value="moonbug" checked> Moonbug</label>
+		<label><input type="radio" name="best" value="minnow"> Minnow</label>
+	</fieldset>
+
+	<!-- Checkboxes: pick any -->
+	<p>
+		<label><input type="checkbox" name="newsletter"> Email me about new demos</label>
+	</p>
+
+	<!-- A dropdown -->
+	<p>
+		<label for="hear">How did you find this site?</label><br>
+		<select id="hear" name="hear">
+			<option value="">Pick one</option>
+			<option value="class">A class</option>
+			<option value="friend">A friend</option>
+			<option value="lost">I am lost</option>
+		</select>
+	</p>
+
+	<!-- Several lines of text -->
+	<p>
+		<label for="msg">Anything else?</label><br>
+		<textarea id="msg" name="msg" rows="3"></textarea>
+	</p>
+
+	<button type="submit">Send</button>
+</form>
+=== NOTES ===
+[
+	{
+		"line": 5,
+		"file": "index.html",
+		"text": "The <code>for</code> attribute has to match the input’s <code>id</code>. Get this right and clicking the label focuses the input ~ which is also how screen readers know what the box is for."
+	},
+	{
+		"line": 11,
+		"file": "index.html",
+		"text": "<code>type</code> changes the keyboard on a phone and switches on free validation. <code>required</code> stops the form submitting while the box is empty."
+	},
+	{
+		"line": 22,
+		"file": "index.html",
+		"text": "Radio buttons that share a <code>name</code> become one group, so picking one clears the others. <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> label the whole group."
+	},
+	{
+		"line": 49,
+		"file": "index.html",
+		"text": "This button submits the form. A <code>&lt;form&gt;</code> with no <code>action</code> just reloads the page ~ actually receiving the data needs a server, which is beyond what a static site can do on its own."
+	}
+]
+=== INFO ===
+# Forms
+
+A form is how a page collects something from the person reading it: a name, an answer, an order.
+
+## The bit everyone skips
+
+Every input needs a `<label>`, and the label’s `for` has to match the input’s `id`:
+
+```
+<label for="name">Your name</label>
+<input type="text" id="name">
+```
+
+Do that and clicking the label focuses the box, the tap target gets bigger on a phone, and a screen reader can announce what the box is asking for. Skip it and your form is unusable for a lot of people. It’s one attribute!
+
+## Input types
+
+`type` does more than you’d think. `email` and `number` bring up different keyboards on a phone and validate the value for free. There’s also `date`, `color`, `range`, `file` and a dozen more ~ try changing one and see what happens.
+
+## Where does the data go?
+
+Nowhere, yet. A form needs a **server** to receive what it collects, and a static site like this one doesn’t have one. You can build the whole form here and hook it up to a service later ~ the HTML doesn’t change.

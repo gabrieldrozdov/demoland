@@ -1,0 +1,134 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Events</title>
+	</head>
+	<body>
+		<h1 id="title">Click things!</h1>
+		<button id="colour">Change the colour</button>
+		<button id="count">Clicked 0 times</button>
+
+		<p><input id="name" placeholder="Type your name"></p>
+		<p id="greeting"></p>
+
+		<ul id="cats">
+			<li>Moonbug</li>
+			<li>Minnow</li>
+			<li>Future Cat</li>
+		</ul>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+const title = document.querySelector("#title");
+
+// The pattern: element, event name, function to run
+document.querySelector("#colour").addEventListener("click", function () {
+	const hue = Math.floor(Math.random() * 360);
+	title.style.color = `hsl(${hue} 70% 45%)`;
+});
+
+// Remembering something between clicks
+let clicks = 0;
+const countBtn = document.querySelector("#count");
+countBtn.addEventListener("click", () => {
+	clicks = clicks + 1;
+	countBtn.textContent = `Clicked ${clicks} times`;
+});
+
+// Typing fires an event on every keystroke
+const nameInput = document.querySelector("#name");
+const greeting = document.querySelector("#greeting");
+nameInput.addEventListener("input", (event) => {
+	greeting.textContent = event.target.value ? `Hi, ${event.target.value}!` : "";
+});
+
+// One listener on the parent, instead of one per item
+document.querySelector("#cats").addEventListener("click", (event) => {
+	if (event.target.tagName === "LI") {
+		event.target.style.textDecoration = "line-through";
+	}
+});
+=== NOTES ===
+[
+	{
+		"line": 22,
+		"file": "index.html",
+		"text": "None of these controls do anything by themselves. The <strong>script.js</strong> tab is where they get their behaviour."
+	},
+	{
+		"line": 29,
+		"file": "script.js",
+		"text": "The whole pattern: <em>which element</em>, <em>which event</em>, and <em>what to run</em>. That third argument is a function you’re handing over for the browser to call later."
+	},
+	{
+		"line": 35,
+		"file": "script.js",
+		"text": "This variable lives outside the listener, so it survives between clicks. Declare it inside and it would reset to 0 every time."
+	},
+	{
+		"line": 45,
+		"file": "script.js",
+		"text": "The browser passes an <strong>event object</strong> to your function. <code>event.target</code> is the element it happened to, so <code>event.target.value</code> is what’s currently typed."
+	},
+	{
+		"line": 50,
+		"file": "script.js",
+		"text": "<strong>Event delegation</strong>: one listener on the parent catches clicks on every child, including ones added later. Much better than attaching a listener to each item."
+	}
+]
+=== INFO ===
+# Events
+
+An **event** is something that happens on the page: a click, a keystroke, a scroll, a form submission. `addEventListener` lets you run code when one happens.
+
+```
+button.addEventListener("click", function () {
+	console.log("clicked!");
+});
+```
+
+Three parts: **which element**, **which event**, and **what to run**.
+
+That third argument is a function you’re handing to the browser to keep and call later. It’s normal for it to look a bit strange at first ~ you’re not calling it, you’re giving it away.
+
+## Events worth knowing
+
+- `click` ~ the obvious one.
+- `input` ~ fires on every keystroke in a text field.
+- `change` ~ fires when a field is done being edited.
+- `submit` ~ on a form.
+- `keydown` ~ a key was pressed.
+- `mouseenter` / `mouseleave` ~ the hover pair, when CSS isn’t enough.
+- `scroll`, `resize` ~ on the window.
+
+## The event object
+
+Your function gets handed an `event` object describing what happened:
+
+```
+input.addEventListener("input", (event) => {
+	console.log(event.target.value);
+});
+```
+
+`event.target` is the element it happened to. `event.preventDefault()` stops the browser’s default behaviour ~ that’s how you stop a form reloading the page.
+
+## Event delegation
+
+Instead of a listener on every list item, put one on the list:
+
+```
+list.addEventListener("click", (event) => {
+	if (event.target.tagName === "LI") { ... }
+});
+```
+
+Clicks on the children bubble up to the parent. One listener instead of fifty, and it keeps working for items you add later.
+
+## Remembering things
+
+If you need a value to survive between clicks, declare it **outside** the listener. Inside, it resets every time ~ which is a genuinely confusing first bug.

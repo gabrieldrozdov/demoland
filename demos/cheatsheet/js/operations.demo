@@ -1,0 +1,110 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Operations</title>
+	</head>
+	<body>
+		<h1>Operations</h1>
+		<p>Open the console.</p>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// Maths
+console.log(5 + 3, 5 - 3, 5 * 3, 5 / 3);
+console.log("remainder:", 7 % 3);   // what's left over after dividing
+
+// + means something different for text
+console.log("Moon" + "bug");
+console.log("You have " + 2 + " cats");
+
+// Template literals: much nicer for mixing text and values
+const cats = 2;
+console.log(`You have ${cats} cats, and ${cats * 2} eyes to feed.`);
+
+// Comparisons give you true or false
+console.log(5 > 3, 5 < 3, 5 >= 5);
+
+// Use === and !==, never == and !=
+console.log("5 === 5 :", 5 === 5);
+console.log("5 === '5' :", 5 === "5");
+console.log("5 == '5' :", 5 == "5");   // true, and that's the problem
+
+// Combining conditions
+const hungry = true, awake = false;
+console.log("and:", hungry && awake);
+console.log("or:", hungry || awake);
+console.log("not:", !hungry);
+
+// Shorthand you'll see everywhere
+let n = 10;
+n += 5;   // same as n = n + 5
+n++;      // same as n = n + 1
+console.log("n:", n);
+=== NOTES ===
+[
+	{
+		"line": 12,
+		"file": "index.html",
+		"text": "The code is on the <strong>script.js</strong> tab, and its output goes to the console panel at the bottom right."
+	},
+	{
+		"line": 18,
+		"file": "script.js",
+		"text": "<code>%</code> is the remainder, not a percentage. <code>n % 2 === 0</code> is how you check whether a number is even."
+	},
+	{
+		"line": 25,
+		"file": "script.js",
+		"text": "A <strong>template literal</strong> uses backticks and <code>${ }</code> to drop values into text. Far easier to read than gluing strings together with <code>+</code>."
+	},
+	{
+		"line": 34,
+		"file": "script.js",
+		"text": "<code>==</code> quietly converts types before comparing, so the number 5 equals the string “5”. Use <code>===</code> and <code>!==</code> always ~ they compare the type too."
+	},
+	{
+		"line": 44,
+		"file": "script.js",
+		"text": "<code>+=</code>, <code>-=</code> and <code>++</code> are shorthand for changing a variable based on its current value. You’ll see them constantly."
+	}
+]
+=== INFO ===
+# Operations (+, -, <, >, and more)
+
+## Maths
+
+`+ - * /` do what you’d expect. `%` is the **remainder** ~ `7 % 3` is `1`. It’s not a percentage, and it’s how you check if a number is even: `n % 2 === 0`.
+
+## Text
+
+`+` glues strings together, which means `"5" + 5` is `"55"`. Fun.
+
+Better: a **template literal**, written with backticks:
+
+```
+`You have ${cats} cats`
+```
+
+`${...}` drops a value straight in, and you can put maths inside it too. I use these for basically all string building.
+
+## Comparing
+
+`>`, `<`, `>=`, `<=` give you `true` or `false`.
+
+For equality, **use `===` and `!==`**, with three characters.
+
+The two-character `==` converts types before comparing, so `5 == "5"` is `true`, `"" == 0` is `true`, and a handful of other results that have caused real bugs in real software. `===` compares the value **and** the type, which is what you meant.
+
+## Combining
+
+- `&&` ~ and. Both must be true.
+- `||` ~ or. Either will do.
+- `!` ~ not. Flips it.
+
+## Shorthand
+
+`n += 5` is `n = n + 5`. `n++` adds one. There’s `-=`, `*=` and `--` too.

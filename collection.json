@@ -1,0 +1,274 @@
+{
+	"brand": "GD with GD",
+	"title": "DEMOLAND",
+	"siteUrl": "https://demoland.gdwithgd.com/",
+	"description": "Are you scared of code? Don’t be! DEMOLAND makes learning how to code easy. Just pick a book to get started! By <a href='https://gdwithgd.com/' target='blank'>GD&nbsp;with&nbsp;GD</a>!",
+	"books": [
+		{
+			"id": "tutorial",
+			"title": "Baby Steps",
+			"mediaType": "tutorial",
+			"description": "New to DEMOLAND? Start here! Learn how to use this site and get familiar with reading, writing, and testing code.",
+			"chapters": [
+				{
+					"id": "introduction",
+					"title": "How do I use this site?",
+					"description": "Learn how to make your way around DEMOLAND and start writing code.",
+					"demos": [
+						{
+							"id": "welcome",
+							"title": "Welcome to DEMOLAND!",
+							"file": "demos/tutorial/introduction/welcome.demo"
+						}
+					]
+				},
+				{
+					"id": "what-are-websites-made-of",
+					"title": "What are websites made of?",
+					"description": "Websites use three programming languages: HTML, CSS, and JavaScript. What does each language do? Let‘s find out!",
+					"demos": [
+						{
+							"id": "html",
+							"title": "HTML is for content",
+							"file": "demos/tutorial/languages/html.demo"
+						},
+						{
+							"id": "css",
+							"title": "CSS is for design",
+							"file": "demos/tutorial/languages/css.demo"
+						},
+						{
+							"id": "js",
+							"title": "JavaScript is for functionality",
+							"file": "demos/tutorial/languages/js.demo"
+						},
+						{
+							"id": "js-libraries",
+							"title": "JavaScript libraries make your life easier",
+							"file": "demos/tutorial/languages/js-libraries.demo"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "cheatsheet",
+			"title": "Cheatsheet",
+			"mediaType": "Web Documentation",
+			"description": "Websites are made of three programming languages: HTML, CSS, and JavaScript. Let’s break down what makes each language special!",
+			"chapters": [
+				{
+					"id": "html",
+					"title": "HTML",
+					"description": "HTML (HyperText Markup Language) organizes a website’s content.",
+					"demos": [
+						{
+							"id": "elements",
+							"title": "Elements",
+							"file": "demos/cheatsheet/html/elements.demo"
+						},
+						{
+							"id": "attributes",
+							"title": "Attributes",
+							"file": "demos/cheatsheet/html/attributes.demo"
+						},
+						{
+							"id": "block-vs-inline",
+							"title": "Block vs. Inline Elements",
+							"file": "demos/cheatsheet/html/block-vs-inline.demo"
+						},
+						{
+							"id": "typography",
+							"title": "Typography",
+							"file": "demos/cheatsheet/html/typography.demo"
+						},
+						{
+							"id": "hyperlinks",
+							"title": "Hyperlinks",
+							"file": "demos/cheatsheet/html/hyperlinks.demo"
+						},
+						{
+							"id": "anchor-links",
+							"title": "Anchor Links",
+							"file": "demos/cheatsheet/html/anchor-links.demo"
+						},
+						{
+							"id": "media",
+							"title": "Media",
+							"file": "demos/cheatsheet/html/media.demo"
+						},
+						{
+							"id": "tables",
+							"title": "Tables",
+							"file": "demos/cheatsheet/html/tables.demo"
+						},
+						{
+							"id": "forms",
+							"title": "Forms",
+							"file": "demos/cheatsheet/html/forms.demo"
+						},
+						{
+							"id": "document-structure",
+							"title": "Document Structure",
+							"file": "demos/cheatsheet/html/document-structure.demo"
+						}
+					]
+				},
+				{
+					"id": "css",
+					"title": "CSS",
+					"description": "CSS (Cascading Style Sheets) styles websites to make them pretty.",
+					"demos": [
+						{
+							"id": "adding-css",
+							"title": "Adding CSS to a file using the <code>&lt;style&gt;</code> element",
+							"file": "demos/cheatsheet/css/adding-css.demo"
+						},
+						{
+							"id": "coding-in-css",
+							"title": "CSS classes",
+							"file": "demos/cheatsheet/css/coding-in-css.demo"
+						},
+						{
+							"id": "inline-css",
+							"title": "Inline CSS using <code>style=&quot;&quot;</code>",
+							"file": "demos/cheatsheet/css/inline-css.demo"
+						},
+						{
+							"id": "inheritence",
+							"title": "Inheritence and specificity",
+							"file": "demos/cheatsheet/css/inheritence.demo"
+						},
+						{
+							"id": "box-model",
+							"title": "The box model",
+							"file": "demos/cheatsheet/css/box-model.demo"
+						},
+						{
+							"id": "position",
+							"title": "The <code>position</code> property",
+							"file": "demos/cheatsheet/css/position.demo"
+						},
+						{
+							"id": "units",
+							"title": "Units",
+							"file": "demos/cheatsheet/css/units.demo"
+						},
+						{
+							"id": "colors",
+							"title": "Colors",
+							"file": "demos/cheatsheet/css/colors.demo"
+						},
+						{
+							"id": "styling-text",
+							"title": "Styling text",
+							"file": "demos/cheatsheet/css/styling-text.demo"
+						},
+						{
+							"id": "importing-fonts",
+							"title": "Importing fonts",
+							"file": "demos/cheatsheet/css/importing-fonts.demo"
+						},
+						{
+							"id": "basic-interactivity",
+							"title": "Basic interactivity using <code>:hover</code> and <code>:active</code> states",
+							"file": "demos/cheatsheet/css/basic-interactivity.demo"
+						},
+						{
+							"id": "animation",
+							"title": "Animation using <code>@keyframes</code>",
+							"file": "demos/cheatsheet/css/animation.demo"
+						},
+						{
+							"id": "flexbox",
+							"title": "Flexbox",
+							"file": "demos/cheatsheet/css/flexbox.demo"
+						},
+						{
+							"id": "grid",
+							"title": "Grid",
+							"file": "demos/cheatsheet/css/grid.demo"
+						},
+						{
+							"id": "responsive-design",
+							"title": "Responsive design using <code>@media</code> queries",
+							"file": "demos/cheatsheet/css/responsive-design.demo"
+						}
+					]
+				},
+				{
+					"id": "js",
+					"title": "JavaScript",
+					"description": "JavaScript (JS) empowers websites with deeper functionality.",
+					"demos": [
+						{
+							"id": "adding-js",
+							"title": "Adding JavaScript to a file using the <code>&lt;script&gt;</code> element",
+							"file": "demos/cheatsheet/js/adding-js.demo"
+						},
+						{
+							"id": "variables",
+							"title": "Defining variables with <code>let</code> and <code>const</code>",
+							"file": "demos/cheatsheet/js/variables.demo"
+						},
+						{
+							"id": "operations",
+							"title": "Operations (+, -, <, >, and more)",
+							"file": "demos/cheatsheet/js/operations.demo"
+						},
+						{
+							"id": "logic",
+							"title": "Conditional logic using <code>if...then</code> statements",
+							"file": "demos/cheatsheet/js/logic.demo"
+						},
+						{
+							"id": "randomization",
+							"title": "Randomization using <code>Math.random()</code>",
+							"file": "demos/cheatsheet/js/randomization.demo"
+						},
+						{
+							"id": "functions",
+							"title": "Functions",
+							"file": "demos/cheatsheet/js/functions.demo"
+						},
+						{
+							"id": "loops",
+							"title": "Loops",
+							"file": "demos/cheatsheet/js/loops.demo"
+						},
+						{
+							"id": "document-object-model",
+							"title": "The Document Object Model (DOM)",
+							"file": "demos/cheatsheet/js/document-object-model.demo"
+						},
+						{
+							"id": "events",
+							"title": "Events",
+							"file": "demos/cheatsheet/js/events.demo"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "type-and-code",
+			"title": "Type + Code",
+			"mediaType": "Course",
+			"description": "Websites are full of text, a.k.a. “type.” This type is special because it’s made out of code! In this course, you’ll discover how to bring type to life using code.",
+			"chapters": [
+				{
+					"id": "week-1",
+					"title": "Welcome to Type + Code!",
+					"description": "Welcome to the class!",
+					"demos": [
+						{
+							"id": "welcome",
+							"title": "Welcome to DEMOLAND!",
+							"file": "demos/tutorial/introduction/welcome.demo"
+						}
+					]
+				}
+			]
+		}
+	]
+}

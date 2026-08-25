@@ -1,0 +1,147 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Home</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>Home</h1>
+
+		<!-- A link to another page in this demo -->
+		<p><a href="about.html">Go to the About page</a></p>
+
+		<!-- A link to a page inside a folder -->
+		<p><a href="projects/index.html">Go to the Projects page</a></p>
+
+		<!-- A link to another website -->
+		<p><a href="https://gdwithgd.com/">Go to my site</a></p>
+
+		<!-- Open in a new tab -->
+		<p><a href="https://gdwithgd.com/" target="_blank" rel="noopener">Open my site in a new tab</a></p>
+
+		<!-- An email link -->
+		<p><a href="mailto:gabriel@noreplica.com">Email me</a></p>
+
+		<!-- A link wrapped around something that isn’t text -->
+		<p>
+			<a href="about.html">
+				<img src="https://placehold.co/120x60" alt="A placeholder image linking to the About page">
+			</a>
+		</p>
+	</body>
+</html>
+=== FILE about.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>About</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>About</h1>
+		<p>You made it! This is a completely separate HTML file.</p>
+
+		<!-- Back to the file next to this one -->
+		<p><a href="index.html">Back home</a></p>
+
+		<!-- Down into a folder -->
+		<p><a href="projects/index.html">Over to Projects</a></p>
+	</body>
+</html>
+=== FILE projects/index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Projects</title>
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<h1>Projects</h1>
+		<p>This file lives inside a folder called <strong>projects</strong>.</p>
+
+		<!-- ../ means "go up one folder first" -->
+		<p><a href="../index.html">Back home</a></p>
+		<p><a href="../about.html">Over to About</a></p>
+	</body>
+</html>
+=== FILE style.css ===
+body {
+	font-family: system-ui, sans-serif;
+	line-height: 1.6;
+	margin: 24px;
+	max-width: 40em;
+}
+
+a {
+	color: crimson;
+	text-underline-offset: 0.2em;
+}
+
+a:hover {
+	background: #ffe9ee;
+}
+=== NOTES ===
+[
+	{
+		"line": 13,
+		"file": "index.html",
+		"text": "A plain filename looks for a file sitting <em>next to</em> this one. Click it ~ the preview really does load the other page!"
+	},
+	{
+		"line": 16,
+		"file": "index.html",
+		"text": "A folder name and a slash goes <em>down</em> into that folder. No <code>../</code> here, because we’re starting from the top level."
+	},
+	{
+		"line": 22,
+		"file": "index.html",
+		"text": "<code>target=&quot;_blank&quot;</code> opens the link in a new tab. Add <code>rel=&quot;noopener&quot;</code> next to it ~ a one-second security habit that costs you nothing."
+	},
+	{
+		"line": 60,
+		"file": "projects/index.html",
+		"text": "Same rule for the stylesheet. Every path is worked out from the file you’re writing it in, which is the bit that trips up absolutely everybody."
+	},
+	{
+		"line": 67,
+		"file": "projects/index.html",
+		"text": "<code>../</code> means “go up one folder first”. This file is inside <strong>projects</strong>, so it has to climb out before it can find <code>index.html</code>."
+	}
+]
+=== INFO ===
+# Hyperlinks
+
+Links are what make the web a *web*. The element is `<a>`, which stands for **anchor**, and the `href` attribute says where it goes.
+
+```
+<a href="https://gdwithgd.com/">My site</a>
+```
+
+## This demo has four files
+
+Look at the tabs above the editor: `index.html`, `about.html`, a second `index.html` inside a **projects** folder, and one `style.css` shared by all three. The links between them really work ~ click one in the preview and watch the page change.
+
+## Where a link can point
+
+- **A full URL** ~ `https://example.com` goes to another site.
+- **A file next to this one** ~ `about.html`.
+- **A file inside a folder** ~ `projects/index.html`.
+- **A file one folder up** ~ `../index.html`.
+- **An email** ~ `mailto:you@example.com` opens the reader’s mail app.
+- **A spot on this same page** ~ that’s the next demo.
+
+## The `../` thing
+
+Every path is worked out from **the file you’re writing it in**, not from the top of your site. So `index.html` reaches down into the projects folder with `projects/index.html`, and the file inside that folder has to climb back out with `../index.html`.
+
+This is the most confusing part of building a multi-page site, and the only cure is doing it a few times. Open `projects/index.html` in this demo and compare its links to the ones on the home page.
+
+## Two things I’d ask of you
+
+Write link text that makes sense read on its own. Someone tabbing through with a screen reader hears the links without the sentences around them, and a page full of “click here” is useless to them.
+
+And if you use `target="_blank"`, add `rel="noopener"` next to it. It takes a second and closes a small security hole.

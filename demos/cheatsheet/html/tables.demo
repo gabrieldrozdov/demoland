@@ -1,0 +1,124 @@
+=== HTML ===
+<table>
+	<caption>
+		Cat Facts
+	</caption>
+
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Nickname</th>
+			<th>Color</th>
+			<th>Behavior</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th>Moonbug</th>
+			<td>Limmie</td>
+			<td>Tuxedo</td>
+			<td>Good</td>
+		</tr>
+		<tr>
+			<th>Minnow</th>
+			<td>Beeki</td>
+			<td>Tabby</td>
+			<td>Bad</td>
+		</tr>
+		<tr>
+			<th>Future Cat</th>
+			<td>???</td>
+			<td>Orange</td>
+			<td>Chaotic</td>
+		</tr>
+	</tbody>
+
+	<tfoot>
+		<tr>
+			<th colspan="3">Best Cat:</th>
+			<td>???</td>
+		</tr>
+	</tfoot>
+</table>
+
+<!-- Uncomment this to see how you might style a table -->
+<!-- <style>
+	table {
+		border-collapse: collapse;
+		border: 1px solid black;
+		font-family: sans-serif;
+	}
+	caption {
+		caption-side: bottom;
+		padding: 10px;
+		font-weight: bold;
+	}
+	thead {
+		background-color: black;
+		color: white;
+	}
+	tfoot {
+		background-color: #cccccc;
+	}
+	th,
+	td {
+		border: 1px solid black;
+		padding: 10px;
+	}
+	td:last-of-type {
+		text-align: center;
+	}
+	tbody tr:nth-of-type(even) {
+		background-color: #eeeeee;
+	}
+	tfoot th {
+		text-align: right;
+	}
+	tfoot td {
+		font-weight: bold;
+	}
+</style> -->
+=== NOTES ===
+[
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "The <code>&lt;caption&gt;</code> has to be the first thing inside the table. It’s the table’s title, and screen readers announce it before reading any data."
+	},
+	{
+		"line": 9,
+		"file": "index.html",
+		"text": "<code>&lt;th&gt;</code> is a header cell and <code>&lt;td&gt;</code> is a data cell. They look different by default, but the real difference is that <code>&lt;th&gt;</code> tells assistive tech what a row or column <em>means</em>."
+	},
+	{
+		"line": 39,
+		"file": "index.html",
+		"text": "<code>colspan</code> makes one cell stretch across several columns. There’s a <code>rowspan</code> too, for stretching downwards."
+	},
+	{
+		"line": 46,
+		"file": "index.html",
+		"text": "Uncomment this block to see how you might style a table. <code>border-collapse: collapse</code> is the one that turns doubled-up borders into single lines."
+	}
+]
+=== INFO ===
+# Tables
+
+Tables are for **tabular data** ~ things with rows and columns, like a schedule or a price list. That’s it. People used to build entire page layouts out of tables, and we don’t do that any more. Use CSS Grid for layout and tables for data.
+
+## The parts
+
+- `<table>` wraps the whole thing.
+- `<caption>` names it, and must come first.
+- `<thead>`, `<tbody>` and `<tfoot>` group the header rows, the data rows and the summary rows.
+- `<tr>` is a row.
+- `<th>` is a header cell, `<td>` is a data cell.
+
+## Header cells matter
+
+`<th>` isn’t just “bold and centred”. It tells a screen reader that this cell labels the rest of its row or column, so someone listening to the table can keep track of what they’re hearing. Use it for the top row, and for the first cell of each row when that cell is the row’s name.
+
+## Styling
+
+Tables come with strange defaults, and the one that catches everyone is doubled borders. `border-collapse: collapse` fixes it. Uncomment the CSS at the bottom to see a reasonable starting point.

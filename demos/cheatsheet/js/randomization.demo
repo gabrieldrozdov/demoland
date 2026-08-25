@@ -1,0 +1,117 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Randomization</title>
+	</head>
+	<body>
+		<h1 id="fortune">Click the button!</h1>
+		<button id="again">Another one</button>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// Math.random() gives a decimal from 0 up to (but never) 1
+console.log(Math.random());
+
+// Scale it to the range you want
+console.log("0 to 10:", Math.random() * 10);
+
+// Math.floor rounds down, so this gives a whole number 0-9
+console.log("0 to 9:", Math.floor(Math.random() * 10));
+
+// A reusable helper: a whole number from min to max, inclusive
+function randomBetween(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+console.log("a dice roll:", randomBetween(1, 6));
+
+// Picking a random item out of a list
+const fortunes = [
+	"Today is a good day to close some tabs.",
+	"You will forget a semicolon. It will be fine.",
+	"A cat is thinking about you.",
+	"Ship it.",
+	"Refactor later. Later never comes. Ship it anyway."
+];
+
+function pick(list) {
+	return list[Math.floor(Math.random() * list.length)];
+}
+
+const heading = document.querySelector("#fortune");
+document.querySelector("#again").addEventListener("click", function () {
+	heading.textContent = pick(fortunes);
+});
+=== NOTES ===
+[
+	{
+		"line": 12,
+		"file": "index.html",
+		"text": "The buttons above are wired up on the <strong>script.js</strong> tab. Click “Another one” a few times!"
+	},
+	{
+		"line": 17,
+		"file": "script.js",
+		"text": "<code>Math.random()</code> always gives a decimal between 0 and 1. It never reaches 1, and it takes no arguments ~ everything else you build from it."
+	},
+	{
+		"line": 23,
+		"file": "script.js",
+		"text": "Multiply to set the range, then <code>Math.floor()</code> to round down to a whole number. That <code>* 10</code> gives 0–9, not 1–10."
+	},
+	{
+		"line": 27,
+		"file": "script.js",
+		"text": "The <code>+ 1</code> is what makes <code>max</code> reachable. Leave it out and you can never roll a six, which is a bug you’ll only notice after a hundred rolls."
+	},
+	{
+		"line": 41,
+		"file": "script.js",
+		"text": "Multiplying by <code>list.length</code> and flooring gives a valid index every time, however long the list is. I use this constantly."
+	}
+]
+=== INFO ===
+# Randomization using `Math.random()`
+
+`Math.random()` gives you a decimal between 0 and 1. That’s the only random function JavaScript has ~ everything else is built out of it.
+
+```
+Math.random()   // 0.7263849...
+```
+
+It never returns exactly 1, which matters more than you’d think.
+
+## A whole number in a range
+
+```
+Math.floor(Math.random() * 10)      // 0 to 9
+```
+
+Multiply to set the range, then `Math.floor()` to chop off the decimal. Note that `* 10` gives you **0 to 9**, not 1 to 10.
+
+For a range with both ends included:
+
+```
+function randomBetween(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+```
+
+The `+ 1` is what makes `max` reachable. Without it you can never roll a six, and you won’t notice for ages.
+
+## A random item from a list
+
+```
+function pick(list) {
+	return list[Math.floor(Math.random() * list.length)];
+}
+```
+
+This is the one I actually use. Random colour, random fortune, random layout ~ all the same three lines.
+
+## Not really random
+
+`Math.random()` is *pseudo*random: predictable if you know enough about it. Completely fine for a fortune generator or a colour picker. Not fine for passwords or anything involving security ~ that needs `crypto.getRandomValues()`.

@@ -1,0 +1,63 @@
+=== HTML ===
+<!-- An attribute goes inside the opening tag -->
+<a href="https://gdwithgd.com/">A link to my site</a>
+
+<!-- Some elements need an attribute to do anything at all -->
+<img src="https://placehold.co/300x150" alt="A grey placeholder box">
+
+<!-- An element can have as many attributes as it needs -->
+<a href="https://gdwithgd.com/" target="_blank" title="Opens in a new tab">
+	A link that opens in a new tab
+</a>
+
+<!-- Some attributes are just switches, with no value -->
+<input type="checkbox" checked>
+<label>I read the whole cheatsheet</label>
+
+<!-- class and id are the two you’ll use most, once you get to CSS -->
+<p class="important" id="the-only-one">
+	This paragraph has a class and an id. Neither does anything yet!
+</p>
+=== NOTES ===
+[
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "<code>href</code> is the attribute name, and the URL is its value. Put attribute values in quotes ~ always, even when the browser lets you get away with it."
+	},
+	{
+		"line": 6,
+		"file": "index.html",
+		"text": "<code>alt</code> describes the image for anyone using a screen reader, and shows up if the image fails to load. Write one for every image that means something. It takes five seconds!"
+	},
+	{
+		"line": 14,
+		"file": "index.html",
+		"text": "Some attributes are just on or off. Writing <code>checked</code> with no value switches it on; leaving it out switches it off."
+	},
+	{
+		"line": 18,
+		"file": "index.html",
+		"text": "A <code>class</code> can be reused on as many elements as you like. An <code>id</code> is meant to appear once per page. Neither changes anything on its own ~ they’re handles for CSS and JavaScript to grab."
+	}
+]
+=== INFO ===
+# Attributes
+
+An **attribute** is extra information attached to an element, written inside its opening tag:
+
+```
+<a href="https://gdwithgd.com/">A link</a>
+```
+
+`href` is the attribute and the URL is its value. Without it, a link element has no idea where to send anyone.
+
+## The rules
+
+- Attributes go in the **opening** tag only, never the closing one.
+- Values go in quotes.
+- An element can have as many as it needs, separated by spaces.
+
+## The two you’ll use forever
+
+`class` and `id` don’t change how anything looks by themselves. They’re labels, so that CSS and JavaScript can find a specific element later. You’ll be using `class` constantly by the end of the next chapter.

@@ -1,0 +1,134 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Conditional logic</title>
+	</head>
+	<body>
+		<h1>Conditional logic</h1>
+		<p>Open the console, then change the values in script.js.</p>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+const hour = 14;
+
+// if: do this only when the condition is true
+if (hour < 12) {
+	console.log("Good morning!");
+}
+
+// if...else: one or the other, always
+if (hour < 12) {
+	console.log("Morning");
+} else {
+	console.log("Afternoon or later");
+}
+
+// else if: as many branches as you need
+if (hour < 12) {
+	console.log("Morning");
+} else if (hour < 18) {
+	console.log("Afternoon");
+} else {
+	console.log("Evening");
+}
+
+// Combine conditions with && (and) and || (or)
+const raining = true;
+const haveUmbrella = false;
+if (raining && !haveUmbrella) {
+	console.log("Stay inside.");
+}
+
+// Values that count as false: 0, "", null, undefined, NaN, false
+const nickname = "";
+if (nickname) {
+	console.log("Hi " + nickname);
+} else {
+	console.log("No nickname set");
+}
+
+// Shorthand for picking between two values
+const label = hour < 12 ? "AM" : "PM";
+console.log("label:", label);
+=== NOTES ===
+[
+	{
+		"line": 12,
+		"file": "index.html",
+		"text": "The code is on the <strong>script.js</strong> tab. Change the <code>hour</code> value at the top of it and watch the console change."
+	},
+	{
+		"line": 19,
+		"file": "script.js",
+		"text": "The condition goes in round brackets, and the code that runs goes in curly braces. Everything inside runs only when the condition is <code>true</code>."
+	},
+	{
+		"line": 33,
+		"file": "script.js",
+		"text": "<code>else if</code> chains conditions. JavaScript checks them top to bottom and stops at the first one that’s true, so order matters."
+	},
+	{
+		"line": 47,
+		"file": "script.js",
+		"text": "An empty string counts as false. So do <code>0</code>, <code>null</code> and <code>undefined</code> ~ these are called <strong>falsy</strong> values, and testing for them directly is a common shortcut."
+	},
+	{
+		"line": 55,
+		"file": "script.js",
+		"text": "The <strong>ternary</strong>: condition, <code>?</code>, value if true, <code>:</code>, value if false. Great for picking between two values, terrible when you nest them."
+	}
+]
+=== INFO ===
+# Conditional logic using `if...then` statements
+
+An `if` statement runs code only when something is true.
+
+```
+if (hour < 12) {
+	console.log("Good morning!");
+}
+```
+
+The condition goes in round brackets. The code goes in curly braces.
+
+## Branching
+
+```
+if (a) {
+	// when a is true
+} else if (b) {
+	// when a is false and b is true
+} else {
+	// when neither is
+}
+```
+
+JavaScript checks the branches top to bottom and stops at the first true one, so the order you write them in changes the result.
+
+## Truthy and falsy
+
+Anything can be used as a condition. These six count as **false**:
+
+`false`, `0`, `""` (empty string), `null`, `undefined`, `NaN`
+
+Everything else counts as **true** ~ including `"0"`, `"false"` and an empty array, all of which have confused people at three in the morning.
+
+This is why you often see:
+
+```
+if (name) {
+	// runs when name has any content at all
+}
+```
+
+## The ternary
+
+```
+const label = hour < 12 ? "AM" : "PM";
+```
+
+Condition, `?`, value-if-true, `:`, value-if-false. Perfect for choosing between two values. Please don’t nest them ~ I’ve read that code and I didn’t enjoy it.

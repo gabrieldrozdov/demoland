@@ -1,0 +1,72 @@
+=== HTML ===
+<!-- Generic block element -->
+<div>Block element</div>
+<div>Block element</div>
+
+<!-- Generic inline element -->
+<span>Inline element</span>
+<span>Inline element</span>
+
+<!-- Examples of block elements -->
+<h1>Headings</h1>
+<p>Paragraphs</p>
+<ul>
+	<li>Lists</li>
+	<li>Lists</li>
+	<li>Lists</li>
+</ul>
+
+<!-- Examples of inline elements -->
+<a href="#">Links</a>
+<strong>Bold text</strong>
+<em>Italic text</em>
+
+<!-- Inline elements live inside block elements -->
+<p>
+	A paragraph is a block, but the <strong>bold bit</strong> and the
+	<a href="#">link</a> inside it are inline, so they sit in the flow of the
+	sentence instead of breaking it.
+</p>
+
+<!-- Uncomment this to see the shape of every element -->
+<!-- <style>
+	div, span, h1, p, ul, a, strong, em {
+		outline: 2px solid red;
+	}
+</style> -->
+=== NOTES ===
+[
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "The two <code>&lt;div&gt;</code>s stack vertically even though nothing told them to. That’s what makes them blocks: each one takes the full width available and starts a new line."
+	},
+	{
+		"line": 7,
+		"file": "index.html",
+		"text": "The two <code>&lt;span&gt;</code>s share a line. An inline element is only as wide as its content."
+	},
+	{
+		"line": 32,
+		"file": "index.html",
+		"text": "Uncomment this to draw a box around every element. This is genuinely how I debug layouts ~ if you can’t see the boxes, you can’t see what’s wrong."
+	}
+]
+=== INFO ===
+# Block vs. Inline Elements
+
+Every element is either a **block** or an **inline** element, and that decides how it behaves before you write a single line of CSS.
+
+## Block elements
+
+A block takes the full width available and starts on a new line. Headings, paragraphs, lists and `<div>` are all blocks. Put two next to each other and they stack.
+
+## Inline elements
+
+An inline element is only as wide as its content and stays in the flow of the text around it. Links, `<strong>`, `<em>` and `<span>` are inline. Put two next to each other and they share a line.
+
+## Why it matters
+
+Inline elements go **inside** block elements, not the other way around. A `<strong>` inside a `<p>` is right. A `<p>` inside a `<strong>` is not, and the browser will quietly rearrange your page to fix it, which is a fun thing to debug at midnight.
+
+If a layout is behaving strangely and you can’t work out why, this is usually the reason.

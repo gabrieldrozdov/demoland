@@ -1,0 +1,90 @@
+=== HTML ===
+<style>
+	/* Selects every <p> element */
+	p {
+		line-height: 1.5;
+	}
+
+	/* Selects any element with class="callout" */
+	.callout {
+		border-left: 4px solid crimson;
+		padding-left: 12px;
+	}
+
+	/* Selects the one element with id="hero" */
+	#hero {
+		font-size: 2rem;
+	}
+
+	/* An element can have several classes at once */
+	.rounded {
+		border-radius: 12px;
+	}
+	.boxed {
+		background: #eee;
+		padding: 12px;
+	}
+
+	/* Only <p> elements that also have class="callout" */
+	p.callout {
+		font-style: italic;
+	}
+</style>
+
+<p id="hero">A paragraph with an id.</p>
+<p>An ordinary paragraph.</p>
+<p class="callout">A paragraph with the callout class.</p>
+<div class="boxed rounded">A div with two classes.</div>
+=== NOTES ===
+[
+	{
+		"line": 4,
+		"file": "index.html",
+		"text": "An element selector styles every element of that kind on the page. Useful for setting a baseline, dangerous for anything specific."
+	},
+	{
+		"line": 9,
+		"file": "index.html",
+		"text": "A class selector starts with a dot. In the HTML you write <code>class=&quot;callout&quot;</code> with no dot ~ mixing those two up is a rite of passage."
+	},
+	{
+		"line": 15,
+		"file": "index.html",
+		"text": "An id selector starts with a hash. Ids are meant to be unique, so this styles exactly one element. I reach for classes almost always."
+	},
+	{
+		"line": 37,
+		"file": "index.html",
+		"text": "Two classes, separated by a space, and the element gets both. This is how you build up styles from small reusable pieces."
+	}
+]
+=== INFO ===
+# CSS classes
+
+A **class** is a name you invent and attach to any number of elements, so you can style exactly the ones you mean.
+
+```
+<p class="callout">Hello</p>
+```
+
+```
+.callout {
+	border-left: 4px solid crimson;
+}
+```
+
+Note the dot. In CSS the selector is `.callout`; in HTML the attribute value is just `callout`. Everybody gets this wrong at least once.
+
+## Classes, ids, elements
+
+- `p` styles **every** paragraph on the page.
+- `.callout` styles every element carrying that class ~ as many as you like.
+- `#hero` styles the single element with that id.
+
+## Why I use classes for almost everything
+
+Element selectors are too broad: the moment you want one paragraph to look different, you’re stuck. Ids are too narrow: you can only use them once, and they’re hard to override later (there’s a demo on that coming). Classes sit in the middle, and you can stack several on one element.
+
+## Naming them
+
+Name a class after what it **is**, not what it looks like. `.warning` still makes sense after you change the colour from red to orange. `.red-box` does not.

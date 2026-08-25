@@ -1,0 +1,70 @@
+=== HTML ===
+<!-- Every anchor link needs a matching id somewhere on the page -->
+<nav>
+	<a href="#cats">Cats</a> ·
+	<a href="#dogs">Dogs</a> ·
+	<a href="#birds">Birds</a> ·
+	<a href="#top">Back to top</a>
+</nav>
+
+<h2 id="cats">Cats</h2>
+<p>Moonbug is a good cat. Minnow is a bad cat. Both are loved equally.</p>
+<p style="height: 300px">(pretend there’s a lot more here)</p>
+
+<h2 id="dogs">Dogs</h2>
+<p>I don’t have a dog, so I have no opinions to share.</p>
+<p style="height: 300px">(pretend there’s a lot more here too)</p>
+
+<h2 id="birds">Birds</h2>
+<p>Birds are just cats for people who look up.</p>
+<p style="height: 300px">(and here)</p>
+
+<!-- Landing softly instead of snapping -->
+<style>
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 16px;
+	}
+</style>
+=== NOTES ===
+[
+	{
+		"line": 4,
+		"file": "index.html",
+		"text": "A <code>#</code> at the front of an <code>href</code> means “stay on this page and jump to the element with this id”. Here it looks for <code>id=&quot;cats&quot;</code>."
+	},
+	{
+		"line": 7,
+		"file": "index.html",
+		"text": "A link to <code>#top</code> with no matching id still works ~ browsers treat it as “back to the top”. It’s the one exception to the matching rule."
+	},
+	{
+		"line": 10,
+		"file": "index.html",
+		"text": "This is the other half of the link. The <code>id</code> has to match the <code>href</code> exactly, minus the <code>#</code>, and it has to be unique on the page."
+	},
+	{
+		"line": 25,
+		"file": "index.html",
+		"text": "Two lines of CSS make the jump a glide instead of a snap. <code>scroll-padding-top</code> stops the heading from landing flush against the top edge."
+	}
+]
+=== INFO ===
+# Anchor Links
+
+An **anchor link** jumps to a spot on the page you’re already on, instead of loading a new one. Every table of contents on the internet works this way.
+
+It takes two halves:
+
+1. A link whose `href` starts with `#`, like `<a href="#cats">`.
+2. An element somewhere on the page with a matching `id`, like `<h2 id="cats">`.
+
+Click the link, the browser finds the id, and it scrolls there.
+
+## Rules for ids
+
+An `id` has to be unique on the page ~ two elements with `id="cats"` and the browser just picks one. Stick to lowercase letters and hyphens, no spaces.
+
+## One free trick
+
+`<a href="#top">` scrolls back to the top of the page even though there’s no `id="top"` anywhere. Browsers special-case it.

@@ -1,0 +1,114 @@
+=== HTML ===
+<style>
+	body { font-family: system-ui, sans-serif; margin: 16px; }
+
+	.btn {
+		display: inline-block;
+		padding: 10px 18px;
+		border: 2px solid crimson;
+		border-radius: 8px;
+		background: white;
+		color: crimson;
+		text-decoration: none;
+		/* Animate between the states instead of snapping */
+		transition: background 0.15s, color 0.15s;
+	}
+
+	/* Pointer is over it */
+	.btn:hover {
+		background: crimson;
+		color: white;
+	}
+
+	/* Mouse button is held down */
+	.btn:active {
+		transform: translateY(2px);
+	}
+
+	/* Reached by keyboard ~ do not remove this */
+	.btn:focus-visible {
+		outline: 3px solid navy;
+		outline-offset: 2px;
+	}
+
+	/* Works on anything, not just buttons */
+	.card {
+		padding: 16px;
+		margin-top: 16px;
+		background: #eee;
+		transition: box-shadow 0.2s;
+	}
+	.card:hover {
+		box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
+	}
+</style>
+
+<a href="#" class="btn">Hover me, click me, or press Tab to me</a>
+
+<div class="card">A card that lifts on hover.</div>
+=== NOTES ===
+[
+	{
+		"line": 14,
+		"file": "index.html",
+		"text": "Without a <code>transition</code> the hover state snaps on instantly. One line turns it into a fade. Put it on the normal state, not the <code>:hover</code> one."
+	},
+	{
+		"line": 18,
+		"file": "index.html",
+		"text": "<code>:hover</code> is a <strong>pseudo-class</strong>: a condition tacked onto a selector. It fires while the pointer is over the element."
+	},
+	{
+		"line": 24,
+		"file": "index.html",
+		"text": "<code>:active</code> lasts only while the mouse button is held down. A tiny nudge here makes a button feel physical."
+	},
+	{
+		"line": 29,
+		"file": "index.html",
+		"text": "This is the one people delete because they think it’s ugly. Please don’t ~ it’s the only way somebody navigating by keyboard can see where they are on your page."
+	}
+]
+=== INFO ===
+# Basic interactivity using `:hover` and `:active` states
+
+A **pseudo-class** is a condition you attach to a selector with a colon. The element gets those styles only while the condition is true ~ no JavaScript involved.
+
+## The ones you’ll use
+
+- **`:hover`** ~ the pointer is over it.
+- **`:active`** ~ the mouse button is currently held down.
+- **`:focus-visible`** ~ the element has keyboard focus.
+- **`:disabled`**, **`:checked`** ~ for form controls.
+
+## Make it a fade, not a snap
+
+```
+.btn {
+	transition: background 0.15s;
+}
+.btn:hover {
+	background: crimson;
+}
+```
+
+The `transition` goes on the **normal** state, not the hover state. Then it animates in both directions ~ on the way in and on the way out.
+
+## Please keep your focus styles
+
+Browsers draw an outline around whatever has keyboard focus. It is very tempting to write `outline: none` because it doesn’t match your design.
+
+If you do that, anybody navigating with a keyboard ~ which includes people who can’t use a mouse ~ has no idea where they are on your page. Style it instead:
+
+```
+.btn:focus-visible {
+	outline: 3px solid navy;
+	outline-offset: 2px;
+}
+```
+
+`:focus-visible` only fires for keyboard focus, so mouse users never see it. There’s no reason left to remove it.
+
+## Hover doesn’t exist on phones
+
+There’s no pointer on a touchscreen. Never hide anything important behind `:hover` ~ treat it as a bonus for mouse users, not a way to reveal content.

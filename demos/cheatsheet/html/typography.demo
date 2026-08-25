@@ -1,0 +1,79 @@
+=== HTML ===
+<!-- Headings -->
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>
+
+<!-- Paragraphs -->
+<p>
+	Paragraphs!
+	<br>
+	Line breaks!
+	<br>
+	<strong>Bold text!</strong> <em>Italicized text!</em>
+	<br>
+	<strong><em>Bold AND italicized text!</em></strong>
+</p>
+
+<!-- Lists -->
+<ul>
+	<li>Unordered (bulleted) lists</li>
+	<li>Unordered (bulleted) lists</li>
+	<li>Unordered (bulleted) lists</li>
+</ul>
+<ol>
+	<li>Ordered (numbered) lists</li>
+	<li>Ordered (numbered) lists</li>
+	<li>Ordered (numbered) lists</li>
+</ol>
+
+<!-- A few more text elements worth knowing -->
+<blockquote>Blockquotes, for quoting somebody.</blockquote>
+<p>Inline <code>code</code>, for talking about code inside a sentence.</p>
+<pre>Preformatted text,
+	which keeps    your spacing
+		exactly as you typed it.</pre>
+=== NOTES ===
+[
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "There should be exactly one <code>&lt;h1&gt;</code> per page. It’s the heading Google looks for when deciding what your page is about."
+	},
+	{
+		"line": 8,
+		"file": "index.html",
+		"text": "Why only six levels? Because the people who invented HTML didn’t think anyone would need a seventh. Honestly, if you’re reaching for <code>&lt;h6&gt;</code>, your page probably wants splitting up."
+	},
+	{
+		"line": 13,
+		"file": "index.html",
+		"text": "<code>&lt;br&gt;</code> is one of the few elements with no closing tag. Use it for a line break inside a sentence, not to space things out ~ that’s CSS’s job."
+	},
+	{
+		"line": 36,
+		"file": "index.html",
+		"text": "<code>&lt;pre&gt;</code> keeps every space and line break exactly as you typed it. Every other element collapses runs of whitespace down to a single space."
+	}
+]
+=== INFO ===
+# Typography
+
+Most of a website is text, so most of HTML is elements for text.
+
+## Headings
+
+`<h1>` through `<h6>`, biggest to smallest. They aren’t just sizes ~ they’re an outline of your page. Screen readers use them to jump around, and search engines use them to work out what a page is about. Don’t pick a heading level because you like how big it looks; pick it because it’s the right level, then change the size with CSS.
+
+## Paragraphs and emphasis
+
+`<p>` for a paragraph, `<strong>` for bold, `<em>` for italic. You can nest them.
+
+There’s also `<b>` and `<i>`, which look identical. The difference is meaning: `<strong>` and `<em>` say “this matters”, while `<b>` and `<i>` just say “make it bold” or “make it slanted”. I use `<strong>` and `<em>` almost always.
+
+## Lists
+
+`<ul>` for bullets, `<ol>` for numbers, and `<li>` for each item inside either one. The `<li>` elements have to go directly inside the list, with nothing in between.

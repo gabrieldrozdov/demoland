@@ -1,0 +1,113 @@
+=== HTML ===
+<style>
+	body { font-family: system-ui, sans-serif; margin: 16px; }
+	.box { width: 60px; height: 60px; background: crimson; margin-bottom: 16px; }
+
+	/* Define the steps */
+	@keyframes slide {
+		from { transform: translateX(0); }
+		to   { transform: translateX(200px); }
+	}
+
+	/* Attach them to an element */
+	.slide {
+		animation: slide 1.5s ease-in-out infinite alternate;
+	}
+
+	/* More than two steps */
+	@keyframes pulse {
+		0%   { transform: scale(1);   background: crimson; }
+		50%  { transform: scale(1.4); background: hotpink; }
+		100% { transform: scale(1);   background: crimson; }
+	}
+	.pulse {
+		animation: pulse 1.2s ease-in-out infinite;
+	}
+
+	/* Respect people who asked for less motion */
+	@media (prefers-reduced-motion: reduce) {
+		.slide, .pulse { animation: none; }
+	}
+</style>
+
+<p>Sliding:</p>
+<div class="box slide"></div>
+
+<p>Pulsing:</p>
+<div class="box pulse"></div>
+=== NOTES ===
+[
+	{
+		"line": 7,
+		"file": "index.html",
+		"text": "<code>@keyframes</code> defines the steps and gives them a name. On its own it does nothing ~ nothing is animating yet."
+	},
+	{
+		"line": 14,
+		"file": "index.html",
+		"text": "The shorthand is name, duration, easing, repeat count, direction. <code>alternate</code> runs it forwards then backwards, so it never jumps back to the start."
+	},
+	{
+		"line": 20,
+		"file": "index.html",
+		"text": "For more than two steps, use percentages instead of <code>from</code>/<code>to</code>. You can list as many as you like."
+	},
+	{
+		"line": 28,
+		"file": "index.html",
+		"text": "Some people get motion sickness from animation, and their operating system has a setting for it. This block honours that setting. It’s three lines ~ please include it."
+	}
+]
+=== INFO ===
+# Animation using `@keyframes`
+
+CSS can animate on its own, no JavaScript required. It takes two steps.
+
+## 1. Define the movement
+
+```
+@keyframes slide {
+	from { transform: translateX(0); }
+	to   { transform: translateX(200px); }
+}
+```
+
+`@keyframes` names a sequence. On its own it does nothing at all.
+
+For more than two steps, use percentages:
+
+```
+@keyframes pulse {
+	0%   { transform: scale(1); }
+	50%  { transform: scale(1.4); }
+	100% { transform: scale(1); }
+}
+```
+
+## 2. Attach it
+
+```
+.slide {
+	animation: slide 1.5s ease-in-out infinite alternate;
+}
+```
+
+That shorthand is: **name**, **duration**, **easing**, **how many times**, **direction**. `alternate` runs it forwards then backwards, which stops the jarring snap back to the start.
+
+## transition vs animation
+
+`transition` animates *between two states*, usually triggered by `:hover`. `animation` runs a sequence on its own, without anything triggering it. Reach for `transition` first ~ it’s simpler, and it covers most of what you want.
+
+## Animate the cheap things
+
+`transform` and `opacity` are almost free for a browser to animate. `width`, `height`, `top` and `margin` force it to re-measure the whole page every frame, and things get choppy fast. If you can express a movement as a `transform`, do.
+
+## Please include this
+
+```
+@media (prefers-reduced-motion: reduce) {
+	* { animation: none; }
+}
+```
+
+Motion makes some people genuinely unwell, and their device already knows they’ve asked for less of it. Three lines.

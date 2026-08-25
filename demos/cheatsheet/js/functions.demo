@@ -1,0 +1,118 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Functions</title>
+	</head>
+	<body>
+		<h1>Functions</h1>
+		<p>Open the console.</p>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// Define once...
+function greet(name) {
+	return "Hello, " + name + "!";
+}
+
+// ...call as many times as you like
+console.log(greet("Moonbug"));
+console.log(greet("Minnow"));
+
+// A function with no return just does something
+function shout(text) {
+	console.log(text.toUpperCase() + "!!!");
+}
+shout("i love this cat");
+
+// Several parameters, and a default for the last one
+function area(width, height = width) {
+	return width * height;
+}
+console.log("rectangle:", area(4, 3));
+console.log("square:", area(4));
+
+// Arrow syntax ~ the same thing, written shorter
+const double = (n) => n * 2;
+console.log("double:", double(21));
+
+// Variables made inside a function only exist inside it
+function counter() {
+	let count = 0;
+	count = count + 1;
+	return count;
+}
+console.log(counter(), counter());   // 1 1 ~ count starts fresh each time
+=== NOTES ===
+[
+	{
+		"line": 12,
+		"file": "index.html",
+		"text": "The functions themselves are on the <strong>script.js</strong> tab, and everything they return prints to the console."
+	},
+	{
+		"line": 17,
+		"file": "script.js",
+		"text": "<code>name</code> is a <strong>parameter</strong> ~ a placeholder filled in when the function is called. Inside the function it behaves like a normal variable."
+	},
+	{
+		"line": 18,
+		"file": "script.js",
+		"text": "<code>return</code> hands a value back and stops the function immediately. A function with no <code>return</code> gives you <code>undefined</code>."
+	},
+	{
+		"line": 32,
+		"file": "script.js",
+		"text": "A default value is used when that argument isn’t supplied. Here calling <code>area(4)</code> gives you a square."
+	},
+	{
+		"line": 39,
+		"file": "script.js",
+		"text": "<strong>Arrow syntax</strong>. With one expression and no braces, the result is returned automatically. Same function, fewer characters."
+	}
+]
+=== INFO ===
+# Functions
+
+A **function** is a named piece of code you can run whenever you want. Write it once, use it everywhere.
+
+```
+function greet(name) {
+	return "Hello, " + name + "!";
+}
+
+greet("Moonbug");   // "Hello, Moonbug!"
+```
+
+## The parts
+
+- **Parameters** ~ `name` in the brackets. Placeholders, filled in when the function is called.
+- **Arguments** ~ `"Moonbug"`. The actual values you pass in.
+- **`return`** ~ hands a value back and stops the function there and then. Code after a `return` never runs.
+
+A function without a `return` still works ~ it just gives you `undefined`. That’s fine if its job is to *do* something rather than *work out* something.
+
+## Arrow functions
+
+```
+const double = (n) => n * 2;
+```
+
+The same idea in fewer characters. With a single expression and no curly braces, the result is returned automatically. You’ll see these everywhere in modern JavaScript, especially as one-off callbacks.
+
+## Scope
+
+Variables declared inside a function only exist inside it. Call the function again and they start fresh. This is a feature ~ it means two functions can both use a variable called `count` without ever interfering with each other.
+
+## Why bother
+
+Three reasons, and they’re all the same reason really:
+
+1. **Don’t repeat yourself.** Fix a bug once instead of in six places.
+2. **Name things.** `randomBetween(1, 6)` reads better than the maths inside it.
+3. **Think in smaller pieces.** A big problem becomes several small ones.
+
+If you catch yourself copy-pasting code and changing one value, that’s a function trying to be born.

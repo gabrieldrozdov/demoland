@@ -1,0 +1,113 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Variables</title>
+	</head>
+	<body>
+		<h1>Variables</h1>
+		<p>Open the console to see what each one holds.</p>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// let: a value that can change later
+let score = 0;
+score = score + 10;
+console.log("score:", score);
+
+// const: a value that can't be reassigned
+const name = "Gabriel";
+console.log("name:", name);
+
+// This would throw an error, so it's commented out:
+// name = "Somebody else";
+
+// The types you'll actually use
+const aNumber = 42;
+const someText = "text goes in quotes";
+const trueOrFalse = true;
+const nothing = null;
+const aList = ["Moonbug", "Minnow"];
+const anObject = { name: "Moonbug", good: true };
+
+console.log(aNumber, someText, trueOrFalse, nothing);
+console.log("list:", aList);
+console.log("object:", anObject);
+
+// const stops you REASSIGNING, not editing what's inside
+aList.push("Future Cat");
+console.log("still works:", aList);
+=== NOTES ===
+[
+	{
+		"line": 12,
+		"file": "index.html",
+		"text": "The code for this demo is on the <strong>script.js</strong> tab. Open the console panel too ~ that’s where every value gets printed."
+	},
+	{
+		"line": 17,
+		"file": "script.js",
+		"text": "<code>let</code> makes a variable you intend to change. The <code>=</code> means “put this value in here”, not “these are equal”."
+	},
+	{
+		"line": 22,
+		"file": "script.js",
+		"text": "<code>const</code> means you won’t reassign it. Start with <code>const</code> for everything and switch to <code>let</code> only when you actually need to ~ it makes your intent obvious."
+	},
+	{
+		"line": 34,
+		"file": "script.js",
+		"text": "An <strong>object</strong> is a bundle of named values. Get one out with <code>anObject.name</code>."
+	},
+	{
+		"line": 41,
+		"file": "script.js",
+		"text": "This surprises everyone: <code>const</code> stops you pointing the name at something new, but the list or object itself can still be edited."
+	}
+]
+=== INFO ===
+# Defining variables with `let` and `const`
+
+A **variable** is a name for a value, so you can use it later without retyping it.
+
+```
+let score = 0;
+const name = "Gabriel";
+```
+
+The `=` means “put this in here”. It is not a statement that the two sides are equal ~ that catches people who remember it from maths.
+
+## `let` vs `const`
+
+- **`const`** ~ you won’t reassign this name.
+- **`let`** ~ you will.
+
+**Use `const` by default.** Switch to `let` only when you genuinely need to change the value. It means anyone reading your code (including you, in a month) can see at a glance which values move and which don’t.
+
+You may also see **`var`** in older code. It’s the original, it has some strange scoping behaviour, and there’s no reason to write new code with it.
+
+## The `const` gotcha
+
+```
+const list = ["a", "b"];
+list.push("c");   // this works!
+list = ["x"];     // this does not
+```
+
+`const` stops you pointing the name at something *new*. It doesn’t freeze what’s inside. Everyone trips on this once.
+
+## The types you’ll use
+
+- **Number** ~ `42`, `3.14`. No quotes.
+- **String** ~ `"text"`. Quotes, single or double, just be consistent.
+- **Boolean** ~ `true` or `false`.
+- **Array** ~ `["a", "b"]`. An ordered list. Count from **zero**: `list[0]` is the first item.
+- **Object** ~ `{ name: "Moonbug" }`. Named values. Reach in with `object.name`.
+- **`null`** and **`undefined`** ~ “deliberately nothing” and “never set”.
+
+## Naming
+
+Lowercase first letter, capitals for each word after: `myScore`, `catName`. Names can’t start with a number or contain spaces. Make them describe what’s in them ~ `x` tells you nothing.

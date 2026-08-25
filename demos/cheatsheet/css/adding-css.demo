@@ -1,0 +1,60 @@
+=== HTML ===
+<style>
+	body {
+		font-family: sans-serif;
+		background-color: #fafafa;
+	}
+	h1 {
+		color: crimson;
+	}
+</style>
+
+<h1>Styled by the block above</h1>
+<p>Every rule in that &lt;style&gt; element applies to this page.</p>
+=== NOTES ===
+[
+	{
+		"line": 2,
+		"file": "index.html",
+		"text": "Everything between <code>&lt;style&gt;</code> and <code>&lt;/style&gt;</code> is CSS, not HTML. On a real site this element goes inside the <code>&lt;head&gt;</code>."
+	},
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "A CSS rule is a <strong>selector</strong> (which elements) then a <strong>declaration block</strong> in curly braces (what to do to them)."
+	},
+	{
+		"line": 8,
+		"file": "index.html",
+		"text": "Each declaration is <code>property: value;</code>. The semicolon at the end isn’t optional as far as I’m concerned ~ leave it off and the next line you add silently breaks."
+	}
+]
+=== INFO ===
+# Adding CSS to a file using the `<style>` element
+
+HTML gives a page its content. **CSS** gives it a look. There are three ways to attach CSS to a page, and this is the middle one.
+
+```
+<style>
+	h1 {
+		color: crimson;
+	}
+</style>
+```
+
+Everything inside `<style>` is CSS, and it applies to the whole page. On a real site it belongs in the `<head>`.
+
+## The other two ways
+
+- **A separate `.css` file**, linked with `<link rel="stylesheet" href="style.css">`. This is what you want for anything real ~ one file of styles, shared by every page.
+- **Inline styles**, written directly on an element with `style=""`. There’s a whole demo on those later, and a warning attached.
+
+## Anatomy of a rule
+
+```
+h1 { color: crimson; }
+```
+
+`h1` is the **selector** ~ which elements this applies to. Inside the braces is a **declaration**: a `property`, a colon, a `value`, and a semicolon.
+
+I use `<style>` for quick tests and demos like this one. For an actual website, use a separate file.

@@ -1,0 +1,86 @@
+=== HTML ===
+<style>
+	:root { font-size: 16px; }
+	body { font-family: sans-serif; }
+	div { background: #eee; margin-bottom: 8px; padding: 8px; }
+
+	/* Absolute: always the same size */
+	.px { width: 200px; }
+
+	/* Relative to font size */
+	.rem { width: 12rem; }   /* 12 x the root font size */
+	.em  { width: 12em; font-size: 12px; }  /* 12 x THIS element's font size */
+
+	/* Relative to the parent */
+	.pct { width: 50%; }
+
+	/* Relative to the window */
+	.vw { width: 50vw; }
+	.vh { height: 20vh; }
+
+	/* Let the browser do arithmetic */
+	.calc { width: calc(100% - 40px); }
+
+	/* Pick a size, but keep it within limits */
+	.clamp { width: clamp(150px, 50%, 400px); }
+</style>
+
+<div class="px">200px ~ always 200px</div>
+<div class="rem">12rem ~ 12 x the root font size (192px)</div>
+<div class="em">12em ~ 12 x this element’s own 12px font (144px)</div>
+<div class="pct">50% ~ half the parent</div>
+<div class="vw">50vw ~ half the window width</div>
+<div class="vh">20vh tall ~ a fifth of the window height</div>
+<div class="calc">calc(100% - 40px)</div>
+<div class="clamp">clamp(150px, 50%, 400px) ~ resize the preview!</div>
+=== NOTES ===
+[
+	{
+		"line": 8,
+		"file": "index.html",
+		"text": "<code>px</code> never changes. Good for borders and small fixed details, bad for anything that should adapt to the reader’s settings."
+	},
+	{
+		"line": 11,
+		"file": "index.html",
+		"text": "<code>rem</code> is relative to the <em>root</em> font size. If someone bumps their browser’s text size for readability, everything measured in <code>rem</code> grows with it."
+	},
+	{
+		"line": 12,
+		"file": "index.html",
+		"text": "<code>em</code> is relative to <em>this element’s</em> font size, which means nested elements compound each other. That surprise is why I use <code>rem</code> nearly always."
+	},
+	{
+		"line": 25,
+		"file": "index.html",
+		"text": "<code>clamp(min, ideal, max)</code> gives you a fluid size that can’t get silly. Drag the preview divider and watch this one."
+	}
+]
+=== INFO ===
+# Units
+
+CSS has a lot of units. Here are the ones worth knowing, and when I actually reach for each.
+
+## Fixed
+
+**`px`** ~ one pixel, always. Fine for borders, small radii, and anything that genuinely shouldn’t scale.
+
+## Relative to font size
+
+**`rem`** ~ a multiple of the *root* font size (16px by default). This is my default for sizes and spacing, because if a reader turns their browser text size up for readability, your layout grows with them.
+
+**`em`** ~ a multiple of *this element’s* font size. Handy for padding that should scale with its own text, but it compounds through nesting, which produces some genuinely baffling bugs.
+
+## Relative to the parent
+
+**`%`** ~ a percentage of the parent’s size. Simple, and does exactly what you expect until you try it on `height`, which needs the parent to have a height first.
+
+## Relative to the window
+
+**`vw`** and **`vh`** ~ 1% of the window’s width or height. `100vh` is a full screen. On phones this is complicated by the address bar appearing and disappearing, which is why `dvh` exists.
+
+## Doing maths
+
+**`calc()`** ~ mix units freely: `calc(100% - 40px)`.
+
+**`clamp(min, ideal, max)`** ~ fluid, but bounded. This is how you do responsive type without a single media query.

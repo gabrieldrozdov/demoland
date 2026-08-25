@@ -1,0 +1,96 @@
+=== HTML ===
+<style>
+	/* Some properties flow down to children automatically */
+	body {
+		font-family: sans-serif;
+		color: #333;
+	}
+
+	/* Others do not ~ this border stays on the div */
+	.card {
+		border: 2px solid #ccc;
+		padding: 12px;
+	}
+
+	/* Specificity: which rule wins when two of them apply */
+	p {
+		color: navy;
+	}
+	.note {
+		color: green;
+	}
+	#special {
+		color: crimson;
+	}
+
+	/* Later rule wins when specificity ties */
+	.late {
+		color: orange;
+	}
+	.late {
+		color: purple;
+	}
+</style>
+
+<div class="card">
+	<p>I inherited the font and colour from &lt;body&gt;, but not the border.</p>
+</div>
+
+<p>Just a p ~ navy.</p>
+<p class="note">p and .note ~ the class wins, so green.</p>
+<p class="note" id="special">p, .note and #special ~ the id wins, so crimson.</p>
+<p class="late">Two identical selectors ~ the last one wins, so purple.</p>
+=== NOTES ===
+[
+	{
+		"line": 5,
+		"file": "index.html",
+		"text": "Text properties like <code>font-family</code> and <code>color</code> are <strong>inherited</strong>: set them once on <code>body</code> and everything inside picks them up."
+	},
+	{
+		"line": 11,
+		"file": "index.html",
+		"text": "Box properties like <code>border</code>, <code>padding</code> and <code>margin</code> are not inherited. The paragraph inside this card gets no border of its own."
+	},
+	{
+		"line": 22,
+		"file": "index.html",
+		"text": "Ids beat classes, classes beat element names. That’s why this rule wins even though the others come after it ~ specificity is checked before order."
+	},
+	{
+		"line": 31,
+		"file": "index.html",
+		"text": "When two rules are equally specific, the one written last wins. This is the “cascading” in Cascading Style Sheets."
+	}
+]
+=== INFO ===
+# Inheritence and specificity
+
+Two rules decide what an element actually looks like. Once these click, CSS stops feeling random.
+
+## Inheritance
+
+Some properties flow down from a parent to everything inside it. Set `font-family` on `<body>` and the whole page picks it up ~ you don’t style each paragraph separately.
+
+Text-ish properties inherit: `color`, `font-family`, `font-size`, `line-height`, `text-align`.
+
+Box-ish properties don’t: `border`, `padding`, `margin`, `background`, `width`. A border on a `<div>` stays on that `<div>`.
+
+## Specificity
+
+When two rules both apply and disagree, the more **specific** one wins:
+
+1. Inline `style=""` ~ beats basically everything.
+2. `#id` ~ very specific.
+3. `.class` ~ moderately specific.
+4. `p` ~ least specific.
+
+Specificity is checked *before* source order. That’s why a `#id` rule at the top of your file beats a `.class` rule at the bottom.
+
+## When it ties
+
+If two rules are equally specific, the one written **last** wins. This is the cascade.
+
+## The escape hatch, and why to avoid it
+
+`!important` overrides all of it. It is also the reason somebody’s stylesheet becomes impossible to work with six months later ~ once you use one, you need another to beat it, and so on. If you find yourself reaching for it, the real fix is usually a more specific selector.

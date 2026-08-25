@@ -1,0 +1,96 @@
+=== HTML ===
+<style>
+	body { font-family: sans-serif; }
+	div { padding: 12px; margin-bottom: 6px; color: white; }
+
+	/* Named colours ~ 148 of them */
+	.named { background: rebeccapurple; }
+
+	/* Hex ~ red, green, blue in base 16 */
+	.hex { background: #663399; }
+	.hex-short { background: #639; }        /* same colour, shorthand */
+	.hex-alpha { background: #66339980; }   /* last pair is transparency */
+
+	/* rgb ~ 0 to 255 per channel */
+	.rgb { background: rgb(102 51 153); }
+	.rgba { background: rgb(102 51 153 / 50%); }
+
+	/* hsl ~ hue, saturation, lightness. Easier to adjust by hand. */
+	.hsl { background: hsl(270 50% 40%); }
+	.hsl-light { background: hsl(270 50% 65%); }
+
+	/* Define a colour once, reuse it everywhere */
+	:root {
+		--brand: hsl(270 50% 40%);
+	}
+	.var { background: var(--brand); }
+</style>
+
+<div class="named">rebeccapurple ~ a named colour</div>
+<div class="hex">#663399</div>
+<div class="hex-short">#639 ~ the same thing, shorter</div>
+<div class="hex-alpha">#66339980 ~ 50% transparent</div>
+<div class="rgb">rgb(102 51 153)</div>
+<div class="rgba">rgb(102 51 153 / 50%)</div>
+<div class="hsl">hsl(270 50% 40%)</div>
+<div class="hsl-light">hsl(270 50% 65%) ~ same hue, lighter</div>
+<div class="var">var(--brand)</div>
+=== NOTES ===
+[
+	{
+		"line": 10,
+		"file": "index.html",
+		"text": "A hex code is red, green and blue written in base 16, two characters each. <code>#663399</code> is 102 red, 51 green, 153 blue."
+	},
+	{
+		"line": 11,
+		"file": "index.html",
+		"text": "If all three pairs are doubled letters you can write just three characters. <code>#639</code> and <code>#663399</code> are the same colour."
+	},
+	{
+		"line": 19,
+		"file": "index.html",
+		"text": "<strong>H</strong>ue (0–360 around a colour wheel), <strong>s</strong>aturation, <strong>l</strong>ightness. Want the same colour but lighter? Change one number. Try doing that with a hex code!"
+	},
+	{
+		"line": 24,
+		"file": "index.html",
+		"text": "A custom property. Define your colours once at the top and use <code>var(--brand)</code> everywhere ~ then changing the whole site’s palette is a one-line edit."
+	}
+]
+=== INFO ===
+# Colors
+
+There are about six ways to write the same colour in CSS. Here’s what each is good for.
+
+## Named colours
+
+`red`, `hotpink`, `rebeccapurple` ~ 148 of them. Great for quick tests, too limited for real design work.
+
+(`rebeccapurple` was added to the spec in memory of a web developer’s daughter. It’s the only colour in CSS with a story.)
+
+## Hex
+
+`#663399` ~ red, green and blue, two hex digits each. If each pair is a doubled character you can shorten it: `#663399` becomes `#639`. Add a fourth pair for transparency: `#66339980` is 50% transparent.
+
+This is what design tools give you, so it’s what most CSS is written in.
+
+## rgb
+
+`rgb(102 51 153)` ~ the same three channels, in plain numbers. Add `/ 50%` for transparency.
+
+## hsl ~ my favourite
+
+`hsl(270 50% 40%)` is **hue** (a position on the colour wheel, 0–360), **saturation** and **lightness**.
+
+The reason I like it: you can adjust a colour by hand and predict what’ll happen. Want it lighter? Raise the third number. Want a matching accent? Change only the hue. Doing either of those to a hex code means opening a colour picker.
+
+## Custom properties
+
+```
+:root {
+	--brand: hsl(270 50% 40%);
+}
+```
+
+Then `color: var(--brand)` anywhere. Define your palette once at the top of your stylesheet and the whole site can be re-themed in one edit. Every serious stylesheet I write starts this way.

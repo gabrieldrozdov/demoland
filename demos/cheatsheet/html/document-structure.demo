@@ -1,0 +1,77 @@
+=== HTML ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Page Title</title>
+		<meta name="description" content="One sentence about this page.">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<header>
+			<h1>Page Title</h1>
+			<nav>
+				<a href="/">Home</a>
+				<a href="/about/">About</a>
+			</nav>
+		</header>
+
+		<main>
+			<p>The actual content of the page goes here.</p>
+		</main>
+
+		<footer>
+			<p>© Me, forever.</p>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== NOTES ===
+[
+	{
+		"line": 2,
+		"file": "index.html",
+		"text": "This has to be the very first line of every HTML file. Leave it out and browsers switch into a bizarre backwards-compatibility mode that will waste an afternoon of your life."
+	},
+	{
+		"line": 3,
+		"file": "index.html",
+		"text": "<code>lang</code> tells screen readers which language to pronounce the page in, and browsers whether to offer a translation. One attribute, real impact."
+	},
+	{
+		"line": 7,
+		"file": "index.html",
+		"text": "The <code>&lt;title&gt;</code> is the browser tab, the bookmark name, and the big blue line in search results. It’s the most-read sentence you’ll write."
+	},
+	{
+		"line": 20,
+		"file": "index.html",
+		"text": "<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> and <code>&lt;footer&gt;</code> are just <code>&lt;div&gt;</code>s with meaning attached. Screen reader users can jump straight to <code>&lt;main&gt;</code> and skip your navigation entirely."
+	}
+]
+=== INFO ===
+# Document Structure
+
+Every HTML file has the same skeleton. Once you’ve typed it a few times you’ll stop thinking about it, but it’s worth knowing what each part is for.
+
+## `<head>` vs `<body>`
+
+The `<head>` holds information *about* the page: its title, its character set, links to CSS files. None of it is visible.
+
+The `<body>` holds everything you can actually see.
+
+## The lines that are always there
+
+- `<!DOCTYPE html>` ~ first line, always. It says “this is modern HTML”.
+- `<html lang="en">` ~ tells assistive tech what language the page is in.
+- `<meta charset="UTF-8">` ~ makes emoji, accents and other alphabets render properly instead of turning into garbage.
+- `<meta name="viewport" ...>` ~ without it, phones pretend to be a desktop and shrink your page to nothing.
+- `<title>` ~ the browser tab, and the headline in search results.
+
+## Sectioning elements
+
+`<header>`, `<nav>`, `<main>` and `<footer>` behave exactly like `<div>`, but they say what part of the page they are. That’s not decoration ~ it’s what lets someone using a screen reader skip your navigation and go straight to the content.
+
+You don’t have to memorise this. In the DEMOLAND editor, or in VS Code, typing `!` and pressing Tab drops the whole skeleton in for you.

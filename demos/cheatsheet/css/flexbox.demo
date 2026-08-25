@@ -1,0 +1,115 @@
+=== HTML ===
+<style>
+	body { font-family: system-ui, sans-serif; margin: 16px; }
+	.row > * { background: #d6e9ff; padding: 12px; }
+	.row { margin-bottom: 16px; border: 2px dashed #ccc; }
+
+	/* One line, spaced out */
+	.basic {
+		display: flex;
+		gap: 8px;
+	}
+
+	/* Push things apart */
+	.between {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	/* Line things up on the cross axis */
+	.centred {
+		display: flex;
+		align-items: center;
+		height: 100px;
+	}
+
+	/* Let one item eat the leftover space */
+	.grow > .fills { flex: 1; }
+
+	/* Stack vertically instead */
+	.column {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	/* Wrap onto more lines when there isn’t room */
+	.wrapping {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	.wrapping > * { flex: 1 1 120px; }
+</style>
+
+<div class="row basic"><div>one</div><div>two</div><div>three</div></div>
+<div class="row between"><div>left</div><div>middle</div><div>right</div></div>
+<div class="row centred"><div>tall row</div><div>vertically centred</div></div>
+<div class="row basic grow"><div>fixed</div><div class="fills">this one grows</div><div>fixed</div></div>
+<div class="row column"><div>stacked</div><div>one</div><div>above another</div></div>
+<div class="row wrapping"><div>a</div><div>b</div><div>c</div><div>d</div><div>e</div><div>f</div></div>
+=== NOTES ===
+[
+	{
+		"line": 9,
+		"file": "index.html",
+		"text": "One line on the <strong>parent</strong> turns all its children into flex items. You never write anything on the children to make this happen."
+	},
+	{
+		"line": 10,
+		"file": "index.html",
+		"text": "<code>gap</code> spaces the children evenly with no margin on the outer edges. Before this existed we all did horrible things with <code>margin-right</code> and <code>:last-child</code>."
+	},
+	{
+		"line": 16,
+		"file": "index.html",
+		"text": "<code>justify-content</code> distributes items <em>along</em> the row. <code>align-items</code> lines them up across it. Swapping <code>flex-direction</code> to <code>column</code> swaps which is which, which catches everyone out."
+	},
+	{
+		"line": 27,
+		"file": "index.html",
+		"text": "<code>flex: 1</code> on a child means “take whatever space is left over”. Put it on one item and the others keep their natural size."
+	}
+]
+=== INFO ===
+# Flexbox
+
+Flexbox lays things out in **one direction** ~ a row or a column. It’s the right tool for a navigation bar, a row of cards, a form field with a button next to it.
+
+## It starts on the parent
+
+```
+.row {
+	display: flex;
+	gap: 8px;
+}
+```
+
+That one line makes every direct child a flex item. You don’t write anything on the children.
+
+## The two axes
+
+- **`justify-content`** ~ distributes items *along* the direction of the flow.
+- **`align-items`** ~ lines items up *across* it.
+
+`flex-direction: column` swaps which axis is which. This is the single most confusing thing about Flexbox and it catches everybody, repeatedly. When it feels backwards, that’s why.
+
+## Vertical centring, finally
+
+```
+display: flex;
+align-items: center;
+justify-content: center;
+```
+
+This used to be a running joke about how hard it was. Now it’s three lines.
+
+## Sizing the children
+
+`flex: 1` on a child means “take the leftover space”. Put it on one item and it expands while the others keep their natural size. Put it on all of them and they share equally.
+
+`flex-wrap: wrap` lets items drop onto a new line when there isn’t room, which combined with `flex: 1 1 200px` gives you a responsive card grid with no media queries at all.
+
+## Flexbox or Grid?
+
+One direction: Flexbox. Rows *and* columns at once: Grid. That’s genuinely the whole rule.

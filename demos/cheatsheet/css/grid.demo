@@ -1,0 +1,100 @@
+=== HTML ===
+<style>
+	body { font-family: system-ui, sans-serif; margin: 16px; }
+	.grid { display: grid; gap: 8px; margin-bottom: 16px; border: 2px dashed #ccc; }
+	.grid > * { background: #ffd9a0; padding: 12px; }
+
+	/* Three equal columns */
+	.thirds {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	/* Columns of different sizes */
+	.sidebar {
+		grid-template-columns: 200px 1fr;
+	}
+
+	/* As many columns as fit, each at least 120px */
+	.responsive {
+		grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	}
+
+	/* Items can span more than one cell */
+	.spanning {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.spanning .wide { grid-column: span 2; }
+	.spanning .tall { grid-row: span 2; }
+</style>
+
+<div class="grid thirds"><div>1</div><div>2</div><div>3</div></div>
+
+<div class="grid sidebar"><div>200px sidebar</div><div>the rest</div></div>
+
+<div class="grid responsive">
+	<div>a</div><div>b</div><div>c</div><div>d</div><div>e</div><div>f</div>
+</div>
+
+<div class="grid spanning">
+	<div class="wide">spans 2 columns</div><div>b</div><div class="tall">spans 2 rows</div>
+	<div>d</div><div>e</div>
+</div>
+=== NOTES ===
+[
+	{
+		"line": 9,
+		"file": "index.html",
+		"text": "<code>fr</code> means “one share of the leftover space”. Three <code>1fr</code>s split the row into equal thirds, whatever the width."
+	},
+	{
+		"line": 14,
+		"file": "index.html",
+		"text": "Mix fixed and flexible freely. A 200px sidebar and a column that takes everything else ~ that’s a whole page layout in one line."
+	},
+	{
+		"line": 19,
+		"file": "index.html",
+		"text": "My favourite line in all of CSS. “Fit as many columns as you can, each at least 120px wide.” A fully responsive grid, no media queries."
+	},
+	{
+		"line": 26,
+		"file": "index.html",
+		"text": "Children can claim more than one cell. <code>grid-column</code> and <code>grid-row</code> are the only properties you put on the children rather than the grid itself."
+	}
+]
+=== INFO ===
+# Grid
+
+Grid lays things out in **two directions** at once ~ rows *and* columns. Where Flexbox is for a row of things, Grid is for a page.
+
+## Defining columns
+
+```
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 8px;
+}
+```
+
+`fr` is a **fraction of the leftover space**. Three `1fr`s make three equal columns. `200px 1fr` makes a fixed sidebar and a flexible main area.
+
+`repeat(3, 1fr)` is shorthand for `1fr 1fr 1fr`.
+
+## The one line worth memorising
+
+```
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+```
+
+“Fit as many columns as will fit, each at least 120px wide, sharing the space equally.”
+
+That’s a responsive grid ~ three across on a laptop, one on a phone ~ with no media queries at all. I use it constantly.
+
+## Spanning cells
+
+`grid-column: span 2` makes an item two columns wide. `grid-row: span 2` makes it two rows tall. These are the rare Grid properties that go on the **children** rather than the container.
+
+## Grid or Flexbox?
+
+Two directions at once: Grid. One direction: Flexbox. And they nest happily ~ a Grid page layout with Flexbox rows inside each cell is completely normal.

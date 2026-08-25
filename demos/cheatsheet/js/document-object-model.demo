@@ -1,0 +1,123 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>The DOM</title>
+	</head>
+	<body>
+		<h1 id="title">The DOM</h1>
+		<p class="para">First paragraph.</p>
+		<p class="para">Second paragraph.</p>
+		<ul id="list">
+			<li>An existing item</li>
+		</ul>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE script.js ===
+// Find one element (the first that matches)
+const title = document.querySelector("#title");
+console.log(title);
+
+// Find all of them
+const paras = document.querySelectorAll(".para");
+console.log("found", paras.length, "paragraphs");
+
+// Change the text inside an element
+title.textContent = "The DOM, edited by JavaScript";
+
+// Change its styles
+title.style.color = "crimson";
+title.style.fontFamily = "system-ui, sans-serif";
+
+// Add and remove classes ~ usually better than setting styles directly
+title.classList.add("edited");
+
+// Read and write attributes
+const list = document.querySelector("#list");
+list.setAttribute("data-count", "1");
+console.log("attribute:", list.getAttribute("data-count"));
+
+// Build a brand new element and put it on the page
+const item = document.createElement("li");
+item.textContent = "An item made by JavaScript";
+list.append(item);
+
+// Loop over everything you found
+paras.forEach((p, i) => {
+	p.textContent = `Paragraph ${i + 1}, rewritten.`;
+});
+=== NOTES ===
+[
+	{
+		"line": 16,
+		"file": "index.html",
+		"text": "This markup is what the script reaches into. The code doing the reaching is on the <strong>script.js</strong> tab."
+	},
+	{
+		"line": 21,
+		"file": "script.js",
+		"text": "<code>querySelector</code> takes a <strong>CSS selector</strong> ~ the exact same syntax you use in a stylesheet ~ and gives you the first matching element."
+	},
+	{
+		"line": 29,
+		"file": "script.js",
+		"text": "<code>textContent</code> reads or replaces the text inside an element. There’s also <code>innerHTML</code>, which accepts markup ~ never feed that anything a stranger typed."
+	},
+	{
+		"line": 36,
+		"file": "script.js",
+		"text": "Adding a class and styling it in CSS is nearly always better than setting <code>.style</code> line by line. Keep the look in the stylesheet where it belongs."
+	},
+	{
+		"line": 46,
+		"file": "script.js",
+		"text": "<code>createElement</code> makes an element in memory; nothing appears until you <code>append</code> it to something already on the page."
+	}
+]
+=== INFO ===
+# The Document Object Model (DOM)
+
+When a browser loads your HTML, it builds a live model of the page in memory. That model is the **DOM**, and JavaScript can read and change it. Change the DOM and the page updates instantly.
+
+## Finding elements
+
+```
+document.querySelector("#title")      // the first match
+document.querySelectorAll(".para")    // all of them
+```
+
+Both take a **CSS selector** ~ exactly the syntax you already know from stylesheets. `#id`, `.class`, `p`, `nav a`, all of it.
+
+`querySelector` gives you one element, or `null` if nothing matched. `querySelectorAll` gives you a list you can loop over.
+
+## Changing them
+
+```
+el.textContent = "new text";
+el.style.color = "crimson";
+el.classList.add("active");
+el.setAttribute("href", "/about/");
+```
+
+**Prefer `classList` over `style`.** Setting `.style` line by line scatters your design across your JavaScript. Adding a class keeps the look in the stylesheet and the behaviour in the script, which is where they each belong.
+
+## textContent vs innerHTML
+
+`textContent` handles plain text. `innerHTML` accepts markup ~ which means anything a visitor typed can become real HTML on your page. That’s a genuine security hole. Use `textContent` unless you have a specific reason not to.
+
+## Making new elements
+
+```
+const item = document.createElement("li");
+item.textContent = "Hello";
+list.append(item);
+```
+
+`createElement` builds it in memory. Nothing shows up until you `append` it to something already on the page.
+
+## If nothing works
+
+`querySelector` returning `null` almost always means your `<script>` ran before the HTML existed. Move it to the bottom of the `<body>`.

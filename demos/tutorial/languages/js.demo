@@ -1,0 +1,66 @@
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>JavaScript</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<h1>Hello, I am this website.</h1>
+		<p>
+			I am a website. I am beautiful. I have value.
+			<strong>I love you.</strong>
+		</p>
+		<button id="hug">Give this website a hug.</button>
+		<p id="count">0 hugs given</p>
+
+		<script src="script.js"></script>
+	</body>
+</html>
+=== FILE style.css ===
+/* CSS */
+body {
+	font-family: sans-serif;
+	background: blue;
+	color: white;
+	max-width: 400px;
+	margin: 40px auto;
+	padding: 20px;
+}
+h1 {
+	font-size: 48px;
+}
+p {
+	font-size: 24px;
+}
+button {
+	background-color: black;
+	border: unset;
+	font-size: 24px;
+	padding: 10px;
+	color: white;
+	cursor: pointer;
+}
+#count {
+	color: yellow;
+}
+=== FILE script.js ===
+// JavaScript
+let hugs = 0;
+const button = document.getElementById("hug");
+const count = document.getElementById("count");
+
+button.addEventListener("click", function () {
+	hugs = hugs + 1;
+	count.textContent = hugs + " hugs given";
+});
+=== INFO ===
+# JavaScript is for functionality
+
+HTML gives a page content and CSS makes it look good — but so far the page just sits there. **JavaScript** makes a page *do* things in response to the visitor.
+
+JavaScript can listen for **events** (like a click), remember information in **variables**, and change the page while it’s running. Here, clicking the button runs a small function that adds one to a counter and updates the text below it.
+
+JavaScript goes inside a `<script>` element. Click the button in the preview to try it!
