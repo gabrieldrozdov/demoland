@@ -1,0 +1,17 @@
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+
+=== FILE style.css ===
+body {
+	
+}
+=== INFO ===
+Pick a [random poem](https://www.poetryfoundation.org/poems/browse) and typeset it using HTML and CSS!
+
+Find CSS properties for typography [here](https://cheatsheet.gdwithgd.com/css/#styling-text).
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

@@ -1,0 +1,62 @@
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<a href="https://gdwithgd.com/">This is a link!</a> Links are inline elements.
+
+<br><br>
+
+<a href="#section-name">This link jumps to a section on the page!</a> 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<p id="section-name">
+	oh hi there
+</p>
+=== FILE style.css ===
+
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

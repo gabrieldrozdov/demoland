@@ -1,0 +1,20 @@
+=== FILE index.html ===
+
+=== INFO ===
+Create a choose-your-own adventure website with the following:
+
+- At least 3 pages
+- At least 1 custom font
+- At least 1 image
+
+Afterwards, we’ll launch this as a real website!
+
+- Create an account on [Github](https://github.com/signup)
+- Download [GitHub Desktop](https://desktop.github.com/download/)
+- Download [Visual Studio Code](https://code.visualstudio.com/)
+- Download the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for Visual Studio Code
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

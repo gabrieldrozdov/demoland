@@ -1,0 +1,49 @@
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+=== FILE style.css ===
+body {
+	background-color: yellow;
+}
+p {
+	font-size: 24px;
+	color: rgb(255,0,100);
+	letter-spacing: .5em;
+	word-spacing: 2ch;
+	text-shadow: 10px 10px 5px green;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: right;
+	line-height: 2em;
+}
+=== NOTES ===
+[
+	{
+		"line": 8,
+		"file": "style.css",
+		"text": "the body element is the full web page"
+	},
+	{
+		"line": 14,
+		"file": "style.css",
+		"text": "em units are equal to the current font size. so if the font size is 12px, then 1em=12px"
+	},
+	{
+		"line": 15,
+		"file": "style.css",
+		"text": "ch units are equal to the font’s character width"
+	},
+	{
+		"line": 16,
+		"file": "style.css",
+		"text": "x offset, y offset, blur, color"
+	}
+]
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

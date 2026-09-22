@@ -1,0 +1,25 @@
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<h1>
+	G’morning y’all. Howdy pardner.
+</h1>
+
+<p>
+	And a-howdy to you too, pardner.
+</p>
+=== FILE style.css ===
+h1 {
+	font-family: sans-serif;
+}
+
+p {
+	font-size: 24px;
+	color: red;
+	letter-spacing: 2px;
+}
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

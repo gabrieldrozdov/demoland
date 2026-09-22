@@ -1,0 +1,37 @@
+=== FILE index.html ===
+<h1>
+	This is a typical HTML document
+</h1>
+
+<p>
+	Paragraph. <strong>Bold text.</strong> <em>Italic text.</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<p>
+	One line.<br>Another line.
+</p>
+
+<h2>
+	A second-level heading
+</h2>
+
+<ul>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+</ul>
+
+<h3>
+	A third-level heading
+</h3>
+
+<ol>
+	<li>List item</li>
+	<li>List item</li>
+	<li>List item</li>
+</ol>
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

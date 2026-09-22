@@ -1,0 +1,41 @@
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div>
+	Hello!
+</div>
+
+<div class="example">
+	HELLO! <span style="font-family: serif;">HIYA!</span>
+</div>
+=== FILE style.css ===
+/* least specific */
+body {
+	font-family: sans-serif;
+	font-size: 10px;
+}
+
+/* more specific: a child of the body */
+div {
+	font-family: monospace;
+	font-size: 24px;
+}
+
+/* more specific: a class */
+.example {
+	font-family: cursive;
+	font-size: 36px;
+}
+=== NOTES ===
+[
+	{
+		"line": 9,
+		"file": "index.html",
+		"text": "more specific: inline css"
+	}
+]
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

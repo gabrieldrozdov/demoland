@@ -257,14 +257,89 @@
 			"description": "Websites are full of text, a.k.a. “type.” This type is special because it’s made out of code! In this course, you’ll discover how to bring type to life using code.",
 			"chapters": [
 				{
-					"id": "week-1",
-					"title": "Welcome to Type + Code!",
-					"description": "Welcome to the class!",
+					"id": "week-2",
+					"title": "Introduction to HTML and CSS",
+					"description": "Let’s make websites!",
 					"demos": [
 						{
-							"id": "welcome",
-							"title": "Welcome to DEMOLAND!",
-							"file": "demos/tutorial/introduction/welcome.demo"
+							"id": "html",
+							"title": "HTML",
+							"file": "demos/type-and-code/week-2/html.demo"
+						},
+						{
+							"id": "html-elements",
+							"title": "HTML Elements",
+							"file": "demos/type-and-code/week-2/html-elements.demo"
+						},
+						{
+							"id": "block-vs-inline-elements",
+							"title": "Block vs. Inline Elements",
+							"file": "demos/type-and-code/week-2/block-vs-inline-elements.demo"
+						},
+						{
+							"id": "html-typesetting",
+							"title": "HTML Typesetting",
+							"file": "demos/type-and-code/week-2/html-typesetting.demo"
+						},
+						{
+							"id": "exercise-html-elements",
+							"title": "EXERCISE: HTML Elements",
+							"file": "demos/type-and-code/week-2/exercise-html-elements.demo"
+						},
+						{
+							"id": "css",
+							"title": "CSS",
+							"file": "demos/type-and-code/week-2/css.demo"
+						},
+						{
+							"id": "styling-text",
+							"title": "Styling Text",
+							"file": "demos/type-and-code/week-2/styling-text.demo"
+						},
+						{
+							"id": "inline-css",
+							"title": "Inline CSS",
+							"file": "demos/type-and-code/week-2/inline-css.demo"
+						},
+						{
+							"id": "classes",
+							"title": "Classes",
+							"file": "demos/type-and-code/week-2/classes.demo"
+						},
+						{
+							"id": "inheritence",
+							"title": "Inheritence",
+							"file": "demos/type-and-code/week-2/inheritence.demo"
+						},
+						{
+							"id": "exercise-computational-poetry",
+							"title": "EXERCISE: Computational Poetry",
+							"file": "demos/type-and-code/week-2/exercise-computational-poetry.demo"
+						},
+						{
+							"id": "links",
+							"title": "Links",
+							"file": "demos/type-and-code/week-2/links.demo"
+						},
+						{
+							"id": "multiple-pages",
+							"title": "Multiple Pages",
+							"file": "demos/type-and-code/week-2/multiple-pages.demo"
+						},
+						{
+							"id": "images",
+							"title": "Images",
+							"file": "demos/type-and-code/week-2/images.demo"
+						},
+						{
+							"id": "custom-fonts",
+							"title": "Custom Fonts",
+							"file": "demos/type-and-code/week-2/custom-fonts.demo"
+						},
+						{
+							"id": "exercise-choose-your-own-adventure",
+							"title": "EXERCISE: Choose Your Own Adventure",
+							"file": "demos/type-and-code/week-2/exercise-choose-your-own-adventure.demo"
 						}
 					]
 				}

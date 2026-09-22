@@ -1,0 +1,28 @@
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<body>
+	<a href="new-page.html">Go to a different page!</a>
+</body>
+=== FILE new-page.html ===
+<link rel="stylesheet" href="style.css">
+
+<body class="new-page">
+	oh hi there.
+
+	<!-- CHALLENGE: add a link back to the original page! -->
+
+	<!-- CHALLENGE: add a new page! -->
+</body>
+=== FILE style.css ===
+body {
+	background-color: yellow;
+}
+.new-page {
+	background-color: cyan;
+}
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

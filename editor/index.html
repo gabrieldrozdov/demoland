@@ -15,7 +15,7 @@
 <link rel="icon" type="png" href="/assets/meta/favicon.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 <meta name="generator" content="No Replica teaching editor">
-<link rel="stylesheet" href="../style.min.css?v=2a18d900">
+<link rel="stylesheet" href="../style.min.css?v=dad4c839">
 <script>(function(){var p=["pink","green","blue","yellow","purple","red"];document.documentElement.style.setProperty("--accent","var(--"+p[Math.floor(Math.random()*p.length)]+")");})();</script>
 </head>
 <body>
@@ -356,7 +356,7 @@ shortcuts and the info panel still work in the meantime.
 	&lt;/head&gt;
 	&lt;body&gt;
 		&lt;!-- Write your HTML here! --&gt;
-		&lt;h1&gt;Hello, world!&lt;/h1&gt;
+		&lt;div class=&quot;example-class&quot;&gt;Hello, world!&lt;/div&gt;
 
 		&lt;!-- This connects to your JavaScript code --&gt;
 		&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
@@ -371,10 +371,18 @@ shortcuts and the info panel still work in the meantime.
 /* Write your CSS here! */
 body {
 	font-family: sans-serif;
-	background-color: #eee;
+	background-color: white;
+}
+.example-class {
+	margin: 20px;
+	padding: 40px;
+	font-size: 24px;
+	background-color: #3a3a3a;
+	color: rgb(250, 250, 250);
+	text-align: center;
 }</textarea><textarea class="demo-file" data-name="script.js" data-lang="javascript" hidden>// Write your JavaScript here!
 console.log(&quot;Hello world!&quot;);</textarea></div>
-<script type="application/json" id="demo-notes">[{"line":1,"file":"index.html","text":"This line indicates that this is an HTML document."},{"line":2,"file":"index.html","text":"The \u003ccode>&lt;html&gt;\u003c/code> element contains everything in your demo."},{"line":3,"file":"index.html","text":"The \u003ccode>&lt;head&gt;\u003c/code> element contains all the invisible metadata for your demo."},{"line":4,"file":"index.html","text":"This line tells your browser to use the UTF-8 character standard, so all text ~ including emojis, special symbols, and foreign languages ~ renders properly without corrupting into weird characters."},{"line":5,"file":"index.html","text":"This line helps web browsers understand how your site should look on mobile devices."},{"line":6,"file":"index.html","text":"This line indicates the text that would appear in your browser tab if you launched this demo as a real website."},{"line":7,"file":"index.html","text":"This line connects a separate CSS file to your HTML file."},{"line":9,"file":"index.html","text":"The \u003ccode>&lt;body&gt;\u003c/code> element contains all the visible content in your demo."},{"line":10,"file":"index.html","text":"This is an HTML comment, which shows up in the code but isn’t visible in the live preview."},{"line":11,"file":"index.html","text":"Almost every element is written as an opening tag, the content, then a closing tag. Change this text and watch the preview update!"},{"line":14,"file":"index.html","text":"This line connects a separate JavaScript file to your HTML file."},{"line":1,"file":"style.css","text":"This is a CSS comment, which shows up in the code but isn’t visible in the live preview."},{"line":2,"file":"style.css","text":"The \u003ccode>*\u003c/code> symbol indicates that the following CSS styles will apply to every element in your demo."},{"line":3,"file":"style.css","text":"\u003ccode>margin\u003c/code> is the space around elements. Many elements have a default margin setting, so we reset everything back to 0 to make it easier to keep track of our custom styles."},{"line":4,"file":"style.css","text":"\u003ccode>padding\u003c/code> is the space inside elements. Many elements have a default padding setting, so we reset everything back to 0 to make it easier to keep track of our custom styles."},{"line":5,"file":"style.css","text":"\u003ccode>box-sizing\u003c/code> is how an element’s width gets calculated. The default value is \u003ccode>content-box\u003c/code>, which leads to confusing layouts. On nearly every website, we want to use the value \u003ccode>border-box\u003c/code> instead."},{"line":9,"file":"style.css","text":"The \u003ccode>body\u003c/code> element contains all the visible content in your demo."},{"line":10,"file":"style.css","text":"The default value for \u003ccode>font-family\u003c/code> is \u003ccode>serif\u003c/code>."},{"line":11,"file":"style.css","text":"\u003ccode>#eee\u003c/code> is a hex code ~ a shorthand for writing colors. It’s the same as \u003ccode>#eeeeee\u003c/code>, a very light gray."},{"line":1,"file":"script.js","text":"This is a JavaScript comment, which shows up in the code but isn’t visible in the live preview."},{"line":2,"file":"script.js","text":"This line makes a message appear in the console. If that message doesn’t appear, then your JavaScript file isn’t connected to your HTML file!"}]</script>
+<script type="application/json" id="demo-notes">[{"line":11,"file":"index.html","text":"This is an example of an HTML element! The \u003ccode>style.css\u003c/code> file contains a class called \u003ccode>.example-class\u003c/code>, which determines how this element will look."}]</script>
 <script type="application/json" id="demo-config"></script>
 <script>
     window.__cmReady = false;

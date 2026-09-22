@@ -1,0 +1,35 @@
+=== FILE index.html ===
+<h1>
+	Block vs. inline elements
+</h1>
+
+<p>
+	Some elements break onto a new line. Some elements don’t!
+</p>
+
+<p>
+	This is a paragraph, and it gets a new line.
+</p>
+
+<p>
+	But, what if you want <strong>bold</strong> text?
+</p>
+
+<p>
+	Or, <em>italic text?</em>
+</p>
+
+<p>
+	Elements inside of other elements are called <strong>children.</strong> The outer elements are called <strong>parents.</strong>
+</p>
+
+<h2>
+	QUIZ: make the following text a paragraph, and make the text both italic AND bold.
+</h2>
+
+Helloooooo this is some italicized AND bold text!
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}

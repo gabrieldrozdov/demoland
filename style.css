@@ -245,6 +245,8 @@ body {
 	font-variation-settings: "wght" 800;
 	font-size: 0.95em;
 	letter-spacing: -0.02em;
+	background: color-mix(in srgb, var(--accent) 15%, transparent);
+	padding: 1px 2px;
 }
 #tb-book,
 #tb-chapter,
@@ -1047,6 +1049,7 @@ body {
 	background-color: var(--accent);
 	transform: scale(1.02);
 	color: var(--off-black);
+	border-color: var(--accent);
 }
 .nav-book:hover .nb-num {
 	color: var(--off-black);
@@ -1763,7 +1766,7 @@ body.embed .info-demo-head:active {
 	font-weight: 800;
 	font-variation-settings: "wght" 800;
 	padding: 1px 4px;
-	background: color-mix(in srgb, var(--accent) 15%, var(--off-black) 100%);
+	background: color-mix(in srgb, var(--accent) 15%, transparent);
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
 }

@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<!-- Write your HTML here! -->
-		<h1>Hello, world!</h1>
+		<div class="example-class">Hello, world!</div>
 
 		<!-- This connects to your JavaScript code -->
 		<script src="script.js"></script>
@@ -26,7 +26,15 @@
 /* Write your CSS here! */
 body {
 	font-family: sans-serif;
-	background-color: #eee;
+	background-color: white;
+}
+.example-class {
+	margin: 20px;
+	padding: 40px;
+	font-size: 24px;
+	background-color: #3a3a3a;
+	color: rgb(250, 250, 250);
+	text-align: center;
 }
 === FILE script.js ===
 // Write your JavaScript here!
@@ -34,109 +42,9 @@ console.log("Hello world!");
 === NOTES ===
 [
 	{
-		"line": 2,
-		"file": "index.html",
-		"text": "This line indicates that this is an HTML document."
-	},
-	{
-		"line": 3,
-		"file": "index.html",
-		"text": "The <code>&lt;html&gt;</code> element contains everything in your demo."
-	},
-	{
-		"line": 4,
-		"file": "index.html",
-		"text": "The <code>&lt;head&gt;</code> element contains all the invisible metadata for your demo."
-	},
-	{
-		"line": 5,
-		"file": "index.html",
-		"text": "This line tells your browser to use the UTF-8 character standard, so all text ~ including emojis, special symbols, and foreign languages ~ renders properly without corrupting into weird characters."
-	},
-	{
-		"line": 6,
-		"file": "index.html",
-		"text": "This line helps web browsers understand how your site should look on mobile devices."
-	},
-	{
-		"line": 7,
-		"file": "index.html",
-		"text": "This line indicates the text that would appear in your browser tab if you launched this demo as a real website."
-	},
-	{
-		"line": 8,
-		"file": "index.html",
-		"text": "This line connects a separate CSS file to your HTML file."
-	},
-	{
-		"line": 10,
-		"file": "index.html",
-		"text": "The <code>&lt;body&gt;</code> element contains all the visible content in your demo."
-	},
-	{
-		"line": 11,
-		"file": "index.html",
-		"text": "This is an HTML comment, which shows up in the code but isn’t visible in the live preview."
-	},
-	{
 		"line": 12,
 		"file": "index.html",
-		"text": "Almost every element is written as an opening tag, the content, then a closing tag. Change this text and watch the preview update!"
-	},
-	{
-		"line": 15,
-		"file": "index.html",
-		"text": "This line connects a separate JavaScript file to your HTML file."
-	},
-	{
-		"line": 19,
-		"file": "style.css",
-		"text": "This is a CSS comment, which shows up in the code but isn’t visible in the live preview."
-	},
-	{
-		"line": 20,
-		"file": "style.css",
-		"text": "The <code>*</code> symbol indicates that the following CSS styles will apply to every element in your demo."
-	},
-	{
-		"line": 21,
-		"file": "style.css",
-		"text": "<code>margin</code> is the space around elements. Many elements have a default margin setting, so we reset everything back to 0 to make it easier to keep track of our custom styles."
-	},
-	{
-		"line": 22,
-		"file": "style.css",
-		"text": "<code>padding</code> is the space inside elements. Many elements have a default padding setting, so we reset everything back to 0 to make it easier to keep track of our custom styles."
-	},
-	{
-		"line": 23,
-		"file": "style.css",
-		"text": "<code>box-sizing</code> is how an element’s width gets calculated. The default value is <code>content-box</code>, which leads to confusing layouts. On nearly every website, we want to use the value <code>border-box</code> instead."
-	},
-	{
-		"line": 27,
-		"file": "style.css",
-		"text": "The <code>body</code> element contains all the visible content in your demo."
-	},
-	{
-		"line": 28,
-		"file": "style.css",
-		"text": "The default value for <code>font-family</code> is <code>serif</code>."
-	},
-	{
-		"line": 29,
-		"file": "style.css",
-		"text": "<code>#eee</code> is a hex code ~ a shorthand for writing colors. It’s the same as <code>#eeeeee</code>, a very light gray."
-	},
-	{
-		"line": 32,
-		"file": "script.js",
-		"text": "This is a JavaScript comment, which shows up in the code but isn’t visible in the live preview."
-	},
-	{
-		"line": 33,
-		"file": "script.js",
-		"text": "This line makes a message appear in the console. If that message doesn’t appear, then your JavaScript file isn’t connected to your HTML file!"
+		"text": "This is an example of an HTML element! The <code>style.css</code> file contains a class called <code>.example-class</code>, which determines how this element will look."
 	}
 ]
 === INFO ===

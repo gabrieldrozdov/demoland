@@ -1,0 +1,23 @@
+=== FILE index.html ===
+<h1>
+	This is an HTML element!
+</h1>
+
+<h1>html elements start with opening tags and end in closing tags</h1>
+
+<h1>
+
+kitty
+
+cat
+
+
+MEOW
+
+	
+</h1>
+
+=== CONFIG ===
+{
+	"allowAdd": true
+}
