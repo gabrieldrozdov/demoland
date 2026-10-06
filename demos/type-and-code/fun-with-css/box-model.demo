@@ -1,0 +1,60 @@
+=== TITLE ===
+Box model
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-box-model-1">
+	Hello world!
+</div>
+
+<div class="test-box-model-2">
+	Hello world!
+</div>
+=== FILE style.css ===
+/* this css applies to every element */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* here are some custom classes! */
+
+.test-box-model-1 {
+	padding: 40px;
+	border: 10px solid black;
+	background-color: yellow;
+	border-radius: 20px;
+	margin: 60px;
+	box-shadow: 10px 10px black;
+}
+
+.test-box-model-2 {
+	padding: 10px 20px 60px 0px;
+	border: 10px dotted black;
+	outline: 5px solid gray;
+	outline-offset: 10px;
+	background-color: red;
+	border-radius: 20px;
+	margin: 20px;
+}

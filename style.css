@@ -1585,9 +1585,6 @@ body {
 	padding-right: 0.5px;
 	z-index: 6;
 }
-.panel-spine.active {
-	background-color: var(--accent);
-}
 .panel-spine:hover {
 	background: var(--off-white);
 }
@@ -1595,9 +1592,6 @@ body {
 	opacity: 0.25;
 }
 .panel-spine:hover span {
-	color: var(--off-black);
-}
-.panel-spine.active span {
 	color: var(--off-black);
 }
 .panel-spine span {
@@ -4590,6 +4584,49 @@ body.draggingC #preview-frame {
 /* BLANK EDITOR / HTML TEMPLATE */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+/* the description's edit buttons, one above the other */
+.info-edit-acts {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+	margin-top: 16px;
+}
+.info-edit-acts .ctrl {
+	padding: 8px 16px;
+	height: unset;
+}
+
+/* demo settings dialog: the checkmarks are the same as the embed dialog's */
+.mf-dialog input.dlg-check {
+	position: absolute;
+	opacity: 0;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+}
+#config-overlay .dlg-field {
+	grid-template-columns: 100px 1fr;
+}
+/* the starting settings each say their state in words, so they get a line each */
+#config-overlay .dlg-tri {
+	flex-basis: 100%;
+}
+/* a setting left to the learner shows a bar instead of a fill */
+.dlg-check:indeterminate + .dlg-mark {
+	background: linear-gradient(var(--accent), var(--accent)) center / 6px 2px no-repeat;
+}
+.dlg-tri-state {
+	color: var(--light-gray);
+	text-transform: none;
+	letter-spacing: 0;
+	font-weight: 350;
+	font-variation-settings: "wght" 350;
+}
+.dlg-tri:hover .dlg-tri-state {
+	color: var(--off-white);
+}
+
 /* remove unneeded features */
 #shell.standalone #tb-book,
 #shell.standalone #tb-chapter,
@@ -5304,4 +5341,432 @@ body.boot-failed #preview-panel {
 }
 .footer-confetti::after {
 	content: none;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* DEV PAGE */
+/* /dev/, the local site manager (parts/dev.js) ~ never on the published site */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* the book and chapter crumbs come back while a demo that's on the site is open, and open their settings */
+#shell.standalone.dev-placed #tb-book,
+#shell.standalone.dev-placed #tb-chapter {
+	display: grid;
+	cursor: pointer;
+}
+#shell.standalone.dev-placed #tb-crumbs .tb-sep:nth-of-type(n + 2) {
+	display: inline;
+}
+
+/* the manager is wider and taller than the other dialogs, since it holds the whole site ~ and neutral, so the books' colours read */
+#dev-overlay {
+	--accent: var(--light-gray);
+}
+#dev-overlay .dev-dialog {
+	width: min(1080px, 100%);
+	height: calc(100vh - 32px);
+	overflow: hidden;
+}
+#dev-overlay .dlg-head button + button {
+	margin-left: 8px;
+}
+.dev-list {
+	flex: 1;
+	min-height: 0;
+	overflow: auto;
+	padding: 0 16px 16px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+.dev-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 24px 0 8px 0;
+	font-size: 0.6rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	font-weight: 550;
+	font-variation-settings: "wght" 550;
+	color: var(--off-white);
+}
+.dev-heading .ctrl,
+.dev-acts .ctrl {
+	flex: 0 0 auto;
+}
+.dev-empty {
+	font-family: var(--limkin);
+	font-variation-settings: var(--limkin-light);
+	font-weight: 350;
+	font-size: 0.8rem;
+	letter-spacing: 0.02em;
+	line-height: 1.4em;
+	color: var(--light-gray);
+	padding: 8px 12px;
+	border: 1px dashed color-mix(in srgb, var(--accent) 40%, var(--off-black) 100%);
+}
+.dev-empty code {
+	font-family: var(--mono);
+	color: var(--off-white);
+}
+
+/* recently edited: a strip of shortcuts */
+.dev-recent {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 4px;
+}
+.dev-recent-item {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	text-align: left;
+	cursor: pointer;
+	padding: 8px 12px;
+	font-family: var(--mono);
+	color: var(--off-white);
+	background: color-mix(in srgb, var(--accent) 15%, var(--off-black) 100%);
+	border: 1px solid color-mix(in srgb, var(--accent) 50%, var(--off-black) 100%);
+	border-left: 4px solid var(--accent);
+}
+.dev-recent-item:hover {
+	background: color-mix(in srgb, var(--accent) 30%, var(--off-black) 100%);
+}
+.dev-recent-item:active {
+	opacity: 0.25;
+}
+.dev-recent-name {
+	font-size: 0.8rem;
+	font-weight: 350;
+	font-variation-settings: "wght" 350;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.dev-recent-meta {
+	font-size: 0.6rem;
+	color: var(--accent);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* books, chapters and demos: one row each, coloured by the site's own rules and stepped in by depth */
+.dev-book {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-bottom: 12px;
+}
+.dev-chapter {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-left: 24px;
+	margin-top: 4px;
+}
+.dev-indent {
+	margin-left: 24px;
+}
+.dev-row {
+	position: relative;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 4px 8px;
+	padding: 4px 8px 4px 0;
+	color: var(--off-white);
+	background: color-mix(in srgb, var(--accent) 10%, var(--off-black) 100%);
+	border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--off-black) 100%);
+	border-left: 4px solid var(--accent);
+}
+.dev-book-row {
+	background: color-mix(in srgb, var(--accent) 30%, var(--off-black) 100%);
+	padding-left: 4px;
+}
+.dev-chapter-row {
+	background: color-mix(in srgb, var(--accent) 20%, var(--off-black) 100%);
+}
+.dev-row:hover {
+	border-color: var(--accent);
+}
+.dev-row.open {
+	background: color-mix(in srgb, var(--accent) 35%, var(--off-black) 100%);
+}
+.dev-row.open .dev-title::after {
+	content: "Open";
+	margin-left: 8px;
+	padding: 2px 6px;
+	font-size: 0.6rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--off-black);
+	background: var(--accent);
+}
+.dev-row.dragging {
+	opacity: 0.25;
+}
+.dev-row-main {
+	flex: 1 1 0;
+	min-width: 0;
+	display: flex;
+	align-items: baseline;
+	gap: 12px;
+	padding: 6px 12px;
+	text-align: left;
+	cursor: pointer;
+	font-family: var(--mono);
+	color: inherit;
+	background: none;
+	border: none;
+}
+.dev-row-main:active {
+	opacity: 0.25;
+}
+.dev-kind,
+.dev-num {
+	flex: 0 0 auto;
+	font-size: 0.6rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	font-weight: 550;
+	font-variation-settings: "wght" 550;
+	color: var(--accent);
+}
+.dev-num {
+	min-width: 3ch;
+}
+.dev-title {
+	font-size: 0.8rem;
+	font-weight: 350;
+	font-variation-settings: "wght" 350;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.dev-book-row .dev-title {
+	font-size: 1rem;
+}
+.dev-meta {
+	margin-left: auto;
+	flex: 0 1 auto;
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	font-size: 0.6rem;
+	color: var(--light-gray);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.dev-tag {
+	padding: 1px 6px;
+	font-size: 0.6rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--accent);
+	border: 1px solid color-mix(in srgb, var(--accent) 75%, var(--off-black) 100%);
+}
+.dev-tag.warn {
+	--accent: var(--red);
+}
+.dev-fold {
+	flex: 0 0 auto;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	fill: var(--accent);
+	background: none;
+	border: none;
+}
+.dev-fold svg {
+	width: 14px;
+	height: 14px;
+	transition: transform 0.15s;
+}
+.dev-book.shut .dev-fold svg {
+	transform: rotate(-90deg);
+}
+.dev-fold:hover {
+	fill: var(--off-white);
+}
+
+/* what can be done to a row only shows while it's hovered (or a button in it has focus), laid over the right end of the row's own line ~ the row never changes height, so the list never jumps */
+.dev-hover {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	max-width: 75%;
+	display: none;
+	align-items: center;
+	gap: 12px;
+	padding: 0 8px 0 48px;
+	/* fades in over whatever it covers, in the row's own colour */
+	background: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in srgb, var(--accent) 10%, var(--off-black) 100%) 40px
+	);
+}
+.dev-chapter-row .dev-hover {
+	background: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in srgb, var(--accent) 20%, var(--off-black) 100%) 40px
+	);
+}
+.dev-book-row .dev-hover {
+	background: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in srgb, var(--accent) 30%, var(--off-black) 100%) 40px
+	);
+}
+.dev-row.open .dev-hover {
+	background: linear-gradient(
+		to right,
+		transparent,
+		color-mix(in srgb, var(--accent) 35%, var(--off-black) 100%) 40px
+	);
+}
+.dev-row:hover > .dev-hover,
+.dev-row:focus-within > .dev-hover {
+	display: flex;
+}
+.dev-acts {
+	display: flex;
+	gap: 4px;
+	flex: 0 0 auto;
+}
+.dev-acts .dev-icon {
+	flex: 0 0 auto;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+}
+.dev-files {
+	min-width: 0;
+	font-size: 0.6rem;
+	color: var(--accent);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* the search box sits under the manager's heading, outside the list, so it stays put while the list scrolls */
+.dev-search {
+	padding: 16px 16px 0 16px;
+}
+.dev-search .mf-text {
+	--accent: var(--off-white);
+}
+.dev-search .mf-text::-webkit-search-cancel-button {
+	filter: grayscale(1) brightness(3);
+	cursor: pointer;
+}
+
+/* where a drag would land: a line before or after a row, or the whole row when dropping into it */
+.dev-list [data-mark="before"] {
+	box-shadow: 0 -3px 0 0 var(--off-white);
+}
+.dev-list [data-mark="after"] {
+	box-shadow: 0 3px 0 0 var(--off-white);
+}
+.dev-list [data-mark="into"],
+.dev-list [data-mark="drafts"] {
+	outline: 2px solid var(--off-white);
+	outline-offset: -2px;
+}
+
+/* the manager's footer: the last thing that happened, and the site-wide actions */
+.dev-foot {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 12px 16px;
+	border-top: 1px solid color-mix(in srgb, var(--accent) 75%, var(--off-black) 100%);
+}
+.dev-foot .ctrl {
+	flex: 0 0 auto;
+	padding: 8px 16px;
+	height: unset;
+}
+.dev-status {
+	flex: 1;
+	min-width: 0;
+	font-size: 0.6rem;
+	color: var(--light-gray);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.dev-status.bad {
+	color: var(--red);
+}
+
+/* settings panels sit over the manager */
+#dev-panel {
+	z-index: 65;
+}
+#dev-panel .mf-dialog {
+	width: min(640px, 100%);
+}
+#dev-panel .dlg-actions {
+	align-items: center;
+}
+#dev-panel .dlg-actions .ctrl {
+	flex: 0 0 auto;
+}
+#dev-panel .dlg-actions .ctrl:disabled {
+	opacity: 0.25;
+	cursor: not-allowed;
+}
+.dev-spacer {
+	flex: 1;
+}
+.dev-textarea {
+	height: auto;
+	min-height: 120px;
+	resize: vertical;
+	line-height: 1.4em;
+}
+.dev-path {
+	font-family: var(--mono);
+	font-size: 0.8rem;
+	color: var(--accent);
+	word-break: break-all;
+}
+
+/* save / move / build results while the manager is shut */
+#dev-toast {
+	position: fixed;
+	right: 16px;
+	bottom: 16px;
+	z-index: 70;
+	max-width: min(480px, calc(100vw - 32px));
+	pointer-events: none;
+	font-family: var(--mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	font-variation-settings: "wght" 550;
+	font-weight: 550;
+	line-height: 1.4em;
+	color: var(--off-black);
+	background: var(--accent);
+	padding: 8px 16px;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+#dev-toast.bad {
+	background: var(--red);
+}
+#dev-toast.show {
+	opacity: 1;
 }

@@ -1,0 +1,42 @@
+=== TITLE ===
+Variable fonts
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-animation">A</div>
+=== FILE style.css ===
+/* import the font */
+@font-face {
+	font-family: "Example";
+	src: url("ExampleVariableComponentVF.ttf") format("truetype");
+}
+
+.test-animation {
+	font-family: "Example";
+	font-size: 200px;
+
+	/* this is the important property! */
+	font-variation-settings: "TRAN" 100;
+}
+=== MEDIA ExampleVariableComponentVF.ttf ===
+demos/type-and-code/fun-with-css/variable-fonts/ExampleVariableComponentVF.ttf

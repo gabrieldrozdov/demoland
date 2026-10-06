@@ -1,0 +1,65 @@
+=== TITLE ===
+EXERCISE: Drawing with CSS
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="abs" style="
+	top: 20px;
+	left: 50px;
+	width: 100px;
+	height: 50px;
+	background-color: red;
+	border-radius: 100px 100px 0 0;
+	">
+</div>
+
+<div class="abs" style="
+	top: 20px;
+	left: 400px;
+	width: 100px;
+	height: 50px;
+	background-color: red;
+	border-radius: 0 0 100px 100px;
+	">
+</div>
+
+<div class="abs" style="
+	top: 200px;
+	left: 50px;
+	width: 500px;
+	height: 250px;
+	background-color: blue;
+	border-radius: 0 0 1000px 1000px;
+	">
+</div>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.abs {
+	position: absolute;
+}
+=== INFO ===
+Draw a cat!

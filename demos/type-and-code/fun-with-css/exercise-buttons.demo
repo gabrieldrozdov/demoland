@@ -1,0 +1,43 @@
+=== TITLE ===
+EXERCISE: Buttons
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<button>Click me!</button>
+=== FILE style.css ===
+button {
+	font-size: 80px;
+	cursor: pointer;
+	transition: .2s;
+}
+
+button:hover {
+	background-color: black;
+	color: white;
+}
+
+button:active {
+	transform: scale(0.5);
+}
+=== INFO ===
+Make this button extremely UNsatisfying to click!

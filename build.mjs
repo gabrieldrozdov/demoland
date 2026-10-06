@@ -619,6 +619,7 @@ const outRoot = join(here, OUTDIR);
 // output goes into the project root, so never wipe the whole directory (that would delete the source: build.mjs, the template, demos/, etc.) — remove only the artifacts this build owns: each book's generated folder plus the top-level generated files
 for (const book of tree) rmSync(join(outRoot, book.id), { recursive: true, force: true });
 rmSync(join(outRoot, "editor"), { recursive: true, force: true }); // standalone blank editor
+rmSync(join(outRoot, "dev"), { recursive: true, force: true }); // the local-only /dev/ page (gitignored)
 for (const fileName of ["index.html", "404.html", "sitemap.xml", "robots.txt"])
 	rmSync(join(outRoot, fileName), { force: true });
 mkdirSync(outRoot, { recursive: true });
@@ -894,7 +895,7 @@ function bookPage(book) {
 				.join("\n");
 			return `        <div class="nav-chapter" style="--accent:${chapterColor};">
           <div class="nc-header"><a class="nc-heading" href="${chapter.id}/"><div class="nc-subtitle">Chapter ${chapterIndex + 1}</div><div class="nc-title">${escapeHtml(chapter.title)}</div></a>
-${chapter.description ? `          <div class="nc-desc">${escapeHtml(chapter.description)}</div></div>\n` : ""}<div class="nc-demos">${demos}</div>
+${chapter.description ? `          <div class="nc-desc">${escapeHtml(chapter.description)}</div>\n` : ""}</div><div class="nc-demos">${demos}</div>
 		  ${ICONS.bookmark}
         </div>`;
 		})
@@ -907,14 +908,14 @@ ${chapter.description ? `          <div class="nc-desc">${escapeHtml(chapter.des
       </div>
       <div id="tb-right">
         ${arrowHtml(null, ICONS.arrowLeft, "introduction")}
-        ${arrowHtml(`${firstChap.id}/`, ICONS.arrowRight, "First chapter")}
+        ${arrowHtml(firstChap ? `${firstChap.id}/` : null, ICONS.arrowRight, "First chapter")}
         ${menuButton}
       </div>
 	  <div id="tb-border"></div>`;
 	const content = `        <div class="land-header"><a class="land-back" href="../">${ICONS.book}<span>All books</span></a>
 		<div class="land-subtitle land-subtitle-intro">${ICONS.book}<span>${escapeHtml(book.mediaType)}</span></div>
         <h1 class="land-title">${escapeHtml(book.title)}</h1>
-        ${book.description ? `<p class="land-desc">${book.description}</p></div>` : ""}
+        ${book.description ? `<p class="land-desc">${book.description}</p>` : ""}</div>
 <div class="land-chapters"><h2 class="land-subheading">${ICONS.chapter}<span>Select a chapter</span></h2>${chapters}</div>`;
 	return landingShell({
 		base: "../",
@@ -1106,12 +1107,15 @@ const template = parseDemo(existsSync(TEMPLATE_PATH) ? readFileSync(TEMPLATE_PAT
 if (!template.files.length)
 	console.warn("! demos/template.demo is missing or empty ~ the blank editor will start with no files");
 
-{
+// the same page is also built a second time at /dev/ — the local-only site manager that `node dev.mjs` serves (see dev.mjs and parts/dev.js). it's the blank editor plus a list of every demo on the site, and saves to the .demo files themselves. dev/ is gitignored, so it never reaches the published site
+function standalonePage(dev) {
 	const base = "../";
 	const seo = [
-		`<title>Editor \\ ${escapeHtml(siteTitle)}</title>`,
+		dev
+			? `<title>Dev \\ ${escapeHtml(siteTitle)}</title>\n  <meta name="robots" content="noindex">`
+			: `<title>Editor \\ ${escapeHtml(siteTitle)}</title>`,
 		`<meta name="description" content="A blank in-browser HTML, CSS and JavaScript editor with a live preview.">`,
-		siteUrl ? `<link rel="canonical" href="${siteUrl}/editor/">` : "",
+		siteUrl && !dev ? `<link rel="canonical" href="${siteUrl}/editor/">` : "",
 		`<meta property="og:title" content="Editor \\ ${escapeHtml(siteTitle)}">`,
 		OG_IMAGE,
 		`<meta name="twitter:card" content="summary_large_image">`,
@@ -1148,17 +1152,19 @@ if (!template.files.length)
 		() => `<span class="tb-kind-text">Demo</span></span><span class="tb-name">New Demo</span>`
 	);
 	// a single class on #shell drives all the standalone hiding via CSS (no flash); show Upload
-	h = h.replace('<div id="shell">', () => '<div id="shell" class="standalone">');
+	h = h.replace('<div id="shell">', () => `<div id="shell" class="standalone${dev ? " dev" : ""}">`);
 	// the standalone toolbar is the only place these show: new / save / load / download
 	["tb-new", "tb-save", "tb-load", "tb-download"].forEach((id) => {
 		h = h.replace(`<button class="tb-action" id="${id}" hidden`, () => `<button class="tb-action" id="${id}"`);
 	});
-	// pick a random accent from the palette on each load (pre-paint, so there's no colour flash)
-	h = h.replace(
-		"</head>",
-		() =>
-			'  <script>(function(){var p=["pink","green","blue","yellow","purple","red"];document.documentElement.style.setProperty("--accent","var(--"+p[Math.floor(Math.random()*p.length)]+")");})();</script>\n</head>'
-	);
+	// pick a random accent from the palette on each load (pre-paint, so there's no colour flash); /dev/ starts neutral and takes the colour of whichever demo is open
+	if (dev) h = h.replace('style="--accent:var(--blue)"', () => 'style="--accent:var(--off-white)"');
+	else
+		h = h.replace(
+			"</head>",
+			() =>
+				'  <script>(function(){var p=["pink","green","blue","yellow","purple","red"];document.documentElement.style.setProperty("--accent","var(--"+p[Math.floor(Math.random()*p.length)]+")");})();</script>\n</head>'
+		);
 	h = h.replace(FILES_RE, () => filesContainer(template.files, template.entry, true, true, base));
 	// the template's notes are baked in the same way a demo page's are
 	h = h.replace(
@@ -1167,10 +1173,13 @@ if (!template.files.length)
 			o + (template.annotations && template.annotations.length ? payload(template.annotations) : "") + c
 	);
 
-	mkdirSync(join(here, OUTDIR, "editor"), { recursive: true });
-	writeFileSync(join(here, OUTDIR, "editor", "index.html"), minifyHtml(h));
-	if (siteUrl) urls.push(`${siteUrl}/editor/`);
+	return h;
 }
+mkdirSync(join(here, OUTDIR, "editor"), { recursive: true });
+writeFileSync(join(here, OUTDIR, "editor", "index.html"), minifyHtml(standalonePage(false)));
+if (siteUrl) urls.push(`${siteUrl}/editor/`);
+mkdirSync(join(here, OUTDIR, "dev"), { recursive: true });
+writeFileSync(join(here, OUTDIR, "dev", "index.html"), minifyHtml(standalonePage(true)));
 
 // ———————————————————————————
 // SITEMAP.XML + ROBOTS.TXT

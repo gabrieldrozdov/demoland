@@ -505,7 +505,15 @@ function cssSuggest(pn) {
 	}
 	return best ? `, did you mean "${best}"?` : "";
 }
+// names that are real but only inside an at-rule (@font-face, @page, @property, @counter-style), which CSS.supports doesn't know as properties — accepted anywhere, so a block the checker can't place never flags them
+const CSS_DESCRIPTORS = new Set(
+	`src unicode-range font-display ascent-override descent-override line-gap-override size-adjust font-named-instance
+		size marks bleed page-orientation syntax inherits initial-value system symbols additive-symbols negative prefix suffix range pad speak-as fallback`.split(
+		/\s+/
+	)
+);
 function cssPropKnown(pn) {
+	if (CSS_DESCRIPTORS.has(pn)) return true;
 	// ask the browser itself whether this property exists
 	try {
 		if (typeof CSS === "undefined" || !CSS.supports) return true; // can't check -> don't flag
@@ -603,7 +611,8 @@ function lintCssBlock(css, base, diags) {
 			const pre = css.slice(segStart, i),
 				isDecl = !cssIsGroupAt(pre);
 			declBlock.push(isDecl);
-			propCheck.push(isDecl && pre.replace(/^\s+/, "")[0] !== "@"); // normal selector block, not @font-face/@page descriptors
+			// normal selector block, not @font-face/@page descriptors — comments are stripped first, so one sitting just above an @font-face doesn't hide the @
+			propCheck.push(isDecl && pre.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/^\s+/, "")[0] !== "@");
 			braceOff.push(i);
 			depth++;
 			segStart = i + 1;

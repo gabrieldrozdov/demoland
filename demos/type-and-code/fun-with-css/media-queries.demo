@@ -1,0 +1,62 @@
+=== TITLE ===
+Media queries
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-interaction">A</div>
+=== FILE style.css ===
+/* import the font */
+@font-face {
+	font-family: "Example";
+	src: url("ExampleVariableComponentVF.ttf") format("truetype");
+}
+
+/* add it to a class */
+.test-interaction {
+	font-family: "Example";
+	font-size: 200px;
+	transition: 1s;
+	font-variation-settings: "TRAN" 0;
+}
+
+/* this code only runs when the screen is <500px wide */
+@media (max-width: 500px) {
+	body {
+		background-color: yellow;
+	}
+	.test-interaction {
+		font-variation-settings: "TRAN" 100;
+	}
+}
+
+/* this code only runs when the screen is <400px wide */
+@media (max-width: 400px) {
+	body {
+		background-color: green;
+	}
+	.test-interaction {
+		font-variation-settings: "TRAN" 50;
+	}
+}
+=== MEDIA ExampleVariableComponentVF.ttf ===
+demos/type-and-code/fun-with-css/media-queries/ExampleVariableComponentVF.ttf

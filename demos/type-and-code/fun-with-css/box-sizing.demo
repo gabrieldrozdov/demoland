@@ -1,0 +1,53 @@
+=== TITLE ===
+Box sizing
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-content-box">
+	Hello world!
+</div>
+
+<div class="test-border-box">
+	Hello world!
+</div>
+=== FILE style.css ===
+.test-content-box {
+	box-sizing: content-box;
+	width: 100%;
+	border: 10px solid blue;
+	background-color: yellow;
+}
+.test-border-box {
+	box-sizing: border-box;
+	width: 100%;
+	border: 10px solid green;
+	background-color: red;
+}
+
+/* i use this css in every file i code: */
+
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */

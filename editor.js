@@ -54,7 +54,7 @@ import {
 	jsBeautify,
 	acorn
 } from "./lib/codemirror.js";
-import { lintFile, renderLintMsg } from "./parts/lint.js?v=901ba4f4";
+import { lintFile, renderLintMsg } from "./parts/lint.js?v=b083c6d6";
 import { mediaKind, createMediaView } from "./parts/media.js?v=0f837142";
 import { assemblePreview, buildDoc, resolveFile } from "./parts/preview.js?v=fd3c8cc7";
 import { readEmbed } from "./parts/embed.js?v=208ec094";
@@ -772,6 +772,77 @@ var startAutoClose = cfgInit("autoclose", embedMode ? true : lsGet("lp-autoclose
 var startComplete = cfgInit("autocomplete", embedMode ? false : lsGet("lp-autocomplete") !== "0"); // default on
 const startWarnings = cfgInit("warnings", embedMode ? false : lsGet("lp-warnings") !== "0"); // default on, off in embeds
 
+// the comment shortcut on an empty line: drop in an empty comment for whatever language the cursor is in (html, or the css / js inside a <style> / <script>) and put the cursor in the middle of it, ready to type. a line with anything on it goes to the usual toggle
+function commentEmptyLine(view) {
+	const state = view.state;
+	const ranges = state.selection.ranges;
+	const blank = ranges.every(function (r) {
+		return r.empty && state.doc.lineAt(r.head).text.trim() === "";
+	});
+	if (!blank || state.readOnly) return false;
+	const tr = state.changeByRange(function (r) {
+		const tokens = state.languageDataAt("commentTokens", r.head)[0] || {};
+		const open = tokens.block ? `${tokens.block.open} ` : tokens.line ? `${tokens.line} ` : "";
+		const close = tokens.block ? ` ${tokens.block.close}` : "";
+		if (!open) return { range: r };
+		return {
+			changes: { from: r.head, insert: open + close },
+			range: EditorSelection.cursor(r.head + open.length)
+		};
+	});
+	view.dispatch(state.update(tr, { scrollIntoView: true, userEvent: "input" }));
+	return true;
+}
+
+// double-click selects a word the way a text editor does: letters, numbers, _ and $, stopping at hyphens and dots — so double-clicking "color" in "background-color" or "box" in "flex-box" takes just that part. codemirror's own word rule counts hyphens as part of a word in css and html, and there's no way to take characters back out of it, so double-clicks get their own selection style instead
+// it plugs into codemirror's mouse handling rather than replacing it, so dragging after a double-click still extends the selection a whole word at a time, and option still adds to the other cursors
+function isWordChar(ch) {
+	return /[\p{L}\p{N}_$]/u.test(ch);
+}
+// the word at a position, or null on a space or symbol; a position just past the end of a word still means that word
+function wordAt(state, pos) {
+	const line = state.doc.lineAt(pos);
+	const text = line.text;
+	let at = pos - line.from;
+	if (!isWordChar(text.charAt(at)) && at > 0 && isWordChar(text.charAt(at - 1))) at--;
+	if (!isWordChar(text.charAt(at))) return null;
+	let from = at,
+		to = at + 1;
+	while (from > 0 && isWordChar(text.charAt(from - 1))) from--;
+	while (to < text.length && isWordChar(text.charAt(to))) to++;
+	return { from: line.from + from, to: line.from + to };
+}
+function doubleClickStyle(view, event) {
+	if (event.detail !== 2 || event.button !== 0) return null;
+	const pos = view.posAtCoords({ x: event.clientX, y: event.clientY });
+	const first = pos == null ? null : wordAt(view.state, pos);
+	if (!first) return null; // spaces and symbols: codemirror's own double-click
+	let anchor = first;
+	let before = view.state.selection;
+	return {
+		// an edit while the button is still down moves the starting word along with the text
+		update: function (update) {
+			if (!update.docChanged) return;
+			anchor = { from: update.changes.mapPos(anchor.from), to: update.changes.mapPos(anchor.to, -1) };
+			before = before.map(update.changes);
+		},
+		get: function (current, extend, multiple) {
+			const at = view.posAtCoords({ x: current.clientX, y: current.clientY }, false);
+			const word = wordAt(view.state, at) || { from: at, to: at };
+			const from = Math.min(anchor.from, word.from);
+			const to = Math.max(anchor.to, word.to);
+			// dragging backwards keeps the selection's moving end under the pointer
+			const range = word.from < anchor.from ? EditorSelection.range(to, from) : EditorSelection.range(from, to);
+			return multiple ? before.addRange(range) : EditorSelection.create([range]);
+		}
+	};
+}
+
+// autocomplete, with suggestions showing the moment you type rather than after codemirror's default 100ms wait. its other delay is kept: for 75ms after the list appears, enter and the arrow keys still type rather than pick, so a fast typist hitting enter at the end of a line doesn't accept a suggestion they never saw
+function completionExt() {
+	return autocompletion({ activateOnTypingDelay: 0 });
+}
+
 // the full extension set for a file's EditorState, parameterised by its language — every file gets its own state so undo/redo is per-file, while settings live in compartments and are re-synced to the active state on each tab switch
 function editorExtensions(lang) {
 	return [
@@ -791,14 +862,20 @@ function editorExtensions(lang) {
 		bracketMatching(),
 		langComp.of(languageExt(lang, startAutoClose)),
 		autoCloseComp.of(autoClose(startAutoClose)),
-		autoCompleteComp.of(startComplete ? autocompletion() : []),
+		autoCompleteComp.of(startComplete ? completionExt() : []),
 		highlightComp.of(highlightExt()),
 		wrapComp.of(startWrap ? WRAP_ON : []),
 		embedMode && embed.readonly ? [EditorState.readOnly.of(true), EditorView.editable.of(false)] : [],
+		// option-click (alt-click) adds another cursor, instead of the default cmd-click (ctrl-click on windows)
+		EditorView.clickAddsSelectionRange.of(function (e) {
+			return e.altKey;
+		}),
+		EditorView.mouseSelectionStyle.of(doubleClickStyle),
 		keymap.of(
 			[
 				indentWithTab,
 				{ key: "Mod-d", run: selectNextOccurrence, preventDefault: true },
+				{ key: "Mod-/", run: commentEmptyLine }, // falls through to the usual toggle when a line has something on it
 				{ key: "Mod-]", run: indentMore, preventDefault: true },
 				{ key: "Mod-[", run: indentLess, preventDefault: true }
 			].concat(closeBracketsKeymap, completionKeymap, defaultKeymap, historyKeymap, foldKeymap)
@@ -1131,7 +1208,7 @@ acmpBtn.classList.toggle("on", completing);
 acmpBtn.onclick = function () {
 	completing = !completing;
 	acmpBtn.classList.toggle("on", completing);
-	view.dispatch({ effects: autoCompleteComp.reconfigure(completing ? autocompletion() : []) });
+	view.dispatch({ effects: autoCompleteComp.reconfigure(completing ? completionExt() : []) });
 	if (!embedMode) lsSet("lp-autocomplete", completing ? "1" : "0");
 };
 
@@ -1344,70 +1421,121 @@ function initPanels() {
 	wPrev = def.prev;
 	clampPanels();
 	applyPanels();
+	updateSpines();
 	lastTotal = panelTotal();
 }
 
-// click a spine label to maximize that panel (the other two collapse to their spines); click the active spine again to restore the previous layout
-let maximized = null,
-	restoreInfo = 0,
-	restorePrev = 0;
+// click a spine label to collapse that panel down to its spine, handing its width to the other open panels; click the spine of a collapsed panel to open it back up to the width it had, taken back from the panels that are still open
+// "collapsed" isn't a stored flag — it's read off the width, so a panel dragged down to its spine counts as collapsed and one dragged back open doesn't
 const spines = Array.prototype.slice.call(document.querySelectorAll(".panel-spine"));
+const SPINE_NAMES = { info: "info", code: "code", preview: "preview" };
+// the width each panel had when it was last collapsed, so opening it again puts it back where it was
+const remembered = { info: 0, code: 0, preview: 0 };
+// the panels actually on screen, left to right
+function visiblePanels() {
+	const list = [];
+	if (showInfo) list.push("info");
+	if (showCode) list.push("code");
+	if (showPreview) list.push("preview");
+	return list;
+}
+// each visible panel's width; the editor (or, with the editor hidden, the preview) is whatever the fixed-width panels leave
+function panelWidths() {
+	const total = panelTotal();
+	if (hideCodeLayout) return { info: wInfo, preview: total - wInfo };
+	const out = {};
+	if (showInfo) out.info = wInfo;
+	if (showPreview) out.preview = wPrev;
+	if (showCode) out.code = total - (showInfo ? wInfo : 0) - (showPreview ? wPrev : 0);
+	return out;
+}
+// write widths back into the two numbers the layout is driven by
+function setPanelWidths(w) {
+	if (w.info !== undefined) wInfo = w.info;
+	if (w.preview !== undefined && !hideCodeLayout) wPrev = w.preview;
+}
+function isCollapsed(w, which) {
+	return w[which] <= STRIP + 1;
+}
 function updateSpines() {
+	const w = panelWidths();
 	spines.forEach(function (s) {
-		s.classList.toggle("active", s.dataset.panel === maximized);
+		const which = s.dataset.panel;
+		if (w[which] === undefined) return;
+		s.title = `Click to ${isCollapsed(w, which) ? "expand" : "collapse"} the ${SPINE_NAMES[which]} panel`;
 	});
 }
-function setMaxLayout(which) {
-	const total = panelTotal();
-	if (which === "info") {
-		wInfo = total - 2 * STRIP;
-		wPrev = STRIP;
-	} else if (which === "code") {
-		wInfo = STRIP;
-		wPrev = STRIP;
-	} else {
-		wInfo = STRIP;
-		wPrev = total - 2 * STRIP;
-	}
+// share `amount` out across `names` in proportion to `weights`, adding it to (or, when negative, taking it from) each one's width
+function share(w, names, weights, amount) {
+	const sum = names.reduce(function (t, n) {
+		return t + weights[n];
+	}, 0);
+	names.forEach(function (n) {
+		w[n] += sum > 0 ? (amount * weights[n]) / sum : amount / names.length;
+	});
 }
-function maximizePanel(which) {
-	if (maximized === which) {
-		// toggle off -> remembered layout
-		wInfo = restoreInfo;
-		wPrev = restorePrev;
-		maximized = null;
+function togglePanel(which) {
+	const w = panelWidths();
+	const visible = visiblePanels();
+	if (w[which] === undefined || visible.length < 2) return;
+	const others = visible.filter(function (n) {
+		return n !== which;
+	});
+	const open = others.filter(function (n) {
+		return !isCollapsed(w, n);
+	});
+	if (isCollapsed(w, which)) {
+		// opening: back to its remembered width (or an even share if it never had one), paid for by the open panels in proportion to the room each has above its spine
+		const lenders = open.length ? open : others;
+		const room = lenders.reduce(function (t, n) {
+			return t + (w[n] - STRIP);
+		}, 0);
+		const fair = panelTotal() / visible.length;
+		const want = Math.min(room, (remembered[which] || fair) - STRIP);
+		const slack = {};
+		lenders.forEach(function (n) {
+			slack[n] = w[n] - STRIP;
+		});
+		share(w, lenders, slack, -want);
+		w[which] += want;
 	} else {
-		if (maximized === null) {
-			restoreInfo = wInfo;
-			restorePrev = wPrev;
+		// collapsing: down to the spine, with the freed width going to the panels still open — or, if this was the last one open, back out to all of them by the widths they had before they closed
+		remembered[which] = w[which];
+		const freed = w[which] - STRIP;
+		w[which] = STRIP;
+		if (open.length) {
+			const weights = {};
+			open.forEach(function (n) {
+				weights[n] = w[n];
+			});
+			share(w, open, weights, freed);
+		} else {
+			const weights = {};
+			others.forEach(function (n) {
+				weights[n] = remembered[n] || 1;
+			});
+			share(w, others, weights, freed);
 		}
-		setMaxLayout(which);
-		maximized = which;
 	}
+	setPanelWidths(w);
 	clampPanels();
 	applyPanels();
 	updateSpines();
 	view.requestMeasure();
 }
-function clearMax() {
-	if (maximized !== null) {
-		maximized = null;
-		updateSpines();
-	}
-}
 spines.forEach(function (s) {
 	s.addEventListener("click", function () {
-		maximizePanel(s.dataset.panel);
+		togglePanel(s.dataset.panel);
 	});
 });
 function resetPanels() {
 	// restore the original column sizes
-	clearMax();
 	const def = defaultPanels();
 	wInfo = def.info;
 	wPrev = def.prev;
 	clampPanels();
 	applyPanels();
+	updateSpines();
 	view.requestMeasure();
 	// also restore the console: expand it if collapsed and clear any dragged height
 	if (consoleEl) {
@@ -1450,7 +1578,7 @@ function resetSettings() {
 	if (!embedMode) lsSet("lp-autoclose", "1");
 	completing = true;
 	acmpBtn.classList.add("on");
-	view.dispatch({ effects: autoCompleteComp.reconfigure(autocompletion()) });
+	view.dispatch({ effects: autoCompleteComp.reconfigure(completionExt()) });
 	if (!embedMode) lsSet("lp-autocomplete", "1");
 	if (warnBtn) {
 		warningsOn = true;
@@ -1479,7 +1607,6 @@ let draggingR = false,
 	grabR = 0;
 resizerRight.addEventListener("pointerdown", function (e) {
 	draggingR = true;
-	clearMax();
 	document.body.classList.add("draggingR");
 	const rr = resizerRight.getBoundingClientRect();
 	grabR = e.clientX - (rr.left + rr.width / 2); // keep the grab point under the cursor
@@ -1506,6 +1633,7 @@ function endDrag(event) {
 	try {
 		resizerRight.releasePointerCapture(event.pointerId);
 	} catch (_) {}
+	updateSpines(); // a panel dragged to or from its spine flips what its spine offers
 	view.requestMeasure();
 }
 resizerRight.addEventListener("pointerup", endDrag);
@@ -1522,31 +1650,28 @@ window.addEventListener("resize", function () {
 	} // mobile is the tabbed CSS layout — leave the px model alone
 	const total = panelTotal();
 	if (wasMobile) {
-		// coming back to desktop: give all three panels an equal third
+		// coming back to desktop: start from the default layout again
 		wasMobile = false;
-		maximized = null;
-		updateSpines();
 		const def = defaultPanels();
 		wInfo = def.info;
 		wPrev = def.prev;
-		restoreInfo = wInfo;
-		restorePrev = wPrev;
 		clampPanels();
 		applyPanels();
+		updateSpines();
 		view.requestMeasure();
 		lastTotal = total;
 		return;
 	}
 	if (lastTotal > 0 && total > 0) {
 		const scaleFactor = total / lastTotal;
-		restoreInfo *= scaleFactor;
-		restorePrev *= scaleFactor; // keep the remembered layout proportional too
-		if (!maximized) {
-			wInfo *= scaleFactor;
-			wPrev *= scaleFactor;
-		}
+		// a collapsed panel stays at its spine rather than growing with the window; the width it opens back up to scales instead
+		const w = panelWidths();
+		Object.keys(remembered).forEach(function (n) {
+			remembered[n] *= scaleFactor;
+		});
+		wInfo = showInfo && isCollapsed(w, "info") ? STRIP : wInfo * scaleFactor;
+		wPrev = showPreview && isCollapsed(w, "preview") ? STRIP : wPrev * scaleFactor;
 	}
-	if (maximized) setMaxLayout(maximized); // re-fill the maximized panel for the new width
 	clampPanels();
 	applyPanels();
 	lastTotal = total;
@@ -1628,6 +1753,8 @@ var redoBtn = document.getElementById("t-redo");
 const tbDemoName = document.querySelector("#tb-demo .tb-name");
 const shellEl = document.getElementById("shell");
 const standaloneMode = !!(shellEl && shellEl.classList.contains("standalone"));
+// /dev/ is the blank editor run against the site's own demos by `node dev.mjs`: the same page, with parts/dev.js taking over new, save and load (see the DEV PAGE section at the end)
+const devMode = standaloneMode && shellEl.classList.contains("dev");
 const standaloneFileName = "";
 var fileTabsEl = document.getElementById("file-tabs");
 const codeWrap = document.getElementById("code-wrap"); // holds the CodeMirror view; hidden for media files
@@ -1735,7 +1862,7 @@ function settingEffects(lang) {
 		indentComp.reconfigure(indentExt()),
 		langComp.reconfigure(languageExt(lang, autoClosing)),
 		autoCloseComp.reconfigure(autoClose(autoClosing)),
-		autoCompleteComp.reconfigure(completing ? autocompletion() : []),
+		autoCompleteComp.reconfigure(completing ? completionExt() : []),
 		highlightComp.reconfigure(highlightExt()),
 		wrapComp.reconfigure(wrapping ? WRAP_ON : [])
 	];
@@ -3077,9 +3204,10 @@ function applyDroppedFiles(replace) {
 						return d.name === f.name;
 					});
 				});
-		installDemo(kept.concat(parsed.files, media), parsed.entry, parsed.notes, parsed.info);
+		installDemo(kept.concat(parsed.files, media), parsed.entry, parsed.notes, parsed.info, parsed.config);
+		demoSingle = false;
 		savedDemoName = "";
-		setDemoName(slugToName(demoDrop.name));
+		setDemoName(parsed.title || slugToName(demoDrop.name));
 		savedState = demoSnapshot();
 		closeDropDialog();
 		return;
@@ -3298,7 +3426,11 @@ function downloadAll() {
 	const base = standaloneMode
 		? slugName(demoName || "project")
 		: (location.pathname.split("/").pop() || "demo").replace(/\.html?$/i, "");
-	zipDemo(files, base, standaloneMode ? toDemoFile(files, collectNotes(), infoMd) : "");
+	zipDemo(
+		files,
+		base,
+		standaloneMode ? toDemoFile(files, collectNotes(), infoMd, { title: demoName, config: demoConfig }) : ""
+	);
 }
 // a demo name as a file name: lowercase, spaces to hyphens, anything else dropped
 function slugName(name) {
@@ -3375,7 +3507,6 @@ let draggingL = false,
 	grabL = 0;
 resizerLeft.addEventListener("pointerdown", function (e) {
 	draggingL = true;
-	clearMax();
 	document.body.classList.add("draggingL");
 	const lr = resizerLeft.getBoundingClientRect();
 	grabL = e.clientX - (lr.left + lr.width / 2); // keep the grab point under the cursor
@@ -3396,6 +3527,7 @@ function endI(event) {
 	try {
 		resizerLeft.releasePointerCapture(event.pointerId);
 	} catch (_) {}
+	updateSpines();
 	view.requestMeasure();
 }
 resizerLeft.addEventListener("pointerup", endI);
@@ -3729,12 +3861,17 @@ function collectNotes() {
 		const st = states[i];
 		if (!st) {
 			allNotes.forEach(function (n) {
-				if ((n.file || demoEntry) === f.name) out.push({ file: f.name, line: n.line, text: n.text });
+				if ((n.file || demoEntry) === f.name)
+					out.push({ file: f.name, line: n.line, text: n.text, open: n.open === true });
 			});
 			return;
 		}
 		st.field(annoField).forEach(function (a) {
-			out.push({ file: f.name, line: st.doc.lineAt(a.from).number, text: a.text });
+			// whether a note is showing right now is the learner's business; whether it was written to start open comes from the note it was seeded from
+			const authored = allNotes.some(function (n) {
+				return (n.file || demoEntry) === f.name && n.text === a.text && n.open === true;
+			});
+			out.push({ file: f.name, line: st.doc.lineAt(a.from).number, text: a.text, open: authored });
 		});
 	});
 	return out;
@@ -3842,16 +3979,100 @@ const SHORTCODES = [
 	}
 ];
 
-// everything about a demo in the format build.mjs reads: one section per file, then the notes (their lines counted from the top of this file), then the description
-function toDemoFile(list, notes, info) {
+// ———————————————————————————
+// DEMO SETTINGS
+// the CONFIG block every .demo can carry (see the README): which panels show, whether learners can add files, how notes start, each editor setting's starting value, and which settings are locked
+// the blank editor keeps one for the demo that's open, edits it in the settings dialog, and always writes the whole thing out, defaults and all, so a downloaded .demo shows every option there is
+// ———————————————————————————
+// the editor settings a demo can start on or off; left unset (null) they follow whatever the learner last chose, which is how every demo without a CONFIG behaves
+const CONFIG_SETTINGS = [
+	["wrap", "Wrap text"],
+	["syntax", "Show syntax"],
+	["autoclose", "Auto-close"],
+	["autocomplete", "Autocomplete"],
+	["warnings", "Warnings"]
+];
+// the settings a demo can lock, so the learner can't change them
+const CONFIG_LOCKS = [
+	["wrap", "Wrap text"],
+	["syntax", "Show syntax"],
+	["autoclose", "Auto-close"],
+	["autocomplete", "Autocomplete"],
+	["warnings", "Warnings"],
+	["zoom", "Zoom"],
+	["prettify", "Prettify"]
+];
+const CONFIG_PANELS = [
+	["info", "Info"],
+	["code", "Code"],
+	["preview", "Preview"],
+	["console", "Console"]
+];
+// a config with every option present: whatever `cfg` sets, and the default for anything it doesn't — anything else it carries rides along untouched
+function fullDemoConfig(cfg) {
+	const given = cfg && typeof cfg === "object" ? cfg : {};
+	const panels = given.panels && typeof given.panels === "object" ? given.panels : {};
+	const settings = given.settings && typeof given.settings === "object" ? given.settings : {};
+	const lock = Array.isArray(given.lock) ? given.lock : [];
+	const out = {
+		allowAdd: given.allowAdd === true,
+		notesExpanded: given.notesExpanded === true,
+		panels: {},
+		settings: {},
+		lock: CONFIG_LOCKS.map(function (l) {
+			return l[0];
+		}).filter(function (k) {
+			return lock.indexOf(k) >= 0;
+		})
+	};
+	CONFIG_PANELS.forEach(function (p) {
+		out.panels[p[0]] = panels[p[0]] !== false;
+	});
+	CONFIG_SETTINGS.forEach(function (st) {
+		out.settings[st[0]] = typeof settings[st[0]] === "boolean" ? settings[st[0]] : null;
+	});
+	out.settings.zoom = settings.zoom !== false; // zoom is whether the zoom buttons work at all, not a learner preference
+	Object.keys(given).forEach(function (k) {
+		if (!(k in out)) out[k] = given[k];
+	});
+	return out;
+}
+// a CONFIG section's json, forgiving the trailing comma the build also forgives
+function readConfigText(text) {
+	const raw = String(text || "").trim();
+	if (!raw) return null;
+	try {
+		return JSON.parse(raw);
+	} catch (e) {
+		try {
+			return JSON.parse(raw.replace(/,(\s*[}\]])/g, "$1"));
+		} catch (e2) {
+			return null;
+		}
+	}
+}
+let demoConfig = fullDemoConfig(null);
+
+// everything about a demo in the format build.mjs reads: its title and every setting first, then one section per file, then the notes (their lines counted from the top of this file), then the description
+// `extras` carries the title, the config (written out in full, so every option a .demo can take is there to change by hand) and `single`, which keeps a demo written as one === HTML === section that way — a FILE section would switch on the build's multi-file view for it
+function toDemoFile(list, notes, info, extras) {
+	const more = extras || {};
 	const lines = [];
 	const startOf = {};
+	if (more.title) lines.push("=== TITLE ===", more.title);
+	lines.push("=== CONFIG ===");
+	JSON.stringify(fullDemoConfig(more.config), null, "\t")
+		.split("\n")
+		.forEach(function (l) {
+			lines.push(l);
+		});
+	const legacy = more.single && list.length === 1 && list[0].name === "index.html" && list[0].lang !== "media";
 	list.forEach(function (f) {
 		if (f.lang === "media") {
 			lines.push(`=== MEDIA ${f.name} ===`, f.src || "");
 			return;
 		}
-		lines.push(`=== FILE ${f.name} ===`);
+		lines.push(legacy ? "=== HTML ===" : `=== FILE ${f.name} ===`);
 		startOf[f.name] = lines.length + 1;
 		String(f.content || "")
 			.split("\n")
@@ -3874,11 +4095,13 @@ function toDemoFile(list, notes, info) {
 			"=== NOTES ===",
 			JSON.stringify(
 				sorted.map(function (n) {
-					return {
+					const out = {
 						line: (startOf[n.file] || 1) + (n.line || 1) - 1,
 						file: n.file,
 						text: n.text
 					};
+					if (n.open) out.open = true; // a note authored to start open keeps that
+					return out;
 				}),
 				null,
 				"\t"
@@ -3889,7 +4112,7 @@ function toDemoFile(list, notes, info) {
 	return `${lines.join("\n")}\n`;
 }
 
-// read a .demo file: the sections build.mjs parses, minus the build-only CONFIG block
+// read a .demo file: the same sections build.mjs parses, so a demo can be opened, changed and written back without losing anything
 function trimBlank(s) {
 	return String(s).replace(/^\n+|\n+$/g, "");
 }
@@ -3904,7 +4127,7 @@ function parseDemoFile(text) {
 			sections.push(cur);
 		} else if (cur) cur.lines.push(l);
 	});
-	const out = { files: [], notes: [], info: "", entry: "index.html" };
+	const out = { files: [], notes: [], info: "", entry: "index.html", title: "", config: null, single: false };
 	const startOf = {};
 	sections.forEach(function (s) {
 		if ((s.key === "FILE" && s.arg) || s.key === "HTML") {
@@ -3922,7 +4145,16 @@ function parseDemoFile(text) {
 				out.notes = []; // a broken notes block just means no notes
 			}
 		} else if (s.key === "INFO") out.info = trimBlank(s.lines.join("\n"));
+		else if (s.key === "TITLE") out.title = s.lines.join("\n").trim();
+		else if (s.key === "CONFIG") out.config = readConfigText(s.lines.join("\n"));
 	});
+	// one === HTML === section and nothing else is the older single-file form, which the build shows without file tabs
+	out.single = sections.some(function (s) {
+		return s.key === "HTML";
+	}) &&
+		!sections.some(function (s) {
+			return s.key === "FILE" || s.key === "MEDIA";
+		});
 	if (
 		!out.files.some(function (f) {
 			return f.name === out.entry;
@@ -3940,7 +4172,8 @@ function parseDemoFile(text) {
 		return {
 			file: file,
 			text: n.text,
-			line: Math.max(1, (n.line || 1) - (startOf[file] || 1) + 1)
+			line: Math.max(1, (n.line || 1) - (startOf[file] || 1) + 1),
+			open: n.open === true
 		};
 	});
 	return out;
@@ -3965,8 +4198,10 @@ function briefEl() {
 function renderBrief() {
 	const el = briefEl();
 	if (!el) return;
-	el.innerHTML = `${mdToHtml(infoMd)}<div class="dlg-actions" style="justify-content:flex-start;margin-top:16px"><button type="button" class="ctrl" id="info-edit">${ACT_ICONS.rename}<span>Edit this description</span></button></div>`;
+	// a leading # heading is dropped the way the build drops it, since the demo's name already heads the panel
+	el.innerHTML = `${mdToHtml(infoMd.replace(/^\s*#\s+[^\n]*\r?\n?/, ""))}<div class="info-edit-acts"><button type="button" class="ctrl" id="info-edit">${ACT_ICONS.rename}<span>Edit this description</span></button><button type="button" class="ctrl" id="info-settings">${ACT_ICONS.settings}<span>Edit demo settings</span></button></div>`;
 	el.querySelector("#info-edit").onclick = editBrief;
+	el.querySelector("#info-settings").onclick = openConfigDialog;
 }
 // the same brief as plain markdown, with save, cancel and the shortcode reference under it
 function editBrief() {
@@ -4042,6 +4277,133 @@ function openShortcodes() {
 	codesDlg.hidden = false;
 }
 
+// ---- demo settings dialog ----
+// every option the demo's CONFIG block takes, as checkmarks; nothing here changes the editor you're in, only what the demo carries when it's saved or downloaded
+// the starting settings have a third state besides on and off — left to the learner — since that's what a demo with no setting does, and forcing one on would undo a choice the learner already made
+let configDlg = null;
+const TRI_LABELS = { "": "Learner’s choice", on: "On", off: "Off" };
+function configOpt(attrs, label) {
+	return `<label class="dlg-opt"><input type="checkbox" class="dlg-check" ${attrs}><span class="dlg-mark"></span> ${label}</label>`;
+}
+function buildConfigDialog() {
+	const overlay = document.createElement("div");
+	overlay.className = "mf-overlay";
+	overlay.id = "config-overlay";
+	overlay.hidden = true;
+	overlay.innerHTML = `<div class="mf-dialog" role="dialog" aria-modal="true" aria-label="Demo settings">
+		<div class="dlg-head">${ACT_ICONS.settings}<span>Demo settings</span><button type="button" id="config-x" title="Close">${ACT_ICONS.erase}</button></div>
+		<div class="dlg-body">
+		<div class="dlg-field"><span class="dlg-label">Panels</span><div>
+			${CONFIG_PANELS.map(function (pn) {
+				return configOpt(`data-panel="${pn[0]}"`, pn[1]);
+			}).join("")}
+			<div class="dlg-hint">Turn off Preview but leave Console on for a console-only panel. With Info, Code and Preview all off, the demo shows all three.</div>
+		</div></div>
+		<div class="dlg-field"><span class="dlg-label">Files</span><div>
+			${configOpt('data-flag="allowAdd"', "Learners can add files")}
+		</div></div>
+		<div class="dlg-field"><span class="dlg-label">Notes</span><div>
+			${configOpt('data-flag="notesExpanded"', "Open every note on load")}
+		</div></div>
+		<div class="dlg-field"><span class="dlg-label">Start with</span><div>
+			${CONFIG_SETTINGS.map(function (st) {
+				return `<label class="dlg-opt dlg-tri"><input type="checkbox" class="dlg-check" data-setting="${st[0]}"><span class="dlg-mark"></span> ${st[1]} <span class="dlg-tri-state"></span></label>`;
+			}).join("")}
+			${configOpt('data-flag="zoom"', "Zoom buttons")}
+			<div class="dlg-hint">Click a setting to cycle it between the learner’s own choice, on, and off.</div>
+		</div></div>
+		<div class="dlg-field"><span class="dlg-label">Lock</span><div>
+			${CONFIG_LOCKS.map(function (l) {
+				return configOpt(`data-lock="${l[0]}"`, l[1]);
+			}).join("")}
+			<div class="dlg-hint">A locked setting can’t be changed by the learner.</div>
+		</div></div>
+		</div>
+		<div class="dlg-actions"><button type="button" class="ctrl" id="config-reset">${ACT_ICONS.reset}<span>Reset to defaults</span></button><button type="button" class="ctrl" id="config-cancel">${ACT_ICONS.erase}<span>Cancel</span></button><button type="button" class="ctrl" id="config-ok">${ACT_ICONS.check}<span>Save settings</span></button></div>
+		</div>`;
+	document.body.appendChild(overlay);
+	configDlg = overlay;
+	overlay.querySelector("#config-x").onclick = closeConfigDialog;
+	overlay.querySelector("#config-cancel").onclick = closeConfigDialog;
+	overlay.querySelector("#config-ok").onclick = commitConfig;
+	overlay.querySelector("#config-reset").onclick = function () {
+		fillConfigDialog(fullDemoConfig(null));
+	};
+	// the three-way settings take over their checkbox's click: learner's choice -> on -> off -> learner's choice
+	overlay.querySelectorAll("input[data-setting]").forEach(function (box) {
+		box.addEventListener("click", function (e) {
+			e.preventDefault();
+			const next = { "": "on", on: "off", off: "" }[box.dataset.state || ""];
+			// the click's own toggle is undone after this handler returns, so the new state is drawn a tick later
+			setTimeout(function () {
+				setTri(box, next);
+			});
+		});
+	});
+	overlay.addEventListener("mousedown", function (e) {
+		if (e.target === overlay) closeConfigDialog();
+	});
+	document.addEventListener("keydown", function (e) {
+		if (e.key === "Escape" && !overlay.hidden) closeConfigDialog();
+	});
+}
+function setTri(box, state) {
+	box.dataset.state = state;
+	box.checked = state === "on";
+	box.indeterminate = state === "";
+	box.closest("label").querySelector(".dlg-tri-state").textContent = TRI_LABELS[state];
+}
+function fillConfigDialog(cfg) {
+	const q = function (sel) {
+		return configDlg.querySelectorAll(sel);
+	};
+	q("input[data-panel]").forEach(function (box) {
+		box.checked = cfg.panels[box.dataset.panel] !== false;
+	});
+	q("input[data-flag]").forEach(function (box) {
+		const key = box.dataset.flag;
+		box.checked = key === "zoom" ? cfg.settings.zoom !== false : cfg[key] === true;
+	});
+	q("input[data-setting]").forEach(function (box) {
+		const v = cfg.settings[box.dataset.setting];
+		setTri(box, v === true ? "on" : v === false ? "off" : "");
+	});
+	q("input[data-lock]").forEach(function (box) {
+		box.checked = cfg.lock.indexOf(box.dataset.lock) >= 0;
+	});
+}
+function commitConfig() {
+	const next = fullDemoConfig(demoConfig); // keeps anything the dialog doesn't show
+	const q = function (sel) {
+		return configDlg.querySelectorAll(sel);
+	};
+	q("input[data-panel]").forEach(function (box) {
+		next.panels[box.dataset.panel] = box.checked;
+	});
+	q("input[data-flag]").forEach(function (box) {
+		if (box.dataset.flag === "zoom") next.settings.zoom = box.checked;
+		else next[box.dataset.flag] = box.checked;
+	});
+	q("input[data-setting]").forEach(function (box) {
+		const st = box.dataset.state || "";
+		next.settings[box.dataset.setting] = st === "on" ? true : st === "off" ? false : null;
+	});
+	next.lock = [];
+	q("input[data-lock]").forEach(function (box) {
+		if (box.checked) next.lock.push(box.dataset.lock);
+	});
+	demoConfig = fullDemoConfig(next);
+	closeConfigDialog();
+}
+function closeConfigDialog() {
+	if (configDlg) configDlg.hidden = true;
+}
+function openConfigDialog() {
+	if (!configDlg) buildConfigDialog();
+	fillConfigDialog(demoConfig);
+	configDlg.hidden = false;
+}
+
 // ———————————————————————————
 // SAVED DEMOS
 // the blank editor at /editor/ keeps demos in the browser's localStorage: new, save and load sit in the topbar, and cmd-s or ctrl-s saves without opening anything
@@ -4061,6 +4423,11 @@ const ACT_ICONS = {
 	download:
 		'<svg viewBox="0 0 100 100"><polygon points="72.5 47.5 50 70 27.5 47.5 34.57 40.43 45 50.86 45 10 55 10 55 50.86 65.43 40.43 72.5 47.5"/><polygon points="80 65 80 80 20 80 20 65 10 65 10 90 90 90 90 65 80 65"/></svg>',
 	code: '<svg viewBox="0 0 100 100"><polygon points="90 50 70 70 62.93 62.93 75.86 50 62.93 37.07 70 30 90 50"/><polygon points="10 50 30 70 37.07 62.93 24.14 50 37.07 37.07 30 30 10 50"/><rect x="8.038" y="45" width="83.925" height="10" transform="translate(110.912 14.088) rotate(104.478)"/></svg>',
+	// the same circling arrow as the embed bar's reset button
+	reset: '<svg viewBox="0 0 100 100"><path d="m50,13.871c-9.554,0-18.232,3.755-24.655,9.86v-11.668h-9.998v28.284s28.284,0,28.284,0v-9.999h-12.258c4.831-4.656,11.394-7.525,18.628-7.525,14.835,0,26.859,12.024,26.859,26.859s-12.024,26.859-26.859,26.859-26.859-12.024-26.859-26.859h-8.953c0,19.777,16.035,35.812,35.812,35.812s35.812-16.035,35.812-35.812S69.777,13.871,50,13.871Z"/></svg>',
+	// the same gear as the code panel's settings button
+	settings:
+		'<svg viewBox="0 0 100 100"><path d="M50,36.35c-7.53,0-13.65,6.12-13.65,13.65s6.12,13.65,13.65,13.65,13.65-6.12,13.65-13.65-6.12-13.65-13.65-13.65Z"/><path d="M90,56.34v-12.68c-6.44-2.29-9.04-2.61-10.41-5.91-1.36-3.29.25-5.39,3.17-11.55l-8.96-8.96c-5.86,2.78-8.22,4.56-11.56,3.17-3.29-1.36-3.64-4.02-5.91-10.41h-12.67c-2.31,6.46-2.61,9.04-5.92,10.41-3.33,1.37-5.75-.42-11.55-3.18l-8.96,8.96c2.94,6.18,4.55,8.25,3.18,11.55-1.37,3.3-4.06,3.65-10.41,5.91v12.68c6.44,2.29,9.04,2.61,10.41,5.91,1.38,3.33-.27,5.43-3.18,11.55l8.96,8.96c5.78-2.73,8.2-4.57,11.55-3.17,3.29,1.37,3.64,4.02,5.91,10.41h12.68c2.35-6.6,2.66-9.05,5.95-10.42,3.3-1.38,5.76.45,11.52,3.18l8.96-8.96c-3.03-6.34-4.52-8.3-3.18-11.55,1.37-3.3,4.06-3.65,10.41-5.91ZM50,72.65c-12.51,0-22.65-10.14-22.65-22.65s10.14-22.65,22.65-22.65,22.65,10.14,22.65,22.65-10.14,22.65-22.65,22.65Z"/></svg>',
 	erase: '<svg viewBox="0 0 100 100"><polygon points="81.82 74.749 57.071 50 81.82 25.251 74.749 18.18 50 42.929 25.251 18.18 18.18 25.251 42.929 50 18.18 74.749 25.251 81.82 50 57.071 74.749 81.82 81.82 74.749"/></svg>'
 };
 const NEW_DEMO_WARNING =
@@ -4068,6 +4435,7 @@ const NEW_DEMO_WARNING =
 const OPEN_DEMO_WARNING =
 	"There are unsaved changes! Opening a demo will erase your old code. Do you still want to open a demo?";
 
+let demoSingle = false; // the open demo was written as one === HTML === section, and is written back that way while it stays one file
 let savedDemoName = "", // the name this demo was last saved under, empty until it has been saved once
 	demoName = "", // what it is called right now, which is a proposed name until it has been saved
 	savedState = ""; // the snapshot it was saved at, so an edit since then counts as unsaved
@@ -4106,6 +4474,7 @@ function demoSnapshot() {
 	if (files[activeFile]) files[activeFile].content = view.state.doc.toString();
 	return JSON.stringify({
 		info: infoMd,
+		config: demoConfig,
 		notes: collectNotes(),
 		entry: previewEntry,
 		files: files.map(function (f) {
@@ -4188,6 +4557,7 @@ function saveDemo(name) {
 		files: snap.files,
 		info: snap.info,
 		notes: snap.notes,
+		config: snap.config,
 		saved: Date.now()
 	};
 	if (!storeWrite(map)) return false;
@@ -4199,7 +4569,7 @@ function saveDemo(name) {
 	return true;
 }
 // swap the whole file list for another one, the same way loadDemo swaps in the baked one
-function installDemo(list, entry, notes, info) {
+function installDemo(list, entry, notes, info, config) {
 	if (!list || !list.length) return;
 	files = list.map(function (f) {
 		return { name: f.name, lang: f.lang, content: f.content || "", src: f.src || "" };
@@ -4221,6 +4591,7 @@ function installDemo(list, entry, notes, info) {
 	});
 	infoMd = typeof info === "string" ? info : defaultInfoMd;
 	allNotes = notes || []; // every file's state is rebuilt below, so this is what they seed from
+	demoConfig = fullDemoConfig(config);
 	renderBrief();
 	activateFile(activeFile);
 	renderTabs();
@@ -4231,7 +4602,7 @@ function installDemo(list, entry, notes, info) {
 function openSavedDemo(name) {
 	const rec = storeRead()[name];
 	if (!rec || !rec.files || !rec.files.length) return;
-	installDemo(rec.files, rec.entry, rec.notes, rec.info);
+	installDemo(rec.files, rec.entry, rec.notes, rec.info, rec.config);
 	savedDemoName = name;
 	setDemoName(name);
 	syncDemoIdentity(name);
@@ -4244,10 +4615,14 @@ function originalsHas(list, name) {
 }
 function newDemo() {
 	if (demoUnsaved() && !window.confirm(NEW_DEMO_WARNING)) return;
+	// the starter's own entry, since an opened demo may have had a different one
+	demoEntry = (demoFilesBox && demoFilesBox.getAttribute("data-entry")) || "index.html";
 	resetDemoFiles(false);
 	setDemoName(nextDemoName());
 	allNotes = [];
 	infoMd = defaultInfoMd;
+	demoConfig = fullDemoConfig(null);
+	demoSingle = false;
 	renderBrief();
 	savedDemoName = "";
 	syncDemoIdentity("");
@@ -4422,7 +4797,9 @@ function downloadAllDemos() {
 		else taken[base] = 2;
 		return {
 			name: `${base}.demo`,
-			bytes: strBytes(toDemoFile(rec.files || [], rec.notes || [], rec.info || ""))
+			bytes: strBytes(
+				toDemoFile(rec.files || [], rec.notes || [], rec.info || "", { title: name, config: rec.config })
+			)
 		};
 	});
 	const url = URL.createObjectURL(makeZip(entries));
@@ -4492,7 +4869,10 @@ function buildLoadDialog() {
 			zipDemo(
 				map[name].files,
 				slugName(name),
-				toDemoFile(map[name].files, map[name].notes || [], map[name].info || "")
+				toDemoFile(map[name].files, map[name].notes || [], map[name].info || "", {
+					title: name,
+					config: map[name].config
+				})
 			);
 			return;
 		}
@@ -4633,8 +5013,9 @@ if (standaloneMode) {
 	syncToolbarLabels();
 	if (narrow.addEventListener) narrow.addEventListener("change", syncToolbarLabels);
 	else narrow.addListener(syncToolbarLabels);
-	// cmd-s / ctrl-s saves straight over the demo's own name, or opens the dialog if it has never been saved
+	// cmd-s / ctrl-s saves straight over the demo's own name, or opens the dialog if it has never been saved (on /dev/, parts/dev.js saves to the file instead)
 	window.addEventListener("keydown", function (e) {
+		if (devMode) return;
 		if ((e.key !== "s" && e.key !== "S") || !(e.metaKey || e.ctrlKey) || e.altKey) return;
 		e.preventDefault();
 		if (savedDemoName) {
@@ -4654,11 +5035,111 @@ if (!embedMode) initPanels(); // embed layout is CSS-driven, no JS sizing model
 loadDemo(); // synchronous: renders the baked demo immediately
 if (standaloneMode) savedState = demoSnapshot(); // the blank starter counts as saved, so an untouched page isn't "unsaved"
 // a ?demo=<slug> in the address bar opens that saved demo, once the baked starter is in place for it to replace
-if (standaloneMode) {
+if (standaloneMode && !devMode) {
 	const linked = demoFromUrl();
 	if (linked) openSavedDemo(linked);
 }
+if (devMode) startDevPage();
 window.__cmReady = true;
 requestAnimationFrame(function () {
 	document.body.classList.add("ready");
 });
+
+// ———————————————————————————
+// DEV PAGE
+// /dev/ hands new, save and load over to parts/dev.js, which only loads here — the published editor never fetches it. it gets a small set of handles on the editor rather than reaching into its variables
+// a MEDIA path in a .demo is relative to the site root, while /dev/ sits a folder down, so a bare path is pointed at the root while the demo is open and written back bare when it's saved
+// ———————————————————————————
+function startDevPage() {
+	let bareMedia = {}; // media file name -> the bare path it was written with
+	const api = {
+		icons: ACT_ICONS,
+		folderIcon: FOLDER_ICON,
+		escHtml: escHtml,
+		slugName: slugName,
+		parseDemoFile: parseDemoFile,
+		toDemoFile: toDemoFile,
+		zipDemo: zipDemo,
+		// the blank editor's starting demo as a .demo, which is what a new demo starts from
+		templateText: function (title) {
+			return toDemoFile(readFiles(), readNotes(), defaultInfoMd, { title: title, config: null });
+		},
+		// the open demo as a .demo
+		currentText: function (title) {
+			stashActive();
+			const list = files.map(function (f) {
+				const src = f.lang === "media" && bareMedia[f.name] && f.src === `/${bareMedia[f.name]}` ? bareMedia[f.name] : f.src;
+				return { name: f.name, lang: f.lang, content: f.content, src: src };
+			});
+			return toDemoFile(list, collectNotes(), infoMd, { title: title, config: demoConfig, single: demoSingle });
+		},
+		// open a .demo's text in the editor, named `name`
+		openText: function (text, name) {
+			const parsed = parseDemoFile(text);
+			if (!parsed.files.length) parsed.files.push({ name: "index.html", lang: "html", content: "", src: "" });
+			bareMedia = {};
+			parsed.files.forEach(function (f) {
+				if (f.lang === "media" && f.src && !/^(https?:|data:|blob:|\/\/|\/)/i.test(f.src)) {
+					bareMedia[f.name] = f.src.replace(/^\.?\//, "");
+					f.src = `/${bareMedia[f.name]}`;
+				}
+			});
+			installDemo(parsed.files, parsed.entry, parsed.notes, parsed.info, parsed.config);
+			demoSingle = parsed.single;
+			savedDemoName = name;
+			setDemoName(name);
+			savedState = demoSnapshot();
+			setDirty(false);
+		},
+		// back to the blank starter, unnamed and unsaved
+		openBlank: function (name) {
+			demoEntry = (demoFilesBox && demoFilesBox.getAttribute("data-entry")) || "index.html";
+			resetDemoFiles(false);
+			bareMedia = {};
+			allNotes = readNotes();
+			infoMd = defaultInfoMd;
+			demoConfig = fullDemoConfig(null);
+			demoSingle = false;
+			renderBrief();
+			savedDemoName = "";
+			setDemoName(name);
+			savedState = demoSnapshot();
+			setDirty(false);
+		},
+		// the server wrote uploaded media out as real files: point those files at where they landed, so the next save writes the path rather than the data again
+		relinkMedia: function (map) {
+			files.forEach(function (f) {
+				if (f.lang === "media" && map[f.name]) {
+					bareMedia[f.name] = map[f.name];
+					f.src = `/${map[f.name]}`;
+				}
+			});
+		},
+		// the open demo's folder moved (it was moved in the collection), so its media paths follow
+		rebaseMedia: function (fromStem, toStem) {
+			files.forEach(function (f) {
+				const bare = bareMedia[f.name];
+				if (f.lang === "media" && bare && bare.indexOf(`${fromStem}/`) === 0) {
+					bareMedia[f.name] = toStem + bare.slice(fromStem.length);
+					f.src = `/${bareMedia[f.name]}`;
+				}
+			});
+		},
+		name: function () {
+			return demoName;
+		},
+		setName: setDemoName,
+		unsaved: demoUnsaved,
+		markSaved: function () {
+			savedState = demoSnapshot();
+			setDirty(false);
+		}
+	};
+	import("./parts/dev.js")
+		.then(function (m) {
+			m.startDev(api);
+		})
+		.catch(function (e) {
+			console.error("parts/dev.js didn’t load:", e);
+		});
+}

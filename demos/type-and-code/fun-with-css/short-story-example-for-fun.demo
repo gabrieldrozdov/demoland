@@ -1,0 +1,71 @@
+=== TITLE ===
+Short story example (for fun)
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<h1>
+	DAY OF ALL THE BLOOD
+</h1>
+
+<p class="test-paragraph">
+	THIS IS THE STORY OF A DAY WHERE THERE WAS ALL THIS BLOOD. A MAN WAS WALKING AROUND AND BLOOD STARTED COMING OUT OF HIM EVERYWHERE.
+</p>
+
+<p>
+	THERE WAS SO MUCH BLOOD THAT IT FILLED UP AN ELEVATOR. HE WENT TO THE STORE AND THERE WAS JUST BLOOD ALL OVER THE PLACE! PEOPLE WERE SLIPPING IN IT AND THEY WERE ALL GROSSED OUT.
+</p>
+
+<p>
+	HE TRIED TO GO SWIMMING AND ALL OF THE SHARKS WENT NUTS AND BITTENED EVERYBODY. HE GOT CHASED BY ALL THE VAMPIRES EVER. ONE TIME THE BLOOD GOT A KID AND A DOG.
+</p>
+
+<p>
+	AT THE END OF THE DAY EVERYONE DECIDED THEY WOULD SEND HIM TO SPACE SO THAT HE WOULD STOP GETTING BLOOD EVERY WHERE. THE SCARIEST PART IS THAT THE MAN WAS YOU!!!
+</p>
+
+<p>
+	(OR HE WAS A LADY IF YOU ARE A LADY) AND YOU FORGOT THAT THIS HAPPENED
+</p>
+
+Credit: <a href="https://www.reddit.com/r/nosleep/comments/gl4o3/what_is_your_favorite_short_creepypasta/">Reddit</a>
+=== FILE style.css ===
+body {
+	font-family: monospace;
+}
+
+.test-paragraph {
+	font-size: 24px;
+	color: red;
+}
+=== INFO ===
+Write a short story evoking one of the following emotions:
+
+- Joy
+- Embarassment
+- Fear
+- Love
+- Sleepiness
+- Adrenaline
+- (something else!)
+
+[Find CSS properties here!](https://cheatsheet.gdwithgd.com/css/)

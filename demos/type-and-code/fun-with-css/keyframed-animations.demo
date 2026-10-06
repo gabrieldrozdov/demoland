@@ -1,0 +1,71 @@
+=== TITLE ===
+Keyframed animations
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-animation">A</div>
+=== FILE style.css ===
+/* import the font */
+@font-face {
+	font-family: "Example";
+	src: url("ExampleVariableComponentVF.ttf") format("truetype");
+}
+
+/* style the class */
+.test-animation {
+	font-family: "Example";
+	font-size: 200px;
+	font-variation-settings: "TRAN" 0;
+
+	/* properties for animations */
+	animation-name: example-animation;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+}
+
+/* define the animation */
+@keyframes example-animation {
+	0% {
+		font-variation-settings: "TRAN" 0;
+	}
+	25% {
+		font-variation-settings: "TRAN" 100;
+	}
+	50% {
+		font-variation-settings: "TRAN" 80;
+		color: blue;
+	}
+	75% {
+		font-variation-settings: "TRAN" 100;
+	}
+	100% {
+		font-variation-settings: "TRAN" 0;
+		color: red;
+	}
+}
+=== MEDIA ExampleVariableComponentVF.ttf ===
+demos/type-and-code/fun-with-css/keyframed-animations/ExampleVariableComponentVF.ttf
+=== INFO ===
+Check out [more easing functions!](https://easings.net/)

@@ -1,0 +1,45 @@
+=== TITLE ===
+Absolute positioning
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-element" style="top: 20px; left: 50px;">
+	Hello world!
+</div>
+
+<div class="test-element" style="right: 20px; bottom: 10px;">
+	Hello world!
+</div>
+
+<div class="test-element">
+	Hello world!
+</div>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.test-element {
+	position: absolute;
+}

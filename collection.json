@@ -30,22 +30,22 @@
 						{
 							"id": "html",
 							"title": "HTML is for content",
-							"file": "demos/tutorial/languages/html.demo"
+							"file": "demos/tutorial/what-are-websites-made-of/html.demo"
 						},
 						{
 							"id": "css",
 							"title": "CSS is for design",
-							"file": "demos/tutorial/languages/css.demo"
+							"file": "demos/tutorial/what-are-websites-made-of/css.demo"
 						},
 						{
 							"id": "js",
 							"title": "JavaScript is for functionality",
-							"file": "demos/tutorial/languages/js.demo"
+							"file": "demos/tutorial/what-are-websites-made-of/js.demo"
 						},
 						{
 							"id": "js-libraries",
 							"title": "JavaScript libraries make your life easier",
-							"file": "demos/tutorial/languages/js-libraries.demo"
+							"file": "demos/tutorial/what-are-websites-made-of/js-libraries.demo"
 						}
 					]
 				}
@@ -340,6 +340,83 @@
 							"id": "exercise-choose-your-own-adventure",
 							"title": "EXERCISE: Choose Your Own Adventure",
 							"file": "demos/type-and-code/week-2/exercise-choose-your-own-adventure.demo"
+						}
+					]
+				},
+				{
+					"id": "fun-with-css",
+					"title": "Fun with CSS",
+					"description": "",
+					"demos": [
+						{
+							"id": "exercise-short-story",
+							"title": "EXERCISE: Short story",
+							"file": "demos/type-and-code/fun-with-css/exercise-short-story.demo"
+						},
+						{
+							"id": "short-story-example-for-fun",
+							"title": "Short story example (for fun)",
+							"file": "demos/type-and-code/fun-with-css/short-story-example-for-fun.demo"
+						},
+						{
+							"id": "box-model",
+							"title": "Box model",
+							"file": "demos/type-and-code/fun-with-css/box-model.demo"
+						},
+						{
+							"id": "margin-collapse",
+							"title": "Margin collapse",
+							"file": "demos/type-and-code/fun-with-css/margin-collapse.demo"
+						},
+						{
+							"id": "box-sizing",
+							"title": "Box sizing",
+							"file": "demos/type-and-code/fun-with-css/box-sizing.demo"
+						},
+						{
+							"id": "block-vs-inline-elements",
+							"title": "Block vs. inline elements",
+							"file": "demos/type-and-code/fun-with-css/block-vs-inline-elements.demo"
+						},
+						{
+							"id": "absolute-positioning",
+							"title": "Absolute positioning",
+							"file": "demos/type-and-code/fun-with-css/absolute-positioning.demo"
+						},
+						{
+							"id": "exercise-drawing-with-css",
+							"title": "EXERCISE: Drawing with CSS",
+							"file": "demos/type-and-code/fun-with-css/exercise-drawing-with-css.demo"
+						},
+						{
+							"id": "variable-fonts",
+							"title": "Variable fonts",
+							"file": "demos/type-and-code/fun-with-css/variable-fonts.demo"
+						},
+						{
+							"id": "hover-and-active-states",
+							"title": "Hover and active states",
+							"file": "demos/type-and-code/fun-with-css/hover-and-active-states.demo"
+						},
+						{
+							"id": "keyframed-animations",
+							"title": "Keyframed animations",
+							"file": "demos/type-and-code/fun-with-css/keyframed-animations.demo"
+						},
+						{
+							"id": "media-queries",
+							"title": "Media queries",
+							"file": "demos/type-and-code/fun-with-css/media-queries.demo"
+						},
+						{
+							"id": "exercise-buttons",
+							"title": "EXERCISE: Buttons",
+							"file": "demos/type-and-code/fun-with-css/exercise-buttons.demo"
+						},
+						{
+							"id": "exercise-animations",
+							"title": "EXERCISE: Animations",
+							"file": "demos/type-and-code/fun-with-css/exercise-animations.demo"
 						}
 					]
 				}

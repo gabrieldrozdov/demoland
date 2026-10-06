@@ -1,0 +1,55 @@
+=== TITLE ===
+Hover and active states
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<div class="test-interaction">A</div>
+=== FILE style.css ===
+/* import the font */
+@font-face {
+	font-family: "Example";
+	src: url("ExampleVariableComponentVF.ttf") format("truetype");
+}
+
+/* add it to a class */
+.test-interaction {
+	font-family: "Example";
+	font-size: 200px;
+	font-variation-settings: "TRAN" 0;
+	transition: 1s; /* this makes the magic happen! */
+	cursor: crosshair; /* this changes the mouse cursor */
+}
+
+/* when the mouse hovers over the element */
+.test-interaction:hover {
+	font-variation-settings: "TRAN" 100;
+	color: red;
+}
+
+/* when the mouse is pressed down on the element */
+.test-interaction:active {
+	font-variation-settings: "TRAN" 0;
+	color: blue;
+}
+=== MEDIA ExampleVariableComponentVF.ttf ===
+demos/type-and-code/fun-with-css/hover-and-active-states/ExampleVariableComponentVF.ttf

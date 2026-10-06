@@ -1,0 +1,44 @@
+=== TITLE ===
+EXERCISE: Short story
+=== CONFIG ===
+{
+	"allowAdd": true,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+Write your story here!
+=== FILE style.css ===
+body {
+	
+}
+
+/* Add your CSS classes here! */
+=== INFO ===
+Write a short story evoking one of the following emotions:
+
+- Joy
+- Embarassment
+- Fear
+- Love
+- Sleepiness
+- Adrenaline
+- (something else!)
+
+[Find CSS properties here!](https://cheatsheet.gdwithgd.com/css/)
