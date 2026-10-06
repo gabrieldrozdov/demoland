@@ -379,6 +379,11 @@
 							"file": "demos/type-and-code/fun-with-css/block-vs-inline-elements.demo"
 						},
 						{
+							"id": "good-typesetting",
+							"title": "“Good” typesetting",
+							"file": "demos/type-and-code/fun-with-css/good-typesetting.demo"
+						},
+						{
 							"id": "absolute-positioning",
 							"title": "Absolute positioning",
 							"file": "demos/type-and-code/fun-with-css/absolute-positioning.demo"
