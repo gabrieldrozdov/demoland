@@ -2,7 +2,7 @@
 Portfolio example
 === CONFIG ===
 {
-	"allowAdd": false,
+	"allowAdd": true,
 	"notesExpanded": false,
 	"panels": {
 		"info": true,

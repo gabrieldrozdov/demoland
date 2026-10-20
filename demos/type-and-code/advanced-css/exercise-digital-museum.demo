@@ -2,7 +2,7 @@
 Exercise: digital museum
 === CONFIG ===
 {
-	"allowAdd": false,
+	"allowAdd": true,
 	"notesExpanded": false,
 	"panels": {
 		"info": true,
