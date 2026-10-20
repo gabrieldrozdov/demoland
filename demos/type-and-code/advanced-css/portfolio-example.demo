@@ -1,0 +1,236 @@
+=== TITLE ===
+Portfolio example
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is my portfolio</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<nav class="nav">
+			<a href="./" class="nav-link">Gabriel Drozdov</a>
+			<div class="nav-spacer"></div>
+			<a href="work/" class="nav-link">Work</a>
+			<a href="contact/" class="nav-link">Contact</a>
+		</nav>
+
+		<header class="header">
+			<h1>This is my beautiful portfolio</h1>
+			<a href="contact/" class="header-link">plz hire me</a>
+		</header>
+
+		<main class="projects">
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+			<a href="project-folder/" class="project-link">
+				<img src="assets/images/cat.jpeg">
+				<h2>Project name</h2>
+				<p>Project description or something</p>
+			</a>
+			
+		</main>
+		
+	</body>
+</html>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+
+/* Navbar */
+.nav {
+	display: flex;
+	margin: 10px;
+	border: 1px solid black;
+	padding: 20px;
+	gap: 10px;
+}
+.nav-spacer {
+	flex-grow: 1;
+}
+.nav-link {
+	color: blue;
+	text-decoration: none;
+}
+
+/* Header */
+.header {
+	padding: 40px;
+	min-height: 320px;
+	border: 1px solid black;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.header-link {
+	border: 1px solid black;
+	padding: 10px;
+	color: black;
+	text-decoration: none;
+}
+.header-link:hover {
+	background-color: black;
+	color: white;
+}
+
+/* Projects */
+.projects {
+	margin: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+}
+.project-link {
+	color: black;
+	border: 1px solid black;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 10px;
+}
+.project-link img {
+	width: 100%;
+}
+.project-link h2 {
+	font-size: 24px;
+}
+.project-link p {
+	font-size: 18px;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+	.projects {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media (max-width: 400px) {
+	.projects {
+		grid-template-columns: 1fr;
+	}
+}
+=== MEDIA assets/images/cat.jpeg ===
+demos/type-and-code/advanced-css/portfolio-example/assets/images/cat.jpeg
+=== FILE work/index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is the work page</title>
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+
+		<h1>Work page</h1>
+
+		<a href="../">Go back home</a>
+
+		<br><br>
+
+		<a href="../work/">Go to the contact page</a>
+
+	</body>
+</html>
+=== FILE contact/index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is the contact page</title>
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+
+		<h1>Contact page</h1>
+
+		<a href="../">Go back home</a>
+
+		<br><br>
+
+		<a href="../work/">Go to the work page</a>
+
+	</body>
+</html>

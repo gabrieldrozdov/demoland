@@ -1,0 +1,76 @@
+=== TITLE ===
+Horizontally scrolling story
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is a website</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<div class="container">
+			<h1>I am a beautiful website.</h1>
+			<p>
+				Pizza ipsum dolor amet ham bbq sauce NY style bacon, philly steak stuffed crust ricotta thin crust deep crust pizza roll. Stuffed crust NY style stuffed bbq sauce, beef hawaiian ricotta pepperoni mayo pepperoni buffalo sauce steak. Pie white pizza garlic parmesan, bacon bbq hand tossed bacon & tomato spinach mushrooms pepperoni broccoli pork sauteed onions. Bbq bbq sauce buffalo sauce, ham pineapple meatball extra sauce burnt mouth party ranch.
+			</p>
+			<p>
+				Melted cheese philly steak anchovies steak. Bbq sauce philly chicken ricotta bbq rib Chicago style. Meat lovers pork string cheese chicken and bacon burnt mouth meatball. Pie stuffed crust buffalo sauce chicken wing. Stuffed pan meatball chicken wing buffalo sauce onions pizza.
+			</p>
+			<p>
+				Sauteed onions ham string cheese, white garlic personal chicken extra sauce chicken and bacon platter pepperoni bacon & tomato extra cheese party pepperoni hawaiian. Marinara burnt mouth green bell peppers, sausage extra sauce hand tossed chicken wing personal lasagna meatball beef bacon & tomato philly chicken. Broccoli mayo chicken wing garlic parmesan. Fresh tomatoes pepperoni extra cheese philly steak pan melted cheese pizza roll. Chicken wing NY style parmesan, bbq sauce chicken wing philly chicken chicken red onions ham garlic parmesan meatball bbq peppers. Philly steak chicken bianca, hand tossed bbq rib ricotta garlic meat lovers pie bbq green bell peppers white garlic. Philly steak platter marinara ham NY style pepperoni.
+			</p>
+			<p>
+				Bianca philly chicken hawaiian NY style ricotta onions white garlic mushrooms bbq sauce ham personal garlic parmesan pork. Pizza broccoli personal anchovies onions sausage platter, meatball hawaiian extra sauce. Broccoli meatball pan hand tossed pepperoni chicken wing melted cheese fresh tomatoes pineapple white garlic personal black olives beef extra sauce large. Stuffed black olives onions, white pizza banana peppers platter pork chicken wing pizza sauteed onions steak party. Beef burnt mouth meatball stuffed crust buffalo sauce mayo stuffed bacon.
+			</p>
+			<p>
+				Banana peppers stuffed sausage meatball extra cheese, white pizza anchovies personal steak. Platter philly chicken ham, pineapple stuffed pan beef hawaiian buffalo sauce banana peppers bbq. Party philly chicken stuffed crust extra sauce. Stuffed sauteed onions Chicago style, hawaiian garlic sauce onions chicken thin crust bbq broccoli extra cheese pepperoni bianca chicken wing. Green bell peppers bacon parmesan, white pizza pepperoni stuffed steak Chicago style personal extra cheese beef white garlic.
+			</p>
+		</div>
+	</body>
+</html>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+.container {
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	gap: 20px;
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+}
+.container > * {
+	flex-shrink: 0;
+	width: 100vw;
+	padding: 80px;
+	scroll-snap-align: start;
+}

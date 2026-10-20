@@ -1,0 +1,136 @@
+=== TITLE ===
+Exercise: digital museum
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is a digital museum</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<header class="header">
+			<h1>What is this museum called?</h1>
+		</header>
+
+		<div class="links">
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 1 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 2 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 3 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 4 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 5 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 6 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 7 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 8 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 9 name</h2>
+			</a>
+
+			<a href="https://example.com/" target="_blank">
+				<img src="">
+				<h2>link 10 name</h2>
+			</a>
+			
+		</div>
+		
+	</body>
+</html>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+
+/* Header */
+.header {
+	
+}
+.header h1 {
+	
+}
+
+/* Links */
+.links {
+	
+}
+.link {
+	
+}
+.link img {
+	
+}
+.link h2 {
+	
+}
+=== INFO ===
+1. Add a custom font to this site.
+2. Give your museum a name.
+3. Collect 10 links from the internet on a specific topic. Add thumbnails and a title for each link.
+
+The header should be a flexbox with centered content.
+
+The links div should be a grid that changes columns depending on screen size.
+
+Each link should be a vertical flexbox.
+
+Do a deep-dive on [Are.na](https://www.are.na/) to find links!

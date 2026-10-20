@@ -1,0 +1,81 @@
+=== TITLE ===
+Choose your own adventure
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<a href="adventure.html">start your adventure</a>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	padding: 40px;
+	font-family: sans-serif;
+	font-size: 40px;
+}
+=== FILE adventure.html ===
+<link rel="stylesheet" href="style.css">
+
+the adventure begins
+
+<br><br>
+
+<a href="next-phase/">proceed to the next phase</a>
+
+<br><br>
+
+<a href="index.html">or be a coward and return home</a>
+=== FILE next-phase/index.html ===
+<link rel="stylesheet" href="../style.css">
+
+you are very brave. you are a warrior. what will you do next?
+
+<br><br>
+
+<a href="../">return back home</a>
+
+<br><br>
+
+<a href="dragon.html">fight the dragon</a>
+=== FILE next-phase/dragon.html ===
+<link rel="stylesheet" href="../style.css">
+
+rawr im a dragon ouch you killed me
+
+<br><br>
+
+what happens next?
+
+<br><br>
+
+<a href="../">once a coward, always a coward</a>
+
+<br><br>
+
+<a href="../after-the-dragon/">onwards to the next battle</a>
+=== FILE after-the-dragon/index.html ===
+<link rel="stylesheet" href="../style.css">
+
+??????

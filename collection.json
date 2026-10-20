@@ -424,6 +424,88 @@
 							"file": "demos/type-and-code/fun-with-css/exercise-animations.demo"
 						}
 					]
+				},
+				{
+					"id": "advanced-css",
+					"title": "Advanced CSS",
+					"description": "",
+					"demos": [
+						{
+							"id": "choose-your-own-adventure",
+							"title": "Choose your own adventure",
+							"file": "demos/type-and-code/advanced-css/choose-your-own-adventure.demo"
+						},
+						{
+							"id": "exercise-adventure-time",
+							"title": "Exercise: adventure time!",
+							"file": "demos/type-and-code/advanced-css/exercise-adventure-time.demo"
+						},
+						{
+							"id": "html-template",
+							"title": "HTML template",
+							"file": "demos/type-and-code/advanced-css/html-template.demo"
+						},
+						{
+							"id": "good-digital-typesetting",
+							"title": "Good digital typesetting",
+							"file": "demos/type-and-code/advanced-css/good-digital-typesetting.demo"
+						},
+						{
+							"id": "good-digital-typesetting-with-flexbox",
+							"title": "Good digital typesetting with flexbox",
+							"file": "demos/type-and-code/advanced-css/good-digital-typesetting-with-flexbox.demo"
+						},
+						{
+							"id": "flexbox",
+							"title": "Flexbox",
+							"file": "demos/type-and-code/advanced-css/flexbox.demo"
+						},
+						{
+							"id": "a-shifting-wall-of-text",
+							"title": "A shifting wall of text",
+							"file": "demos/type-and-code/advanced-css/a-shifting-wall-of-text.demo"
+						},
+						{
+							"id": "a-single-line-of-text",
+							"title": "A single line of text",
+							"file": "demos/type-and-code/advanced-css/a-single-line-of-text.demo"
+						},
+						{
+							"id": "horizontally-scrolling-story",
+							"title": "Horizontally scrolling story",
+							"file": "demos/type-and-code/advanced-css/horizontally-scrolling-story.demo"
+						},
+						{
+							"id": "a-navbar",
+							"title": "A navbar",
+							"file": "demos/type-and-code/advanced-css/a-navbar.demo"
+						},
+						{
+							"id": "centered-content",
+							"title": "Centered content",
+							"file": "demos/type-and-code/advanced-css/centered-content.demo"
+						},
+						{
+							"id": "css-grid",
+							"title": "CSS grid",
+							"file": "demos/type-and-code/advanced-css/css-grid.demo"
+						},
+						{
+							"id": "grid-areas",
+							"title": "Grid areas",
+							"file": "demos/type-and-code/advanced-css/grid-areas.demo"
+						},
+						{
+							"id": "portfolio-example",
+							"title": "Portfolio example",
+							"file": "demos/type-and-code/advanced-css/portfolio-example.demo"
+						},
+						{
+							"id": "exercise-digital-museum",
+							"title": "Exercise: digital museum",
+							"file": "demos/type-and-code/advanced-css/exercise-digital-museum.demo"
+						}
+					]
 				}
 			]
 		}

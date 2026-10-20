@@ -1,0 +1,41 @@
+=== TITLE ===
+Exercise: adventure time!
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<link rel="stylesheet" href="style.css">
+
+<a href="new-file.html">start your adventure</a>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	padding: 40px;
+	font-family: sans-serif;
+	font-size: 40px;
+}
+=== INFO ===
+1. Come up with a character name and a job.
+2. Choose a scenario to put that character in.
+3. Make a choose-your-own-adventure story based on that character/scenario.

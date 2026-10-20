@@ -54,7 +54,7 @@
 		</div>
 		<div id="main">
 			<div id="info-panel">
-				<div class="panel-spine" data-panel="info" title="Click to collapse the info panel"><span>Info</span></div>
+				<div class="panel-spine" data-panel="info"><span>Info</span><button type="button" class="spine-btn" data-act="full" data-tooltip-side="right"><svg viewBox="0 0 100 100"><polygon points="67.5 27.5 90 50 67.5 72.5 60.43 65.43 70.86 55 29.14 55 39.57 65.43 32.5 72.5 10 50 32.5 27.5 39.57 34.57 29.14 45 70.86 45 60.43 34.57 67.5 27.5"/></svg></button><button type="button" class="spine-btn" data-act="hide" data-tooltip-side="right"><svg viewBox="0 0 100 100"><path d="M50,30c12.78,0,25.6,11.64,32.79,20-7.19,8.37-20.01,20-32.79,20s-25.6-11.64-32.79-20c7.19-8.37,20.01-20,32.79-20M50,20c-25.09,0-45.44,30-45.44,30,0,0,20.34,30,45.44,30s45.44-30,45.44-30c0,0-20.34-30-45.44-30h0Z"/><circle cx="50" cy="50" r="12.13"/></svg></button></div>
 				<div id="info-scroll">
 					<div id="info-inner">
 						<div id="info-body"></div>
@@ -114,7 +114,7 @@
 			</div>
 			<div id="resizer-left"></div>
 			<div id="code-panel">
-				<div class="panel-spine" data-panel="code" title="Click to collapse the code panel"><span>Code</span></div>
+				<div class="panel-spine" data-panel="code"><span>Code</span><button type="button" class="spine-btn" data-act="full" data-tooltip-side="right"><svg viewBox="0 0 100 100"><polygon points="67.5 27.5 90 50 67.5 72.5 60.43 65.43 70.86 55 29.14 55 39.57 65.43 32.5 72.5 10 50 32.5 27.5 39.57 34.57 29.14 45 70.86 45 60.43 34.57 67.5 27.5"/></svg></button><button type="button" class="spine-btn" data-act="hide" data-tooltip-side="right"><svg viewBox="0 0 100 100"><path d="M50,30c12.78,0,25.6,11.64,32.79,20-7.19,8.37-20.01,20-32.79,20s-25.6-11.64-32.79-20c7.19-8.37,20.01-20,32.79-20M50,20c-25.09,0-45.44,30-45.44,30,0,0,20.34,30,45.44,30s45.44-30,45.44-30c0,0-20.34-30-45.44-30h0Z"/><circle cx="50" cy="50" r="12.13"/></svg></button></div>
 				<div id="code-main">
 				<div id="file-tabs" hidden></div>
 				<div id="code-scroll">
@@ -208,7 +208,7 @@
 			</div>
 			<div id="resizer-right"></div>
 			<div id="preview-panel">
-				<div class="panel-spine" data-panel="preview" title="Click to collapse the preview panel"><span>Preview</span></div>
+				<div class="panel-spine" data-panel="preview"><span>Preview</span><button type="button" class="spine-btn" data-act="full" data-tooltip-side="right"><svg viewBox="0 0 100 100"><polygon points="67.5 27.5 90 50 67.5 72.5 60.43 65.43 70.86 55 29.14 55 39.57 65.43 32.5 72.5 10 50 32.5 27.5 39.57 34.57 29.14 45 70.86 45 60.43 34.57 67.5 27.5"/></svg></button><button type="button" class="spine-btn" data-act="hide" data-tooltip-side="right"><svg viewBox="0 0 100 100"><path d="M50,30c12.78,0,25.6,11.64,32.79,20-7.19,8.37-20.01,20-32.79,20s-25.6-11.64-32.79-20c7.19-8.37,20.01-20,32.79-20M50,20c-25.09,0-45.44,30-45.44,30,0,0,20.34,30,45.44,30s45.44-30,45.44-30c0,0-20.34-30-45.44-30h0Z"/><circle cx="50" cy="50" r="12.13"/></svg></button></div>
 				<div id="preview-scroll">
 				<div id="preview-inner">
 				<div id="preview-now" hidden><svg viewBox="0 0 100 100"><path d="m90,82.929l-25.552-25.552c3.492-4.904,5.552-10.898,5.552-17.376,0-16.569-13.431-30-30-30s-30,13.431-30,30,13.431,30,30,30c6.479,0,12.473-2.061,17.376-5.552l25.552,25.552,7.071-7.071ZM20,40c0-11.046,8.954-20,20-20s20,8.954,20,20-8.954,20-20,20-20-8.954-20-20Z"/></svg><span class="pn-label">Currently previewing:</span> <span id="preview-now-file"></span></div>
@@ -240,7 +240,7 @@
 					</div>
 				</div>
 				<div id="preview-frame-wrap">
-					<iframe id="preview-frame" sandbox="allow-scripts"></iframe>
+					<iframe id="preview-frame" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe>
 					<div id="preview-paused" hidden><span><strong>Preview paused</strong><br>Click to resume</span></div>
 					<div id="preview-disabled" hidden><span><strong>The preview is disabled for this demo.</strong><br>Use the console below.</span></div>
 				</div>

@@ -1,0 +1,79 @@
+=== TITLE ===
+Grid areas
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is a website</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<div class="parent">
+			<div class="first-area">grid area a</div>
+			<div class="second-area">grid area b</div>
+			<div class="third-area">grid area c</div>
+		</div>
+		
+	</body>
+</html>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+
+.parent {
+	display: grid;
+	grid-template-areas:
+		"a a a"
+		  "b c c"
+		  "b c c";
+	height: 100vh;
+}
+
+.parent > * {
+	border: 5px solid black;
+	font-size: 24px;
+	border-radius: 10px;
+	margin: 2px;
+	padding: 5px;
+}
+
+.first-area {
+	grid-area: a;
+}
+
+.second-area {
+	grid-area: b;
+}
+
+.third-area {
+	grid-area: c;
+}

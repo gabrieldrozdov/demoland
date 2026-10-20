@@ -52,7 +52,7 @@ const BRIDGE = `(function(){
 
 // ———————————————————————————
 // LINK HANDLING
-// injected into the preview, which runs from an about:srcdoc document where links can't resolve normally: same-page "#section" links scroll within the preview, links to another local file (e.g. about.html) are posted to the parent which re-assembles that page, and external urls behave normally
+// injected into the preview, which runs from an about:srcdoc document where links can't resolve normally: same-page "#section" links scroll within the preview, links to another local file (e.g. about.html) are posted to the parent which re-assembles that page, and external urls behave normally — including target="_blank", which needs the iframe's sandbox to allow popups (see the preview-frame in editor.template.html; without it the browser silently drops the new tab)
 // ———————————————————————————
 const ANCHORS = `(function(){document.addEventListener('click',function(e){
 	  var a=e.target&&e.target.closest&&e.target.closest('a[href]');

@@ -1574,25 +1574,53 @@ body {
 	width: var(--strip);
 	height: 100%;
 	display: flex;
-	align-items: start;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
 	padding-top: 7px;
-	justify-content: center;
+	padding-bottom: 8px; /* the bottom button's lower edge lines up with the panels' 40px toolbar buttons */
 	background: color-mix(in srgb, var(--accent) 25%, var(--off-black) 100%);
 	border-right: 1px solid color-mix(in srgb, var(--accent) 75%, var(--off-black) 100%);
 	user-select: none;
 	overflow: hidden;
-	cursor: pointer;
 	padding-right: 0.5px;
 	z-index: 6;
 }
-.panel-spine:hover {
-	background: var(--off-white);
+/* full-width + hide buttons, pinned to the bottom of the spine */
+.spine-btn {
+	flex: 0 0 auto;
+	width: calc(var(--strip) - 6px);
+	height: calc(var(--strip) - 6px);
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: var(--accent);
+	background: color-mix(in srgb, var(--accent) 25%, var(--off-black) 100%);
+	border: 1px solid color-mix(in srgb, var(--accent) 75%, var(--off-black) 100%);
 }
-.panel-spine:active {
-	opacity: 0.25;
+.spine-btn[data-act="full"] {
+	margin-top: auto;
 }
-.panel-spine:hover span {
+.spine-btn svg {
+	width: 12px;
+	height: 12px;
+	flex: 0 0 auto;
+	fill: currentColor;
+}
+.spine-btn.on {
 	color: var(--off-black);
+	background: var(--accent);
+	border-color: var(--accent);
+}
+.spine-btn:hover {
+	color: var(--off-black);
+	background: var(--off-white);
+	border-color: var(--off-white);
+}
+.spine-btn:active {
+	opacity: 0.25;
 }
 .panel-spine span {
 	writing-mode: vertical-rl;
@@ -3243,6 +3271,21 @@ button.ctrl.locked.on,
 	display: inline-block;
 	background: var(--accent);
 	animation: filetree-active 1s infinite ease-in-out alternate;
+}
+/* with file editing on, names can be dragged up/down to reorder them (see onTreePointerDown) */
+.filetree.reorderable button.ftree-file {
+	touch-action: none;
+}
+.filetree.tree-dragging,
+.filetree.tree-dragging button.ftree-file {
+	cursor: grabbing;
+	user-select: none;
+	-webkit-user-select: none;
+}
+.filetree button.ftree-file.dragging {
+	color: var(--off-black);
+	background: var(--accent);
+	opacity: 1;
 }
 @keyframes filetree-active {
 	from {

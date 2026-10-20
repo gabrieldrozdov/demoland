@@ -1,0 +1,58 @@
+=== TITLE ===
+HTML template
+=== CONFIG ===
+{
+	"allowAdd": false,
+	"notesExpanded": false,
+	"panels": {
+		"info": true,
+		"code": true,
+		"preview": true,
+		"console": true
+	},
+	"settings": {
+		"wrap": null,
+		"syntax": null,
+		"autoclose": null,
+		"autocomplete": null,
+		"warnings": null,
+		"zoom": true
+	},
+	"lock": []
+}
+=== FILE index.html ===
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>This is a website</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<h1>
+			hey y’all what’s up this is a professional HTML file.
+		</h1>
+
+		<p>
+			when in VS Code, type ! and then enter to generate this.
+		</p>
+		
+	</body>
+</html>
+=== FILE style.css ===
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: sans-serif;
+}
+h1 {
+	margin: 20px;
+}
+p {
+	margin: 20px;
+}

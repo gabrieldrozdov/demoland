@@ -56,17 +56,52 @@ import {
 } from "./lib/codemirror.js";
 import { lintFile, renderLintMsg } from "./parts/lint.js?v=b083c6d6";
 import { mediaKind, createMediaView } from "./parts/media.js?v=0f837142";
-import { assemblePreview, buildDoc, resolveFile } from "./parts/preview.js?v=fd3c8cc7";
+import { assemblePreview, buildDoc, resolveFile } from "./parts/preview.js?v=dc7bfb26";
 import { readEmbed } from "./parts/embed.js?v=208ec094";
 import { strBytes, makeZip } from "./parts/zip.js?v=d12a0d56";
 import { fileIconSvg } from "./parts/icons.js?v=785950c8";
 import { mdToHtml } from "./parts/markdown.js?v=d8515f10";
 
 // the CodeMirror language for a file's kind (html keeps tag auto-closing)
+// ———————————————————————————
+// NESTED TAG AUTO-CLOSE
+// codemirror's html auto-close only adds </div> when the new element has no closing tag yet — but type <div> inside another <div> and the parser hands the outer div's </div> to the new inner one, so it decides nothing is missing and the outer div is left unclosed. this runs first on ">": it counts the tag's opens and closes in the whole document (skipping comments and the insides of <script> / <style>), and if there are more opens than closes it adds the closing tag itself; otherwise codemirror's own handler carries on as usual
+// ———————————————————————————
+const VOID_TAGS = /^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/i;
+function tagBalance(text, name) {
+	const clean = text
+		.replace(/<!--[\s\S]*?(-->|$)/g, "")
+		.replace(/(<(script|style)\b[^>]*>)[\s\S]*?(<\/\2\s*>|$)/gi, "$1$3");
+	const opens = clean.match(new RegExp(`<${name}(\\s[^<>]*)?>`, "gi")) || [];
+	const closes = clean.match(new RegExp(`</${name}\\s*>`, "gi")) || [];
+	return opens.filter((t) => !/\/>$/.test(t)).length - closes.length;
+}
+const nestedTagClose = EditorView.inputHandler.of(function (view, from, to, text) {
+	if (text !== ">" || from !== to || view.state.readOnly) return false;
+	const state = view.state;
+	// only in html itself, not the css / js inside a <style> or <script>
+	const tokens = state.languageDataAt("commentTokens", from)[0] || {};
+	if (!tokens.block || tokens.block.open !== "<!--") return false;
+	const m = /<([A-Za-z][\w:-]*)((?:\s+[^\s<>"'=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s<>"']+))?)*)\s*$/.exec(
+		state.sliceDoc(Math.max(0, from - 1000), from)
+	);
+	if (!m || VOID_TAGS.test(m[1])) return false;
+	const name = m[1];
+	const after = state.sliceDoc(0, from) + ">" + state.sliceDoc(to);
+	if (tagBalance(after, name) <= 0) return false;
+	view.dispatch({
+		changes: { from: from, to: to, insert: `></${name}>` },
+		selection: { anchor: from + 1 },
+		userEvent: "input.type",
+		scrollIntoView: true
+	});
+	return true;
+});
+
 function languageExt(lang, autoCloseOn) {
 	if (lang === "css") return css();
 	if (lang === "javascript") return javascript();
-	if (lang === "html") return html({ autoCloseTags: autoCloseOn });
+	if (lang === "html") return autoCloseOn ? [nestedTagClose, html({ autoCloseTags: true })] : html({ autoCloseTags: false });
 	if (lang === "json") return json();
 	return []; // media / text: no language parser
 }
@@ -513,6 +548,10 @@ function PinMarker(open, empty) {
 	this.empty = empty;
 }
 PinMarker.prototype = Object.create(GutterMarker.prototype);
+// lets codemirror keep an existing pin's dom when nothing about it changed, rather than rebuilding every pin in the gutter on each keystroke
+PinMarker.prototype.eq = function (other) {
+	return other.open === this.open && other.empty === this.empty;
+};
 PinMarker.prototype.toDOM = function () {
 	let s = document.createElement("span");
 	s.className = `cm-anno-pin${this.open ? " open" : ""}${this.empty ? " empty" : ""}`;
@@ -550,17 +589,28 @@ var annoGutter = gutter({
 });
 
 // keep callouts sized to the visible editor width, so they fit on screen even with wrapping off and the line scrolled horizontally
+// the measuring goes through codemirror's own read/write cycle, and the css variables are only written when they actually change — writing them on every geometry change (i.e. most keystrokes) invalidated the whole editor's layout, so anything measuring afterwards, like the autocomplete popup, paid for a full re-layout each time
 const calloutSizer = ViewPlugin.fromClass(function (view) {
-	function sync(view) {
-		const scroller = view.scrollDOM;
-		const gutters = scroller.querySelector(".cm-gutters");
-		const gw = gutters ? gutters.offsetWidth : 0;
-		view.dom.style.setProperty("--cm-gw", `${gw}px`);
-		view.dom.style.setProperty("--cm-callout-w", `${Math.max(120, scroller.clientWidth - gw)}px`);
-	}
-	sync(view);
+	var last = "";
+	var req = {
+		key: "callout-sizer",
+		read: function (view) {
+			const scroller = view.scrollDOM;
+			const gutters = scroller.querySelector(".cm-gutters");
+			const gw = gutters ? gutters.offsetWidth : 0;
+			return { gw: gw, w: Math.max(120, scroller.clientWidth - gw) };
+		},
+		write: function (m, view) {
+			const next = `${m.gw}/${m.w}`;
+			if (next === last) return;
+			last = next;
+			view.dom.style.setProperty("--cm-gw", `${m.gw}px`);
+			view.dom.style.setProperty("--cm-callout-w", `${m.w}px`);
+		}
+	};
+	view.requestMeasure(req);
 	this.update = function (u) {
-		if (u.geometryChanged) sync(u.view);
+		if (u.geometryChanged) u.view.requestMeasure(req);
 	};
 });
 
@@ -838,9 +888,9 @@ function doubleClickStyle(view, event) {
 	};
 }
 
-// autocomplete, with suggestions showing the moment you type rather than after codemirror's default 100ms wait. its other delay is kept: for 75ms after the list appears, enter and the arrow keys still type rather than pick, so a fast typist hitting enter at the end of a line doesn't accept a suggestion they never saw
+// autocomplete, with suggestions showing the moment you type rather than after codemirror's default 100ms wait. its other delay is kept: for 75ms after the list appears, enter and the arrow keys still type rather than pick, so a fast typist hitting enter at the end of a line doesn't accept a suggestion they never saw. only 30 options are rendered at a time (codemirror's default is 100, and the list keeps scrolling through all of them) — the popup lays itself out from scratch each time it opens, so a long list like every html tag made that the slowest part of typing
 function completionExt() {
-	return autocompletion({ activateOnTypingDelay: 0 });
+	return autocompletion({ activateOnTypingDelay: 0, maxRenderedOptions: 30 });
 }
 
 // the full extension set for a file's EditorState, parameterised by its language — every file gets its own state so undo/redo is per-file, while settings live in compartments and are re-synced to the active state on each tab switch
@@ -940,32 +990,44 @@ syncScrollbars = (function setupScrollbars() {
 	host.appendChild(vbar);
 	host.appendChild(hbar);
 
-	function sync() {
-		const ch = sc.clientHeight,
-			sh = sc.scrollHeight,
-			st = sc.scrollTop;
-		const cw = sc.clientWidth,
-			sw = sc.scrollWidth,
-			sl = sc.scrollLeft;
-		const vNeed = sh - ch > 1,
-			hNeed = sw - cw > 1;
+	// split into a read step and a write step so edits can run it inside codemirror's own measure cycle (see the return below) rather than forcing an extra layout mid-update; scrolling and resizing still call sync() directly
+	function read() {
+		return {
+			ch: sc.clientHeight,
+			sh: sc.scrollHeight,
+			st: sc.scrollTop,
+			cw: sc.clientWidth,
+			sw: sc.scrollWidth,
+			sl: sc.scrollLeft,
+			vt: vbar.clientHeight, // track lengths (0 while hidden; re-read below once shown)
+			ht: hbar.clientWidth,
+			both: host.classList.contains("cm-both-bars")
+		};
+	}
+	function write(m) {
+		const vNeed = m.sh - m.ch > 1,
+			hNeed = m.sw - m.cw > 1;
+		const reflow = vNeed !== (m.vt > 0) || hNeed !== (m.ht > 0) || m.both !== (vNeed && hNeed);
 		vbar.style.display = vNeed ? "block" : "none";
 		hbar.style.display = hNeed ? "block" : "none";
 		host.classList.toggle("cm-both-bars", vNeed && hNeed);
 		if (vNeed) {
-			const vt = vbar.clientHeight; // read after display/class set
-			const th = Math.max(MIN, Math.round((vt * ch) / sh));
-			const top = sh - ch ? (vt - th) * (st / (sh - ch)) : 0;
+			const vt = reflow ? vbar.clientHeight : m.vt; // only re-measure when a bar just appeared/disappeared
+			const th = Math.max(MIN, Math.round((vt * m.ch) / m.sh));
+			const top = m.sh - m.ch ? (vt - th) * (m.st / (m.sh - m.ch)) : 0;
 			vthumb.style.height = `${th}px`;
 			vthumb.style.transform = `translateY(${top}px)`;
 		}
 		if (hNeed) {
-			const ht = hbar.clientWidth;
-			const tw = Math.max(MIN, Math.round((ht * cw) / sw));
-			const left = sw - cw ? (ht - tw) * (sl / (sw - cw)) : 0;
+			const ht = reflow ? hbar.clientWidth : m.ht;
+			const tw = Math.max(MIN, Math.round((ht * m.cw) / m.sw));
+			const left = m.sw - m.cw ? (ht - tw) * (m.sl / (m.sw - m.cw)) : 0;
 			hthumb.style.width = `${tw}px`;
 			hthumb.style.transform = `translateX(${left}px)`;
 		}
+	}
+	function sync() {
+		write(read());
 	}
 
 	// drag a thumb -> scroll proportionally
@@ -1012,7 +1074,10 @@ syncScrollbars = (function setupScrollbars() {
 		} catch (err) {}
 	}
 	requestAnimationFrame(sync);
-	return sync;
+	var req = { key: "sim-scrollbars", read: read, write: write };
+	return function () {
+		view.requestMeasure(req);
+	};
 })();
 
 // ———————————————————————————
@@ -1425,7 +1490,7 @@ function initPanels() {
 	lastTotal = panelTotal();
 }
 
-// click a spine label to collapse that panel down to its spine, handing its width to the other open panels; click the spine of a collapsed panel to open it back up to the width it had, taken back from the panels that are still open
+// each spine has two square buttons at its bottom: the eye collapses that panel down to its spine, handing its width to the other open panels (and on a collapsed panel opens it back up to the width it had, taken back from the panels that are still open); the double arrow takes the panel to full width, collapsing the others to their spines, and pressed again on a full-width panel puts the layout back the way it was
 // "collapsed" isn't a stored flag — it's read off the width, so a panel dragged down to its spine counts as collapsed and one dragged back open doesn't
 const spines = Array.prototype.slice.call(document.querySelectorAll(".panel-spine"));
 const SPINE_NAMES = { info: "info", code: "code", preview: "preview" };
@@ -1457,12 +1522,36 @@ function setPanelWidths(w) {
 function isCollapsed(w, which) {
 	return w[which] <= STRIP + 1;
 }
+// full width = every other visible panel is down at its spine (and this one isn't)
+function isMaximized(w, which) {
+	const visible = visiblePanels();
+	if (w[which] === undefined || visible.length < 2 || isCollapsed(w, which)) return false;
+	return visible.every(function (n) {
+		return n === which || isCollapsed(w, n);
+	});
+}
 function updateSpines() {
 	const w = panelWidths();
 	spines.forEach(function (s) {
 		const which = s.dataset.panel;
 		if (w[which] === undefined) return;
-		s.title = `Click to ${isCollapsed(w, which) ? "expand" : "collapse"} the ${SPINE_NAMES[which]} panel`;
+		const name = SPINE_NAMES[which];
+		const collapsed = isCollapsed(w, which),
+			maxed = isMaximized(w, which);
+		const full = s.querySelector('.spine-btn[data-act="full"]'),
+			hide = s.querySelector('.spine-btn[data-act="hide"]');
+		const fullTip = maxed ? "Restore the panel layout" : `Expand the ${name} panel to full width`,
+			hideTip = collapsed ? `Show the ${name} panel` : `Hide the ${name} panel`;
+		if (full) {
+			full.classList.toggle("on", maxed);
+			full.title = fullTip;
+			full.setAttribute("data-tooltip", fullTip);
+		}
+		if (hide) {
+			hide.classList.toggle("on", collapsed);
+			hide.title = hideTip;
+			hide.setAttribute("data-tooltip", hideTip);
+		}
 	});
 }
 // share `amount` out across `names` in proportion to `weights`, adding it to (or, when negative, taking it from) each one's width
@@ -1523,9 +1612,41 @@ function togglePanel(which) {
 	updateSpines();
 	view.requestMeasure();
 }
+// the layout from just before a panel went full width, so pressing the arrow again can put it back
+var preMaxLayout = null;
+function maximizePanel(which) {
+	const w = panelWidths();
+	const visible = visiblePanels();
+	if (w[which] === undefined || visible.length < 2) return;
+	if (isMaximized(w, which)) {
+		// already full width: back to the layout from before (or the default one, if it got here by dragging)
+		const back = preMaxLayout || defaultPanels();
+		wInfo = back.info;
+		wPrev = back.prev;
+		preMaxLayout = null;
+	} else {
+		preMaxLayout = { info: wInfo, prev: wPrev };
+		let rest = panelTotal();
+		visible.forEach(function (n) {
+			if (n === which) return;
+			if (!isCollapsed(w, n)) remembered[n] = w[n]; // so the eye button reopens it to this width
+			w[n] = STRIP;
+			rest -= STRIP;
+		});
+		w[which] = rest;
+		setPanelWidths(w);
+	}
+	clampPanels();
+	applyPanels();
+	updateSpines();
+	view.requestMeasure();
+}
 spines.forEach(function (s) {
-	s.addEventListener("click", function () {
-		togglePanel(s.dataset.panel);
+	s.addEventListener("click", function (e) {
+		const b = e.target && e.target.closest && e.target.closest(".spine-btn");
+		if (!b) return; // the spine itself is just a label now
+		if (b.dataset.act === "full") maximizePanel(s.dataset.panel);
+		else togglePanel(s.dataset.panel);
 	});
 });
 function resetPanels() {
@@ -1921,7 +2042,7 @@ function updateCursorPos(state) {
 		const lines = state.doc.lineAt(sel.to).number - state.doc.lineAt(sel.from).number + 1;
 		txt += `, (${lines} Ln${lines === 1 ? "" : "s"}, ${chars} Char${chars === 1 ? "" : "s"})`;
 	}
-	cursorPosEl.textContent = txt;
+	if (cursorPosEl.textContent !== txt) cursorPosEl.textContent = txt;
 }
 updateCursorPos(view.state); // initial readout
 
@@ -2178,13 +2299,24 @@ function renderInfoFiles() {
 		""
 	);
 	pre.innerHTML = lines.join("\n");
+	pre.classList.toggle("reorderable", allowAddFiles);
 	markActiveInfoFile(pre);
+	if (treeDrag) {
+		// mid-drag re-render (the drag itself just moved a file): keep the dragged name highlighted
+		const d = pre.querySelector(`.ftree-file[data-file="${treeDrag.name.replace(/"/g, '\\"')}"]`);
+		if (d) d.classList.add("dragging");
+	}
 	if (!pre.dataset.wired) {
 		// one delegated click handler survives re-renders
 		pre.dataset.wired = "1";
+		pre.addEventListener("pointerdown", onTreePointerDown);
 		pre.addEventListener("click", function (e) {
 			const b = e.target && e.target.closest && e.target.closest(".ftree-file");
 			if (!b) return;
+			if (suppressTreeClick) {
+				suppressTreeClick = false; // this click ended a reorder drag
+				return;
+			}
 			const idx = files.findIndex(function (f) {
 				return f.name === b.getAttribute("data-file");
 			});
@@ -2195,6 +2327,73 @@ function renderInfoFiles() {
 		});
 	}
 }
+// drag a file up or down in the tree to reorder it (only when the demo lets you edit its files) — it moves among the files in its own folder, since that's the order the tree shows; each step swaps it with the neighbour under the pointer through moveFile, so the file tabs reshuffle (and animate) along with it, and the entry file stays planted at the top like it does in the tab strip
+var treeDrag = null,
+	suppressTreeClick = false;
+function treeDir(path) {
+	const i = path.lastIndexOf("/");
+	return i < 0 ? "" : path.slice(0, i);
+}
+function fileIndexByName(name) {
+	return files.findIndex(function (f) {
+		return f.name === name;
+	});
+}
+function onTreePointerDown(e) {
+	if (!allowAddFiles || (e.button != null && e.button > 0)) return;
+	const b = e.target && e.target.closest && e.target.closest(".ftree-file");
+	if (!b) return;
+	const name = b.getAttribute("data-file");
+	if (fileIndexByName(name) < 1) return; // the entry is planted
+	suppressTreeClick = false;
+	treeDrag = { id: e.pointerId, name: name, startY: e.clientY, active: false };
+	document.addEventListener("pointermove", onTreePointerMove, true);
+	document.addEventListener("pointerup", onTreePointerUp, true);
+	document.addEventListener("pointercancel", onTreePointerUp, true);
+}
+function onTreePointerMove(e) {
+	if (!treeDrag || e.pointerId !== treeDrag.id) return;
+	const pre = document.getElementById("info-filetree");
+	if (!pre) return;
+	if (!treeDrag.active) {
+		if (Math.abs(e.clientY - treeDrag.startY) < 4) return; // below threshold: still a click
+		treeDrag.active = true;
+		pre.classList.add("tree-dragging");
+		const d = pre.querySelector(`.ftree-file[data-file="${treeDrag.name.replace(/"/g, '\\"')}"]`);
+		if (d) d.classList.add("dragging");
+	}
+	e.preventDefault();
+	// the file row under the pointer, if it's a sibling in the same folder (and not the entry)
+	const dir = treeDir(treeDrag.name);
+	let target = null;
+	Array.prototype.forEach.call(pre.querySelectorAll(".ftree-file"), function (b) {
+		const r = b.getBoundingClientRect();
+		if (e.clientY >= r.top && e.clientY < r.bottom) target = b.getAttribute("data-file");
+	});
+	if (!target || target === treeDrag.name || treeDir(target) !== dir) return;
+	const from = fileIndexByName(treeDrag.name),
+		to = fileIndexByName(target);
+	if (from < 1 || to < 1) return;
+	moveFile(from, to); // re-renders the tabs and this tree
+}
+function onTreePointerUp(e) {
+	if (!treeDrag || e.pointerId !== treeDrag.id) return;
+	document.removeEventListener("pointermove", onTreePointerMove, true);
+	document.removeEventListener("pointerup", onTreePointerUp, true);
+	document.removeEventListener("pointercancel", onTreePointerUp, true);
+	const pre = document.getElementById("info-filetree");
+	if (treeDrag.active) {
+		suppressTreeClick = true; // swallow the click this drag emits; the next pointerdown clears it
+		if (pre) {
+			pre.classList.remove("tree-dragging");
+			Array.prototype.forEach.call(pre.querySelectorAll(".ftree-file.dragging"), function (b) {
+				b.classList.remove("dragging");
+			});
+		}
+	}
+	treeDrag = null;
+}
+
 // bring the active tab into view in the (horizontally scrolling) tab strip
 function scrollActiveTabIntoView() {
 	let scroll = fileTabsEl && fileTabsEl.querySelector(".ft-scroll");
@@ -3583,11 +3782,12 @@ function setUndoRedoBtns(state) {
 	state = state || view.state;
 	const canU = undoDepth(state) > 0,
 		canR = redoDepth(state) > 0;
-	if (undoBtn) {
+	// runs on every transaction, so only touch the buttons when their state actually flips — re-setting `disabled` still invalidates styles, and with the autocomplete popup measuring itself each keystroke that turned into extra page layouts
+	if (undoBtn && undoBtn.disabled !== !canU) {
 		undoBtn.classList.toggle("active", canU);
 		undoBtn.disabled = !canU;
 	}
-	if (redoBtn) {
+	if (redoBtn && redoBtn.disabled !== !canR) {
 		redoBtn.classList.toggle("active", canR);
 		redoBtn.disabled = !canR;
 	}
